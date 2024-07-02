@@ -49,5 +49,7 @@ export async function searchResults() {
       image: { src, width, height },
     })
   }
-  return items
+  return items.sort((a, b) => {
+    return 10 * a.type.localeCompare(b.type) + a.title.localeCompare(b.title)
+  })
 }
