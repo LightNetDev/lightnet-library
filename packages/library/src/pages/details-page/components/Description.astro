@@ -1,0 +1,16 @@
+---
+import { marked } from "marked"
+
+interface Props {
+  description?: string
+}
+
+const { description } = Astro.props
+const formattedDescription = description && (await marked.parse(description))
+---
+
+{
+  formattedDescription && (
+    <div class="prose prose-gray mt-6" set:html={formattedDescription} />
+  )
+}

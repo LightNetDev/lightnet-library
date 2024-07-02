@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets"
+import { ViewTransitions } from "astro:transitions"
+import config from "virtual:lightnet/config"
+import logo from "virtual:lightnet/logo"
+
+import { localizePath } from "../utils/paths"
+import PageNavigation from "./components/PageNavigation.astro"
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang={Astro.currentLocale ?? config.defaultLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title ? `${title} | ${config.title}` : config.title}</title>
+    {description && <meta name="description" content={description} />}
+    <ViewTransitions />
+  </head>
+  <body class="overflow-y-scroll bg-gray-50 text-gray-900">
+    <header
+      class="fixed top-0 z-50 h-14 w-full bg-gray-50 px-4 py-2 shadow-md sm:h-20 md:px-8"
+      transition:animate="none"
+    >
+      <div class="mx-auto flex h-full max-w-screen-xl justify-between xl:px-8">
+        <a
+          class="flex items-center gap-2 font-bold text-gray-600 md:text-lg"
+          href={localizePath(Astro.currentLocale, "/")}
+          ><Image
+            src={logo}
+            alt={config.logo.alt}
+            class="w-8"
+            width={32}
+            densities={[1.5, 2, 3]}
+            loading="eager"
+          />{config.title}</a
+        >
+        <PageNavigation />
+      </div>
+    </header>
+    <main class="mx-auto min-h-screen pb-8 pt-14 sm:py-20">
+      <slot />
+    </main>
+  </body>
+</html>

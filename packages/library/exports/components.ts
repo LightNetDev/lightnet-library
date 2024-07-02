@@ -1,0 +1,6 @@
+export { default as Gallery } from "../src/components/Gallery.astro"
+export { default as HeroSection } from "../src/components/HeroSection.astro"
+export { default as Icon } from "../src/components/Icon"
+export { default as ImageSection } from "../src/components/ImageSection.astro"
+export { default as Section } from "../src/components/Section.astro"
+export { default as Page } from "../src/layouts/Page.astro"

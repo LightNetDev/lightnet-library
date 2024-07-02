@@ -1,0 +1,43 @@
+---
+interface Props {
+  id?: string
+  width?: "full" | "content"
+  title?: string
+  withoutDefaultTopMargin?: boolean
+  lang?: string
+  class?: string
+}
+
+const {
+  id,
+  width = "full",
+  title,
+  withoutDefaultTopMargin = false,
+  lang,
+} = Astro.props
+
+const widths = {
+  full: "max-w-screen-xl",
+  content: "sm:max-w-screen-lg",
+}
+---
+
+<section
+  class="mx-auto px-4 md:px-8"
+  class:list={[
+    widths[width],
+    !withoutDefaultTopMargin && "mt-16 md:mt-20",
+    Astro.props.class,
+  ]}
+  id={id}
+  lang={lang}
+>
+  {
+    title && (
+      <h2 class="mb-2 text-xl font-bold text-gray-700 md:mb-4 md:text-2xl">
+        {title}
+      </h2>
+    )
+  }
+  <slot />
+</section>

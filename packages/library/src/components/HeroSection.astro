@@ -1,0 +1,74 @@
+---
+import type { ImageMetadata } from "astro"
+import { Image } from "astro:assets"
+
+type Size = "lg" | "md" | "xl"
+
+interface Props {
+  image: ImageMetadata
+  title?: string
+  subtitle?: string
+  titleSize?: Size
+  subtitleSize?: Size
+  class?: string
+}
+const {
+  image,
+  title,
+  subtitle,
+  titleSize = "md",
+  subtitleSize = "md",
+} = Astro.props
+
+const titleSizes = {
+  md: "text-4xl sm:text-5xl md:text-6xl",
+  lg: "text-5xl sm:text-6xl md:text-7xl",
+  xl: "text-6xl sm:text-7xl md:text-8xl",
+} as const
+
+const subtitleSizes = {
+  md: "sm:text-lg md:text-2xl",
+  lg: "text-lg sm:text-xl md:text-3xl",
+  xl: "text-xl sm:text-2xl md:text-4xl",
+} as const
+---
+
+<div class="w-full">
+  <div class="group relative">
+    <Image
+      class="h-72 w-full object-cover object-center md:h-[20rem] lg:h-[24rem] xl:h-[30rem]"
+      src={image}
+      widths={[320, 640, 768, 1024, 1280, 2560, 3000]}
+      sizes="100vw"
+      loading="eager"
+      quality="mid"
+      alt=""
+    />
+    <div
+      class="bg-gradient-radial absolute top-0 flex h-full w-full flex-col items-center justify-center gap-6 from-black/30 to-black/40 p-4 text-center text-gray-50"
+      class:list={[Astro.props.class]}
+    >
+      {
+        title && (
+          <h1
+            class="max-w-screen-md font-bold transition-transform duration-1000 group-hover:scale-[102%]"
+            class:list={[titleSizes[titleSize]]}
+          >
+            {title}
+          </h1>
+        )
+      }
+      {
+        subtitle && (
+          <p
+            class="max-w-screen-sm font-bold sm:text-lg md:text-2xl"
+            class:list={[subtitleSizes[subtitleSize]]}
+          >
+            {subtitle}
+          </p>
+        )
+      }
+      <slot />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets"
+
+import type { MediaItem } from "../content/content-schema"
+import { detailsPagePath } from "../utils/paths"
+import Icon from "./Icon"
+
+type GalleryItem = {
+  id: string
+  data: Pick<MediaItem, "title" | "image">
+}
+
+interface Props {
+  items: GalleryItem[]
+  layout: "books" | "videos"
+}
+
+const { items, layout } = Astro.props
+---
+
+{
+  layout === "books" && (
+    <ol class="grid grid-cols-2 items-end justify-between gap-6 py-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
+      {items.map((item) => (
+        <li>
+          <a
+            href={detailsPagePath(Astro.currentLocale, item)}
+            class="flex flex-col gap-2"
+          >
+            <div class="relative overflow-hidden rounded-sm shadow-md">
+              <Image
+                class="h-full w-full object-contain"
+                src={item.data.image}
+                alt=""
+                widths={[120, 160, 240, 320, 640]}
+                sizes={
+                  "(max-width: 640px) calc(calc(100vw - 3.5rem ) / 2), " +
+                  "(max-width: 768px) calc(calc(100vw - 5rem ) / 3), " +
+                  "(max-width: 1024px) calc(calc(100vw - 10rem ) / 4), " +
+                  "(max-width: 1280px) calc(calc(100vw - 12rem ) / 5), " +
+                  "217px"
+                }
+              />
+
+              <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
+            </div>
+            <span class="line-clamp-1 text-sm font-bold text-gray-800">
+              {item.data.title}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  )
+}
+{
+  layout === "videos" && (
+    <ol class="grid grid-cols-1 justify-between gap-6 py-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
+      {items.map((video) => (
+        <li>
+          <a
+            href={detailsPagePath(Astro.currentLocale, video)}
+            class="flex flex-col gap-2"
+          >
+            <div class="relative aspect-video overflow-hidden rounded-md bg-gray-950 shadow-md">
+              <Image
+                class="absolute top-0 h-full w-full object-contain"
+                src={video.data.image}
+                alt=""
+                widths={[120, 160, 240, 320, 640]}
+                sizes={
+                  "(max-width: 640px) calc(calc(100vw - 2rem ) / 1), " +
+                  "(max-width: 768px) calc(calc(100vw - 3.5rem ) / 2), " +
+                  "(max-width: 1024px) calc(calc(100vw - 8.5rem ) / 3), " +
+                  "(max-width: 1280px) calc(calc(100vw - 10.5rem ) / 4), " +
+                  "280px"
+                }
+              />
+              <div class="absolute top-0 flex h-full w-full items-center justify-center">
+                <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-800">
+                  <Icon class="mdi--play" />
+                </span>
+              </div>
+            </div>
+            <span class="line-clamp-1 text-sm font-bold text-gray-800">
+              {video.data.title}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  )
+}

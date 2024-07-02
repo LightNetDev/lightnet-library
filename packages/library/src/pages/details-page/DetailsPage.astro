@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from "astro"
+import { z } from "astro/zod"
+import config from "virtual:lightnet/config"
+
+import { getMediaItem, getMediaItems } from "../../content/get-media-items"
+import Page from "../../layouts/Page.astro"
+import { verifySchema } from "../../utils/verify-schema"
+import DocumentDetails from "./DocumentDetails.astro"
+import VideoDetails from "./VideoDetails.astro"
+
+export const getStaticPaths = (async () => {
+  const mediaItems = await getMediaItems()
+  return config.locales.flatMap((locale) =>
+    mediaItems.map(({ id: slug }) => ({ params: { slug, locale } })),
+  )
+}) satisfies GetStaticPaths
+
+const { slug, locale } = Astro.params
+const mediaItem = (await getMediaItem(Astro.params.slug)).data
+const props = { mediaItem, slug, locale }
+
+const { detailsPage } = mediaItem.type.data
+
+verifySchema(
+  z.enum(["book", "video"]),
+  detailsPage,
+  "Received unknown details page",
+)
+---
+
+<Page title={mediaItem.title} description={mediaItem.description}>
+  {detailsPage === "book" && <DocumentDetails showBookFold {...props} />}
+  {detailsPage === "video" && <VideoDetails {...props} />}
+</Page>

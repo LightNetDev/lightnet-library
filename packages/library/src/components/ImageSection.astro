@@ -1,0 +1,46 @@
+---
+import type { ImageMetadata } from "astro"
+import { Image } from "astro:assets"
+
+import Icon from "./Icon"
+
+interface Props {
+  image: ImageMetadata
+  id?: string
+  title?: string
+  text?: string
+  link?: { href: string; label: string }
+  class?: string
+}
+
+const { image, id, title, text, link } = Astro.props
+---
+
+<section
+  class="mt-16 w-full bg-gray-200 md:mt-20"
+  class:list={[Astro.props.class]}
+  id={id}
+>
+  <div class="flex flex-col overflow-hidden md:flex-row">
+    <Image
+      src={image}
+      alt=""
+      widths={[320, 640, 768, 1024, 1280, 2560]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      class="aspect-[4/3] w-full shrink-0 object-cover md:w-1/2 xl:aspect-video"
+    />
+    <div class="my-12 max-w-screen-sm px-4 md:px-8 lg:my-24 xl:px-16">
+      {title && <h2 class="mb-4 text-4xl lg:mb-8 lg:text-5xl">{title}</h2>}
+      {text && <p class="text-lg">{text}</p>}
+      {
+        link && (
+          <a class="dy-btn dy-btn-primary mt-8" href={link.href}>
+            {link.label}
+            <Icon class="mdi--arrow-right" />
+          </a>
+        )
+      }
+      <slot />
+    </div>
+  </div>
+</section>

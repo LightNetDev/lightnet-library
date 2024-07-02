@@ -1,0 +1,65 @@
+---
+import config from "virtual:lightnet/config"
+
+import { getMediaItems } from "../../content/get-media-items"
+import { getMediaTypes } from "../../content/get-media-types"
+import { resolveCategoryLabel } from "../../content/resolve-category-label"
+import { resolveLanguageLabel } from "../../i18n/resolve-language-label"
+import { useTranslate } from "../../i18n/use-translate"
+import Page from "../../layouts/Page.astro"
+import Search from "./Search"
+import { provideTranslations } from "./utils/search-translations"
+
+export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
+
+const media = await getMediaItems()
+const t = await useTranslate(Astro.currentLocale)
+
+const contentLanguages: Record<string, string> = media
+  .map((item) => item.data.language)
+  .sort((a, b) => a.localeCompare(b))
+  .reduce(
+    (prev, language) => ({
+      ...prev,
+      [language]: resolveLanguageLabel(language),
+    }),
+    {},
+  )
+
+const categories: Record<string, string> = media
+  .flatMap((item) => item.data.categories ?? [])
+  .map((category) => [category, resolveCategoryLabel(t, category)])
+  .sort((a, b) =>
+    a[1].localeCompare(b[1], Astro.currentLocale ?? config.defaultLocale),
+  )
+  .reduce(
+    (prev, [category, categoryLabel]) => ({
+      ...prev,
+      [category]: categoryLabel,
+    }),
+    {},
+  )
+
+const mediaTypes = (await getMediaTypes())
+  .map((type) => ({
+    id: type.id,
+    label: t(type.data.label),
+    icon: type.data.icon,
+  }))
+  .sort((a, b) =>
+    a.label.localeCompare(b.label, Astro.currentLocale ?? config.defaultLocale),
+  )
+---
+
+<Page>
+  <div class="mx-auto max-w-screen-lg">
+    <Search
+      client:load
+      contentLanguages={contentLanguages}
+      mediaTypes={mediaTypes}
+      translations={provideTranslations(t)}
+      locale={Astro.currentLocale}
+      categories={categories}
+    />
+  </div>
+</Page>
