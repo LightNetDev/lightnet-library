@@ -15,6 +15,7 @@ export default defineConfig({
           label: "ln.home.title",
         },
         { href: "/media", label: "ln.search.title" },
+        { href: "/about", label: "navigation.about" },
         {
           href: "https://www.om.org/eng/mediaworks/lightnet",
           isExternal: true,

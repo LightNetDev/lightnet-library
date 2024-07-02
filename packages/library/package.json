@@ -10,6 +10,7 @@
     "./components": "./exports/components.ts",
     "./i18n": "./exports/i18n.ts",
     "./tailwind.config.ts": "./tailwind.config.ts",
+    "./layouts/MarkdownPage.astro": "./src/layouts/MarkdownPage.astro",
     "./pages/404.astro": "./src/pages/404.astro",
     "./pages/SearchPage.astro": "./src/pages/search-page/SearchPage.astro",
     "./pages/DetailsPage.astro": "./src/pages/details-page/DetailsPage.astro",
