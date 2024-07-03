@@ -98,9 +98,6 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.0
         version: 0.5.13(tailwindcss@3.4.4)
-      '@types/node':
-        specifier: ^20.14.8
-        version: 20.14.8
       daisyui:
         specifier: ^4.0.0
         version: 4.12.8(postcss@8.4.38)
@@ -3532,6 +3529,7 @@ snapshots:
   '@types/node@20.14.8':
     dependencies:
       undici-types: 5.26.5
+    optional: true
 
   '@types/unist@3.0.2': {}
 
@@ -5629,7 +5627,8 @@ snapshots:
 
   typescript@5.5.2: {}
 
-  undici-types@5.26.5: {}
+  undici-types@5.26.5:
+    optional: true
 
   unified@11.0.5:
     dependencies:

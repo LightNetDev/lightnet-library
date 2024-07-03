@@ -2,7 +2,7 @@
   "name": "@lightnet/library",
   "type": "module",
   "license": "MIT",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "exports": {
     ".": "./exports/index.ts",
     "./content": "./exports/content.ts",
@@ -26,7 +26,6 @@
     "@iconify-json/mdi": "^1.0.0",
     "@iconify/tailwind": "^1.0.0",
     "@tailwindcss/typography": "^0.5.0",
-    "@types/node": "^20.14.8",
     "daisyui": "^4.0.0",
     "fuse.js": "^7.0.0",
     "marked": "^13.0.1",
