@@ -10,7 +10,7 @@
     "preview": "pnpm --filter=sk8* preview",
     "format": "prettier . --write --cache",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "publish:patch": "p version patch && p publish -F library --access public"
+    "publish:patch": "pnpm version patch && pnpm publish -F library --access public"
   },
   "repository": {
     "type": "git",
