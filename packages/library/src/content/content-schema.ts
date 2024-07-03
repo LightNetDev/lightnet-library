@@ -1,4 +1,4 @@
-import { z } from "astro:content"
+import { z } from "astro/zod"
 import { type ImageFunction, reference } from "astro:content"
 
 export const CATEGORIES = [
