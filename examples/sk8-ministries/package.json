@@ -1,5 +1,5 @@
 {
-  "name": "@examples/sk8-ministries",
+  "name": "@lightnet/sk8-ministries",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
