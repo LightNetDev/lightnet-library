@@ -1,5 +1,5 @@
 import { z } from "astro/zod"
-import { type ImageFunction, reference } from "astro:content"
+import { reference, type SchemaContext } from "astro:content"
 
 export const CATEGORIES = [
   "biography",
@@ -65,7 +65,7 @@ export const mediaItemEntrySchema = z.object({
   data: mediaItemSchema,
 })
 
-export const mediaSchema = ({ image }: { image: ImageFunction }) =>
+export const mediaSchema = ({ image }: SchemaContext) =>
   mediaItemSchema.extend({
     image: z
       .string()
