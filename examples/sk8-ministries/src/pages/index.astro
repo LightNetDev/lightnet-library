@@ -1,44 +1,8 @@
 ---
-import {
-  Gallery,
-  HeroSection,
-  ImageSection,
-  Page,
-  Section,
-} from "@lightnet/library/components"
-import { getMediaItems } from "@lightnet/library/content"
-import { useTranslate } from "@lightnet/library/i18n"
-
-import eventImage from "../assets/event.webp"
-import heroImage from "../assets/hero.webp"
-
-const latestBooks = await getMediaItems({ type: "book" })
-const tutorials = await getMediaItems({ type: "video" })
-
-const t = await useTranslate(Astro.currentLocale)
+/**
+ * This file provide the home page on root path /
+ */
+import HomePage from "./[locale]/index.astro"
 ---
 
-<Page>
-  <HeroSection
-    image={heroImage}
-    title={t("ministry.name")}
-    subtitle={t("ministry.slogan")}
-    titleSize="xl"
-    subtitleSize="xl"
-  />
-  <Section title={t("home.our-latest-books")}>
-    <Gallery items={latestBooks} layout="books" />
-  </Section>
-  <ImageSection
-    image={eventImage}
-    title={t("home.bbq.title")}
-    text={t("home.bbq.text")}
-    link={{
-      href: "mailto:some-email-address-from-the-ministry",
-      label: t("home.bbq.sign-up-now"),
-    }}
-  />
-  <Section title={t("home.learn-skateboarding")}>
-    <Gallery items={tutorials} layout="videos" />
-  </Section>
-</Page>
+<HomePage />
