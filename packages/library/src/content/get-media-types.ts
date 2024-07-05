@@ -1,9 +1,9 @@
+import { getCollection, getEntry } from "astro:content"
+
 import { verifySchema } from "../utils/verify-schema"
 import { mediaTypeEntrySchema } from "./content-schema"
 
 export const getMediaType = async (id: string) => {
-  const { getEntry } = await import("astro:content")
-
   return verifySchema(
     mediaTypeEntrySchema,
     await getEntry("media-types", id),
@@ -12,7 +12,6 @@ export const getMediaType = async (id: string) => {
 }
 
 export const getMediaTypes = async () => {
-  const { getCollection } = await import("astro:content")
   return (await getCollection("media-types")).map((type) =>
     verifySchema(
       mediaTypeEntrySchema,
