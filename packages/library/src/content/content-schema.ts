@@ -1,5 +1,5 @@
 import { z } from "astro/zod"
-import { reference, type SchemaContext } from "astro:content"
+import { type SchemaContext } from "astro:content"
 
 export const CATEGORIES = [
   "biography",
@@ -25,7 +25,7 @@ export type MediaType = z.infer<typeof mediaTypeSchema>
 export const mediaItemSchema = z.object({
   commonId: z.string(),
   title: z.string(),
-  type: z.object({ id: z.string() }),
+  type: z.string(),
   description: z.string().optional(),
   authors: z.string().array().optional(),
   dateCreated: z.string().date(),
@@ -71,5 +71,4 @@ export const mediaSchema = ({ image }: SchemaContext) =>
       .string()
       .transform((path) => (path.startsWith("./") ? path : `./${path}`))
       .pipe(image()),
-    type: reference("media-types"),
   })

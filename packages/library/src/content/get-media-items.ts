@@ -13,19 +13,13 @@ export type MediaItemQuery = { type: string }
 
 export const getMediaItems = async (query?: MediaItemQuery) => {
   const items = await getCollection("media", resolveQuery(query))
-  return items.map((entry) =>
-    verifySchema(
-      mediaItemEntrySchema,
-      entry,
-      `Invalid media item: ${entry.id} ${JSON.stringify(entry.data.type)}`,
-    ),
-  )
+  return Promise.all(items.map(prepareItem))
 }
 
 const resolveQuery = (query?: MediaItemQuery) => {
   if (!query) return
-  return (item: { data: { type: { id: unknown } } }) => {
-    return item.data.type.id === query.type
+  return (item: { data: { type: string } }) => {
+    return item.data.type === query.type
   }
 }
 
@@ -35,7 +29,7 @@ const prepareItem = async (item: any) => {
     item,
     `Invalid media item: ${item.id}`,
   )
-  const type = await getMediaType(verified.data.type.id)
+  const type = await getMediaType(verified.data.type)
 
   return {
     id: verified.id,
