@@ -2,21 +2,7 @@ import type { APIRoute } from "astro"
 import { getImage } from "astro:assets"
 
 import { getMediaItems } from "../../content/get-media-items"
-
-export type SearchItem = {
-  title: string
-  id: string
-  type: string
-  authors?: string[]
-  categories?: string[]
-  description?: string
-  language: string
-  image: { src: string; width: number; height: number }
-}
-
-export type SearchResponse = {
-  items: SearchItem[]
-}
+import type { SearchItem } from "./search-response"
 
 export const GET: APIRoute = async () => {
   const items = await searchResults()

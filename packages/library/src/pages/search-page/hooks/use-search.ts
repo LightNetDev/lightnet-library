@@ -1,7 +1,7 @@
 import Fuse from "fuse.js"
 import { useEffect, useRef, useState } from "preact/hooks"
 
-import type { SearchItem, SearchResponse } from "../../api/search"
+import type { SearchItem, SearchResponse } from "../../api/search-response"
 
 export type SearchQuery = {
   search?: string
