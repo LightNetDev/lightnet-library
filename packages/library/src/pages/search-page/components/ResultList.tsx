@@ -2,7 +2,7 @@ import { useState } from "preact/hooks"
 
 import Icon from "../../../components/Icon"
 import { detailsPagePath } from "../../../utils/paths"
-import type { SearchItem } from "../../api/search"
+import type { SearchItem } from "../../api/search-response"
 import type { MediaType } from "../utils/media-type"
 import type { Translations } from "../utils/search-translations"
 import { useProvidedTranslations } from "../utils/use-provided-translations"
