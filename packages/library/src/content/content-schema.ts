@@ -1,5 +1,4 @@
 import { z } from "astro/zod"
-import { reference, type SchemaContext } from "astro:content"
 
 export const CATEGORIES = [
   "biography",
@@ -65,11 +64,14 @@ export const mediaItemEntrySchema = z.object({
   data: mediaItemSchema,
 })
 
-export const mediaSchema = ({ image }: SchemaContext) =>
-  mediaItemSchema.extend({
-    image: z
-      .string()
-      .transform((path) => (path.startsWith("./") ? path : `./${path}`))
-      .pipe(image()),
-    type: reference("media-types"),
-  })
+export const mediaSchema = async () => {
+  const { reference } = await import("astro:content")
+  return ({ image }: import("astro:content").SchemaContext) =>
+    mediaItemSchema.extend({
+      image: z
+        .string()
+        .transform((path) => (path.startsWith("./") ? path : `./${path}`))
+        .pipe(image()),
+      type: reference("media-types"),
+    })
+}
