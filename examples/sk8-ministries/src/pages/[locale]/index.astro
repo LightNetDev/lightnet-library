@@ -8,14 +8,15 @@ import {
   Page,
   Section,
 } from "@lightnet/library/components"
+import { mediaQuery } from "@lightnet/library/content"
 import { useTranslate } from "@lightnet/library/i18n"
-import { getMediaItems } from "@lightnet/library/utils"
+import { getCollection } from "astro:content"
 
 import eventImage from "../../assets/event.webp"
 import heroImage from "../../assets/hero.webp"
 
-const latestBooks = await getMediaItems({ type: "book" })
-const tutorials = await getMediaItems({ type: "video" })
+const latestBooks = await getCollection("media", mediaQuery({ type: "book" }))
+const tutorials = await getCollection("media", mediaQuery({ type: "video" }))
 
 const t = await useTranslate(Astro.currentLocale)
 ---
