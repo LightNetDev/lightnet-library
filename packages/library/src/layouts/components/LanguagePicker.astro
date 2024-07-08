@@ -4,12 +4,24 @@ import config from "virtual:lightnet/config"
 import Icon from "../../components/Icon"
 import { resolveLanguageLabel } from "../../i18n/resolve-language-label"
 import { useTranslate } from "../../i18n/use-translate"
+import { localizePath } from "../../utils/paths"
 
 const translations = config.locales.map((locale) => ({
   locale,
   label: resolveLanguageLabel(locale),
   active: locale === Astro.currentLocale,
+  href: currentPathWithLocale(locale),
 }))
+
+function currentPathWithLocale(locale: string) {
+  const currentPath = Astro.url.pathname
+  const currentPathWithoutLocale = currentPath.startsWith(
+    `/${Astro.currentLocale}/`,
+  )
+    ? currentPath.slice(Astro.currentLocale!.length + 2)
+    : currentPath
+  return localizePath(locale, currentPathWithoutLocale)
+}
 
 const t = useTranslate(Astro.currentLocale)
 ---
@@ -29,10 +41,10 @@ const t = useTranslate(Astro.currentLocale)
   >
     <ul class="dy-menu dy-menu-sm gap-1">
       {
-        translations.map(({ label, locale, active }) => (
+        translations.map(({ label, locale, active, href }) => (
           <li>
             <a
-              href={`/${locale}`}
+              href={href}
               hreflang={locale}
               class="flex items-center gap-3 py-3"
               class:list={[active && "dy-active"]}

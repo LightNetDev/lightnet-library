@@ -36,13 +36,17 @@ export function lightnet(lightnetConfig: Config): AstroIntegration {
 
         config.integrations.push(tailwind(), preact())
 
+        const { defaultLocale, locales } = lightnetConfig
         updateConfig({
           vite: {
             plugins: [vitePluginLightnetConfig(lightnetConfig, config, logger)],
           },
           i18n: {
-            defaultLocale: lightnetConfig.defaultLocale,
-            locales: lightnetConfig.locales,
+            defaultLocale,
+            // make sure default locale is included
+            locales: locales.includes(defaultLocale)
+              ? locales
+              : [defaultLocale, ...locales],
           },
         })
       },
