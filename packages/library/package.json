@@ -2,7 +2,7 @@
   "name": "@lightnet/library",
   "type": "module",
   "license": "MIT",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "exports": {
     ".": "./exports/index.ts",
     "./content": "./exports/content.ts",
