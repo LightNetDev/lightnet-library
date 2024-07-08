@@ -11,7 +11,7 @@ interface Props {
 const { mediaItem } = Astro.props
 const t = useTranslate(Astro.currentLocale)
 
-const contentUrls = mediaItem.contentUrls.map((url, index) => ({
+const content = mediaItem.content.map(({ url }, index) => ({
   ...parseUrl(url),
   url,
   isPrimary: index === 0,
@@ -44,7 +44,7 @@ function parseUrl(url: string): {
 
 <div class="flex flex-col gap-2" class:list={[Astro.props.class]}>
   {
-    contentUrls.map(({ icon, text, isPrimary, url, target }) => (
+    content.map(({ icon, text, isPrimary, url, target }) => (
       <a
         class="dy-btn w-full"
         class:list={[isPrimary && "dy-btn-neutral"]}

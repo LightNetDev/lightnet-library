@@ -6,13 +6,13 @@ import VideoPlayer from "./components/VideoPlayer.astro"
 import type { Props } from "./details-props"
 
 const {
-  mediaItem: { contentUrls, title, language, image, description },
+  mediaItem: { content, title, language, image, description },
   slug,
 } = Astro.props
 
-if (contentUrls.length !== 1) {
+if (content.length !== 1) {
   throw new Error(
-    `Currently the video page only supports exactly one content url but ${slug} has ${contentUrls.length}.`,
+    `Currently the video page only supports exactly one content url but ${slug} has ${content.length}.`,
   )
 }
 ---
@@ -21,7 +21,7 @@ if (contentUrls.length !== 1) {
   <div
     class="aspect-video w-full overflow-hidden bg-black lg:mt-8 lg:rounded-lg"
   >
-    <VideoPlayer url={contentUrls[0]!} title={title} image={image} />
+    <VideoPlayer url={content[0].url!} title={title} image={image} />
   </div>
 </div>
 <Section

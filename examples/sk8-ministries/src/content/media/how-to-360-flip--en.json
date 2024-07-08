@@ -3,7 +3,7 @@
   "title": "How to 360 flip",
   "type": "video",
   "dateCreated": "2024-04-22",
-  "contentUrls": ["https://vimeo.com/28708485"],
+  "content": [{ "url": "https://vimeo.com/28708485" }],
   "image": "./_images/how-to-360-flip--en.webp",
   "language": "en",
   "categories": ["life-support"],

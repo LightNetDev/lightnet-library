@@ -31,7 +31,7 @@ export const mediaItemSchema = z.object({
   dateCreated: z.string().date(),
   categories: z.enum(CATEGORIES).array().optional(),
   language: z.string(),
-  contentUrls: z.string().array().min(1),
+  content: z.object({ url: z.string() }).array().min(1),
   image: z.object({
     src: z.string(),
     width: z.number(),

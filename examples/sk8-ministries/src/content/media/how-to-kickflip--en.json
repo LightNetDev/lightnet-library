@@ -3,7 +3,7 @@
   "title": "How to Kickflip",
   "type": "video",
   "dateCreated": "2024-04-21",
-  "contentUrls": ["https://www.youtube.com/watch?v=tnpLkUQZODc"],
+  "content": [{ "url": "https://www.youtube.com/watch?v=tnpLkUQZODc" }],
   "image": "./_images/how-to-kickflip--en.webp",
   "authors": ["Skiddy Skates"],
   "language": "en",
