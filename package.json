@@ -21,18 +21,18 @@
   },
   "homepage": "https://github.com/LightNetDev/lightnet-library#readme",
   "devDependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "astro": "^4.10.2",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-astro": "^1.0.0",
-    "eslint-plugin-simple-import-sort": "^12.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
+    "@astrojs/check": "^0.8.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "astro": "^4.11.5",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.2.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^3.2.0",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.0",
-    "typescript": "^5.4.5"
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "typescript": "^5.5.3"
   }
 }

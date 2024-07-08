@@ -5,4 +5,4 @@ import { useTranslate as useTranslateInternal } from "../src/i18n/use-translate"
 // Because in most cases it will be used with custom keys.
 export const useTranslate = useTranslateInternal as (
   locale: string | undefined,
-) => Promise<(key: string) => string>
+) => (key: string) => string
