@@ -9,7 +9,7 @@ export function lightnet(lightnetConfig: Config): AstroIntegration {
   return {
     name: "@lightnet/library",
     hooks: {
-      "astro:config:setup": ({ injectRoute, config, updateConfig }) => {
+      "astro:config:setup": ({ injectRoute, config, updateConfig, logger }) => {
         injectRoute({
           pattern: "404",
           entrypoint: "@lightnet/library/pages/404.astro",
@@ -38,7 +38,7 @@ export function lightnet(lightnetConfig: Config): AstroIntegration {
 
         updateConfig({
           vite: {
-            plugins: [vitePluginLightnetConfig(lightnetConfig, config)],
+            plugins: [vitePluginLightnetConfig(lightnetConfig, config, logger)],
           },
           i18n: {
             defaultLocale: lightnetConfig.defaultLocale,
