@@ -2,43 +2,24 @@ import { resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 
 import type { AstroConfig, ViteUserConfig } from "astro"
-import { z } from "astro/zod"
 
 import { verifySchema } from "../utils/verify-schema"
+import { type Config, configSchema } from "./config"
 
 const CONFIG = "virtual:lightnet/config"
 const LOGO = "virtual:lightnet/logo"
 
 const VIRTUAL_MODULES = [CONFIG, LOGO] as const
 
-const Link = z.object({
-  href: z.string(),
-  isExternal: z.boolean().default(false),
-  label: z.string(),
-})
-
-const LightNetConfig = z.object({
-  title: z.string(),
-  locales: z.string().array(),
-  defaultLocale: z.string(),
-  logo: z.object({
-    src: z.string(),
-    alt: z.string().default(""),
-  }),
-  mainMenu: z.array(Link).min(1).optional(),
-})
-
-export type LightNetConfig = z.infer<typeof LightNetConfig>
-
-export function vitePluginLightNetConfig(
-  config: LightNetConfig,
+export function vitePluginLightnetConfig(
+  config: Config,
   { root }: AstroConfig,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   const resolvePath = (id: string) =>
     JSON.stringify(id.startsWith(".") ? resolve(fileURLToPath(root), id) : id)
 
   config = verifySchema(
-    LightNetConfig,
+    configSchema,
     config,
     "Invalid config passed to LightNet Library integration.",
   )

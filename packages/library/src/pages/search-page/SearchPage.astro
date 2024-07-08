@@ -13,7 +13,7 @@ import { provideTranslations } from "./utils/search-translations"
 export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
 
 const media = await getMediaItems()
-const t = await useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale)
 
 const contentLanguages: Record<string, string> = media
   .map((item) => item.data.language)

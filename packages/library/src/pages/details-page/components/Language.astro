@@ -7,7 +7,7 @@ interface Props {
   language: string
 }
 
-const t = await useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale)
 ---
 
 <Label>{t("ln.common.language")}</Label>

@@ -6,7 +6,7 @@ import { useTranslate } from "../../i18n/use-translate"
 import { localizePath, searchPagePath } from "../../utils/paths"
 import LanguagePicker from "./LanguagePicker.astro"
 
-const t = await useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale)
 
 const currentPath = Astro.url.pathname
 const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({

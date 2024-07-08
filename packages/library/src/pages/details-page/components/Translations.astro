@@ -15,7 +15,7 @@ const translations = (await getMediaItems())
   .filter((entry) => entry.data.commonId === commonId && entry.id !== slug)
   .sort((a, b) => a.data.language.localeCompare(b.data.language))
 
-const t = await useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale)
 ---
 
 {

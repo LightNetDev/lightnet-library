@@ -1,7 +1,3 @@
-import { readdir, readFile } from "node:fs/promises"
-import { join } from "node:path"
-import { cwd } from "node:process"
-
 import { AstroError } from "astro/errors"
 import config from "virtual:lightnet/config"
 
@@ -17,16 +13,16 @@ const builtInTranslations: TranslationsByLocales = {
 
 export type TranslationKey = keyof typeof en
 
-export async function useTranslate(locale: string | undefined) {
-  const translationsByLocales = merge(
-    builtInTranslations,
-    await loadUserTranslations(),
-  )
+export function useTranslate(locale: string | undefined) {
+  const translationsByLocales = merge(builtInTranslations, config.translations)
   const resolvedLocale = locale ?? config.defaultLocale
   const translations = translationsByLocales[resolvedLocale]
   const defaultTranslations = translationsByLocales[config.defaultLocale]
   if (!translations) {
-    throw new AstroError(`No translations found for locale ${resolvedLocale}`)
+    throw new AstroError(
+      `No translations found for locale ${resolvedLocale}`,
+      "Add them to your lightnet config",
+    )
   }
   // We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
   return (key: TranslationKey | (string & NonNullable<unknown>)) => {
@@ -53,25 +49,4 @@ function merge(
     }
   }
   return result
-}
-
-async function loadUserTranslations() {
-  const translationsDir = join(cwd(), "src", "translations")
-  let translationNames: string[] = []
-  try {
-    translationNames = await readdir(translationsDir)
-  } catch {
-    return {}
-  }
-  const translations: TranslationsByLocales = {}
-  for (const translationName of translationNames) {
-    if (!translationName.toLowerCase().endsWith(".json")) {
-      continue
-    }
-    const locale = translationName.slice(0, -5)
-    translations[locale] = JSON.parse(
-      await readFile(join(translationsDir, translationName), "utf-8"),
-    )
-  }
-  return translations
 }

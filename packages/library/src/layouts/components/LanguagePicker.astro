@@ -11,7 +11,7 @@ const translations = config.locales.map((locale) => ({
   active: locale === Astro.currentLocale,
 }))
 
-const t = await useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale)
 ---
 
 <div class="dy-dropdown dy-dropdown-end">

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { mediaItem } = Astro.props
-const t = await useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale)
 
 const contentUrls = mediaItem.contentUrls.map((url, index) => ({
   ...parseUrl(url),

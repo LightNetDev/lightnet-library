@@ -2,12 +2,10 @@ import preact from "@astrojs/preact"
 import tailwind from "@astrojs/tailwind"
 import type { AstroIntegration } from "astro"
 
-import {
-  type LightNetConfig,
-  vitePluginLightNetConfig,
-} from "./vite-plugin-lightnet-config"
+import type { Config } from "./config"
+import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
 
-export function lightNet(lightnetConfig: LightNetConfig): AstroIntegration {
+export function lightnet(lightnetConfig: Config): AstroIntegration {
   return {
     name: "@lightnet/library",
     hooks: {
@@ -40,7 +38,7 @@ export function lightNet(lightnetConfig: LightNetConfig): AstroIntegration {
 
         updateConfig({
           vite: {
-            plugins: [vitePluginLightNetConfig(lightnetConfig, config)],
+            plugins: [vitePluginLightnetConfig(lightnetConfig, config)],
           },
           i18n: {
             defaultLocale: lightnetConfig.defaultLocale,
