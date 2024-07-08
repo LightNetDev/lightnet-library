@@ -60,7 +60,7 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(astro@4.11.5(@types/node@20.14.8)(typescript@5.5.3))(tailwindcss@3.4.4)
       '@lightnet/library':
-        specifier: workspace:^
+        specifier: ^2.0.11
         version: link:../../packages/library
       astro:
         specifier: ^4.11.5
@@ -100,7 +100,7 @@ importers:
         version: 0.5.13(tailwindcss@3.4.4)
       daisyui:
         specifier: ^4.12.10
-        version: 4.12.10(postcss@8.4.38)
+        version: 4.12.10(postcss@8.4.39)
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0
@@ -4010,12 +4010,12 @@ snapshots:
 
   culori@3.3.0: {}
 
-  daisyui@4.12.10(postcss@8.4.38):
+  daisyui@4.12.10(postcss@8.4.39):
     dependencies:
       css-selector-tokenizer: 0.8.0
       culori: 3.3.0
       picocolors: 1.0.1
-      postcss-js: 4.0.1(postcss@8.4.38)
+      postcss-js: 4.0.1(postcss@8.4.39)
     transitivePeerDependencies:
       - postcss
 
@@ -5186,6 +5186,11 @@ snapshots:
     dependencies:
       camelcase-css: 2.0.1
       postcss: 8.4.38
+
+  postcss-js@4.0.1(postcss@8.4.39):
+    dependencies:
+      camelcase-css: 2.0.1
+      postcss: 8.4.39
 
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
