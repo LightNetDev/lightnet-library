@@ -8,7 +8,7 @@ Create a local copy of this example:
 npm create astro@latest -- --template LightNetDev/lightnet-library/examples/sk8-ministries --typescript strict
 ```
 
-## 🧞 Commands
+## 🚀 Commands
 
 All commands are run from the root of the project, from a terminal:
 
