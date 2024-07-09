@@ -35,30 +35,32 @@ const t = useTranslate(Astro.currentLocale)
   >
     <Icon class="mdi--translate" />
   </div>
-  <div
+
+  <ul
     tabindex="0"
-    class="dy-dropdown-content rounded-box text-base-content top-px mt-16 w-56 overflow-y-auto border border-white/5 bg-gray-50 shadow-md"
+    class="dy-dropdown-content top-px mt-14 w-48 overflow-y-auto rounded-sm bg-gray-50/95 shadow-md backdrop-blur-md sm:mt-[4.25rem]"
   >
-    <ul class="dy-menu dy-menu-sm gap-1">
-      {
-        translations.map(({ label, locale, active, href }) => (
-          <li>
-            <a
-              href={href}
-              hreflang={locale}
-              class="flex items-center gap-3 py-3"
-              class:list={[active && "dy-active"]}
-            >
-              <span class="dy-badge dy-badge-outline dy-badge-sm p-3 font-mono text-xs font-bold uppercase tracking-widest opacity-50">
-                {locale}
-              </span>
-              <span lang={locale} class="text-base">
-                {label}
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+    {
+      translations.map(({ label, locale, active, href }) => (
+        <li>
+          <a
+            href={href}
+            hreflang={locale}
+            class="flex items-center gap-3 p-4"
+            class:list={[
+              !active && "text-gray-900 hover:bg-gray-100/95",
+              active && "bg-gray-900/95 text-gray-100 hover:bg-gray-900/95",
+            ]}
+          >
+            <span class="rounded-md border border-gray-300 px-2 py-1 font-mono text-xs font-bold uppercase tracking-widest">
+              {locale}
+            </span>
+            <span lang={locale} class="text-base">
+              {label}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </div>

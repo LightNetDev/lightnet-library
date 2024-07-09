@@ -50,9 +50,9 @@ const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
             aria-label={t("ln.header.a11y.close-menu")}
             class="dy-drawer-overlay"
           />
-          <div class="dy-menu flex min-h-full w-64 flex-col bg-gray-50/95 py-0 text-base backdrop-blur-md">
+          <div class="flex min-h-full w-64 flex-col bg-gray-50/95 py-0 backdrop-blur-md">
             <label
-              class="hover:text-primary mt-2 block self-end p-3 text-gray-600 md:my-4 md:mr-4"
+              class="hover:text-primary mt-px block self-end p-3 text-gray-600 md:my-4 md:mr-4"
               for="nav-drawer"
               aria-label={t("ln.header.a11y.close-menu")}
             >
@@ -63,8 +63,13 @@ const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
                 <li>
                   <a
                     href={path}
+                    class="flex w-full items-center gap-2 p-4"
                     target={isExternal ? "_blank" : "_self"}
-                    class:list={[isActive && "bg-gray-300"]}
+                    class:list={[
+                      isActive &&
+                        "bg-gray-900/95 text-gray-100 hover:bg-gray-950/95",
+                      !isActive && "hover:bg-gray-200/95",
+                    ]}
                   >
                     {isExternal && (
                       <Icon class="mdi--external-link text-base" />
