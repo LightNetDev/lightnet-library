@@ -5,6 +5,8 @@ import Icon from "../../components/Icon"
 import { useTranslate } from "../../i18n/use-translate"
 import { localizePath, searchPagePath } from "../../utils/paths"
 import LanguagePicker from "./LanguagePicker.astro"
+import Menu from "./Menu.astro"
+import MenuItem from "./MenuItem.astro"
 
 const t = useTranslate(Astro.currentLocale)
 
@@ -12,7 +14,7 @@ const currentPath = Astro.url.pathname
 const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
   path: isExternal ? href : localizePath(Astro.currentLocale, href),
   isExternal,
-  label: t(label),
+  label,
   isActive:
     !isExternal &&
     (currentPath === localizePath(Astro.currentLocale, href) ||
@@ -31,57 +33,18 @@ const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
 
   {
     !!items.length && (
-      <div class="dy-drawer dy-drawer-end">
-        <input id="nav-drawer" type="checkbox" class="dy-drawer-toggle" />
-        <div class="dy-drawer-content">
-          <label
-            for="nav-drawer"
-            class="hover:text-primary flex p-3 text-gray-600"
+      <Menu icon="mdi--menu" label="ln.header.a11y.open-main-menu">
+        {items.map(({ label, path, isActive, isExternal }) => (
+          <MenuItem
+            href={path}
+            active={isActive}
+            target={isExternal ? "_blank" : "_self"}
           >
-            <Icon
-              class="mdi--menu"
-              aria-label={t("ln.header.a11y.open-main-menu")}
-            />
-          </label>
-        </div>
-        <div class="dy-drawer-side">
-          <label
-            for="nav-drawer"
-            aria-label={t("ln.header.a11y.close-menu")}
-            class="dy-drawer-overlay"
-          />
-          <div class="flex min-h-full w-64 flex-col bg-gray-50/95 py-0 backdrop-blur-md">
-            <label
-              class="hover:text-primary mt-px block self-end p-3 text-gray-600 md:my-4 md:mr-4"
-              for="nav-drawer"
-              aria-label={t("ln.header.a11y.close-menu")}
-            >
-              <Icon class="mdi--close" />
-            </label>
-            <ul>
-              {items.map(({ label, path, isActive, isExternal }) => (
-                <li>
-                  <a
-                    href={path}
-                    class="flex w-full items-center gap-2 p-4"
-                    target={isExternal ? "_blank" : "_self"}
-                    class:list={[
-                      isActive &&
-                        "bg-gray-900/95 text-gray-100 hover:bg-gray-950/95",
-                      !isActive && "hover:bg-gray-200/95",
-                    ]}
-                  >
-                    {isExternal && (
-                      <Icon class="mdi--external-link text-base" />
-                    )}
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
+            {isExternal && <Icon class="mdi--external-link text-base" />}
+            {t(label)}
+          </MenuItem>
+        ))}
+      </Menu>
     )
   }
 </nav>

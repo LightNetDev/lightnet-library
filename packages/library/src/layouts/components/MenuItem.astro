@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string
+  active: boolean
+  hreflang?: string
+  target?: "_blank" | "_self"
+}
+const { href, hreflang, active, target } = Astro.props
+---
+
+<li>
+  <a
+    href={href}
+    hreflang={hreflang}
+    target={target}
+    class="flex items-center gap-3 p-5"
+    class:list={[
+      !active && "text-gray-900 hover:bg-gray-200/95",
+      active && "bg-gray-900/95 text-gray-100 hover:bg-gray-900/95",
+    ]}
+  >
+    <slot />
+  </a>
+</li>

@@ -1,10 +1,10 @@
 ---
 import config from "virtual:lightnet/config"
 
-import Icon from "../../components/Icon"
 import { resolveLanguageLabel } from "../../i18n/resolve-language-label"
-import { useTranslate } from "../../i18n/use-translate"
 import { localizePath } from "../../utils/paths"
+import Menu from "./Menu.astro"
+import MenuItem from "./MenuItem.astro"
 
 const translations = config.locales.map((locale) => ({
   locale,
@@ -22,45 +22,17 @@ function currentPathWithLocale(locale: string) {
     : currentPath
   return localizePath(locale, currentPathWithoutLocale)
 }
-
-const t = useTranslate(Astro.currentLocale)
 ---
 
-<div class="dy-dropdown dy-dropdown-end">
-  <div
-    tabindex="0"
-    role="button"
-    aria-label={t("ln.header.a11y.select-language")}
-    class="hover:text-primary flex rounded-md p-3 text-gray-600"
-  >
-    <Icon class="mdi--translate" />
-  </div>
-
-  <ul
-    tabindex="0"
-    class="dy-dropdown-content top-px mt-14 w-48 overflow-y-auto rounded-sm bg-gray-50/95 shadow-md backdrop-blur-md sm:mt-[4.25rem]"
-  >
-    {
-      translations.map(({ label, locale, active, href }) => (
-        <li>
-          <a
-            href={href}
-            hreflang={locale}
-            class="flex items-center gap-3 p-4"
-            class:list={[
-              !active && "text-gray-900 hover:bg-gray-100/95",
-              active && "bg-gray-900/95 text-gray-100 hover:bg-gray-900/95",
-            ]}
-          >
-            <span class="rounded-md border border-gray-300 px-2 py-1 font-mono text-xs font-bold uppercase tracking-widest">
-              {locale}
-            </span>
-            <span lang={locale} class="text-base">
-              {label}
-            </span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</div>
+<Menu icon="mdi--translate" label="ln.header.a11y.select-language">
+  {
+    translations.map(({ label, locale, active, href }) => (
+      <MenuItem href={href} hreflang={locale} active={active}>
+        <span class="rounded-md border border-gray-400 px-2 py-1 font-mono text-xs font-bold uppercase tracking-widest">
+          {locale}
+        </span>
+        <span lang={locale}>{label}</span>
+      </MenuItem>
+    ))
+  }
+</Menu>
