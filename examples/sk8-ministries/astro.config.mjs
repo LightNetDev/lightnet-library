@@ -1,4 +1,4 @@
-import lightnet from "@lightnet/library"
+import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 
 import de from "./src/translations/de.json"
@@ -7,7 +7,7 @@ import en from "./src/translations/en.json"
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    lightnet({
+    lightnetLibrary({
       title: "Sk8 Ministries",
       logo: { src: "./src/assets/logo.png" },
       defaultLocale: "en",
