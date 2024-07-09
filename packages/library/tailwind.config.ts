@@ -3,18 +3,14 @@ import typography from "@tailwindcss/typography"
 import daisyui from "daisyui"
 import type { Config } from "tailwindcss"
 
-const COLOR_PRIMARY = "#d2252f"
+const DEFAULT_COLOR_PRIMARY = "#E6B15C"
 
 export function lightnetStyles({
   primaryColor,
-  secondaryColor,
-  accentColor,
 }: {
   primaryColor?: string
-  secondaryColor?: string
-  accentColor?: string
 }): Partial<Config> {
-  primaryColor = primaryColor ?? COLOR_PRIMARY
+  const primary = primaryColor ?? DEFAULT_COLOR_PRIMARY
   return {
     content: [
       "./node_modules/@lightnet/library/src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
@@ -24,9 +20,7 @@ export function lightnetStyles({
     theme: {
       extend: {
         colors: {
-          primary: primaryColor,
-          secondary: secondaryColor ?? primaryColor,
-          accent: accentColor ?? primaryColor,
+          primary,
         },
         backgroundImage: {
           "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -37,10 +31,10 @@ export function lightnetStyles({
       themes: [
         {
           lightnet: {
-            primary: primaryColor,
-            secondary: secondaryColor ?? primaryColor,
-            accent: accentColor ?? primaryColor,
-            neutral: "#20353B",
+            primary,
+            secondary: primary,
+            accent: primary,
+            neutral: "#030712",
             "base-100": "#f9fafb",
 
             "--rounded-box": "0.375rem", // border radius rounded-box utility class, used in card and other large boxes

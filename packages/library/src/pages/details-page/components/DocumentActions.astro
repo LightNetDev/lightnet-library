@@ -47,7 +47,7 @@ function parseUrl(url: string): {
     content.map(({ icon, text, isPrimary, url, target }) => (
       <a
         class="dy-btn w-full"
-        class:list={[isPrimary && "dy-btn-neutral"]}
+        class:list={[isPrimary && "dy-btn-primary"]}
         href={url}
         target={target ?? "_self"}
         hreflang={mediaItem.language}
