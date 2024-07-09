@@ -3,7 +3,7 @@ export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
 
 import {
   Gallery,
-  HeroSection,
+  Hero,
   ImageSection,
   Page,
   Section,
@@ -22,7 +22,7 @@ const t = useTranslate(Astro.currentLocale)
 ---
 
 <Page>
-  <HeroSection
+  <Hero
     image={heroImage}
     title={t("ministry.name")}
     subtitle={t("ministry.slogan")}
