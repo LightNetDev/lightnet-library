@@ -11,6 +11,7 @@ import MenuItem from "./MenuItem.astro"
 const t = useTranslate(Astro.currentLocale)
 
 const currentPath = Astro.url.pathname
+console.log("currentPath", currentPath, config.mainMenu)
 const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
   path: isExternal ? href : localizePath(Astro.currentLocale, href),
   isExternal,
@@ -18,7 +19,8 @@ const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
   isActive:
     !isExternal &&
     (currentPath === localizePath(Astro.currentLocale, href) ||
-      currentPath === localizePath(Astro.currentLocale, href + "/")),
+      currentPath === localizePath(Astro.currentLocale, href + "/") ||
+      currentPath === href),
 }))
 ---
 
