@@ -1,1 +1,1 @@
-export { lightnet as default } from "../src/astro-integration/integration"
+export { lightnetLibrary as default } from "../src/astro-integration/integration"

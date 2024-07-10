@@ -5,7 +5,7 @@ import type { AstroIntegration } from "astro"
 import type { Config } from "./config"
 import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
 
-export function lightnet(lightnetConfig: Config): AstroIntegration {
+export function lightnetLibrary(lightnetConfig: Config): AstroIntegration {
   return {
     name: "@lightnet/library",
     hooks: {
