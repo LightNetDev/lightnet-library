@@ -23,13 +23,13 @@ const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
 ---
 
 <nav class="-mr-3 flex items-center">
-  <LanguagePicker />
   <a
     class="hover:text-primary flex p-3 text-gray-600"
     aria-label={t("ln.search.title")}
     data-astro-prefetch="viewport"
     href={searchPagePath(Astro.currentLocale)}><Icon class="mdi--magnify" /></a
   >
+  <LanguagePicker />
 
   {
     !!items.length && (
