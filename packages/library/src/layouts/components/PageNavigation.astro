@@ -11,16 +11,21 @@ import MenuItem from "./MenuItem.astro"
 const t = useTranslate(Astro.currentLocale)
 
 const currentPath = Astro.url.pathname
-const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
-  path: isExternal ? href : localizePath(Astro.currentLocale, href),
-  isExternal,
-  label,
-  isActive:
-    !isExternal &&
-    (currentPath === localizePath(Astro.currentLocale, href) ||
-      currentPath === localizePath(Astro.currentLocale, href + "/") ||
-      currentPath === href),
-}))
+const items = (config.mainMenu ?? []).map(
+  ({ href, isExternal, label, requiresLocale }) => ({
+    path:
+      isExternal || !requiresLocale
+        ? href
+        : localizePath(Astro.currentLocale, href),
+    isExternal,
+    label,
+    isActive:
+      !isExternal &&
+      (currentPath === localizePath(Astro.currentLocale, href) ||
+        currentPath === localizePath(Astro.currentLocale, href + "/") ||
+        currentPath === href),
+  }),
+)
 ---
 
 <nav class="-mr-3 flex items-center">

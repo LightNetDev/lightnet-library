@@ -1,4 +1,6 @@
 export {
+  CATEGORIES,
+  DETAILS_PAGES,
   type MediaItem,
   mediaSchema,
   mediaTypeSchema,

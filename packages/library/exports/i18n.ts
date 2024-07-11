@@ -1,4 +1,5 @@
 export { getLocalePaths } from "../src/i18n/get-locale-paths"
+export { default as LANGUAGES } from "../src/i18n/languages.json"
 import { useTranslate as useTranslateInternal } from "../src/i18n/use-translate"
 
 // Export useTranslate without auto completion for internal lightnet keys.

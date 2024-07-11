@@ -4,6 +4,7 @@ const linkSchema = z.object({
   href: z.string(),
   isExternal: z.boolean().default(false),
   label: z.string(),
+  requiresLocale: z.boolean().default(true),
 })
 
 export const configSchema = z.object({
@@ -18,4 +19,4 @@ export const configSchema = z.object({
   mainMenu: z.array(linkSchema).min(1).optional(),
 })
 
-export type Config = z.infer<typeof configSchema>
+export type LightnetConfig = z.infer<typeof configSchema>

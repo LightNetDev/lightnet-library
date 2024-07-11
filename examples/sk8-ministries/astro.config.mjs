@@ -1,3 +1,4 @@
+import lightnetDecapAdmin from "@lightnet/decap-admin"
 import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 
@@ -25,7 +26,13 @@ export default defineConfig({
           isExternal: true,
           label: "navigation.about-lightnet",
         },
+        {
+          href: "/admin",
+          label: "navigation.admin",
+          requiresLocale: false,
+        },
       ],
     }),
+    lightnetDecapAdmin(),
   ],
 })

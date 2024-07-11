@@ -14,6 +14,8 @@ export const CATEGORIES = [
   "theology",
 ] as const
 
+export const DETAILS_PAGES = ["book", "video"] as const
+
 export type MediaItem = z.infer<typeof mediaItemSchema>
 export type MediaItemEntry = {
   id: string
@@ -51,7 +53,7 @@ export const mediaItemSchema = z.object({
 
 export const mediaTypeSchema = z.object({
   label: z.string(),
-  detailsPage: z.enum(["book", "video"]),
+  detailsPage: z.enum(DETAILS_PAGES),
   icon: z.string(),
 })
 

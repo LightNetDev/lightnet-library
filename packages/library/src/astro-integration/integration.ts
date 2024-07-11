@@ -2,10 +2,12 @@ import preact from "@astrojs/preact"
 import tailwind from "@astrojs/tailwind"
 import type { AstroIntegration } from "astro"
 
-import type { Config } from "./config"
+import type { LightnetConfig } from "./config"
 import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
 
-export function lightnetLibrary(lightnetConfig: Config): AstroIntegration {
+export function lightnetLibrary(
+  lightnetConfig: LightnetConfig,
+): AstroIntegration {
   return {
     name: "@lightnet/library",
     hooks: {

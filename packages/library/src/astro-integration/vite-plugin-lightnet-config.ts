@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url"
 import type { AstroConfig, AstroIntegrationLogger, ViteUserConfig } from "astro"
 
 import { verifySchema } from "../utils/verify-schema"
-import { type Config, configSchema } from "./config"
+import { configSchema, type LightnetConfig } from "./config"
 
 const CONFIG = "virtual:lightnet/config"
 const LOGO = "virtual:lightnet/logo"
@@ -12,7 +12,7 @@ const LOGO = "virtual:lightnet/logo"
 const VIRTUAL_MODULES = [CONFIG, LOGO] as const
 
 export function vitePluginLightnetConfig(
-  config: Config,
+  config: LightnetConfig,
   { root }: AstroConfig,
   logger: AstroIntegrationLogger,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
