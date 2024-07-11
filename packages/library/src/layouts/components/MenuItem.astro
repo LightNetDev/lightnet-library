@@ -17,7 +17,7 @@ const { href, hreflang, active, target } = Astro.props
   >
     <slot name="before" />
     <span
-      class="text-sm decoration-gray-800"
+      class="flex items-center gap-3 decoration-gray-800"
       class:list={[!active && "group-hover:underline", active && "font-bold"]}
     >
       <slot />
