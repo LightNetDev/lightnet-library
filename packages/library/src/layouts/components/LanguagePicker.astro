@@ -28,13 +28,6 @@ function currentPathWithLocale(locale: string) {
   {
     translations.map(({ label, locale, active, href }) => (
       <MenuItem href={href} hreflang={locale} active={active}>
-        <span
-          class="rounded-md border border-gray-400 px-2 py-1 font-mono text-xs font-bold uppercase tracking-widest"
-          class:list={[active && "border-gray-900 bg-gray-900 text-gray-50"]}
-          slot="before"
-        >
-          {locale}
-        </span>
         {label}
       </MenuItem>
     ))
