@@ -60,8 +60,11 @@ const config = {
         {
           name: "authors",
           label: "Authors",
+          label_singular: "Author",
           required: false,
           widget: "list",
+          summary: "{{fields.name}}",
+          field: { label: "Name", name: "name", widget: "string" },
         },
         {
           name: "image",
