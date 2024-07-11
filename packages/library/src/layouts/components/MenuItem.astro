@@ -13,12 +13,17 @@ const { href, hreflang, active, target } = Astro.props
     href={href}
     hreflang={hreflang}
     target={target}
-    class="flex items-center gap-3 p-5"
-    class:list={[
-      !active && "text-gray-900 hover:bg-gray-200",
-      active && "bg-gray-900 text-gray-100 hover:bg-gray-950",
-    ]}
+    class="group flex h-12 items-center gap-3 px-6"
   >
-    <slot />
+    <slot name="before" />
+    <span
+      class="text-sm underline decoration-transparent duration-200 hover:transition-colors"
+      class:list={[
+        !active && "group-hover:decoration-gray-800",
+        active && "font-bold",
+      ]}
+    >
+      <slot />
+    </span>
   </a>
 </li>

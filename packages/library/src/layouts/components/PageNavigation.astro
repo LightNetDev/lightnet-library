@@ -41,8 +41,8 @@ const items = (config.mainMenu ?? []).map(({ href, isExternal, label }) => ({
             active={isActive}
             target={isExternal ? "_blank" : "_self"}
           >
-            {isExternal && <Icon class="mdi--external-link text-base" />}
             {t(label)}
+            {isExternal && <Icon class="mdi--external-link text-base" />}
           </MenuItem>
         ))}
       </Menu>
