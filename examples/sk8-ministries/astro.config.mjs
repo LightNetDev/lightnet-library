@@ -7,6 +7,7 @@ import en from "./src/translations/en.json"
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://sk8-ministries.pages.dev",
   integrations: [
     lightnetLibrary({
       title: "Sk8 Ministries",

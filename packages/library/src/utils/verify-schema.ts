@@ -7,7 +7,7 @@ export function verifySchema<T extends z.Schema>(
   toVerify: unknown,
   errorMessage: string,
 ): z.output<T> {
-  const parsed = schema.safeParse(toVerify)
+  const parsed = schema.safeParse(toVerify, {})
   if (!parsed.success) {
     throw new AstroError(errorMessage, fromZodError(parsed.error).toString())
   }

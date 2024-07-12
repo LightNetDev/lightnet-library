@@ -1,6 +1,7 @@
 import { CATEGORIES, DETAILS_PAGES } from "@lightnet/library/content"
 import { LANGUAGES } from "@lightnet/library/i18n"
 import type { APIRoute } from "astro"
+import userConfig from "virtual:lightnet/decapAdminConfig"
 import YAML from "yaml"
 
 export const GET: APIRoute = () => {
@@ -15,7 +16,7 @@ const config = {
   media_folder: "public/files",
   public_folder: "/files",
   editor: { preview: false },
-  site_url: "localhost:4321",
+  site_url: userConfig.site,
   collections: [
     {
       name: "media",
