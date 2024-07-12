@@ -12,7 +12,10 @@ const local_backend = import.meta.env.MODE !== "production"
 const backend =
   local_backend || !userConfig.backend
     ? { name: "git-gateway" }
-    : userConfig.backend
+    : {
+        ...userConfig.backend,
+        base_url: userConfig.backend.baseUrl,
+      }
 
 const config = {
   local_backend,
