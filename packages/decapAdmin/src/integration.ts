@@ -3,7 +3,12 @@ import type { AstroIntegration } from "astro"
 import type { ViteUserConfig } from "astro/config"
 import { z } from "astro/zod"
 
-const userConfigSchema = z.object({})
+const languagesSchema = z.record(
+  z.string({ description: "language-code" }),
+  z.object({}),
+)
+
+const userConfigSchema = z.object({ languages: languagesSchema.optional() })
 
 export type DecapAdminConfig = z.infer<typeof userConfigSchema>
 

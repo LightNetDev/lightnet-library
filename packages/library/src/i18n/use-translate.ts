@@ -6,7 +6,7 @@ import en from "./translations/en.json"
 
 type TranslationsByLocales = Record<string, Record<string, string>>
 
-const builtInTranslations: TranslationsByLocales = {
+const bundledTranslations: TranslationsByLocales = {
   de,
   en,
 }
@@ -14,7 +14,10 @@ const builtInTranslations: TranslationsByLocales = {
 export type TranslationKey = keyof typeof en
 
 export function useTranslate(locale: string | undefined) {
-  const translationsByLocales = merge(builtInTranslations, config.translations)
+  const translationsByLocales = merge(
+    bundledTranslations,
+    config.translations ?? {},
+  )
   const resolvedLocale = locale ?? config.defaultLocale
   const translations = translationsByLocales[resolvedLocale]
   const defaultTranslations = translationsByLocales[config.defaultLocale]

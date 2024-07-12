@@ -1,5 +1,5 @@
 import { CATEGORIES, DETAILS_PAGES } from "@lightnet/library/content"
-import { LANGUAGES } from "@lightnet/library/i18n"
+import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n"
 import type { APIRoute } from "astro"
 import userConfig from "virtual:lightnet/decapAdminUserConfig"
 import YAML from "yaml"
@@ -59,7 +59,7 @@ const config = {
           name: "language",
           label: "Language",
           widget: "select",
-          options: Object.keys(LANGUAGES),
+          options: Object.keys(userConfig.languages ?? BUNDLED_LANGUAGES),
         },
         {
           name: "authors",
