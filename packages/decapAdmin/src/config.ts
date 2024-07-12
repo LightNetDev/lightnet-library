@@ -8,11 +8,15 @@ export const GET: APIRoute = () => {
   return new Response(YAML.stringify(config))
 }
 
+const local_backend = import.meta.env.MODE !== "production"
+const backend =
+  local_backend || !userConfig.backend
+    ? { name: "git-gateway" }
+    : userConfig.backend
+
 const config = {
-  local_backend: true,
-  backend: {
-    name: "git-gateway",
-  },
+  local_backend,
+  backend,
   media_folder: "public/files",
   public_folder: "/files",
   editor: { preview: false },
