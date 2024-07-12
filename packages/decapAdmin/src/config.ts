@@ -35,7 +35,10 @@ const config = {
       ],
       slug: "{{commonId}}--{{language}}",
       summary: "{{commonId}}--{{language}}",
-      view_groups: [{ label: "language", field: "language", pattern: ".*" }],
+      view_groups: [
+        { label: "Language", field: "language", pattern: ".*" },
+        { label: "Type", field: "type", pattern: ".*" },
+      ],
       fields: [
         { name: "title", label: "Title", widget: "string" },
         {
