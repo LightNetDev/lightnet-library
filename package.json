@@ -11,7 +11,8 @@
     "preview": "pnpm --filter=sk8* preview",
     "format": "prettier . --write --cache",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "publish:lib": "pnpm publish -F library --access public"
+    "publish:library": "pnpm publish -F library --access public",
+    "publish:admin": "pnpm publish -F decap-admin --access public"
   },
   "repository": {
     "type": "git",
