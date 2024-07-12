@@ -26,12 +26,14 @@ const { title, description } = Astro.props
   </head>
   <body class="overflow-y-scroll bg-gray-50 text-gray-900">
     <header
-      class="fixed top-0 z-50 h-14 w-full bg-gray-50 px-4 py-2 shadow-md sm:h-20 md:px-8"
+      class="fixed top-0 z-50 h-14 w-full bg-gray-50 shadow-lg sm:h-20"
       transition:animate="none"
     >
-      <div class="mx-auto flex h-full max-w-screen-xl justify-between xl:px-8">
+      <div
+        class="mx-auto flex h-full max-w-screen-xl justify-between px-4 md:px-8"
+      >
         <a
-          class="flex items-center gap-2 font-bold text-gray-600 md:text-lg"
+          class="flex items-center gap-3 font-bold text-gray-600 md:text-lg"
           href={localizePath(Astro.currentLocale, "/")}
           ><Image
             src={logo}
