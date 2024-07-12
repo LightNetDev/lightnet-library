@@ -5,7 +5,9 @@ import { z } from "astro/zod"
 
 const userConfigSchema = z.object({})
 
-export type DecapAdminConfig = z.infer<typeof userConfigSchema> & {
+export type DecapAdminConfig = z.infer<typeof userConfigSchema>
+
+export type DecapAdminUserConfig = DecapAdminConfig & {
   site?: string
 }
 
@@ -50,11 +52,11 @@ export default function lightnetDecapAdmin(
   }
 }
 
-const CONFIG = "virtual:lightnet/decapAdminConfig"
+const CONFIG = "virtual:lightnet/decapAdminUserConfig"
 const VIRTUAL_MODULES = [CONFIG] as const
 
 function vitePluginDecapAdminConfig(
-  config: DecapAdminConfig,
+  userConfig: DecapAdminUserConfig,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   return {
     name: "vite-plugin-lightnet-decap-admin-config",
@@ -66,7 +68,7 @@ function vitePluginDecapAdminConfig(
       const module = VIRTUAL_MODULES.find((m) => id === `\0${m}`)
       switch (module) {
         case CONFIG:
-          return `export default ${JSON.stringify(config)};`
+          return `export default ${JSON.stringify(userConfig)};`
       }
     },
   }
