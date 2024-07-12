@@ -2,9 +2,9 @@ import lightnetDecapAdmin from "@lightnet/decap-admin"
 import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 
-import de from "./src/i18n/de.json"
-import en from "./src/i18n/en.json"
-import languages from "./src/i18n/languages"
+import languages from "./src/languages"
+import de from "./src/translations/de.json"
+import en from "./src/translations/en.json"
 
 // https://astro.build/config
 export default defineConfig({
