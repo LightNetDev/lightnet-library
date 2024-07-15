@@ -21,6 +21,8 @@ const backendSchema = z.object({
     "bitbucket",
   ]),
   branch: z.string().default("main").optional(),
+  authType: z.literal("pkce").optional(),
+  appId: z.string().optional(),
   repo: z
     .string({
       description:

@@ -8,14 +8,24 @@ export const GET: APIRoute = () => {
   return new Response(YAML.stringify(config))
 }
 
+const toSnakeCase = (object?: Record<string, unknown>) => {
+  if (!object) {
+    return object
+  }
+  Object.entries(object).reduce(
+    (result, [key, value]) => ({
+      ...result,
+      [key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)]: value,
+    }),
+    {},
+  )
+}
+
 const local_backend = import.meta.env.MODE !== "production"
 const backend =
   local_backend || !userConfig.backend
     ? { name: "git-gateway" }
-    : {
-        ...userConfig.backend,
-        base_url: userConfig.backend.baseUrl,
-      }
+    : toSnakeCase(userConfig.backend)
 
 const config = {
   local_backend,
