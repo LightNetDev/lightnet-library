@@ -12,7 +12,7 @@ const toSnakeCase = (object?: Record<string, unknown>) => {
   if (!object) {
     return object
   }
-  Object.entries(object).reduce(
+  return Object.entries(object).reduce(
     (result, [key, value]) => ({
       ...result,
       [key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)]: value,
