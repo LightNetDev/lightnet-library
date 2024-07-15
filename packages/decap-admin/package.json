@@ -12,9 +12,10 @@
     "./config.ts": "./src/config.ts"
   },
   "peerDependencies": {
+    "@lightnet/library": "^2.0.15",
     "astro": "^4.11.5",
-    "typescript": "^5.5.3",
-    "@lightnet/library": "^2.0.15"
+    "sharp": "^0.33.4",
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "yaml": "^2.4.5"

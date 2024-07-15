@@ -3,6 +3,8 @@ import type { AstroIntegration } from "astro"
 import type { ViteUserConfig } from "astro/config"
 import { z } from "astro/zod"
 
+import { vitePluginExportAdminImages } from "./export-admin-images"
+
 const languagesSchema = z.record(
   z.string({ description: "language-code" }),
   z.object({}),
@@ -77,7 +79,10 @@ export default function lightnetDecapAdmin(
 
         updateConfig({
           vite: {
-            plugins: [vitePluginDecapAdminConfig(preparedConfig)],
+            plugins: [
+              vitePluginDecapAdminConfig(preparedConfig),
+              vitePluginExportAdminImages(astroConfig),
+            ],
           },
         })
       },
