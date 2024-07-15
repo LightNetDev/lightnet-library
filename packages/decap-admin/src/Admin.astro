@@ -8,11 +8,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>Admin UI</title>
+    <title>Admin</title>
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
-    <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.1.1/dist/decap-cms.js"></script>
+    <script>
+      import CMS from "decap-cms-app"
+      CMS.init()
+    </script>
   </body>
 </html>
