@@ -10,37 +10,31 @@ const languagesSchema = z.record(
   z.object({}),
 )
 
-// See https://decapcms.org/docs/backends-overview/
-const backendSchema = z.object({
-  name: z.enum([
-    "git-gateway",
-    "github",
-    "gitlab",
-    "azure",
-    "gitea",
-    "bitbucket",
-  ]),
+/**
+ * @see https://decapcms.org/docs/gitlab-backend/
+ */
+const gitlabSchema = z.object({
+  name: z.literal("gitlab"),
+  repo: z.string(),
+  appId: z.string(),
   branch: z.string().default("main"),
-  authType: z.literal("pkce").optional(),
-  appId: z.string().optional(),
-  repo: z
-    .string({
-      description:
-        "Required for github, gitlab, azure, gitea and bitbucket backends; ignored by git-gateway. Follows the pattern [org-or-username]/[repo-name]",
-    })
-    .optional(),
-  baseUrl: z
-    .string({
-      description:
-        "OAuth client hostname (just the base domain, no path). Required when using an external OAuth server or self-hosted GitLab/Gitea.",
-    })
-    .optional(),
+  authType: z.literal("pkce").default("pkce"),
+})
+
+/**
+ * @see https://decapcms.org/docs/github-backend/
+ */
+const githubSchema = z.object({
+  name: z.literal("github"),
+  repo: z.string(),
+  baseUrl: z.string(),
+  branch: z.string().default("main"),
 })
 
 const userConfigSchema = z.object({
   path: z.string().default("admin"),
   languages: languagesSchema.optional(),
-  backend: backendSchema.optional(),
+  backend: gitlabSchema.or(githubSchema).optional(),
 })
 
 export type DecapAdminConfig = z.input<typeof userConfigSchema>
