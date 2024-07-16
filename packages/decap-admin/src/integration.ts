@@ -78,7 +78,7 @@ export default function lightnetDecapAdmin(
           vite: {
             plugins: [
               vitePluginDecapAdminConfig(preparedConfig),
-              vitePluginExportAdminImages(astroConfig),
+              vitePluginExportAdminImages(astroConfig, preparedConfig),
             ],
           },
         })

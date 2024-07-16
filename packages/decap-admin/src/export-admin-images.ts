@@ -2,28 +2,37 @@ import { access, mkdir, readdir } from "fs/promises"
 import { join } from "path"
 import sharp from "sharp"
 
-export async function vitePluginExportAdminImages({
-  srcDir,
-  outDir,
-}: {
-  srcDir: URL
-  outDir: URL
-}) {
+import type { DecapAdminUserConfig } from "./integration"
+
+export async function vitePluginExportAdminImages(
+  {
+    srcDir,
+    outDir,
+  }: {
+    srcDir: URL
+    outDir: URL
+  },
+  config: DecapAdminUserConfig,
+) {
   return {
     name: "vite-plugin-lightnet-decap-admin-images",
     writeBundle: async () =>
-      exportAdminImages(srcDir.pathname, outDir.pathname),
+      exportAdminImages(srcDir.pathname, outDir.pathname, config.path),
   }
 }
 
-async function exportAdminImages(srcDir: string, outDir: string) {
+async function exportAdminImages(
+  srcDir: string,
+  outDir: string,
+  adminPath: string,
+) {
   const imageDir = join(srcDir, "content", "media", "_images")
-  const outImageDir = join(outDir, "_images")
+  const outImageDir = join(outDir, adminPath, "_images")
 
   try {
     await access(outImageDir)
   } catch {
-    await mkdir(outImageDir)
+    await mkdir(outImageDir, { recursive: true })
   }
 
   const files = await readdir(imageDir)
