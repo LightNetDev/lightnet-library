@@ -20,3 +20,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 🖥️ Admin UI
+
+To run the Admin UI locally execute `npm run dev` and then `npx decap-server` from a second terminal tab.
+After this navigate your browser to [localhost:4321/admin](localhost:4321/admin) and start administrating your content.
+
+When "publishing" your changes they will be saved to your computer's disk only.
