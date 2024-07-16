@@ -19,7 +19,7 @@ const languagesSchema = z.record(
   z.string({ description: "language-code" }),
   z.object({
     label: z.string({ description: "This label will not be translated" }),
-    direction: z.enum(["rtl", "ltr"]).default("ltr").optional(),
+    direction: z.enum(["rtl", "ltr"]).default("ltr"),
   }),
 )
 
@@ -36,8 +36,9 @@ export const configSchema = z.object({
   mainMenu: z.array(linkSchema).min(1).optional(),
 })
 
-export type Languages = z.infer<typeof languagesSchema>
-export type Translations = z.infer<typeof translationsSchema>
-export type Link = z.infer<typeof linkSchema>
+export type Languages = z.input<typeof languagesSchema>
+export type Translations = z.input<typeof translationsSchema>
+export type Link = z.input<typeof linkSchema>
 
-export type LightnetConfig = z.infer<typeof configSchema>
+export type LightnetConfig = z.input<typeof configSchema>
+export type PreparedLightnetConfig = z.output<typeof configSchema>

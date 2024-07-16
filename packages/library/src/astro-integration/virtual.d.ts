@@ -1,5 +1,5 @@
 declare module "virtual:lightnet/config" {
-  const config: import("./config").LightnetConfig
+  const config: import("./config").PreparedLightnetConfig
   export default config
 }
 
