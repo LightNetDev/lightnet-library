@@ -20,7 +20,7 @@ const backendSchema = z.object({
     "gitea",
     "bitbucket",
   ]),
-  branch: z.string().default("main").optional(),
+  branch: z.string().default("main"),
   authType: z.literal("pkce").optional(),
   appId: z.string().optional(),
   repo: z
@@ -38,13 +38,14 @@ const backendSchema = z.object({
 })
 
 const userConfigSchema = z.object({
+  path: z.string().default("admin"),
   languages: languagesSchema.optional(),
   backend: backendSchema.optional(),
 })
 
-export type DecapAdminConfig = z.infer<typeof userConfigSchema>
+export type DecapAdminConfig = z.input<typeof userConfigSchema>
 
-export type DecapAdminUserConfig = DecapAdminConfig & {
+export type DecapAdminUserConfig = z.output<typeof userConfigSchema> & {
   site?: string
 }
 
@@ -59,17 +60,6 @@ export default function lightnetDecapAdmin(
         updateConfig,
         config: astroConfig,
       }) => {
-        injectRoute({
-          pattern: "admin",
-          entrypoint: "@lightnet/decap-admin/Admin.astro",
-          prerender: true,
-        })
-        injectRoute({
-          pattern: "admin/config.yml",
-          entrypoint: "@lightnet/decap-admin/config.ts",
-          prerender: true,
-        })
-
         const preparedConfig = {
           ...verifySchema(
             userConfigSchema,
@@ -78,6 +68,17 @@ export default function lightnetDecapAdmin(
           ),
           site: astroConfig.site ?? "localhost:4321",
         }
+
+        injectRoute({
+          pattern: preparedConfig.path,
+          entrypoint: "@lightnet/decap-admin/Admin.astro",
+          prerender: true,
+        })
+        injectRoute({
+          pattern: `${preparedConfig.path}/config.yml`,
+          entrypoint: "@lightnet/decap-admin/config.ts",
+          prerender: true,
+        })
 
         updateConfig({
           vite: {

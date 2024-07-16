@@ -1,5 +1,5 @@
 ---
-
+import config from "virtual:lightnet/decapAdminUserConfig"
 ---
 
 <!doctype html>
@@ -9,7 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Admin</title>
-    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <link
+      href=`/${config.path}/config.yml`
+      type="text/yaml"
+      rel="cms-config-url"
+    />
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.1.11/dist/decap-cms.js"
