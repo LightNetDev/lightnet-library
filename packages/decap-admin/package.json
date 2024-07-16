@@ -12,7 +12,7 @@
     "./decap-config.ts": "./src/decap-config.ts"
   },
   "peerDependencies": {
-    "@lightnet/library": "^2.0.15",
+    "@lightnet/library": "^2.0.18",
     "astro": "^4.11.5",
     "sharp": "^0.33.4",
     "typescript": "^5.5.3"
