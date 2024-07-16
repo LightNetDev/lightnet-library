@@ -70,7 +70,7 @@ export default function lightnetDecapAdmin(
         })
         injectRoute({
           pattern: `${preparedConfig.path}/config.yml`,
-          entrypoint: "@lightnet/decap-admin/config.ts",
+          entrypoint: "@lightnet/decap-admin/decap-config.ts",
           prerender: true,
         })
 

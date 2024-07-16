@@ -27,7 +27,7 @@ const backend =
     ? { name: "git-gateway" }
     : toSnakeCase(userConfig.backend)
 
-const config = {
+export const config = {
   local_backend,
   backend,
   media_folder: "public/files",

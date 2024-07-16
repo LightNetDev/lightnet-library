@@ -1,4 +1,4 @@
 declare module "virtual:lightnet/decapAdminUserConfig" {
-  const config: import("./integration").DecapAdminUserConfig
+  const config: import("./astro-integration/integration").DecapAdminUserConfig
   export default config
 }

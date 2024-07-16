@@ -7,9 +7,9 @@
     "astro-integration"
   ],
   "exports": {
-    ".": "./src/integration.ts",
+    ".": "./src/astro-integration/integration.ts",
     "./Admin.astro": "./src/Admin.astro",
-    "./config.ts": "./src/config.ts"
+    "./decap-config.ts": "./src/decap-config.ts"
   },
   "peerDependencies": {
     "@lightnet/library": "^2.0.15",
