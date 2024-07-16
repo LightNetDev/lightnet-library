@@ -33,6 +33,7 @@ const githubSchema = z.object({
 
 const userConfigSchema = z.object({
   path: z.string().default("admin"),
+  defaultLocale: z.string().optional(),
   languages: languagesSchema.optional(),
   backend: gitlabSchema.or(githubSchema).optional(),
 })

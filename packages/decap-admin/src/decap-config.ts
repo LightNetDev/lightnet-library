@@ -41,6 +41,9 @@ export const config = {
       label_singular: "Media Item",
       folder: "src/content/media",
       create: true,
+      preview_path:
+        userConfig.defaultLocale &&
+        `${userConfig.defaultLocale}/media/{{filename}}`,
       format: "json",
       sortable_fields: [
         "commit_date",
@@ -50,7 +53,7 @@ export const config = {
         "language",
       ],
       slug: "{{commonId}}--{{language}}",
-      summary: "{{commonId}}--{{language}}",
+      summary: "{{filename}}",
       view_groups: [
         { label: "Language", field: "language", pattern: ".*" },
         { label: "Type", field: "type", pattern: ".*" },

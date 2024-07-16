@@ -6,6 +6,8 @@ import languages from "./src/languages"
 import de from "./src/translations/de.json"
 import en from "./src/translations/en.json"
 
+const defaultLocale = "en"
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://sk8-ministries.pages.dev",
@@ -13,7 +15,7 @@ export default defineConfig({
     lightnetLibrary({
       title: "Sk8 Ministries",
       logo: { src: "./src/assets/logo.png" },
-      defaultLocale: "en",
+      defaultLocale,
       locales: ["en", "de"],
       translations: { de, en },
       languages,
@@ -36,6 +38,6 @@ export default defineConfig({
         },
       ],
     }),
-    lightnetDecapAdmin({ languages }),
+    lightnetDecapAdmin({ languages, defaultLocale }),
   ],
 })
