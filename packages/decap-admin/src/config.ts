@@ -42,7 +42,6 @@ const config = {
       folder: "src/content/media",
       create: true,
       format: "json",
-      preview_path: "en/media/{{commonId}}--{{language}}",
       sortable_fields: [
         "commit_date",
         "commonId",
@@ -118,7 +117,7 @@ const config = {
           name: "content",
           label: "Content",
           widget: "list",
-          hint: "Files (pdf, epub...) for this media item. First item in the list is the main content.",
+          hint: "Upload your files or paste URLs. First item in the list is the main content.",
           min: 1,
           // max is required for min to work :( https://github.com/decaporg/decap-cms/issues/4733
           max: 10,
