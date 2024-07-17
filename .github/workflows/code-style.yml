@@ -2,7 +2,9 @@ name: Code style ✨
 
 on:
   push:
-    branches: main
+    branches:
+      - main
+      - changeset-release/main
   pull_request:
 
 env:
