@@ -15,7 +15,7 @@
     "@astrojs/preact": "^3.5.0",
     "@astrojs/tailwind": "^5.1.0",
     "@lightnet/decap-admin": "^2.0.8",
-    "@lightnet/library": "^2.0.18",
+    "@lightnet/library": "^2.0.19",
     "astro": "^4.11.5",
     "preact": "^10.22.1",
     "sharp": "^0.33.4",
