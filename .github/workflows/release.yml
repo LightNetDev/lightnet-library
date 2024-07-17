@@ -37,14 +37,25 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Create Release Pull Request
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: pnpm run version
-          publish: pnpm changeset publish
-          commit: "[ci] release"
-          title: "[ci] release"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Release
+        run: |
+          pnpm changeset version
+          pnpm i --no-frozen-lockfile
+          pnpm changeset publish
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "[ci] release"
+          git push
+
+      # - name: Create Release Pull Request
+      #   id: changesets
+      #   uses: changesets/action@v1
+      #   with:
+      #     version: pnpm run version
+      #     publish: pnpm changeset publish
+      #     commit: "[ci] release"
+      #     title: "[ci] release"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
