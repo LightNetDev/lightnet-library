@@ -10,10 +10,7 @@
     "admin": "cd examples/sk8-ministries && pnpx decap-server",
     "preview": "pnpm --filter=sk8* preview",
     "format": "prettier . --write --cache",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "version": "pnpm changeset version && pnpm i --no-frozen-lockfile",
-    "publish:library": "pnpm publish -F library --access public",
-    "publish:admin": "pnpm publish -F decap-admin --access public"
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0"
   },
   "repository": {
     "type": "git",
