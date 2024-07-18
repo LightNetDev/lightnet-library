@@ -40,11 +40,12 @@ jobs:
       - name: Prepare next version
         id: version
         run: |
-          echo ::set-output name=changes::$(pnpx changeset version 2>&1 | grep -q 'No unreleased changesets found' && echo 'false' || echo 'true')
+          echo ::set-output name=changes::$(pnpm changeset version 2>&1 | grep -q 'No unreleased changesets found' && echo 'false' || echo 'true')
 
       - name: Publish version
         if: steps.version.outputs.changes == 'true'
         run: |
+          pnpm install --no-frozen-lockfile
           git add .
           git commit -m "[ci] release"
           pnpm changeset publish
