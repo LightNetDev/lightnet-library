@@ -50,6 +50,9 @@ jobs:
           git status
           git push
           git status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Nothing to publish
         if: ${{failure()}}
