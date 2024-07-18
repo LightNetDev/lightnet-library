@@ -40,7 +40,12 @@ jobs:
       - name: Release
         run: |
           pnpm changeset version
+          git add .
+          git commit -m "[ci] release"
           pnpm changeset publish
+          git push --follow-tags
+          git status
+          git push
           git status
 
       # using changeset/action
