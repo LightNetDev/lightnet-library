@@ -60,8 +60,8 @@ importers:
         specifier: ^0.8.2
         version: 0.8.2(prettier-plugin-astro@0.14.1)(prettier@3.3.3)(typescript@5.5.3)
       '@astrojs/preact':
-        specifier: ^3.5.0
-        version: 3.5.0(@babel/core@7.24.7)(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))
+        specifier: ^3.5.1
+        version: 3.5.1(@babel/core@7.24.7)(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))
       '@astrojs/tailwind':
         specifier: ^5.1.0
         version: 5.1.0(astro@4.11.5(@types/node@20.14.8)(typescript@5.5.3))(tailwindcss@3.4.6)
@@ -192,6 +192,12 @@ packages:
 
   '@astrojs/preact@3.5.0':
     resolution: {integrity: sha512-/zjxQ4/TrTk68fpm+rVIPSiF15xpsvXA5RWIDBqv1LjJkPyhVsOQEKasZkdmfq3DWcyJw3V5QvNVrwmS31CtmA==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      preact: ^10.6.5
+
+  '@astrojs/preact@3.5.1':
+    resolution: {integrity: sha512-sKF0Di7kwr2pMAc0PbEGuNF9AhJdLImQqtbgUUP3x75zaBg6mJsHmVt5jMqYpW4zWBfLuqACTaNLxWwu6u4nzw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
       preact: ^10.6.5
@@ -754,6 +760,12 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+  '@preact/preset-vite@2.8.2':
+    resolution: {integrity: sha512-m3tl+M8IO8jgiHnk+7LSTFl8axdPXloewi7iGVLdmCwf34XOzEUur0bZVewW4DUbUipFjTS2CXu27+5f/oexBA==}
+    peerDependencies:
+      '@babel/core': 7.x
+      vite: 2.x || 3.x || 4.x || 5.x
+
   '@preact/preset-vite@2.8.3':
     resolution: {integrity: sha512-IT4+IV3D4lIyoDrp4FUfx4dT2yW/5KIl2MXAsqqItGTbz1xUhtSyP9nS2kLXNnhLG4I2Nku/X+vKFMmRG+oMDA==}
     peerDependencies:
@@ -763,8 +775,16 @@ packages:
   '@preact/signals-core@1.6.1':
     resolution: {integrity: sha512-KXEEmJoKDlo0Igju/cj9YvKIgyaWFDgnprShQjzimUd5VynAAdTWMshawEOjUVeKbsI0aR58V6WOQp+DNcKApw==}
 
+  '@preact/signals-core@1.7.0':
+    resolution: {integrity: sha512-bEZLgmJGSBVP5PUPDowhPW3bVdMmp9Tr5OEl+SQK+8Tv9T7UsIfyN905cfkmmeqw8z4xp8T6zrl4M1uj9+HAfg==}
+
   '@preact/signals@1.2.3':
     resolution: {integrity: sha512-M2DXse3Wi8HwjI1d2vQWOLJ3lHogvqTsJYvl4ofXRXgMFQzJ7kmlZvlt5i8x5S5VwgZu0ghru4HkLqOoFfU2JQ==}
+    peerDependencies:
+      preact: 10.x
+
+  '@preact/signals@1.3.0':
+    resolution: {integrity: sha512-EOMeg42SlLS72dhoq6Vjq08havnLseWmPQ8A0YsgIAqMgWgx7V1a39+Pxo6i7SY5NwJtH4849JogFq3M67AzWg==}
     peerDependencies:
       preact: 10.x
 
@@ -2388,6 +2408,11 @@ packages:
     peerDependencies:
       preact: '>=10'
 
+  preact-render-to-string@6.5.6:
+    resolution: {integrity: sha512-msFdv7/ooTV6OIodAnU87V4ct+m2DA1rwaRYV+DNvTYpm/ZInQfoGrcHmbTkV7TOcJaHh5wt1NjiALA46Jyxhw==}
+    peerDependencies:
+      preact: '>=10'
+
   preact-ssr-prepass@1.2.1:
     resolution: {integrity: sha512-bLgbUfy8nL+PZghAPpyk9MF+cmXjdwEnxYPaJBmwbzFQqzIz8dQVBqjwB60RqZ9So/vIf6BRfHCiwFGuMCyfbQ==}
     peerDependencies:
@@ -3195,6 +3220,20 @@ snapshots:
       - supports-color
       - vite
 
+  '@astrojs/preact@3.5.1(@babel/core@7.24.7)(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))':
+    dependencies:
+      '@babel/plugin-transform-react-jsx': 7.24.7(@babel/core@7.24.7)
+      '@babel/plugin-transform-react-jsx-development': 7.24.7(@babel/core@7.24.7)
+      '@preact/preset-vite': 2.8.2(@babel/core@7.24.7)(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))
+      '@preact/signals': 1.3.0(preact@10.22.1)
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.24.7)
+      preact: 10.22.1
+      preact-render-to-string: 6.5.6(preact@10.22.1)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+      - vite
+
   '@astrojs/prism@3.1.0':
     dependencies:
       prismjs: 1.29.0
@@ -3846,6 +3885,26 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@preact/preset-vite@2.8.2(@babel/core@7.24.7)(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))':
+    dependencies:
+      '@babel/core': 7.24.7
+      '@babel/plugin-transform-react-jsx': 7.24.7(@babel/core@7.24.7)
+      '@babel/plugin-transform-react-jsx-development': 7.24.7(@babel/core@7.24.7)
+      '@prefresh/vite': 2.4.5(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))
+      '@rollup/pluginutils': 4.2.1
+      babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.24.7)
+      debug: 4.3.5
+      kolorist: 1.8.0
+      magic-string: 0.30.5
+      node-html-parser: 6.1.13
+      resolve: 1.22.8
+      source-map: 0.7.4
+      stack-trace: 1.0.0-pre2
+      vite: 5.3.3(@types/node@20.14.8)
+    transitivePeerDependencies:
+      - preact
+      - supports-color
+
   '@preact/preset-vite@2.8.3(@babel/core@7.24.7)(preact@10.22.1)(vite@5.3.3(@types/node@20.14.8))':
     dependencies:
       '@babel/code-frame': 7.24.7
@@ -3869,9 +3928,16 @@ snapshots:
 
   '@preact/signals-core@1.6.1': {}
 
+  '@preact/signals-core@1.7.0': {}
+
   '@preact/signals@1.2.3(preact@10.22.1)':
     dependencies:
       '@preact/signals-core': 1.6.1
+      preact: 10.22.1
+
+  '@preact/signals@1.3.0(preact@10.22.1)':
+    dependencies:
+      '@preact/signals-core': 1.7.0
       preact: 10.22.1
 
   '@prefresh/babel-plugin@0.5.1': {}
@@ -5814,6 +5880,10 @@ snapshots:
     dependencies:
       preact: 10.22.1
       pretty-format: 3.8.0
+
+  preact-render-to-string@6.5.6(preact@10.22.1):
+    dependencies:
+      preact: 10.22.1
 
   preact-ssr-prepass@1.2.1(preact@10.22.1):
     dependencies:
