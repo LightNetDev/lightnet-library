@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.0.20
+
+### Patch Changes
+
+- 966e616: Test release
+
 ## 2.0.19
 
 ### Patch Changes
