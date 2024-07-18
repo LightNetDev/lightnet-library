@@ -4,7 +4,7 @@
     "@changesets/changelog-github",
     { "repo": "LightNetDev/lightnet-library" }
   ],
-  "commit": false,
+  "commit": true,
   "fixed": [],
   "linked": [],
   "access": "public",
