@@ -37,9 +37,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Release
+      - name: Prepare next version
+        id: version
         run: |
-          pnpm changeset version
+          echo ::set-output name=changes::$(pnpx changeset version 2>&1 | grep -q 'No unreleased changesets found' && echo 'false' || echo 'true')
+
+      - name: Publish version
+        if: steps.version.outputs.changes == 'true'
+        run: |
           git add .
           git commit -m "[ci] release"
           pnpm changeset publish
