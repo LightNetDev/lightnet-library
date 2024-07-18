@@ -49,7 +49,7 @@ async function exportAdminImages(
         return
       }
       const imagePath = join(imageDir, file)
-      sharp(imagePath)
+      return sharp(imagePath)
         .resize(335, 135, { fit: "contain", background: "#fff" })
         .extend({ bottom: 15, background: "#fff" })
         .toFile(join(outImageDir, file))
