@@ -40,7 +40,7 @@ jobs:
       - name: Prepare next version
         id: version
         run: |
-          echo ::set-output name=changes::$(pnpm changeset version 2>&1 | grep -q 'No unreleased changesets found' && echo 'false' || echo 'true')
+          echo changes=$(pnpm changeset version 2>&1 | grep -q 'No unreleased changesets found' && echo 'false' || echo 'true') >> $GITHUB_OUTPUT
 
       - name: Publish version
         if: steps.version.outputs.changes == 'true'
