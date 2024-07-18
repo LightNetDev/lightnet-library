@@ -37,14 +37,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Prepare next version
-        id: version
-        run: |
-          echo changes=$(pnpm changeset version 2>&1 | grep -q 'No unreleased changesets found' && echo 'false' || echo 'true') >> $GITHUB_OUTPUT
-
       - name: Publish version
-        if: steps.version.outputs.changes == 'true'
         run: |
+          pnpm changeset version
           pnpm install --no-frozen-lockfile
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
@@ -55,6 +50,10 @@ jobs:
           git status
           git push
           git status
+
+      - name: Nothing to publish
+        if: ${{failure()}}
+        run: echo "Nothing to publish"
 
       # using changeset/action
       # - name: Create Release Pull Request
