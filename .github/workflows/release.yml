@@ -37,36 +37,14 @@ jobs:
       - name: Install Dependencies
         run: pnpm i
 
-      - name: Publish version
-        run: |
-          pnpm changeset version
-          pnpm install --no-frozen-lockfile
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git add .
-          git commit -m "[ci] release"
-          pnpm changeset publish
-          git push --follow-tags
-          git status
-          git push
-          git status
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm run version
+          publish: pnpm changeset publish
+          commit: "[ci] release"
+          title: "[ci] release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Nothing to publish
-        if: ${{failure()}}
-        run: echo "Nothing to publish"
-
-      # using changeset/action
-      # - name: Create Release Pull Request
-      #   id: changesets
-      #   uses: changesets/action@v1
-      #   with:
-      #     version: pnpm run version
-      #     publish: pnpm changeset publish
-      #     commit: "[ci] release"
-      #     title: "[ci] release"
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
