@@ -1,5 +1,5 @@
 import Fuse from "fuse.js"
-import { useEffect, useRef, useState } from "preact/hooks"
+import { useEffect, useRef, useState } from "react"
 
 import type { SearchItem, SearchResponse } from "../../api/search-response"
 

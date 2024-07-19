@@ -5,6 +5,6 @@
  * @see https://pictogrammers.com/library/mdi/ for available icons
  * @returns icon
  */
-export default function ({ class: className }: { class?: string }) {
-  return <span class={`iconify text-2xl ${className ?? ""}`} />
+export default function ({ className }: { className?: string }) {
+  return <span className={`iconify text-2xl ${className ?? ""}`} />
 }

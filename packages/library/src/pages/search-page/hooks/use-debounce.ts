@@ -1,4 +1,4 @@
-import { useRef } from "preact/hooks"
+import { useRef } from "react"
 
 export function useDebounce(
   callback: (...args: any[]) => unknown,
