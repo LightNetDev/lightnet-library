@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "preact/hooks"
+import { useEffect, useRef, useState } from "react"
 
 import Icon from "../../../components/Icon"
 import { useDebounce } from "../hooks/use-debounce"
@@ -71,76 +71,84 @@ export default function ({
 
   return (
     <>
-      <label class="dy-input dy-input-bordered mb-2 flex items-center gap-2">
+      <label className="dy-input dy-input-bordered mb-2 flex items-center gap-2">
         <input
           type="search"
-          class="grow"
+          className="grow"
           id="search-input"
           ref={searchInput}
           placeholder={t("ln.search.placeholder")}
-          enterkeyhint="search"
+          enterKeyHint="search"
           value={search}
           onInput={(e) => debouncedSetSearch(e.currentTarget.value)}
           onKeyDown={(e) => e.key === "Enter" && searchInput.current?.blur()}
         />
-        <Icon class="mdi--magnify text-xl" />
+        <Icon className="mdi--magnify text-xl" />
       </label>
-      <div class="mb-8 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-6 md:mb-10">
-        <label class="dy-form-control">
-          <div class="dy-label">
-            <span class="text-xs font-bold uppercase text-gray-500">
+      <div className="mb-8 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-6 md:mb-10">
+        <label className="dy-form-control">
+          <div className="dy-label">
+            <span className="text-xs font-bold uppercase text-gray-500">
               {t("ln.common.language")}
             </span>
           </div>
           <select
-            class="dy-select dy-select-bordered sm:dy-select-sm"
+            className="dy-select dy-select-bordered sm:dy-select-sm"
             value={language}
             id="language-select"
             onChange={(e) => setLanguage(e.currentTarget.value)}
           >
             <option value="">{t("ln.search.all-languages")}</option>
             {Object.entries(contentLanguages).map(([lang, label]) => (
-              <option value={lang} lang={lang}>
+              <option key={lang} value={lang} lang={lang}>
                 {label}
               </option>
             ))}
           </select>
         </label>
 
-        <label class="dy-form-control">
-          <div class="dy-label">
-            <span class="text-xs font-bold uppercase text-gray-500">
+        <label className="dy-form-control">
+          <div className="dy-label">
+            <span className="text-xs font-bold uppercase text-gray-500">
               {t("ln.common.type")}
             </span>
           </div>
           <select
-            class="dy-select dy-select-bordered sm:dy-select-sm"
+            className="dy-select dy-select-bordered sm:dy-select-sm"
             value={type}
             id="type-select"
             onChange={(e) => setType(e.currentTarget.value)}
           >
-            <option value="">{t("ln.search.all-types")}</option>
+            <option key="" value="">
+              {t("ln.search.all-types")}
+            </option>
             {mediaTypes.map(({ id, label }) => (
-              <option value={id}>{label}</option>
+              <option key={id} value={id}>
+                {label}
+              </option>
             ))}
           </select>
         </label>
 
-        <label class="dy-form-control">
-          <div class="dy-label">
-            <span class="text-xs font-bold uppercase text-gray-500">
+        <label className="dy-form-control">
+          <div className="dy-label">
+            <span className="text-xs font-bold uppercase text-gray-500">
               {t("ln.common.category")}
             </span>
           </div>
           <select
-            class="dy-select dy-select-bordered sm:dy-select-sm"
+            className="dy-select dy-select-bordered sm:dy-select-sm"
             value={category}
             id="category-select"
             onChange={(e) => setCategory(e.currentTarget.value)}
           >
-            <option value="">{t("ln.search.all-categories")}</option>
+            <option key="" value="">
+              {t("ln.search.all-categories")}
+            </option>
             {Object.entries(categories).map(([id, label]) => (
-              <option value={id}>{label}</option>
+              <option key={id} value={id}>
+                {label}
+              </option>
             ))}
           </select>
         </label>

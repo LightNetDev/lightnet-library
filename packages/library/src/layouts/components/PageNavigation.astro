@@ -33,7 +33,8 @@ const items = (config.mainMenu ?? []).map(
     class="hover:text-primary flex p-3 text-gray-600"
     aria-label={t("ln.search.title")}
     data-astro-prefetch="viewport"
-    href={searchPagePath(Astro.currentLocale)}><Icon class="mdi--magnify" /></a
+    href={searchPagePath(Astro.currentLocale)}
+    ><Icon className="mdi--magnify" /></a
   >
   <LanguagePicker />
 
@@ -48,7 +49,7 @@ const items = (config.mainMenu ?? []).map(
           >
             {t(label)}
             {isExternal && (
-              <Icon class="mdi--external-link shrink-0 text-base" />
+              <Icon className="mdi--external-link shrink-0 text-base" />
             )}
           </MenuItem>
         ))}

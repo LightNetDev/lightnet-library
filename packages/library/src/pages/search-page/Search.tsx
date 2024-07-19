@@ -1,4 +1,4 @@
-import { useEffect } from "preact/hooks"
+import { useEffect } from "react"
 
 import ResultList from "./components/ResultList"
 import SearchFilter from "./components/SearchFilter"
@@ -33,8 +33,8 @@ export default function ({
 
   return (
     <>
-      <div class="px-4 md:px-8">
-        <h1 class="mb-4 mt-8 text-4xl md:mb-8 md:mt-12 md:text-5xl">
+      <div className="px-4 md:px-8">
+        <h1 className="mb-4 mt-8 text-4xl md:mb-8 md:mt-12 md:text-5xl">
           {t("ln.search.title")}
         </h1>
         <SearchFilter
@@ -55,7 +55,7 @@ export default function ({
         contentLanguages={contentLanguages}
       />
       {!results.length && !isLoading && (
-        <div class="mt-24 text-center font-bold text-gray-500">
+        <div className="mt-24 text-center font-bold text-gray-500">
           {t("ln.search.no-results")}
         </div>
       )}

@@ -1,4 +1,4 @@
-import preact from "@astrojs/preact"
+import react from "@astrojs/react"
 import tailwind from "@astrojs/tailwind"
 import type { AstroIntegration } from "astro"
 
@@ -36,7 +36,7 @@ export function lightnetLibrary(
           prerender: true,
         })
 
-        config.integrations.push(tailwind(), preact())
+        config.integrations.push(tailwind(), react())
 
         const { defaultLocale, locales } = lightnetConfig
         updateConfig({
