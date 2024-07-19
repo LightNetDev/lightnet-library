@@ -66,10 +66,10 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(astro@4.12.1(@types/node@20.14.11)(terser@5.31.3)(typescript@5.5.3))(tailwindcss@3.4.6)
       '@lightnet/decap-admin':
-        specifier: ^2.0.9
+        specifier: ^2.0.10
         version: link:../../packages/decap-admin
       '@lightnet/library':
-        specifier: ^2.0.21
+        specifier: ^2.0.22
         version: link:../../packages/library
       astro:
         specifier: ^4.11.5
@@ -93,7 +93,7 @@ importers:
   packages/decap-admin:
     dependencies:
       '@lightnet/library':
-        specifier: ^2.0.18
+        specifier: ^2.0.22
         version: link:../library
       astro:
         specifier: ^4.11.5
