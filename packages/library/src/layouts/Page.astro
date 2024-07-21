@@ -6,6 +6,7 @@ import logo from "virtual:lightnet/logo"
 
 import { localizePath } from "../utils/paths"
 import PageNavigation from "./components/PageNavigation.astro"
+import PreloadReact from "./components/PreloadReact"
 
 interface Props {
   title?: string
@@ -50,5 +51,6 @@ const { title, description } = Astro.props
     <main class="mx-auto min-h-screen pb-8 pt-14 sm:py-20">
       <slot />
     </main>
+    <PreloadReact client:idle />
   </body>
 </html>
