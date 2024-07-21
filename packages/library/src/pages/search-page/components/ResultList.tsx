@@ -26,7 +26,7 @@ export default function ({
   contentLanguages,
   mediaTypes,
 }: Props) {
-  const [maxItems, setMaxItems] = useState(PAGE_SIZE)
+  const [maxItems, setMaxItems] = useState(15)
   const t = useProvidedTranslations(translations)
   const iconsByType = Object.fromEntries(
     mediaTypes.map(({ id, icon }) => [id, icon]),
@@ -51,7 +51,7 @@ export default function ({
                   height={item.image.height}
                   alt=""
                   decoding="async"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
 
