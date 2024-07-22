@@ -1,3 +1,4 @@
+export { default as CategoriesOverview } from "../src/components/CategoriesOverview.astro"
 export { default as Gallery } from "../src/components/Gallery.astro"
 export { default as Hero } from "../src/components/Hero.astro"
 export { default as Icon } from "../src/components/Icon"

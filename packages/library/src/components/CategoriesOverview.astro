@@ -1,0 +1,38 @@
+---
+import { getCategories } from "../content/get-categories"
+import { useTranslate } from "../i18n/use-translate"
+import { searchPagePath } from "../utils/paths"
+import Section from "./Section.astro"
+
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
+
+const t = useTranslate(Astro.currentLocale)
+const categories = await getCategories(Astro.currentLocale)
+---
+
+{
+  categories.length && (
+    <Section title={title ?? t("ln.common.categories")}>
+      <ul class="flex w-full flex-wrap gap-2 py-6 sm:gap-3">
+        {categories.map((category) => (
+          <li class="flex max-w-56 grow">
+            <a
+              class="flex h-12 w-full items-center justify-center rounded-xl bg-gray-200 p-2 px-8 shadow-sm hover:bg-gray-300 sm:h-14"
+              href={searchPagePath(Astro.currentLocale, {
+                category: category.id,
+              })}
+            >
+              <span class="line-clamp-2 block text-xs font-bold uppercase text-gray-600">
+                {category.label}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )
+}
