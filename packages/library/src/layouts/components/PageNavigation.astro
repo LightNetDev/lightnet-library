@@ -24,7 +24,7 @@ const items = (config.mainMenu ?? []).map(
       (currentPath === localizePath(Astro.currentLocale, href) ||
         currentPath === localizePath(Astro.currentLocale, href + "/") ||
         currentPath === href),
-  })
+  }),
 )
 ---
 

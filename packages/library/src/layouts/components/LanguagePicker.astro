@@ -16,7 +16,7 @@ const translations = config.locales.map((locale) => ({
 function currentPathWithLocale(locale: string) {
   const currentPath = Astro.url.pathname
   const currentPathWithoutLocale = currentPath.startsWith(
-    `/${Astro.currentLocale}/`
+    `/${Astro.currentLocale}/`,
   )
     ? currentPath.slice(Astro.currentLocale!.length + 2)
     : currentPath
