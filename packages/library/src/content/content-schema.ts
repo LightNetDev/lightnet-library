@@ -14,6 +14,8 @@ export const CATEGORIES = [
   "theology",
 ] as const
 
+export type Category = (typeof CATEGORIES)[number]
+
 export const DETAILS_PAGES = ["book", "video"] as const
 
 export type MediaItem = z.infer<typeof mediaItemSchema>
