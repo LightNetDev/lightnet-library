@@ -23,7 +23,7 @@ const contentLanguages: Record<string, string> = media
       ...prev,
       [language]: resolveLanguageLabel(language),
     }),
-    {}
+    {},
   )
 
 const categories: Record<string, string> = (await getCategories()).reduce(
@@ -31,7 +31,7 @@ const categories: Record<string, string> = (await getCategories()).reduce(
     ...prev,
     [id]: label,
   }),
-  {}
+  {},
 )
 
 const mediaTypes = (await getMediaTypes())
@@ -41,7 +41,7 @@ const mediaTypes = (await getMediaTypes())
     icon: type.data.icon,
   }))
   .sort((a, b) =>
-    a.label.localeCompare(b.label, Astro.currentLocale ?? config.defaultLocale)
+    a.label.localeCompare(b.label, Astro.currentLocale ?? config.defaultLocale),
   )
 ---
 
