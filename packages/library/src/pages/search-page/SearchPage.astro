@@ -1,9 +1,9 @@
 ---
 import config from "virtual:lightnet/config"
 
+import { getCategories } from "../../content/get-categories"
 import { getMediaItems } from "../../content/get-media-items"
 import { getMediaTypes } from "../../content/get-media-types"
-import { resolveCategoryLabel } from "../../content/resolve-category-label"
 import { resolveLanguageLabel } from "../../i18n/resolve-language"
 import { useTranslate } from "../../i18n/use-translate"
 import Page from "../../layouts/Page.astro"
@@ -26,19 +26,13 @@ const contentLanguages: Record<string, string> = media
     {},
   )
 
-const categories: Record<string, string> = media
-  .flatMap((item) => item.data.categories ?? [])
-  .map((category) => [category, resolveCategoryLabel(t, category)])
-  .sort((a, b) =>
-    a[1].localeCompare(b[1], Astro.currentLocale ?? config.defaultLocale),
-  )
-  .reduce(
-    (prev, [category, categoryLabel]) => ({
-      ...prev,
-      [category]: categoryLabel,
-    }),
-    {},
-  )
+const categories: Record<string, string> = (await getCategories()).reduce(
+  (prev, { id, label }) => ({
+    ...prev,
+    [id]: label,
+  }),
+  {},
+)
 
 const mediaTypes = (await getMediaTypes())
   .map((type) => ({
