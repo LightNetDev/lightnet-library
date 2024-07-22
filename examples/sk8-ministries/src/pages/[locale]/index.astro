@@ -16,11 +16,11 @@ import heroImage from "../../assets/hero.webp"
 
 const latestBooks = await getCollection(
   "media",
-  (media) => media.data.type === "book"
+  (media) => media.data.type === "book",
 )
 const tutorials = await getCollection(
   "media",
-  (media) => media.data.type === "video"
+  (media) => media.data.type === "video",
 )
 
 const t = useTranslate(Astro.currentLocale)
