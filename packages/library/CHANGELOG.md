@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.2.0
+
+### Minor Changes
+
+- [#36](https://github.com/LightNetDev/lightnet-library/pull/36) [`d67316d`](https://github.com/LightNetDev/lightnet-library/commit/d67316da049dd0477dda901cacefac8a8e7db3cd) Thanks [@si-fab](https://github.com/si-fab)! - Provide path utils.
+
 ## 2.1.0
 
 ### Minor Changes
