@@ -1,5 +1,15 @@
 # @lightnet/library
 
+## 2.3.2
+
+### Patch Changes
+
+- [#42](https://github.com/LightNetDev/lightnet-library/pull/42) [`033b41d`](https://github.com/LightNetDev/lightnet-library/commit/033b41dacd9d6247dd182099848b23e33482f0a8) Thanks [@si-fab](https://github.com/si-fab)! - Add keys for categories in result list.
+
+- [#42](https://github.com/LightNetDev/lightnet-library/pull/42) [`033b41d`](https://github.com/LightNetDev/lightnet-library/commit/033b41dacd9d6247dd182099848b23e33482f0a8) Thanks [@si-fab](https://github.com/si-fab)! - Fix search input debounce.
+
+- [#42](https://github.com/LightNetDev/lightnet-library/pull/42) [`033b41d`](https://github.com/LightNetDev/lightnet-library/commit/033b41dacd9d6247dd182099848b23e33482f0a8) Thanks [@si-fab](https://github.com/si-fab)! - Prefetch /api/search.json from all sites.
+
 ## 2.3.1
 
 ### Patch Changes
