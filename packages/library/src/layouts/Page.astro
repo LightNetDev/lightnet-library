@@ -5,6 +5,7 @@ import config from "virtual:lightnet/config"
 import logo from "virtual:lightnet/logo"
 
 import { localizePath } from "../utils/paths"
+import Favicon from "./components/Favicon.astro"
 import PageNavigation from "./components/PageNavigation.astro"
 import PreloadReact from "./components/PreloadReact"
 
@@ -23,6 +24,8 @@ const { title, description } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title ? `${title} | ${config.title}` : config.title}</title>
     {description && <meta name="description" content={description} />}
+    {config.manifest && <link rel="manifest" href={config.manifest} />}
+    <Favicon />
     <ViewTransitions />
   </head>
   <body class="overflow-y-scroll bg-gray-50 text-gray-900">

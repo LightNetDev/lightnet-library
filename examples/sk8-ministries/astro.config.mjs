@@ -19,6 +19,10 @@ export default defineConfig({
       locales: ["en", "de"],
       translations: { de, en },
       languages,
+      favicon: [
+        { href: "favicon.ico", sizes: "32x32" },
+        { href: "favicon.svg" },
+      ],
       mainMenu: [
         {
           href: "/",

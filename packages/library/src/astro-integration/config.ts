@@ -23,16 +23,51 @@ const languagesSchema = z.record(
   }),
 )
 
+const faviconSchema = z.object({
+  href: z.string({
+    description:
+      "The favicon for your site which should be a path to an image in the `public/` directory.",
+  }),
+  rel: z.enum(["icon", "apple-touch-icon"]).default("icon"),
+  sizes: z.string().optional(),
+})
+
 export const configSchema = z.object({
+  /**
+   * Title of the web site.
+   */
   title: z.string(),
+  /**
+   * Locales to use for the user interface translations.
+   */
   locales: z.string().array(),
+  /**
+   * Default user interface language.
+   */
   defaultLocale: z.string(),
+  /**
+   * Favicons for your site.
+   */
+  favicon: faviconSchema.array().optional(),
+  /**
+   * Link to manifest file within public/ folder
+   */
+  manifest: z.string().optional(),
+  /**
+   * Logo to be used for the header.
+   */
   logo: z.object({
     src: z.string(),
     alt: z.string().default(""),
   }),
   translations: translationsSchema.optional(),
+  /**
+   * Content and user interface languages.
+   */
   languages: languagesSchema.optional(),
+  /**
+   * Main menu structure.
+   */
   mainMenu: z.array(linkSchema).min(1).optional(),
 })
 
