@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.3.1
+
+### Patch Changes
+
+- [#40](https://github.com/LightNetDev/lightnet-library/pull/40) [`016269c`](https://github.com/LightNetDev/lightnet-library/commit/016269c6532b282551b689e434ff62af4fc31574) Thanks [@si-fab](https://github.com/si-fab)! - Add `/` to absolute paths for favicons and webmanifest.
+
+- [#40](https://github.com/LightNetDev/lightnet-library/pull/40) [`016269c`](https://github.com/LightNetDev/lightnet-library/commit/016269c6532b282551b689e434ff62af4fc31574) Thanks [@si-fab](https://github.com/si-fab)! - Better support svg logos.
+
 ## 2.3.0
 
 ### Minor Changes
