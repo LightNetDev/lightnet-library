@@ -1,5 +1,21 @@
 # @lightnet/library
 
+## 2.1.0
+
+### Minor Changes
+
+- [#34](https://github.com/LightNetDev/lightnet-library/pull/34) [`148d75e`](https://github.com/LightNetDev/lightnet-library/commit/148d75e602fe9b065cc9f984a7650e988baf400f) Thanks [@si-fab](https://github.com/si-fab)! - Add categories overview component.
+
+### Patch Changes
+
+- [#33](https://github.com/LightNetDev/lightnet-library/pull/33) [`eb11791`](https://github.com/LightNetDev/lightnet-library/commit/eb11791d2df3473d788c18876826f6eb0d150ad0) Thanks [@si-fab](https://github.com/si-fab)! - Remove media query export.
+
+- [#28](https://github.com/LightNetDev/lightnet-library/pull/28) [`9ef7b82`](https://github.com/LightNetDev/lightnet-library/commit/9ef7b829484b279433cb2bd993de928dc7d86038) Thanks [@si-fab](https://github.com/si-fab)! - Preload react when a user visits any page.
+
+- [#32](https://github.com/LightNetDev/lightnet-library/pull/32) [`66d7f11`](https://github.com/LightNetDev/lightnet-library/commit/66d7f11ddd93eb9aa84e0d0f56f72a5c52daaa1b) Thanks [@si-fab](https://github.com/si-fab)! - Hide translations menu when there is only one locale.
+
+- [#30](https://github.com/LightNetDev/lightnet-library/pull/30) [`55deef9`](https://github.com/LightNetDev/lightnet-library/commit/55deef90e13048ac08aecd7c3b1799f9d7ed2a65) Thanks [@si-fab](https://github.com/si-fab)! - Load result images immediatelly when visiting the search page.
+
 ## 2.0.22
 
 ### Patch Changes
