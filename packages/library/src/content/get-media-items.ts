@@ -2,8 +2,12 @@ import { AstroError } from "astro/errors"
 import { getCollection, getEntry } from "astro:content"
 
 import { verifySchema } from "../utils/verify-schema"
-import { mediaItemEntrySchema, mediaTypeEntrySchema } from "./content-schema"
+import { mediaItemEntrySchema } from "./content-schema"
 import { type MediaQuery, mediaQuery } from "./media-query"
+
+const mediaTypes: string[] = (await getCollection("media-types")).map(
+  ({ id }) => id,
+)
 
 export const getMediaItem = async (id: string) => {
   const item = await getEntry("media", id)
@@ -21,22 +25,12 @@ const prepareItem = async (item: any) => {
     item,
     `Invalid media item: ${item.id}`,
   )
-  const type = await getEntry("media-types", verified.data.type)
-  if (!type) {
+  // We cannot use astro's reference validator for type. This would break type generation.
+  // So we validate the type manually.
+  if (!mediaTypes.includes(verified.data.type)) {
     throw new AstroError(
       `Media item '${item.id}' references a unknown media type '${verified.data.type}'`,
     )
   }
-
-  return {
-    id: verified.id,
-    data: {
-      ...verified.data,
-      type: verifySchema(
-        mediaTypeEntrySchema,
-        type,
-        "Invalid media type format",
-      ),
-    },
-  }
+  return verified
 }
