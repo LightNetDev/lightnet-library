@@ -23,11 +23,16 @@ const languagesSchema = z.record(
   }),
 )
 
+const absolutePath = (path: string) =>
+  `${path.startsWith("/") ? "" : "/"}${path}`
+
 const faviconSchema = z.object({
-  href: z.string({
-    description:
-      "The favicon for your site which should be a path to an image in the `public/` directory.",
-  }),
+  href: z
+    .string({
+      description:
+        "The favicon for your site which should be a path to an image in the `public/` directory.",
+    })
+    .transform(absolutePath),
   rel: z.enum(["icon", "apple-touch-icon"]).default("icon"),
   sizes: z.string().optional(),
 })
@@ -52,7 +57,7 @@ export const configSchema = z.object({
   /**
    * Link to manifest file within public/ folder
    */
-  manifest: z.string().optional(),
+  manifest: z.string().transform(absolutePath).optional(),
   /**
    * Logo to be used for the header.
    */

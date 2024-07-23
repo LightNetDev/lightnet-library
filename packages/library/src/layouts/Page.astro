@@ -1,12 +1,10 @@
 ---
-import { Image } from "astro:assets"
 import { ViewTransitions } from "astro:transitions"
 import config from "virtual:lightnet/config"
-import logo from "virtual:lightnet/logo"
 
-import { localizePath } from "../utils/paths"
 import Favicon from "./components/Favicon.astro"
 import PageNavigation from "./components/PageNavigation.astro"
+import PageTitle from "./components/PageTitle.astro"
 import PreloadReact from "./components/PreloadReact"
 
 interface Props {
@@ -36,18 +34,7 @@ const { title, description } = Astro.props
       <div
         class="mx-auto flex h-full max-w-screen-xl justify-between px-4 md:px-8"
       >
-        <a
-          class="flex items-center gap-3 font-bold text-gray-600 md:text-lg"
-          href={localizePath(Astro.currentLocale, "/")}
-          ><Image
-            src={logo}
-            alt={config.logo.alt}
-            class="w-8"
-            width={32}
-            densities={[1.5, 2, 3]}
-            loading="eager"
-          />{config.title}</a
-        >
+        <PageTitle />
         <PageNavigation />
       </div>
     </header>

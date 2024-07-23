@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets"
+import config from "virtual:lightnet/config"
+import logo from "virtual:lightnet/logo"
+
+import { localizePath } from "../../utils/paths"
+---
+
+<a
+  class="flex items-center gap-3 font-bold text-gray-600 md:text-lg"
+  href={localizePath(Astro.currentLocale, "/")}
+>
+  {
+    logo.format === "svg" ? (
+      <img src={logo.src} class="w-8" />
+    ) : (
+      <Image
+        src={logo}
+        alt={config.logo.alt}
+        class="w-8"
+        width={32}
+        densities={[1.5, 2, 3]}
+        loading="eager"
+      />
+    )
+  }{config.title}</a
+>
