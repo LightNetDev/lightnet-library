@@ -79,7 +79,7 @@ export default function ({
           ref={searchInput}
           placeholder={t("ln.search.placeholder")}
           enterKeyHint="search"
-          value={search}
+          defaultValue={search}
           onInput={(e) => debouncedSetSearch(e.currentTarget.value)}
           onKeyDown={(e) => e.key === "Enter" && searchInput.current?.blur()}
         />
