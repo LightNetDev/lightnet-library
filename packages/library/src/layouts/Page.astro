@@ -23,6 +23,7 @@ const { title, description } = Astro.props
     <title>{title ? `${title} | ${config.title}` : config.title}</title>
     {description && <meta name="description" content={description} />}
     {config.manifest && <link rel="manifest" href={config.manifest} />}
+    <link rel="prefetch" href="/api/search.json" />
     <Favicon />
     <ViewTransitions />
   </head>
