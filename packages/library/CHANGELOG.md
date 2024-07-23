@@ -1,5 +1,15 @@
 # @lightnet/library
 
+## 2.3.0
+
+### Minor Changes
+
+- [#38](https://github.com/LightNetDev/lightnet-library/pull/38) [`6b8e9dc`](https://github.com/LightNetDev/lightnet-library/commit/6b8e9dc997ef3c3cc5d02bbcceb7592d78c4f32d) Thanks [@si-fab](https://github.com/si-fab)! - Add support for favicons & webmanifest
+
+### Patch Changes
+
+- [#38](https://github.com/LightNetDev/lightnet-library/pull/38) [`6b8e9dc`](https://github.com/LightNetDev/lightnet-library/commit/6b8e9dc997ef3c3cc5d02bbcceb7592d78c4f32d) Thanks [@si-fab](https://github.com/si-fab)! - Rename `class` props to be called `className`. This will make our Astro components more consistent with React components.
+
 ## 2.2.0
 
 ### Minor Changes
