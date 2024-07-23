@@ -17,7 +17,7 @@ const { description, language, image, title } = mediaItem
 
 <Section
   withoutDefaultTopMargin
-  class="pt-4 sm:pt-8 lg:pt-12"
+  className="pt-4 sm:pt-8 lg:pt-12"
   lang={mediaItem.language}
 >
   <div
@@ -26,7 +26,7 @@ const { description, language, image, title } = mediaItem
   >
     <div class="grow">
       <CommonMetaData {...Astro.props} />
-      <DocumentActions class="my-8 sm:hidden" mediaItem={mediaItem} />
+      <DocumentActions className="my-8 sm:hidden" mediaItem={mediaItem} />
       <Description description={description} />
     </div>
     <div
@@ -50,7 +50,7 @@ const { description, language, image, title } = mediaItem
           )
         }
       </a>
-      <DocumentActions class="hidden sm:flex" mediaItem={mediaItem} />
+      <DocumentActions className="hidden sm:flex" mediaItem={mediaItem} />
     </div>
   </div>
 </Section>

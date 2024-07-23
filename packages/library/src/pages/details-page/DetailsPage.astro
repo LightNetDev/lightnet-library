@@ -4,6 +4,7 @@ import { z } from "astro/zod"
 import config from "virtual:lightnet/config"
 
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
+import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
 import { verifySchema } from "../../utils/verify-schema"
 import DocumentDetails from "./DocumentDetails.astro"
@@ -20,7 +21,9 @@ const { slug, locale } = Astro.params
 const mediaItem = (await getMediaItem(Astro.params.slug)).data
 const props = { mediaItem, slug, locale }
 
-const { detailsPage } = mediaItem.type.data
+const {
+  data: { detailsPage },
+} = await getMediaType(mediaItem.type)
 
 verifySchema(
   z.enum(["book", "video"]),

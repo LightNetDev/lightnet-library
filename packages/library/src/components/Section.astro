@@ -5,7 +5,7 @@ interface Props {
   title?: string
   withoutDefaultTopMargin?: boolean
   lang?: string
-  class?: string
+  className?: string
 }
 
 const {
@@ -14,6 +14,7 @@ const {
   title,
   withoutDefaultTopMargin = false,
   lang,
+  className,
 } = Astro.props
 
 const widths = {
@@ -27,7 +28,7 @@ const widths = {
   class:list={[
     widths[width],
     !withoutDefaultTopMargin && "mt-16 md:mt-20",
-    Astro.props.class,
+    className,
   ]}
   id={id}
   lang={lang}
