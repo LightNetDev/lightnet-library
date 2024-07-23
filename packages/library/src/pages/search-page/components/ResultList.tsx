@@ -73,7 +73,10 @@ export default function ({
                   </span>
                   <ul lang={locale} className="flex flex-wrap gap-1">
                     {item.categories?.map((category) => (
-                      <li className="rounded-lg bg-gray-200 px-2 py-1 text-gray-600">
+                      <li
+                        key={category}
+                        className="rounded-lg bg-gray-200 px-2 py-1 text-gray-600"
+                      >
                         {categories[category]}
                       </li>
                     ))}
