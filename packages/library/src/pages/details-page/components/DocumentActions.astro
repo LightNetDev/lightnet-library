@@ -5,10 +5,10 @@ import { useTranslate } from "../../../i18n/use-translate"
 
 interface Props {
   mediaItem: MediaItem
-  class?: string
+  className?: string
 }
 
-const { mediaItem } = Astro.props
+const { mediaItem, className } = Astro.props
 const t = useTranslate(Astro.currentLocale)
 
 const content = mediaItem.content.map(({ url }, index) => ({
@@ -42,7 +42,7 @@ function parseUrl(url: string): {
 }
 ---
 
-<div class="flex flex-col gap-2" class:list={[Astro.props.class]}>
+<div class="flex flex-col gap-2" class:list={[className]}>
   {
     content.map(({ icon, text, isPrimary, url, target }) => (
       <a

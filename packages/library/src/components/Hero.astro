@@ -10,7 +10,7 @@ interface Props {
   subtitle?: string
   titleSize?: Size
   subtitleSize?: Size
-  class?: string
+  className?: string
 }
 const {
   image,
@@ -18,6 +18,7 @@ const {
   subtitle,
   titleSize = "md",
   subtitleSize = "md",
+  className,
 } = Astro.props
 
 const titleSizes = {
@@ -45,7 +46,7 @@ const subtitleSizes = {
     />
     <div
       class="bg-gradient-radial absolute top-0 flex h-full w-full flex-col items-center justify-center gap-6 from-black/30 to-black/40 p-4 text-center text-gray-50"
-      class:list={[Astro.props.class]}
+      class:list={[className]}
     >
       {
         title && (

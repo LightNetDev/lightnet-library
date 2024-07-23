@@ -10,15 +10,15 @@ interface Props {
   title?: string
   text?: string
   link?: { href: string; label: string }
-  class?: string
+  className?: string
 }
 
-const { image, id, title, text, link } = Astro.props
+const { image, id, title, text, link, className } = Astro.props
 ---
 
 <section
   class="mt-16 w-full bg-gray-200 md:mt-20"
-  class:list={[Astro.props.class]}
+  class:list={[className]}
   id={id}
 >
   <div class="flex flex-col overflow-hidden md:flex-row">
