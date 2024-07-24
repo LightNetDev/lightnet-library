@@ -26,3 +26,4 @@ jobs:
       - run: pnpm i
       - run: pnpm lint
       - run: pnpm prettier . --check
+      - run: pnpm typecheck

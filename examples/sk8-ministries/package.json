@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "rm -rf dist && astro check && astro build",
     "preview": "astro preview",
+    "typecheck": "rm -rf dist && astro check",
     "astro": "astro"
   },
   "dependencies": {
