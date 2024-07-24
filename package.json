@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter=sk8* dev",
-    "build": "pnpm --filter=sk8* build",
+    "build": "rm -rf examples/sk8-ministries/dist && astro check && pnpm --filter=sk8* build",
     "admin": "cd examples/sk8-ministries && pnpx decap-server",
     "preview": "pnpm --filter=sk8* preview",
     "format": "prettier . --write --cache",
