@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.0.12
+
+### Patch Changes
+
+- [#50](https://github.com/LightNetDev/lightnet-library/pull/50) [`1c74e36`](https://github.com/LightNetDev/lightnet-library/commit/1c74e36f94e0abeac86ad5078d4c86e13ff76342) Thanks [@si-fab](https://github.com/si-fab)! - Revert back to use decap-cms as dependency.
+
 ## 2.0.11
 
 ### Patch Changes
