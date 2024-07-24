@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.3.3
+
+### Patch Changes
+
+- [#44](https://github.com/LightNetDev/lightnet-library/pull/44) [`c76d792`](https://github.com/LightNetDev/lightnet-library/commit/c76d79257efa98e4eaf78ef7aa4e49d4d31b586d) Thanks [@si-fab](https://github.com/si-fab)! - Fix more results button styling.
+
+- [#46](https://github.com/LightNetDev/lightnet-library/pull/46) [`e94dfc9`](https://github.com/LightNetDev/lightnet-library/commit/e94dfc9cbc97b20dbdf9eac25d56e6dec1c97c37) Thanks [@si-fab](https://github.com/si-fab)! - Fix share button margin was using old `class` prop.
+
 ## 2.3.2
 
 ### Patch Changes
