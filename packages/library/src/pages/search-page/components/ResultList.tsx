@@ -99,9 +99,9 @@ export default function ({
       </ol>
       {items.length > maxItems && (
         <div className="mt-8 flex flex-col px-4 md:px-8">
-          <div className="divider">
+          <div className="dy-divider">
             <button
-              className="btn"
+              className="dy-btn"
               onClick={() => setMaxItems(maxItems + PAGE_SIZE)}
             >
               {t("ln.search.more-results")}
