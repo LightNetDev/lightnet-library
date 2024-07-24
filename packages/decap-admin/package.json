@@ -6,9 +6,6 @@
   "keywords": [
     "astro-integration"
   ],
-  "scripts": {
-    "typecheck": "astro check ."
-  },
   "exports": {
     ".": "./src/astro-integration/integration.ts",
     "./Admin.astro": "./src/Admin.astro",
