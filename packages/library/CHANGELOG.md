@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.4.0
+
+### Minor Changes
+
+- [#53](https://github.com/LightNetDev/lightnet-library/pull/53) [`b33cb3f`](https://github.com/LightNetDev/lightnet-library/commit/b33cb3f01aee824b45a7ca362d414dd2b8731073) Thanks [@si-fab](https://github.com/si-fab)! - Add `document` details page.
+
 ## 2.3.3
 
 ### Patch Changes

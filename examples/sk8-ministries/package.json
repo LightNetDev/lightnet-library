@@ -17,7 +17,7 @@
     "react-dom": "^18.3.1",
     "@astrojs/tailwind": "^5.1.0",
     "@lightnet/decap-admin": "^2.0.10",
-    "@lightnet/library": "^2.3.0",
+    "@lightnet/library": "^2.4.0",
     "astro": "^4.12.2",
     "sharp": "^0.33.4",
     "tailwindcss": "^3.4.6",
