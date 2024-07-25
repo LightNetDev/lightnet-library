@@ -8,7 +8,7 @@ import DocumentActions from "./components/DocumentActions.astro"
 import type { Props as DetailsProps } from "./details-props"
 
 export type Props = DetailsProps & {
-  showBookFold: boolean
+  showBookFold?: boolean
 }
 
 const { mediaItem, showBookFold } = Astro.props

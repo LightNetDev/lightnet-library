@@ -16,7 +16,7 @@ export const CATEGORIES = [
 
 export type Category = (typeof CATEGORIES)[number]
 
-export const DETAILS_PAGES = ["book", "video"] as const
+export const DETAILS_PAGES = ["book", "document", "video"] as const
 
 export type MediaItem = z.infer<typeof mediaItemSchema>
 export type MediaItemEntry = {
