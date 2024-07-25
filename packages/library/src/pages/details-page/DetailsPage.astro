@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro"
 import { z } from "astro/zod"
 import config from "virtual:lightnet/config"
 
+import { DETAILS_PAGES } from "../../content/content-schema"
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
@@ -26,7 +27,7 @@ const {
 } = await getMediaType(mediaItem.type)
 
 verifySchema(
-  z.enum(["book", "video"]),
+  z.enum(DETAILS_PAGES),
   detailsPage,
   "Received unknown details page",
 )
@@ -34,5 +35,6 @@ verifySchema(
 
 <Page title={mediaItem.title} description={mediaItem.description}>
   {detailsPage === "book" && <DocumentDetails showBookFold {...props} />}
+  {detailsPage === "document" && <DocumentDetails {...props} />}
   {detailsPage === "video" && <VideoDetails {...props} />}
 </Page>
