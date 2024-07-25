@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.4.1
+
+### Patch Changes
+
+- [#55](https://github.com/LightNetDev/lightnet-library/pull/55) [`61b158b`](https://github.com/LightNetDev/lightnet-library/commit/61b158ba4e3ceccb955f838e1adededfd889cbb0) Thanks [@si-fab](https://github.com/si-fab)! - Improve header title style.
+
 ## 2.4.0
 
 ### Minor Changes
