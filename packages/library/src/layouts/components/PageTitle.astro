@@ -4,6 +4,8 @@ import config from "virtual:lightnet/config"
 import logo from "virtual:lightnet/logo"
 
 import { localizePath } from "../../utils/paths"
+
+const width = Math.floor(28 * Math.max(1, logo.width / logo.height))
 ---
 
 <a
@@ -12,13 +14,13 @@ import { localizePath } from "../../utils/paths"
 >
   {
     logo.format === "svg" ? (
-      <img src={logo.src} class="w-8" />
+      <img src={logo.src} alt={config.logo.alt} style={`width:${width}px;`} />
     ) : (
       <Image
         src={logo}
         alt={config.logo.alt}
-        class="w-8"
-        width={32}
+        style={`width:${width}px;`}
+        width={width}
         densities={[1.5, 2, 3]}
         loading="eager"
       />
