@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content"
 export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
 
 import {
@@ -9,20 +10,24 @@ import {
   Section,
 } from "@lightnet/library/components"
 import { useTranslate } from "@lightnet/library/i18n"
-import { getCollection } from "astro:content"
+// import { fetchData } from '../fetch-media'
+import { TranslationKeys } from '../../i18next'
 
 import eventImage from "../../assets/event.webp"
 import heroImage from "../../assets/hero.webp"
 
+// const data = fetchData();
+// const { latestBooks, tutorials } = data;
+
 const latestBooks = await getCollection(
   "media",
   (media) => media.data.type === "book",
-)
+);
+
 const tutorials = await getCollection(
   "media",
   (media) => media.data.type === "video",
-)
-
+);
 const t = useTranslate(Astro.currentLocale)
 ---
 
