@@ -6,21 +6,31 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "ts-node scripts/generate-types.ts",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@astrojs/check": "^0.8.2",
     "@astrojs/react": "^3.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "@astrojs/tailwind": "^5.1.0",
     "@lightnet/decap-admin": "^2.0.10",
     "@lightnet/library": "^2.4.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "astro": "^4.12.2",
+    "i18next": "^23.12.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.1",
     "sharp": "^0.33.4",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
   }
 }
