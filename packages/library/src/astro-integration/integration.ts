@@ -50,7 +50,7 @@ export function lightnetLibrary(
               ? locales
               : [defaultLocale, ...locales],
             routing: {
-              redirectToDefaultLocale: true,
+              redirectToDefaultLocale: false,
               prefixDefaultLocale: true,
               fallbackType: "rewrite",
             },

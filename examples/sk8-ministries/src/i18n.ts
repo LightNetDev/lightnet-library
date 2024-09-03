@@ -1,6 +1,8 @@
 import type { Languages } from "@lightnet/library"
 
-export default {
+export const defaultLocale = "en"
+
+export const languages = {
   de: {
     label: "Deutsch",
   },

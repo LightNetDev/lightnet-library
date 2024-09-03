@@ -36,7 +36,7 @@
     "@types/react": "^18.3.5",
     "daisyui": "^4.12.10",
     "fuse.js": "^7.0.0",
-    "marked": "^13.0.3",
+    "marked": "^14.1.0",
     "zod-validation-error": "^3.3.1"
   }
 }
