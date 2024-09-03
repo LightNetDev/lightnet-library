@@ -18,7 +18,7 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "decap-cms": "^3.1.11",
-    "yaml": "^2.4.5"
+    "decap-cms": "^3.3.3",
+    "yaml": "^2.5.0"
   }
 }

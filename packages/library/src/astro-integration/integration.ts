@@ -49,6 +49,11 @@ export function lightnetLibrary(
             locales: locales.includes(defaultLocale)
               ? locales
               : [defaultLocale, ...locales],
+            routing: {
+              redirectToDefaultLocale: false,
+              prefixDefaultLocale: false,
+              fallbackType: "rewrite",
+            },
           },
         })
       },
