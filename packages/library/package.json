@@ -2,7 +2,7 @@
   "name": "@lightnet/library",
   "type": "module",
   "license": "MIT",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "keywords": [
     "astro-integration"
   ],

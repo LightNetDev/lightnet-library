@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.4.2
+
+### Patch Changes
+
+- [#68](https://github.com/LightNetDev/lightnet-library/pull/68) [`2792858`](https://github.com/LightNetDev/lightnet-library/commit/2792858d4bb3bc6589f563c86ff6d35ce19a48e7) Thanks [@si-fab](https://github.com/si-fab)! - Updates external dependencies.
+
 ## 2.4.1
 
 ### Patch Changes
