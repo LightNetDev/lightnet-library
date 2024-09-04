@@ -1,5 +1,5 @@
-import type { APIRoute } from "astro";
 import { getImage } from "astro:assets";
+import type { APIRoute } from "astro";
 
 import { getMediaItems } from "../../content/get-media-items";
 import type { SearchItem } from "./search-response";

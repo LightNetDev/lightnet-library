@@ -1,11 +1,11 @@
 import { useRef } from "react";
 
-export function useDebounce(
-  callback: (...args: any[]) => unknown,
+export function useDebounce<T>(
+  callback: (...args: T[]) => unknown,
   time: number,
 ) {
   const timeout = useRef<number>();
-  return (...args: any[]) => {
+  return (...args: T[]) => {
     if (timeout.current) {
       window.clearTimeout(timeout.current);
     }

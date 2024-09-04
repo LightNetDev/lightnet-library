@@ -1,5 +1,5 @@
-import { z } from "astro/zod";
 import config from "virtual:lightnet/config";
+import { z } from "astro/zod";
 
 import { verifySchema } from "../utils/verify-schema";
 import bundledLanguages from "./bundled-languages.json";

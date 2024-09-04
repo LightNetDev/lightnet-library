@@ -101,6 +101,7 @@ export default function ({
         <div className="mt-8 flex flex-col px-4 md:px-8">
           <div className="dy-divider">
             <button
+              type="button"
               className="dy-btn"
               onClick={() => setMaxItems(maxItems + PAGE_SIZE)}
             >

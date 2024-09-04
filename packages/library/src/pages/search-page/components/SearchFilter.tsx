@@ -35,10 +35,11 @@ export default function ({
 
   const t = useProvidedTranslations(translations);
 
-  const debouncedSetSearch = useDebounce((value) => {
+  const debouncedSetSearch = useDebounce((value: string) => {
     setSearch(value);
   }, 300);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: should only run once
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
 
@@ -55,6 +56,7 @@ export default function ({
     updateQuery({ search, language, type, category });
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: no need to check updateQuery
   useEffect(() => {
     // update search params
     const url = new URL(window.location.href);

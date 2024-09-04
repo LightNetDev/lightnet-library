@@ -1,7 +1,7 @@
+import userConfig from "virtual:lightnet/decapAdminUserConfig";
 import { CATEGORIES, DETAILS_PAGES } from "@lightnet/library/content";
 import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n";
 import type { APIRoute } from "astro";
-import userConfig from "virtual:lightnet/decapAdminUserConfig";
 import YAML from "yaml";
 
 export const GET: APIRoute = () => {
@@ -12,13 +12,12 @@ const toSnakeCase = (object?: Record<string, unknown>) => {
   if (!object) {
     return object;
   }
-  return Object.entries(object).reduce(
-    (result, [key, value]) => ({
-      ...result,
-      [key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)]: value,
-    }),
-    {},
-  );
+  const result: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(object)) {
+    result[key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)] =
+      value;
+  }
+  return result;
 };
 
 const local_backend = import.meta.env.MODE !== "production";

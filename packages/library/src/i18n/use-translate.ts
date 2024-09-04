@@ -1,5 +1,5 @@
-import { AstroError } from "astro/errors";
 import config from "virtual:lightnet/config";
+import { AstroError } from "astro/errors";
 
 import de from "./translations/de.json";
 import en from "./translations/en.json";

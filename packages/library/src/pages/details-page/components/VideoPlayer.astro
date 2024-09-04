@@ -1,6 +1,6 @@
 ---
-import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   url: string;
@@ -23,9 +23,8 @@ async function parseUrl(urlToParse: string): Promise<{
   if (url.hostname === "www.youtube.com") {
     if (url.pathname.startsWith("/embed/")) {
       return { host: "youtube", id: url.pathname.slice(7) };
-    } else {
-      return { host: "youtube", id: url.searchParams.get("v") };
     }
+    return { host: "youtube", id: url.searchParams.get("v") };
   }
   // https://youtu.be/ABC123abc
   if (url.hostname === "youtu.be") {

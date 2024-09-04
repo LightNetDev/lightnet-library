@@ -5,8 +5,17 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "biomejs.biome",
-  "[astro]": {
+  "editor.tabSize": 2,
+  "[typescript]": {
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "editor.tabSize": 2
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[astro]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }

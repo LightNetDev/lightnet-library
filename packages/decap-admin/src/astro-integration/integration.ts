@@ -96,11 +96,11 @@ function vitePluginDecapAdminConfig(
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   return {
     name: "vite-plugin-lightnet-decap-admin-config",
-    resolveId(id): string | void {
+    resolveId(id): string | undefined {
       const module = VIRTUAL_MODULES.find((m) => m === id);
       if (module) return `\0${module}`;
     },
-    load(id): string | void {
+    load(id): string | undefined {
       const module = VIRTUAL_MODULES.find((m) => id === `\0${m}`);
       switch (module) {
         case CONFIG:

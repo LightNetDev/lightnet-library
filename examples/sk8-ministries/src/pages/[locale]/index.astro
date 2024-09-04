@@ -1,6 +1,7 @@
 ---
 export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n";
 
+import { getCollection } from "astro:content";
 import {
   Gallery,
   Hero,
@@ -9,7 +10,6 @@ import {
   Section,
 } from "@lightnet/library/components";
 import { useTranslate } from "@lightnet/library/i18n";
-import { getCollection } from "astro:content";
 
 import eventImage from "../../assets/event.webp";
 import heroImage from "../../assets/hero.webp";

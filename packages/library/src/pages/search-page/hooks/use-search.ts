@@ -23,7 +23,7 @@ export function useSearch() {
           throw new Error("Network response was not ok");
         }
         const { items }: SearchResponse = await response.json();
-        (fuse.current = new Fuse(items, {
+        fuse.current = new Fuse(items, {
           keys: [
             { name: "title", weight: 3 },
             "language",
@@ -35,8 +35,8 @@ export function useSearch() {
           ],
           useExtendedSearch: true,
           ignoreLocation: true,
-        })),
-          setAllItems(items);
+        });
+        setAllItems(items);
       } catch (error) {
         console.error(error);
       }
@@ -49,9 +49,9 @@ export function useSearch() {
   const fuseQuery = [];
   // order is relevant! query will stop evaluation
   // when condition is not met.
-  language && fuseQuery.push({ language: "=" + language });
-  type && fuseQuery.push({ type: "=" + type });
-  category && fuseQuery.push({ categories: "=" + category });
+  language && fuseQuery.push({ language: `=${language}` });
+  type && fuseQuery.push({ type: `=${type}` });
+  category && fuseQuery.push({ categories: `=${category}` });
   search &&
     fuseQuery.push({
       $or: [

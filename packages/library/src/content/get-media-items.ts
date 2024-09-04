@@ -1,5 +1,5 @@
-import { AstroError } from "astro/errors";
 import { getCollection, getEntry } from "astro:content";
+import { AstroError } from "astro/errors";
 
 import { verifySchema } from "../utils/verify-schema";
 import { mediaItemEntrySchema } from "./content-schema";
@@ -19,6 +19,7 @@ export const getMediaItems = async (query?: MediaQuery) => {
   return Promise.all(items.map(prepareItem));
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: We want to be able to access item.id. Object will be checked.
 const prepareItem = async (item: any) => {
   const verified = verifySchema(
     mediaItemEntrySchema,

@@ -12,27 +12,19 @@ import { provideTranslations } from "./utils/search-translations";
 
 export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths";
 
-const media = await getMediaItems();
 const t = useTranslate(Astro.currentLocale);
 
-const contentLanguages: Record<string, string> = media
+const contentLanguages: Record<string, string> = {};
+for (const language of (await getMediaItems())
   .map((item) => item.data.language)
-  .sort((a, b) => a.localeCompare(b))
-  .reduce(
-    (prev, language) => ({
-      ...prev,
-      [language]: resolveLanguageLabel(language),
-    }),
-    {},
-  );
+  .sort((a, b) => a.localeCompare(b))) {
+  contentLanguages[language] = resolveLanguageLabel(language);
+}
 
-const categories: Record<string, string> = (await getCategories()).reduce(
-  (prev, { id, label }) => ({
-    ...prev,
-    [id]: label,
-  }),
-  {},
-);
+const categories: Record<string, string> = {};
+for (const { id, label } of await getCategories()) {
+  categories[id] = label;
+}
 
 const mediaTypes = (await getMediaTypes())
   .map((type) => ({

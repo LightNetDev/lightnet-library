@@ -27,7 +27,7 @@ export function searchPagePath(
   filter?.category && searchParams.append("category", filter.category);
   return localizePath(
     language,
-    `/media${searchParams.size ? "?" + searchParams.toString() : ""}`,
+    `/media${searchParams.size ? `?${searchParams.toString()}` : ""}`,
   );
 }
 

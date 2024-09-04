@@ -1,5 +1,5 @@
-import { access, mkdir, readdir } from "fs/promises";
-import { join } from "path";
+import { access, mkdir, readdir } from "node:fs/promises";
+import { join } from "node:path";
 import sharp from "sharp";
 
 import type { DecapAdminUserConfig } from "./integration";
@@ -37,7 +37,7 @@ async function exportAdminImages(
 
   const files = await readdir(imageDir);
   if (!files) {
-    return console.error(`Unable to scan directory`);
+    return console.error("Unable to scan directory");
   }
   await Promise.allSettled(
     files.map((file) => {

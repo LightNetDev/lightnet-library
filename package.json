@@ -12,6 +12,7 @@
     "preview": "pnpm --filter=sk8* preview",
     "format": "biome format --write",
     "lint": "biome lint",
+    "check": "biome check",
     "version": "pnpm changeset version && pnpm i --no-frozen-lockfile"
   },
   "repository": {

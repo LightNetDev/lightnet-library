@@ -8,7 +8,7 @@ import type {
 } from "astro";
 
 import { verifySchema } from "../utils/verify-schema";
-import { configSchema, type LightnetConfig } from "./config";
+import { type LightnetConfig, configSchema } from "./config";
 
 const CONFIG = "virtual:lightnet/config";
 const LOGO = "virtual:lightnet/logo";
@@ -16,21 +16,21 @@ const LOGO = "virtual:lightnet/logo";
 const VIRTUAL_MODULES = [CONFIG, LOGO] as const;
 
 export function vitePluginLightnetConfig(
-  config: LightnetConfig,
+  lightnetConfig: LightnetConfig,
   { root }: AstroConfig,
   logger: AstroIntegrationLogger,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   const resolvePath = (id: string) =>
     JSON.stringify(id.startsWith(".") ? resolve(fileURLToPath(root), id) : id);
 
-  config = verifySchema(
+  const config = verifySchema(
     configSchema,
-    config,
+    lightnetConfig,
     "Invalid config passed to LightNet Library integration.",
   );
   return {
     name: "vite-plugin-lightnet-config",
-    resolveId(id): string | void {
+    resolveId(id): string | undefined {
       const module = VIRTUAL_MODULES.find((m) => m === id);
       if (module) return `\0${module}`;
     },
@@ -41,7 +41,7 @@ export function vitePluginLightnetConfig(
         server.restart();
       }
     },
-    load(id): string | void {
+    load(id): string | undefined {
       const module = VIRTUAL_MODULES.find((m) => id === `\0${m}`);
       switch (module) {
         case CONFIG:

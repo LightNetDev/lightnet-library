@@ -1,8 +1,8 @@
 ---
 import { extname } from "node:path";
 
-import { AstroError } from "astro/errors";
 import config from "virtual:lightnet/config";
+import { AstroError } from "astro/errors";
 
 const faviconTypes = {
   ".ico": "image/x-icon",
@@ -17,7 +17,7 @@ const favicons = config.favicon?.map((favicon) => {
   const type = faviconTypes[extname(favicon.href)];
   if (!type) {
     throw new AstroError(
-      "Unsupported favicon " + favicon.href,
+      `Unsupported favicon ${favicon.href}`,
       "favicon must be a .ico, .gif, .jpg, .png, or .svg file",
     );
   }
