@@ -1,13 +1,13 @@
 ---
-import { resolveLanguageLabel } from "../../../i18n/resolve-language"
-import { useTranslate } from "../../../i18n/use-translate"
-import Label from "./Label.astro"
+import { resolveLanguageLabel } from "../../../i18n/resolve-language";
+import { useTranslate } from "../../../i18n/use-translate";
+import Label from "./Label.astro";
 
 interface Props {
-  language: string
+  language: string;
 }
 
-const t = useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale);
 ---
 
 <Label>{t("ln.common.language")}</Label>

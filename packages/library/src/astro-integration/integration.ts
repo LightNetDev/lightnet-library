@@ -1,9 +1,9 @@
-import react from "@astrojs/react"
-import tailwind from "@astrojs/tailwind"
-import type { AstroIntegration } from "astro"
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
+import type { AstroIntegration } from "astro";
 
-import type { LightnetConfig } from "./config"
-import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
+import type { LightnetConfig } from "./config";
+import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config";
 
 export function lightnetLibrary(
   lightnetConfig: LightnetConfig,
@@ -16,29 +16,29 @@ export function lightnetLibrary(
           pattern: "404",
           entrypoint: "@lightnet/library/pages/404.astro",
           prerender: true,
-        })
+        });
 
         injectRoute({
           pattern: "/[locale]/media",
           entrypoint: "@lightnet/library/pages/SearchPage.astro",
           prerender: true,
-        })
+        });
 
         injectRoute({
           pattern: "/api/search.json",
           entrypoint: "@lightnet/library/pages/api/search.ts",
           prerender: true,
-        })
+        });
 
         injectRoute({
           pattern: "/[locale]/media/[slug]",
           entrypoint: "@lightnet/library/pages/DetailsPage.astro",
           prerender: true,
-        })
+        });
 
-        config.integrations.push(tailwind(), react())
+        config.integrations.push(tailwind(), react());
 
-        const { defaultLocale, locales } = lightnetConfig
+        const { defaultLocale, locales } = lightnetConfig;
         updateConfig({
           vite: {
             plugins: [vitePluginLightnetConfig(lightnetConfig, config, logger)],
@@ -55,8 +55,8 @@ export function lightnetLibrary(
               fallbackType: "rewrite",
             },
           },
-        })
+        });
       },
     },
-  }
+  };
 }

@@ -1,21 +1,21 @@
 ---
-import { getMediaItems } from "../../../content/get-media-items"
-import { resolveLanguageLabel } from "../../../i18n/resolve-language"
-import { useTranslate } from "../../../i18n/use-translate"
-import { detailsPagePath } from "../../../utils/paths"
-import Label from "./Label.astro"
+import { getMediaItems } from "../../../content/get-media-items";
+import { resolveLanguageLabel } from "../../../i18n/resolve-language";
+import { useTranslate } from "../../../i18n/use-translate";
+import { detailsPagePath } from "../../../utils/paths";
+import Label from "./Label.astro";
 
 interface Props {
-  commonId: string
-  slug: string
+  commonId: string;
+  slug: string;
 }
 
-const { slug, commonId } = Astro.props
+const { slug, commonId } = Astro.props;
 const translations = (await getMediaItems())
   .filter((entry) => entry.data.commonId === commonId && entry.id !== slug)
-  .sort((a, b) => a.data.language.localeCompare(b.data.language))
+  .sort((a, b) => a.data.language.localeCompare(b.data.language));
 
-const t = useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale);
 ---
 
 {

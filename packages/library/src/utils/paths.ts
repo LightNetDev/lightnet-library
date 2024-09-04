@@ -9,7 +9,7 @@ export function detailsPagePath(
   locale: string | undefined,
   { id }: { id: string },
 ) {
-  return localizePath(locale, `/media/${id}`)
+  return localizePath(locale, `/media/${id}`);
 }
 
 /**
@@ -23,12 +23,12 @@ export function searchPagePath(
   language: string | undefined,
   filter?: { category: string },
 ) {
-  const searchParams = new URLSearchParams()
-  filter?.category && searchParams.append("category", filter.category)
+  const searchParams = new URLSearchParams();
+  filter?.category && searchParams.append("category", filter.category);
   return localizePath(
     language,
     `/media${searchParams.size ? "?" + searchParams.toString() : ""}`,
-  )
+  );
 }
 
 /**
@@ -39,5 +39,5 @@ export function searchPagePath(
  * @returns resolved path. Eg. '/en/about' for input "en" and "/about"
  */
 export function localizePath(locale: string | undefined, path: string) {
-  return `${locale ? `/${locale}` : ""}/${path.replace(/^\//, "")}`
+  return `${locale ? `/${locale}` : ""}/${path.replace(/^\//, "")}`;
 }

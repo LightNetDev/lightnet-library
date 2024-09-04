@@ -1,14 +1,14 @@
 ---
-import type { Props } from "../details-props"
-import Categories from "./Categories.astro"
-import Language from "./Language.astro"
-import ShareButton from "./ShareButton.astro"
-import Translations from "./Translations.astro"
+import type { Props } from "../details-props";
+import Categories from "./Categories.astro";
+import Language from "./Language.astro";
+import ShareButton from "./ShareButton.astro";
+import Translations from "./Translations.astro";
 
 const {
   slug,
   mediaItem: { title, authors, commonId, language, categories },
-} = Astro.props
+} = Astro.props;
 ---
 
 <div class="mt-8 flex justify-between gap-4 sm:mt-0">

@@ -6,5 +6,5 @@
  * @returns icon
  */
 export default function ({ className }: { className?: string }) {
-  return <span className={`iconify text-2xl ${className ?? ""}`} />
+  return <span className={`iconify text-2xl ${className ?? ""}`} />;
 }
