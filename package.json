@@ -10,8 +10,8 @@
     "admin": "cd examples/sk8-ministries && pnpx decap-server",
     "typecheck": "pnpm --filter='@example/*' astro sync && astro check",
     "preview": "pnpm --filter=sk8* preview",
-    "format": "prettier . --write --cache",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "format": "biome format --write",
+    "lint": "biome lint",
     "version": "pnpm changeset version && pnpm i --no-frozen-lockfile"
   },
   "repository": {
@@ -24,19 +24,10 @@
   "homepage": "https://github.com/LightNetDev/lightnet-library#readme",
   "devDependencies": {
     "@astrojs/check": "^0.9.3",
+    "@biomejs/biome": "1.8.3",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.7",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
     "astro": "^4.15.2",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.3",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-unused-imports": "^3.2.0",
-    "prettier": "^3.3.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.6",
     "typescript": "^5.5.4"
   }
 }
