@@ -4,10 +4,7 @@
   "type": "book",
   "dateCreated": "2024-04-21",
   "authors": ["Sk8 Ministries"],
-  "content": [
-    { "url": "/files/example.pdf" },
-    { "url": "https://en.wikipedia.org/wiki/Ollie_(skateboarding)" }
-  ],
+  "content": [{ "url": "https://en.wikipedia.org/wiki/Ollie_(skateboarding)" }],
   "image": "./_images/ollie-with-integrity--en.webp",
   "language": "en",
   "categories": ["christian-living"],
