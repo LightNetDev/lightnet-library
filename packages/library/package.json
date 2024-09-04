@@ -2,8 +2,10 @@
   "name": "@lightnet/library",
   "type": "module",
   "license": "MIT",
-  "version": "2.4.3",
-  "keywords": ["astro-integration"],
+  "version": "2.4.4",
+  "keywords": [
+    "astro-integration"
+  ],
   "exports": {
     ".": "./exports/index.ts",
     "./content": "./exports/content.ts",

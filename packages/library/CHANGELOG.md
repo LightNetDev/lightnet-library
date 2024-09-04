@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.4.4
+
+### Patch Changes
+
+- [#73](https://github.com/LightNetDev/lightnet-library/pull/73) [`2576496`](https://github.com/LightNetDev/lightnet-library/commit/25764969ba354dd4a57ed96cba61b5395b775d45) Thanks [@si-fab](https://github.com/si-fab)! - Fixes categories filter not beeing translated on search page.
+
 ## 2.4.3
 
 ### Patch Changes
