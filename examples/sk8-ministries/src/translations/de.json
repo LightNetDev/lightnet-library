@@ -1,12 +1,12 @@
 {
   "navigation.about-lightnet": "LightNet",
   "navigation.about": "Über uns",
-  "navigation.admin": "Admin",
   "ministry.name": "Sk8 Ministries",
   "ministry.slogan": "Glaube leben, Gemeinschaft bauen",
   "home.our-latest-books": "Unsere neuesten Bücher",
   "home.bbq.title": "Skate, BBQ & Glaube",
   "home.bbq.text": "Komm zu unserem nächsten Community-Treffen! Genieße ein BBQ, Skaten mit Freunden und führe tiefgehende Gespräche über Jesus. Verpasse nicht diese Gelegenheit, gemeinsam zu connecten, zu skaten und im Glauben zu wachsen. Alle Erfahrungsstufen sind willkommen!",
   "home.bbq.sign-up-now": "Jetzt anmelden",
-  "home.learn-skateboarding": "Skateboarden lernen"
+  "home.learn-skateboarding": "Skateboarden lernen",
+  "ln.category.theology": "Theologie"
 }

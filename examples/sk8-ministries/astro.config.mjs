@@ -33,11 +33,6 @@ export default defineConfig({
           isExternal: true,
           label: "navigation.about-lightnet",
         },
-        {
-          href: "/admin",
-          label: "navigation.admin",
-          requiresLocale: false,
-        },
       ],
     }),
     lightnetDecapAdmin({ languages, defaultLocale }),
