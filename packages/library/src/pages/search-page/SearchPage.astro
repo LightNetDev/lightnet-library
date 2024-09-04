@@ -22,7 +22,7 @@ for (const language of (await getMediaItems())
 }
 
 const categories: Record<string, string> = {};
-for (const { id, label } of await getCategories()) {
+for (const { id, label } of await getCategories(Astro.currentLocale)) {
   categories[id] = label;
 }
 
