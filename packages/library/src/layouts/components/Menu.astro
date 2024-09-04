@@ -1,15 +1,15 @@
 ---
-import Icon from "../../components/Icon"
-import { useTranslate } from "../../i18n/use-translate"
+import Icon from "../../components/Icon";
+import { useTranslate } from "../../i18n/use-translate";
 
 interface Props {
-  icon: string
-  label: string
+  icon: string;
+  label: string;
 }
 
-const { icon, label } = Astro.props
+const { icon, label } = Astro.props;
 
-const t = useTranslate(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale);
 ---
 
 <div class="dy-dropdown dy-dropdown-end">

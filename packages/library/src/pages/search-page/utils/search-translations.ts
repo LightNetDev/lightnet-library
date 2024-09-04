@@ -9,14 +9,14 @@ const translationKeys = [
   "ln.common.category",
   "ln.search.all-categories",
   "ln.search.more-results",
-] as const
+] as const;
 
-export type TranslationKey = (typeof translationKeys)[number]
+export type TranslationKey = (typeof translationKeys)[number];
 
-export type Translations = Record<TranslationKey, string>
+export type Translations = Record<TranslationKey, string>;
 
 export const provideTranslations = (translate: (key: string) => string) => {
   return Object.fromEntries(
     translationKeys.map((key) => [key, translate(key)]),
-  ) as Translations
-}
+  ) as Translations;
+};

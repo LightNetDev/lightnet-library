@@ -1,19 +1,19 @@
 ---
-import type { ImageMetadata } from "astro"
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
-import Icon from "./Icon"
+import Icon from "./Icon";
 
 interface Props {
-  image: ImageMetadata
-  id?: string
-  title?: string
-  text?: string
-  link?: { href: string; label: string }
-  className?: string
+  image: ImageMetadata;
+  id?: string;
+  title?: string;
+  text?: string;
+  link?: { href: string; label: string };
+  className?: string;
 }
 
-const { image, id, title, text, link, className } = Astro.props
+const { image, id, title, text, link, className } = Astro.props;
 ---
 
 <section

@@ -1,36 +1,36 @@
 ---
-import type { GetStaticPaths } from "astro"
-import { z } from "astro/zod"
-import config from "virtual:lightnet/config"
+import config from "virtual:lightnet/config";
+import type { GetStaticPaths } from "astro";
+import { z } from "astro/zod";
 
-import { DETAILS_PAGES } from "../../content/content-schema"
-import { getMediaItem, getMediaItems } from "../../content/get-media-items"
-import { getMediaType } from "../../content/get-media-types"
-import Page from "../../layouts/Page.astro"
-import { verifySchema } from "../../utils/verify-schema"
-import DocumentDetails from "./DocumentDetails.astro"
-import VideoDetails from "./VideoDetails.astro"
+import { DETAILS_PAGES } from "../../content/content-schema";
+import { getMediaItem, getMediaItems } from "../../content/get-media-items";
+import { getMediaType } from "../../content/get-media-types";
+import Page from "../../layouts/Page.astro";
+import { verifySchema } from "../../utils/verify-schema";
+import DocumentDetails from "./DocumentDetails.astro";
+import VideoDetails from "./VideoDetails.astro";
 
 export const getStaticPaths = (async () => {
-  const mediaItems = await getMediaItems()
+  const mediaItems = await getMediaItems();
   return config.locales.flatMap((locale) =>
     mediaItems.map(({ id: slug }) => ({ params: { slug, locale } })),
-  )
-}) satisfies GetStaticPaths
+  );
+}) satisfies GetStaticPaths;
 
-const { slug, locale } = Astro.params
-const mediaItem = (await getMediaItem(Astro.params.slug)).data
-const props = { mediaItem, slug, locale }
+const { slug, locale } = Astro.params;
+const mediaItem = (await getMediaItem(Astro.params.slug)).data;
+const props = { mediaItem, slug, locale };
 
 const {
   data: { detailsPage },
-} = await getMediaType(mediaItem.type)
+} = await getMediaType(mediaItem.type);
 
 verifySchema(
   z.enum(DETAILS_PAGES),
   detailsPage,
   "Received unknown details page",
-)
+);
 ---
 
 <Page title={mediaItem.title} description={mediaItem.description}>

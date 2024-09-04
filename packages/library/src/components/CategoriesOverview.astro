@@ -1,17 +1,17 @@
 ---
-import { getCategories } from "../content/get-categories"
-import { useTranslate } from "../i18n/use-translate"
-import { searchPagePath } from "../utils/paths"
-import Section from "./Section.astro"
+import { getCategories } from "../content/get-categories";
+import { useTranslate } from "../i18n/use-translate";
+import { searchPagePath } from "../utils/paths";
+import Section from "./Section.astro";
 
 interface Props {
-  title?: string
+  title?: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 
-const t = useTranslate(Astro.currentLocale)
-const categories = await getCategories(Astro.currentLocale)
+const t = useTranslate(Astro.currentLocale);
+const categories = await getCategories(Astro.currentLocale);
 ---
 
 {
