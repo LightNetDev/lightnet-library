@@ -32,7 +32,7 @@ export default defineConfig({
           href: "https://www.om.org/eng/mediaworks/lightnet",
           isExternal: true,
           label: "navigation.about-lightnet",
-        }
+        },
       ],
     }),
     lightnetDecapAdmin({ languages, defaultLocale }),
