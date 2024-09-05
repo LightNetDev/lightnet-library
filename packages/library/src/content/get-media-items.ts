@@ -1,13 +1,12 @@
-import { getCollection, getEntry } from "astro:content";
 import { AstroError } from "astro/errors";
+import { getCollection, getEntry } from "astro:content";
 
 import { verifySchema } from "../utils/verify-schema";
 import { mediaItemEntrySchema } from "./content-schema";
+import { getMediaTypes } from "./get-media-types";
 import { type MediaQuery, mediaQuery } from "./media-query";
 
-const mediaTypes: string[] = (await getCollection("media-types")).map(
-  ({ id }) => id,
-);
+const mediaTypes: string[] = (await getMediaTypes()).map(({ id }) => id);
 
 export const getMediaItem = async (id: string) => {
   const item = await getEntry("media", id);
@@ -15,22 +14,24 @@ export const getMediaItem = async (id: string) => {
 };
 
 export const getMediaItems = async (query?: MediaQuery) => {
-  const items = await getCollection("media", query && mediaQuery(query));
+  const items: unknown[] = await getCollection(
+    "media",
+    query && mediaQuery(query),
+  );
   return Promise.all(items.map(prepareItem));
 };
 
-// biome-ignore lint/suspicious/noExplicitAny: We want to be able to access item.id. Object will be checked.
-const prepareItem = async (item: any) => {
+const prepareItem = async (item: unknown) => {
   const verified = verifySchema(
     mediaItemEntrySchema,
     item,
-    `Invalid media item: ${item.id}`,
+    (id) => `Invalid media item: ${id}`,
   );
   // We cannot use astro's reference validator for type. This would break type generation.
   // So we validate the type manually.
   if (!mediaTypes.includes(verified.data.type)) {
     throw new AstroError(
-      `Media item '${item.id}' references a unknown media type '${verified.data.type}'`,
+      `Media item '${verified.id}' references a unknown media type '${verified.data.type}'`,
     );
   }
   return verified;
