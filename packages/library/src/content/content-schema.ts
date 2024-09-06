@@ -1,5 +1,5 @@
-import type { SchemaContext } from "astro:content"
 import { z } from "astro/zod"
+import type { SchemaContext } from "astro:content"
 
 export const CATEGORIES = [
   "biography",
