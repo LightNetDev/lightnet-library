@@ -1,29 +1,29 @@
 ---
-export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n";
+export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
 
-import { getCollection } from "astro:content";
 import {
   Gallery,
   Hero,
   ImageSection,
   Page,
   Section,
-} from "@lightnet/library/components";
-import { useTranslate } from "@lightnet/library/i18n";
+} from "@lightnet/library/components"
+import { useTranslate } from "@lightnet/library/i18n"
+import { getCollection } from "astro:content"
 
-import eventImage from "../../assets/event.webp";
-import heroImage from "../../assets/hero.webp";
+import eventImage from "../../assets/event.webp"
+import heroImage from "../../assets/hero.webp"
 
 const latestBooks = await getCollection(
   "media",
   (media) => media.data.type === "book",
-);
+)
 const tutorials = await getCollection(
   "media",
   (media) => media.data.type === "video",
-);
+)
 
-const t = useTranslate(Astro.currentLocale);
+const t = useTranslate(Astro.currentLocale)
 ---
 
 <Page>

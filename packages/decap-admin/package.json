@@ -3,7 +3,9 @@
   "type": "module",
   "license": "MIT",
   "version": "2.0.14",
-  "keywords": ["astro-integration"],
+  "keywords": [
+    "astro-integration"
+  ],
   "exports": {
     ".": "./src/astro-integration/integration.ts",
     "./Admin.astro": "./src/Admin.astro",

@@ -1,16 +1,17 @@
-import { access, mkdir, readdir } from "node:fs/promises";
-import { join } from "node:path";
-import sharp from "sharp";
+import { access, mkdir, readdir } from "node:fs/promises"
+import { join } from "node:path"
 
-import type { DecapAdminUserConfig } from "./integration";
+import sharp from "sharp"
+
+import type { DecapAdminUserConfig } from "./integration"
 
 export async function vitePluginExportAdminImages(
   {
     srcDir,
     outDir,
   }: {
-    srcDir: URL;
-    outDir: URL;
+    srcDir: URL
+    outDir: URL
   },
   config: DecapAdminUserConfig,
 ) {
@@ -18,7 +19,7 @@ export async function vitePluginExportAdminImages(
     name: "vite-plugin-lightnet-decap-admin-images",
     writeBundle: async () =>
       exportAdminImages(srcDir.pathname, outDir.pathname, config.path),
-  };
+  }
 }
 
 async function exportAdminImages(
@@ -26,18 +27,18 @@ async function exportAdminImages(
   outDir: string,
   adminPath: string,
 ) {
-  const imageDir = join(srcDir, "content", "media", "_images");
-  const outImageDir = join(outDir, adminPath, "_images");
+  const imageDir = join(srcDir, "content", "media", "_images")
+  const outImageDir = join(outDir, adminPath, "_images")
 
   try {
-    await access(outImageDir);
+    await access(outImageDir)
   } catch {
-    await mkdir(outImageDir, { recursive: true });
+    await mkdir(outImageDir, { recursive: true })
   }
 
-  const files = await readdir(imageDir);
+  const files = await readdir(imageDir)
   if (!files) {
-    return console.error("Unable to scan directory");
+    return console.error("Unable to scan directory")
   }
   await Promise.allSettled(
     files.map((file) => {
@@ -46,13 +47,13 @@ async function exportAdminImages(
           file.endsWith(suffix),
         )
       ) {
-        return;
+        return
       }
-      const imagePath = join(imageDir, file);
+      const imagePath = join(imageDir, file)
       return sharp(imagePath)
         .resize(335, 135, { fit: "contain", background: "#fff" })
         .extend({ bottom: 15, background: "#fff" })
-        .toFile(join(outImageDir, file));
+        .toFile(join(outImageDir, file))
     }),
-  );
+  )
 }

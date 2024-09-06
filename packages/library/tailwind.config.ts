@@ -1,16 +1,16 @@
-import { addIconSelectors } from "@iconify/tailwind";
-import typography from "@tailwindcss/typography";
-import daisyui from "daisyui";
-import type { Config } from "tailwindcss";
+import { addIconSelectors } from "@iconify/tailwind"
+import typography from "@tailwindcss/typography"
+import daisyui from "daisyui"
+import type { Config } from "tailwindcss"
 
-const DEFAULT_COLOR_PRIMARY = "#E6B15C";
+const DEFAULT_COLOR_PRIMARY = "#E6B15C"
 
 export function lightnetStyles({
   primaryColor,
 }: {
-  primaryColor?: string;
+  primaryColor?: string
 }): Partial<Config> {
-  const primary = primaryColor ?? DEFAULT_COLOR_PRIMARY;
+  const primary = primaryColor ?? DEFAULT_COLOR_PRIMARY
   return {
     content: [
       "./node_modules/@lightnet/library/src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
@@ -50,7 +50,7 @@ export function lightnetStyles({
       prefix: "dy-",
     },
     plugins: [typography, daisyui, addIconSelectors(["mdi"])],
-  };
+  }
 }
 
-export default lightnetStyles({});
+export default lightnetStyles({})

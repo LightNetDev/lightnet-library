@@ -1,29 +1,29 @@
 ---
-import config from "virtual:lightnet/config";
+import config from "virtual:lightnet/config"
 
-import { getCategories } from "../../content/get-categories";
-import { getMediaItems } from "../../content/get-media-items";
-import { getMediaTypes } from "../../content/get-media-types";
-import { resolveLanguageLabel } from "../../i18n/resolve-language";
-import { useTranslate } from "../../i18n/use-translate";
-import Page from "../../layouts/Page.astro";
-import Search from "./Search";
-import { provideTranslations } from "./utils/search-translations";
+import { getCategories } from "../../content/get-categories"
+import { getMediaItems } from "../../content/get-media-items"
+import { getMediaTypes } from "../../content/get-media-types"
+import { resolveLanguageLabel } from "../../i18n/resolve-language"
+import { useTranslate } from "../../i18n/use-translate"
+import Page from "../../layouts/Page.astro"
+import Search from "./Search"
+import { provideTranslations } from "./utils/search-translations"
 
-export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths";
+export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
 
-const t = useTranslate(Astro.currentLocale);
+const t = useTranslate(Astro.currentLocale)
 
-const contentLanguages: Record<string, string> = {};
+const contentLanguages: Record<string, string> = {}
 for (const language of (await getMediaItems())
   .map((item) => item.data.language)
   .sort((a, b) => a.localeCompare(b))) {
-  contentLanguages[language] = resolveLanguageLabel(language);
+  contentLanguages[language] = resolveLanguageLabel(language)
 }
 
-const categories: Record<string, string> = {};
+const categories: Record<string, string> = {}
 for (const { id, label } of await getCategories(Astro.currentLocale)) {
-  categories[id] = label;
+  categories[id] = label
 }
 
 const mediaTypes = (await getMediaTypes())
@@ -34,7 +34,7 @@ const mediaTypes = (await getMediaTypes())
   }))
   .sort((a, b) =>
     a.label.localeCompare(b.label, Astro.currentLocale ?? config.defaultLocale),
-  );
+  )
 ---
 
 <Page>

@@ -1,21 +1,21 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from "astro:assets"
 
-import type { MediaItem } from "../content/content-schema";
-import { detailsPagePath } from "../utils/paths";
-import Icon from "./Icon";
+import type { MediaItem } from "../content/content-schema"
+import { detailsPagePath } from "../utils/paths"
+import Icon from "./Icon"
 
 type GalleryItem = {
-  id: string;
-  data: Pick<MediaItem, "title" | "image">;
-};
-
-interface Props {
-  items: GalleryItem[];
-  layout: "books" | "videos";
+  id: string
+  data: Pick<MediaItem, "title" | "image">
 }
 
-const { items, layout } = Astro.props;
+interface Props {
+  items: GalleryItem[]
+  layout: "books" | "videos"
+}
+
+const { items, layout } = Astro.props
 ---
 
 {

@@ -27,4 +27,5 @@ This VS-Code extensions are recommended for development:
 
 - [Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) adds support for working with Astro projects.
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) adds TailwindCSS (this is how we write css in this project) support.
-- [Biome](https://marketplace.visualstudio.com/items?itemName=biomejs.biome) checks the code style of your files.
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) checks the code style of your files while editing them.
+- [Prettier - Code formatting](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) reformats your code according to our code formatting config.

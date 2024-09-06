@@ -1,23 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"
 
-import Icon from "../../../components/Icon";
-import { useDebounce } from "../hooks/use-debounce";
-import type { SearchQuery } from "../hooks/use-search";
-import type { MediaType } from "../utils/media-type";
-import type { Translations } from "../utils/search-translations";
-import { useProvidedTranslations } from "../utils/use-provided-translations";
+import Icon from "../../../components/Icon"
+import { useDebounce } from "../hooks/use-debounce"
+import type { SearchQuery } from "../hooks/use-search"
+import type { MediaType } from "../utils/media-type"
+import type { Translations } from "../utils/search-translations"
+import { useProvidedTranslations } from "../utils/use-provided-translations"
 
-const QUERY_PARAM_SEARCH = "search";
-const QUERY_PARAM_LANGUAGE = "language";
-const QUERY_PARAM_TYPE = "type";
-const QUERY_PARAM_CATEGORY = "category";
+const QUERY_PARAM_SEARCH = "search"
+const QUERY_PARAM_LANGUAGE = "language"
+const QUERY_PARAM_TYPE = "type"
+const QUERY_PARAM_CATEGORY = "category"
 
 interface Props {
-  contentLanguages: Record<string, string>;
-  categories: Record<string, string>;
-  mediaTypes: MediaType[];
-  translations: Translations;
-  updateQuery: (query: SearchQuery) => void;
+  contentLanguages: Record<string, string>
+  categories: Record<string, string>
+  mediaTypes: MediaType[]
+  translations: Translations
+  updateQuery: (query: SearchQuery) => void
 }
 
 export default function ({
@@ -27,49 +27,49 @@ export default function ({
   translations,
   contentLanguages,
 }: Props) {
-  const [search, setSearch] = useState("");
-  const [language, setLanguage] = useState("");
-  const [type, setType] = useState("");
-  const [category, setCategory] = useState("");
-  const searchInput = useRef<HTMLInputElement | null>(null);
+  const [search, setSearch] = useState("")
+  const [language, setLanguage] = useState("")
+  const [type, setType] = useState("")
+  const [category, setCategory] = useState("")
+  const searchInput = useRef<HTMLInputElement | null>(null)
 
-  const t = useProvidedTranslations(translations);
+  const t = useProvidedTranslations(translations)
 
   const debouncedSetSearch = useDebounce((value: string) => {
-    setSearch(value);
-  }, 300);
+    setSearch(value)
+  }, 300)
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: should only run once
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search)
 
-    const search = searchParams.get(QUERY_PARAM_SEARCH) ?? undefined;
-    const language = searchParams.get(QUERY_PARAM_LANGUAGE) ?? undefined;
-    const type = searchParams.get(QUERY_PARAM_TYPE) ?? undefined;
-    const category = searchParams.get(QUERY_PARAM_CATEGORY) ?? undefined;
+    const search = searchParams.get(QUERY_PARAM_SEARCH) ?? undefined
+    const language = searchParams.get(QUERY_PARAM_LANGUAGE) ?? undefined
+    const type = searchParams.get(QUERY_PARAM_TYPE) ?? undefined
+    const category = searchParams.get(QUERY_PARAM_CATEGORY) ?? undefined
 
-    search && setSearch(search);
-    language && setLanguage(language);
-    type && setType(type);
-    category && setCategory(category);
+    search && setSearch(search)
+    language && setLanguage(language)
+    type && setType(type)
+    category && setCategory(category)
 
-    updateQuery({ search, language, type, category });
-  }, []);
+    updateQuery({ search, language, type, category })
+  }, [])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: no need to check updateQuery
   useEffect(() => {
     // update search params
-    const url = new URL(window.location.href);
+    const url = new URL(window.location.href)
     const updateParams = (name: string, value: string) =>
-      value ? url.searchParams.set(name, value) : url.searchParams.delete(name);
-    updateParams(QUERY_PARAM_SEARCH, search);
-    updateParams(QUERY_PARAM_LANGUAGE, language);
-    updateParams(QUERY_PARAM_TYPE, type);
-    updateParams(QUERY_PARAM_CATEGORY, category);
-    history.replaceState({ ...history.state }, "", url.toString());
+      value ? url.searchParams.set(name, value) : url.searchParams.delete(name)
+    updateParams(QUERY_PARAM_SEARCH, search)
+    updateParams(QUERY_PARAM_LANGUAGE, language)
+    updateParams(QUERY_PARAM_TYPE, type)
+    updateParams(QUERY_PARAM_CATEGORY, category)
+    history.replaceState({ ...history.state }, "", url.toString())
 
-    updateQuery({ search, language, type, category });
-  }, [search, language, type, category]);
+    updateQuery({ search, language, type, category })
+  }, [search, language, type, category])
 
   return (
     <>
@@ -156,5 +156,5 @@ export default function ({
         </label>
       </div>
     </>
-  );
+  )
 }

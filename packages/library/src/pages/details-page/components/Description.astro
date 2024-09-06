@@ -1,12 +1,12 @@
 ---
-import { marked } from "marked";
+import { marked } from "marked"
 
 interface Props {
-  description?: string;
+  description?: string
 }
 
-const { description } = Astro.props;
-const formattedDescription = description && (await marked.parse(description));
+const { description } = Astro.props
+const formattedDescription = description && (await marked.parse(description))
 ---
 
 {

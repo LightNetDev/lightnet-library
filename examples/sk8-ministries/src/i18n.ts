@@ -1,6 +1,6 @@
-import type { Languages } from "@lightnet/library";
+import type { Languages } from "@lightnet/library"
 
-export const defaultLocale = "en";
+export const defaultLocale = "en"
 
 export const languages = {
   de: {
@@ -12,4 +12,4 @@ export const languages = {
   it: {
     label: "Italiano",
   },
-} satisfies Languages;
+} satisfies Languages
