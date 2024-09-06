@@ -24,5 +24,6 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
       - run: pnpm i
-      - run: pnpm biome check
+      - run: pnpm lint
+      - run: pnpm prettier . --check
       - run: pnpm typecheck
