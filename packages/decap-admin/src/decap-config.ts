@@ -1,30 +1,30 @@
-import userConfig from "virtual:lightnet/decapAdminUserConfig";
-import { CATEGORIES, DETAILS_PAGES } from "@lightnet/library/content";
-import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n";
-import type { APIRoute } from "astro";
-import YAML from "yaml";
+import userConfig from "virtual:lightnet/decapAdminUserConfig"
+import { CATEGORIES, DETAILS_PAGES } from "@lightnet/library/content"
+import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n"
+import type { APIRoute } from "astro"
+import YAML from "yaml"
 
 export const GET: APIRoute = () => {
-  return new Response(YAML.stringify(config));
-};
+  return new Response(YAML.stringify(config))
+}
 
 const toSnakeCase = (object?: Record<string, unknown>) => {
   if (!object) {
-    return object;
+    return object
   }
-  const result: Record<string, unknown> = {};
+  const result: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(object)) {
     result[key.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)] =
-      value;
+      value
   }
-  return result;
-};
+  return result
+}
 
-const local_backend = import.meta.env.MODE !== "production";
+const local_backend = import.meta.env.MODE !== "production"
 const backend =
   local_backend || !userConfig.backend
     ? { name: "git-gateway" }
-    : toSnakeCase(userConfig.backend);
+    : toSnakeCase(userConfig.backend)
 
 export const config = {
   local_backend,
@@ -171,4 +171,4 @@ export const config = {
       ],
     },
   ],
-};
+}

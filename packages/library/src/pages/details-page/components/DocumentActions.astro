@@ -1,43 +1,43 @@
 ---
-import Icon from "../../../components/Icon";
-import type { MediaItem } from "../../../content/content-schema";
-import { useTranslate } from "../../../i18n/use-translate";
+import Icon from "../../../components/Icon"
+import type { MediaItem } from "../../../content/content-schema"
+import { useTranslate } from "../../../i18n/use-translate"
 
 interface Props {
-  mediaItem: MediaItem;
-  className?: string;
+  mediaItem: MediaItem
+  className?: string
 }
 
-const { mediaItem, className } = Astro.props;
-const t = useTranslate(Astro.currentLocale);
+const { mediaItem, className } = Astro.props
+const t = useTranslate(Astro.currentLocale)
 
 const content = mediaItem.content.map(({ url }, index) => ({
   ...parseUrl(url),
   url,
   isPrimary: index === 0,
-}));
+}))
 
 function parseUrl(url: string): {
-  icon: string;
-  text: string;
-  target?: string;
+  icon: string
+  text: string
+  target?: string
 } {
   if (url.endsWith(".pdf")) {
-    return { icon: "mdi--eye-outline", text: "ln.details.read" };
+    return { icon: "mdi--eye-outline", text: "ln.details.read" }
   }
   if (url.endsWith(".epub")) {
-    return { icon: "mdi--tray-download", text: "ln.details.download-epub" };
+    return { icon: "mdi--tray-download", text: "ln.details.download-epub" }
   }
   try {
-    new URL(url);
+    new URL(url)
     // is absolute url
     return {
       icon: "mdi--external-link",
       text: "ln.details.read-on-external-site",
       target: "_blank",
-    };
+    }
   } catch {
-    return { icon: "mdi--tray-download", text: "ln.details.download-file" };
+    return { icon: "mdi--tray-download", text: "ln.details.download-file" }
   }
 }
 ---

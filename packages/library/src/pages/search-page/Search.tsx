@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect } from "react"
 
-import ResultList from "./components/ResultList";
-import SearchFilter from "./components/SearchFilter";
-import { useSearch } from "./hooks/use-search";
-import type { MediaType } from "./utils/media-type";
-import type { Translations } from "./utils/search-translations";
-import { useProvidedTranslations } from "./utils/use-provided-translations";
+import ResultList from "./components/ResultList"
+import SearchFilter from "./components/SearchFilter"
+import { useSearch } from "./hooks/use-search"
+import type { MediaType } from "./utils/media-type"
+import type { Translations } from "./utils/search-translations"
+import { useProvidedTranslations } from "./utils/use-provided-translations"
 
 export default function ({
   locale,
@@ -14,22 +14,22 @@ export default function ({
   mediaTypes,
   translations,
 }: {
-  locale: string | undefined;
-  contentLanguages: Record<string, string>;
-  categories: Record<string, string>;
-  translations: Translations;
-  mediaTypes: MediaType[];
+  locale: string | undefined
+  contentLanguages: Record<string, string>
+  categories: Record<string, string>
+  translations: Translations
+  mediaTypes: MediaType[]
 }) {
-  const { results, updateQuery, isLoading } = useSearch();
-  const t = useProvidedTranslations(translations);
+  const { results, updateQuery, isLoading } = useSearch()
+  const t = useProvidedTranslations(translations)
 
   // restore scroll position after back navigation
   useEffect(() => {
-    const { state } = history;
+    const { state } = history
     if (!isLoading && state?.scrollY) {
-      window.scrollTo(0, state.scrollY);
+      window.scrollTo(0, state.scrollY)
     }
-  }, [isLoading]);
+  }, [isLoading])
 
   return (
     <>
@@ -60,5 +60,5 @@ export default function ({
         </div>
       )}
     </>
-  );
+  )
 }

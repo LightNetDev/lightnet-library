@@ -1,54 +1,54 @@
 ---
-import { getImage } from "astro:assets";
-import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets"
+import type { ImageMetadata } from "astro"
 
 interface Props {
-  url: string;
-  title: string;
-  image: ImageMetadata;
+  url: string
+  title: string
+  image: ImageMetadata
 }
 
-const { url, title, image: imageMetadata } = Astro.props;
+const { url, title, image: imageMetadata } = Astro.props
 
-const { host, id, image } = await parseUrl(url);
+const { host, id, image } = await parseUrl(url)
 
 async function parseUrl(urlToParse: string): Promise<{
-  host: "youtube" | "vimeo" | "mp4";
-  id: string | null;
-  image?: string;
+  host: "youtube" | "vimeo" | "mp4"
+  id: string | null
+  image?: string
 }> {
-  const url = new URL(urlToParse);
+  const url = new URL(urlToParse)
   // https://www.youtube.com/embed/ABC123abc
   // https://www.youtube.com/watch?v=ABC123abc
   if (url.hostname === "www.youtube.com") {
     if (url.pathname.startsWith("/embed/")) {
-      return { host: "youtube", id: url.pathname.slice(7) };
+      return { host: "youtube", id: url.pathname.slice(7) }
     }
-    return { host: "youtube", id: url.searchParams.get("v") };
+    return { host: "youtube", id: url.searchParams.get("v") }
   }
   // https://youtu.be/ABC123abc
   if (url.hostname === "youtu.be") {
-    return { host: "youtube", id: url.pathname.slice(1) };
+    return { host: "youtube", id: url.pathname.slice(1) }
   }
   // https://www.youtube-nocookie.com/embed/ABC123abc
   if (url.hostname === "www.youtube-nocookie.com") {
-    return { host: "youtube", id: url.pathname.slice(7) };
+    return { host: "youtube", id: url.pathname.slice(7) }
   }
   // https://vimeo.com/12345678
   if (url.hostname === "vimeo.com") {
-    return { host: "vimeo", id: url.pathname.slice(1) };
+    return { host: "vimeo", id: url.pathname.slice(1) }
   }
   // https://player.vimeo.com/video/12345678
   if (url.hostname === "player.vimeo.com") {
-    return { host: "vimeo", id: url.pathname.slice(7) };
+    return { host: "vimeo", id: url.pathname.slice(7) }
   }
 
   // https://domain.com/video.mp4
   if (url.pathname.endsWith(".mp4")) {
-    const image = (await getImage({ src: imageMetadata, format: "webp" })).src;
-    return { host: "mp4", id: url.toString(), image };
+    const image = (await getImage({ src: imageMetadata, format: "webp" })).src
+    return { host: "mp4", id: url.toString(), image }
   }
-  throw Error(`Unsupported video url: ${urlToParse}`);
+  throw Error(`Unsupported video url: ${urlToParse}`)
 }
 ---
 

@@ -1,5 +1,5 @@
-import type { SchemaContext } from "astro:content";
-import { z } from "astro/zod";
+import type { SchemaContext } from "astro:content"
+import { z } from "astro/zod"
 
 export const CATEGORIES = [
   "biography",
@@ -12,19 +12,19 @@ export const CATEGORIES = [
   "studies",
   "teens",
   "theology",
-] as const;
+] as const
 
-export type Category = (typeof CATEGORIES)[number];
+export type Category = (typeof CATEGORIES)[number]
 
-export const DETAILS_PAGES = ["book", "document", "video"] as const;
+export const DETAILS_PAGES = ["book", "document", "video"] as const
 
-export type MediaItem = z.infer<typeof mediaItemSchema>;
+export type MediaItem = z.infer<typeof mediaItemSchema>
 export type MediaItemEntry = {
-  id: string;
-  data: MediaItem;
-};
+  id: string
+  data: MediaItem
+}
 
-export type MediaType = z.infer<typeof mediaTypeSchema>;
+export type MediaType = z.infer<typeof mediaTypeSchema>
 
 export const mediaItemSchema = z.object({
   commonId: z.string(),
@@ -51,23 +51,23 @@ export const mediaItemSchema = z.object({
       "avif",
     ]),
   }),
-});
+})
 
 export const mediaTypeSchema = z.object({
   label: z.string(),
   detailsPage: z.enum(DETAILS_PAGES),
   icon: z.string(),
-});
+})
 
 export const mediaTypeEntrySchema = z.object({
   id: z.string(),
   data: mediaTypeSchema,
-});
+})
 
 export const mediaItemEntrySchema = z.object({
   id: z.string(),
   data: mediaItemSchema,
-});
+})
 
 export const mediaSchema = ({ image }: SchemaContext) =>
   mediaItemSchema.extend({
@@ -75,4 +75,4 @@ export const mediaSchema = ({ image }: SchemaContext) =>
       .string()
       .transform((path) => (path.startsWith("./") ? path : `./${path}`))
       .pipe(image()),
-  });
+  })

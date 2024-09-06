@@ -1,16 +1,16 @@
 ---
-import { resolveCategoryLabel } from "../../../content/resolve-category-label";
-import { useTranslate } from "../../../i18n/use-translate";
-import { searchPagePath } from "../../../utils/paths";
-import Label from "./Label.astro";
+import { resolveCategoryLabel } from "../../../content/resolve-category-label"
+import { useTranslate } from "../../../i18n/use-translate"
+import { searchPagePath } from "../../../utils/paths"
+import Label from "./Label.astro"
 
 interface Props {
-  categories?: string[];
+  categories?: string[]
 }
 
-const { categories } = Astro.props;
+const { categories } = Astro.props
 
-const t = useTranslate(Astro.currentLocale);
+const t = useTranslate(Astro.currentLocale)
 ---
 
 {

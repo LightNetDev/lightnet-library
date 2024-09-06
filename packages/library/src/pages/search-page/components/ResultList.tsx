@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import Icon from "../../../components/Icon";
-import { detailsPagePath } from "../../../utils/paths";
-import type { SearchItem } from "../../api/search-response";
-import type { MediaType } from "../utils/media-type";
-import type { Translations } from "../utils/search-translations";
-import { useProvidedTranslations } from "../utils/use-provided-translations";
+import Icon from "../../../components/Icon"
+import { detailsPagePath } from "../../../utils/paths"
+import type { SearchItem } from "../../api/search-response"
+import type { MediaType } from "../utils/media-type"
+import type { Translations } from "../utils/search-translations"
+import { useProvidedTranslations } from "../utils/use-provided-translations"
 
-const PAGE_SIZE = 30;
+const PAGE_SIZE = 30
 
 interface Props {
-  items: SearchItem[];
-  locale: string | undefined;
-  translations: Translations;
-  categories: Record<string, string>;
-  contentLanguages: Record<string, string>;
-  mediaTypes: MediaType[];
+  items: SearchItem[]
+  locale: string | undefined
+  translations: Translations
+  categories: Record<string, string>
+  contentLanguages: Record<string, string>
+  mediaTypes: MediaType[]
 }
 
 export default function ({
@@ -26,11 +26,11 @@ export default function ({
   contentLanguages,
   mediaTypes,
 }: Props) {
-  const [maxItems, setMaxItems] = useState(15);
-  const t = useProvidedTranslations(translations);
+  const [maxItems, setMaxItems] = useState(15)
+  const t = useProvidedTranslations(translations)
   const iconsByType = Object.fromEntries(
     mediaTypes.map(({ id, icon }) => [id, icon]),
-  );
+  )
 
   return (
     <>
@@ -112,5 +112,5 @@ export default function ({
         </div>
       )}
     </>
-  );
+  )
 }

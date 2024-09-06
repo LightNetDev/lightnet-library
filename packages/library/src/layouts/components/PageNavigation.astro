@@ -1,17 +1,17 @@
 ---
-import config from "virtual:lightnet/config";
+import config from "virtual:lightnet/config"
 
-import Icon from "../../components/Icon";
-import { useTranslate } from "../../i18n/use-translate";
-import { localizePath, searchPagePath } from "../../utils/paths";
-import LanguagePicker from "./LanguagePicker.astro";
-import Menu from "./Menu.astro";
+import Icon from "../../components/Icon"
+import { useTranslate } from "../../i18n/use-translate"
+import { localizePath, searchPagePath } from "../../utils/paths"
+import LanguagePicker from "./LanguagePicker.astro"
+import Menu from "./Menu.astro"
 
-import MenuItem from "./MenuItem.astro";
+import MenuItem from "./MenuItem.astro"
 
-const t = useTranslate(Astro.currentLocale);
+const t = useTranslate(Astro.currentLocale)
 
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname
 const items = (config.mainMenu ?? []).map(
   ({ href, isExternal, label, requiresLocale }) => ({
     path:
@@ -26,7 +26,7 @@ const items = (config.mainMenu ?? []).map(
         currentPath === localizePath(Astro.currentLocale, `${href}/`) ||
         currentPath === href),
   }),
-);
+)
 ---
 
 <nav class="-mr-3 flex items-center">

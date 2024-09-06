@@ -1,18 +1,18 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from "astro:assets"
 
-import Section from "../../components/Section.astro";
-import CommonMetaData from "./components/CommonMetaData.astro";
-import Description from "./components/Description.astro";
-import DocumentActions from "./components/DocumentActions.astro";
-import type { Props as DetailsProps } from "./details-props";
+import Section from "../../components/Section.astro"
+import CommonMetaData from "./components/CommonMetaData.astro"
+import Description from "./components/Description.astro"
+import DocumentActions from "./components/DocumentActions.astro"
+import type { Props as DetailsProps } from "./details-props"
 
 export type Props = DetailsProps & {
-  showBookFold?: boolean;
-};
+  showBookFold?: boolean
+}
 
-const { mediaItem, showBookFold } = Astro.props;
-const { description, language, image, title } = mediaItem;
+const { mediaItem, showBookFold } = Astro.props
+const { description, language, image, title } = mediaItem
 ---
 
 <Section

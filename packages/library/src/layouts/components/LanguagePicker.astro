@@ -1,25 +1,25 @@
 ---
-import config from "virtual:lightnet/config";
+import config from "virtual:lightnet/config"
 
-import { resolveLanguageLabel } from "../../i18n/resolve-language";
-import { localizePath } from "../../utils/paths";
-import Menu from "./Menu.astro";
-import MenuItem from "./MenuItem.astro";
+import { resolveLanguageLabel } from "../../i18n/resolve-language"
+import { localizePath } from "../../utils/paths"
+import Menu from "./Menu.astro"
+import MenuItem from "./MenuItem.astro"
 
 const translations = config.locales.map((locale) => ({
   locale,
   label: resolveLanguageLabel(locale),
   active: locale === Astro.currentLocale,
   href: currentPathWithLocale(locale),
-}));
+}))
 
 function currentPathWithLocale(locale: string) {
-  const currentPath = Astro.url.pathname;
+  const currentPath = Astro.url.pathname
   const currentPathWithoutLocale =
     Astro.currentLocale && currentPath.startsWith(`/${Astro.currentLocale}`)
       ? currentPath.slice(Astro.currentLocale.length + 1)
-      : currentPath;
-  return localizePath(locale, currentPathWithoutLocale);
+      : currentPath
+  return localizePath(locale, currentPathWithoutLocale)
 }
 ---
 
