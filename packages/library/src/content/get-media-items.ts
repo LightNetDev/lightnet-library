@@ -2,7 +2,7 @@ import { AstroError } from "astro/errors"
 import { getCollection, getEntry } from "astro:content"
 
 import { verifySchema } from "../utils/verify-schema"
-import { mediaItemEntrySchema } from "./content-schema"
+import { mediaItemEntrySchema } from "./content-schema-internal"
 import { getMediaTypes } from "./get-media-types"
 import { type MediaQuery, mediaQuery } from "./media-query"
 
