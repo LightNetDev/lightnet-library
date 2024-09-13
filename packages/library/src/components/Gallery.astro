@@ -7,19 +7,43 @@ import Icon from "./Icon"
 
 type GalleryItem = {
   id: string
-  data: Pick<MediaItem, "title" | "image">
+  data: Pick<MediaItem, "title" | "image" | "dateCreated">
 }
 
 interface Props {
   items: GalleryItem[]
-  layout: "books" | "videos"
+  maxItems?: number
+  sortBy?: "dateCreated" | "title"
+  layout: "book" | "video" | "portrait"
 }
 
-const { items, layout } = Astro.props
+const { items: inputItems, layout, sortBy, maxItems } = Astro.props
+const items = limit(sort(inputItems))
+
+function sort(items: GalleryItem[]) {
+  if (sortBy === "dateCreated") {
+    return inputItems.toSorted((item1, item2) =>
+      item2.data.dateCreated.localeCompare(item1.data.dateCreated),
+    )
+  }
+  if (sortBy === "title") {
+    return inputItems.toSorted((item1, item2) =>
+      item1.data.title.localeCompare(item2.data.title),
+    )
+  }
+  return items
+}
+
+function limit(items: GalleryItem[]) {
+  if (!maxItems) {
+    return items
+  }
+  return items.slice(0, maxItems)
+}
 ---
 
 {
-  layout === "books" && (
+  (layout === "book" || layout === "portrait") && (
     <ol class="grid grid-cols-2 items-end justify-between gap-6 py-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
       {items.map((item) => (
         <li>
@@ -41,8 +65,9 @@ const { items, layout } = Astro.props
                   "217px"
                 }
               />
-
-              <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
+              {layout === "book" && (
+                <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
+              )}
             </div>
             <span class="line-clamp-1 text-sm font-bold text-gray-800">
               {item.data.title}
@@ -54,7 +79,7 @@ const { items, layout } = Astro.props
   )
 }
 {
-  layout === "videos" && (
+  layout === "video" && (
     <ol class="grid grid-cols-1 justify-between gap-6 py-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
       {items.map((video) => (
         <li>
