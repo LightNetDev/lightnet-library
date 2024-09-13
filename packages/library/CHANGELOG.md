@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.5.0
+
+### Minor Changes
+
+- [#81](https://github.com/LightNetDev/lightnet-library/pull/81) [`3c82584`](https://github.com/LightNetDev/lightnet-library/commit/3c82584f894b7df04823edde7c8d78c20ce402e6) Thanks [@si-fab](https://github.com/si-fab)! - Add gallery options: maxItems, sortBy, new layouts
+
 ## 2.4.5
 
 ### Patch Changes
