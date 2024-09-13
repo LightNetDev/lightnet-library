@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.4.5
+
+### Patch Changes
+
+- [#80](https://github.com/LightNetDev/lightnet-library/pull/80) [`16e1369`](https://github.com/LightNetDev/lightnet-library/commit/16e1369a7d65f077a83b3de567aab3c9245b3a35) Thanks [@si-fab](https://github.com/si-fab)! - Update dependencies
+
+- [#75](https://github.com/LightNetDev/lightnet-library/pull/75) [`3f9088c`](https://github.com/LightNetDev/lightnet-library/commit/3f9088cc15f93a0005e9c53f417ec9ee3db69667) Thanks [@si-fab](https://github.com/si-fab)! - Allows to rewrite root to /[locale] without requiring a trailing slash.
+
 ## 2.4.4
 
 ### Patch Changes
