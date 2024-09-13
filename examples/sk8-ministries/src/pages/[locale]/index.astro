@@ -35,7 +35,7 @@ const t = useTranslate(Astro.currentLocale)
     subtitleSize="xl"
   />
   <Section title={t("home.our-latest-books")}>
-    <Gallery items={latestBooks} layout="books" />
+    <Gallery items={latestBooks} layout="book" />
   </Section>
   <ImageSection
     image={eventImage}
@@ -47,6 +47,6 @@ const t = useTranslate(Astro.currentLocale)
     }}
   />
   <Section title={t("home.learn-skateboarding")}>
-    <Gallery items={tutorials} layout="videos" />
+    <Gallery items={tutorials} layout="video" />
   </Section>
 </Page>
