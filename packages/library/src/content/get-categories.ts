@@ -1,7 +1,7 @@
 import config from "virtual:lightnet/config"
 
 import { useTranslate } from "../i18n/use-translate"
-import type { Category } from "./content-schema"
+import type { Category } from "./content-schema-internal"
 import { getMediaItems } from "./get-media-items"
 import { resolveCategoryLabel } from "./resolve-category-label"
 

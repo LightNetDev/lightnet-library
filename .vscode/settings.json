@@ -4,16 +4,18 @@
     "source.organizeImports": "never"
   },
   "editor.formatOnSave": true,
+  "prettier.documentSelectors": ["**/*.astro"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.tabSize": 2,
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "cSpell.words": ["astro", "astrojs", "tailwindcss"],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "astro",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "astro": "html"
+  }
 }

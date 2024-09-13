@@ -7,25 +7,21 @@
     "prettier",
     "plugin:astro/recommended"
   ],
-  "ignorePatterns": ["dist", "node_modules", ".eslintrc.cjs"],
+  "ignorePatterns": [
+    "dist",
+    "node_modules",
+    ".eslintrc.cjs",
+    "env.d.ts",
+    ".astro"
+  ],
   "parser": "@typescript-eslint/parser",
   "plugins": ["simple-import-sort", "unused-imports"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "no-warning-comments": "warn",
-    "@typescript-eslint/array-type": "error",
-    "@typescript-eslint/triple-slash-reference": "off",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "typeParameter",
-        "format": ["PascalCase"],
-        "prefix": ["T"]
-      }
-    ],
+    "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-explicit-any": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
