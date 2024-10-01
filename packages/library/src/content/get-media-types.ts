@@ -13,11 +13,13 @@ export const getMediaType = async (id: string) => {
 
 export const getMediaTypes = async () => {
   const mediaTypes: unknown[] = await getCollection("media-types")
-  return await Promise.all(mediaTypes.map((type: unknown) =>
-    verifySchema(
-      mediaTypeEntrySchema,
-      type,
-      (id) => `Received invalid media type '${id}'.`,
+  return await Promise.all(
+    mediaTypes.map((type: unknown) =>
+      verifySchema(
+        mediaTypeEntrySchema,
+        type,
+        (id) => `Received invalid media type '${id}'.`,
+      ),
     ),
-  ))
+  )
 }

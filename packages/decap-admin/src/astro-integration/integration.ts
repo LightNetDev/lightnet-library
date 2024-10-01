@@ -56,11 +56,11 @@ export default function lightnetDecapAdmin(
         config: astroConfig,
       }) => {
         const preparedConfig = {
-          ... await verifySchema(
+          ...(await verifySchema(
             userConfigSchema,
             config,
             "Invalid config passed to Decap Admin integration.",
-          ),
+          )),
           site: astroConfig.site ?? "localhost:4321",
         }
 
