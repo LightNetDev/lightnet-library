@@ -26,7 +26,7 @@ const {
   data: { detailsPage },
 } = await getMediaType(mediaItem.type.id)
 
-await verifySchema(
+verifySchema(
   z.enum(DETAILS_PAGES),
   detailsPage,
   "Received unknown details page",

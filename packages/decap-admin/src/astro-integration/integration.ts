@@ -50,17 +50,17 @@ export default function lightnetDecapAdmin(
   return {
     name: "@lightnet/decap-admin",
     hooks: {
-      "astro:config:setup": async ({
+      "astro:config:setup": ({
         injectRoute,
         updateConfig,
         config: astroConfig,
       }) => {
         const preparedConfig = {
-          ...(await verifySchema(
+          ...verifySchema(
             userConfigSchema,
             config,
             "Invalid config passed to Decap Admin integration.",
-          )),
+          ),
           site: astroConfig.site ?? "localhost:4321",
         }
 

@@ -11,15 +11,15 @@ const LOGO = "virtual:lightnet/logo"
 
 const VIRTUAL_MODULES = [CONFIG, LOGO] as const
 
-export async function vitePluginLightnetConfig(
+export function vitePluginLightnetConfig(
   lightnetConfig: LightnetConfig,
   { root }: AstroConfig,
   logger: AstroIntegrationLogger,
-): Promise<NonNullable<ViteUserConfig["plugins"]>[number]> {
+): NonNullable<ViteUserConfig["plugins"]>[number] {
   const resolvePath = (id: string) =>
     JSON.stringify(id.startsWith(".") ? resolve(fileURLToPath(root), id) : id)
 
-  const config = await verifySchema(
+  const config = verifySchema(
     configSchema,
     lightnetConfig,
     "Invalid config passed to LightNet Library integration.",

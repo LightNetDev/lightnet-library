@@ -11,12 +11,7 @@ export function lightnetLibrary(
   return {
     name: "@lightnet/library",
     hooks: {
-      "astro:config:setup": async ({
-        injectRoute,
-        config,
-        updateConfig,
-        logger,
-      }) => {
+      "astro:config:setup": ({ injectRoute, config, updateConfig, logger }) => {
         injectRoute({
           pattern: "404",
           entrypoint: "@lightnet/library/pages/404.astro",
@@ -46,9 +41,7 @@ export function lightnetLibrary(
         const { defaultLocale, locales } = lightnetConfig
         updateConfig({
           vite: {
-            plugins: [
-              await vitePluginLightnetConfig(lightnetConfig, config, logger),
-            ],
+            plugins: [vitePluginLightnetConfig(lightnetConfig, config, logger)],
           },
           i18n: {
             defaultLocale,

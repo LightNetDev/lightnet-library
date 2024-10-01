@@ -1,2 +1,2 @@
 export * from "../src/utils/paths"
-export { verifySchema } from "../src/utils/verify-schema"
+export { verifySchema, verifySchemaAsync } from "../src/utils/verify-schema"
