@@ -49,10 +49,16 @@ export function useSearch() {
   const fuseQuery = []
   // order is relevant! query will stop evaluation
   // when condition is not met.
-  language && fuseQuery.push({ language: `=${language}` })
-  type && fuseQuery.push({ type: `=${type}` })
-  category && fuseQuery.push({ categories: `=${category}` })
-  search &&
+  if (language) {
+    fuseQuery.push({ language: `=${language}` })
+  }
+  if (type) {
+    fuseQuery.push({ type: `=${type}` })
+  }
+  if (category) {
+    fuseQuery.push({ categories: `=${category}` })
+  }
+  if (search) {
     fuseQuery.push({
       $or: [
         { title: search },
@@ -61,6 +67,7 @@ export function useSearch() {
         { id: search },
       ],
     })
+  }
 
   const updateQuery = (newQuery: SearchQuery) => {
     const queryIsUpdated = (

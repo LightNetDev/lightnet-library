@@ -24,7 +24,9 @@ export function searchPagePath(
   filter?: { category: string },
 ) {
   const searchParams = new URLSearchParams()
-  filter?.category && searchParams.append("category", filter.category)
+  if (filter?.category) {
+    searchParams.append("category", filter.category)
+  }
   return localizePath(
     language,
     `/media${searchParams.size ? `?${searchParams.toString()}` : ""}`,

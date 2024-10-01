@@ -20,7 +20,7 @@ interface Props {
   updateQuery: (query: SearchQuery) => void
 }
 
-export default function ({
+export default function SearchFilter({
   categories,
   mediaTypes,
   updateQuery,
@@ -48,10 +48,18 @@ export default function ({
     const type = searchParams.get(QUERY_PARAM_TYPE) ?? undefined
     const category = searchParams.get(QUERY_PARAM_CATEGORY) ?? undefined
 
-    search && setSearch(search)
-    language && setLanguage(language)
-    type && setType(type)
-    category && setCategory(category)
+    if (search) {
+      setSearch(search)
+    }
+    if (language) {
+      setLanguage(language)
+    }
+    if (type) {
+      setType(type)
+    }
+    if (category) {
+      setCategory(category)
+    }
 
     updateQuery({ search, language, type, category })
   }, [])
