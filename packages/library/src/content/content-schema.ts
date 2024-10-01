@@ -1,6 +1,6 @@
 import { z } from "astro/zod"
-import { reference } from "astro:content"
 import type { SchemaContext } from "astro:content"
+import { reference } from "astro:content"
 
 import { astroImage } from "./astro-image"
 
