@@ -8,10 +8,11 @@ export const resolveLanguageLabel = (bcp47: string) => {
   const languages = config.languages ?? bundledLanguages
   const label = (languages as Record<string, { label: string }>)[bcp47]?.label
 
-  verifySchema(
-    z.string().min(1),
-    label,
-    `There is no language definition for: ${bcp47}`,
-  )
+  // todo 
+  // verifySchema(
+  //   z.string().min(1),
+  //   label,
+  //   `There is no language definition for: ${bcp47}`,
+  // )
   return label as string
 }

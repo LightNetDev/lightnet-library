@@ -2,12 +2,12 @@ import { AstroError } from "astro/errors"
 import { z } from "astro/zod"
 import { fromZodError } from "zod-validation-error"
 
-export function verifySchema<T extends z.Schema>(
+export async function verifySchema<T extends z.Schema>(
   schema: T,
   toVerify: unknown,
   errorMessage: string | ((id: string | undefined) => string),
-): z.output<T> {
-  const parsed = schema.safeParse(toVerify, {})
+): Promise<z.output<T>> {
+  const parsed = await schema.safeParseAsync(toVerify, {})
   if (!parsed.success) {
     const id = z.object({ id: z.string() }).safeParse(toVerify).data?.id
     const message =

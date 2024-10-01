@@ -27,7 +27,7 @@ export async function searchResults() {
     items.push({
       title,
       id,
-      type,
+      type: type.id,
       authors,
       categories,
       description: description?.replaceAll(/[*#_]/g, "").slice(0, 350),

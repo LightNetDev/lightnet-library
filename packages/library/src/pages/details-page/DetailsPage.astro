@@ -24,9 +24,9 @@ const props = { mediaItem, slug, locale }
 
 const {
   data: { detailsPage },
-} = await getMediaType(mediaItem.type)
+} = await getMediaType(mediaItem.type.id)
 
-verifySchema(
+await verifySchema(
   z.enum(DETAILS_PAGES),
   detailsPage,
   "Received unknown details page",

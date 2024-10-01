@@ -22,14 +22,14 @@ export const getMediaItems = async (query?: MediaQuery) => {
 }
 
 const prepareItem = async (item: unknown) => {
-  const verified = verifySchema(
+  const verified = await verifySchema(
     mediaItemEntrySchema,
     item,
     (id) => `Invalid media item: ${id}`,
   )
   // We cannot use astro's reference validator for type. This would break type generation.
   // So we validate the type manually.
-  if (!mediaTypes.includes(verified.data.type)) {
+  if (!mediaTypes.includes(verified.data.type.id)) {
     throw new AstroError(
       `Media item '${verified.id}' references a unknown media type '${verified.data.type}'`,
     )
