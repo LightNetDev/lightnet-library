@@ -20,7 +20,7 @@ interface Props {
   updateQuery: (query: SearchQuery) => void
 }
 
-export default function ({
+export default function SearchFilter({
   categories,
   mediaTypes,
   updateQuery,
@@ -39,7 +39,6 @@ export default function ({
     setSearch(value)
   }, 300)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: should only run once
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
 
@@ -48,15 +47,22 @@ export default function ({
     const type = searchParams.get(QUERY_PARAM_TYPE) ?? undefined
     const category = searchParams.get(QUERY_PARAM_CATEGORY) ?? undefined
 
-    search && setSearch(search)
-    language && setLanguage(language)
-    type && setType(type)
-    category && setCategory(category)
+    if (search) {
+      setSearch(search)
+    }
+    if (language) {
+      setLanguage(language)
+    }
+    if (type) {
+      setType(type)
+    }
+    if (category) {
+      setCategory(category)
+    }
 
     updateQuery({ search, language, type, category })
   }, [])
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: no need to check updateQuery
   useEffect(() => {
     // update search params
     const url = new URL(window.location.href)

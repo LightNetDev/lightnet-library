@@ -1,5 +1,6 @@
 import { z } from "astro/zod"
 import type { SchemaContext } from "astro:content"
+import { reference } from "astro:content"
 
 import { astroImage } from "./astro-image"
 
@@ -42,7 +43,7 @@ export const mediaItemSchema = z.object({
    *
    * @example "book"
    */
-  type: z.string(),
+  type: reference("media-types"),
   /**
    *Describes this media item. You can use markdown syntax to add formatting.
    * This is expected to be in the language that is defined by the 'language' property.

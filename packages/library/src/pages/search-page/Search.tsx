@@ -7,7 +7,7 @@ import type { MediaType } from "./utils/media-type"
 import type { Translations } from "./utils/search-translations"
 import { useProvidedTranslations } from "./utils/use-provided-translations"
 
-export default function ({
+export default function Search({
   locale,
   contentLanguages,
   categories,

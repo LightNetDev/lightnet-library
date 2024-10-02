@@ -18,7 +18,7 @@ interface Props {
   mediaTypes: MediaType[]
 }
 
-export default function ({
+export default function ResultList({
   items,
   locale,
   categories,
