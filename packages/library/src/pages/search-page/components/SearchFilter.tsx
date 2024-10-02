@@ -39,7 +39,6 @@ export default function SearchFilter({
     setSearch(value)
   }, 300)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: should only run once
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
 
@@ -64,7 +63,6 @@ export default function SearchFilter({
     updateQuery({ search, language, type, category })
   }, [])
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: no need to check updateQuery
   useEffect(() => {
     // update search params
     const url = new URL(window.location.href)
