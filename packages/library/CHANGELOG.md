@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.5.1
+
+### Patch Changes
+
+- [#92](https://github.com/LightNetDev/lightnet-library/pull/92) [`3ea503d`](https://github.com/LightNetDev/lightnet-library/commit/3ea503d3bee4d6de57f777d470965d880fa12b88) Thanks [@si-fab](https://github.com/si-fab)! - Use astro:content `reference` for a media item`s `type` attribute.
+
 ## 2.5.0
 
 ### Minor Changes
