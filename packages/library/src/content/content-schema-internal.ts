@@ -5,12 +5,9 @@
 import { z } from "astro/zod"
 
 import {
-  CATEGORIES,
   mediaItemSchema as externalMediaItemSchema,
   mediaTypeSchema,
 } from "./content-schema"
-
-export type Category = (typeof CATEGORIES)[number]
 
 export type MediaItem = z.infer<typeof mediaItemSchema>
 export type MediaItemEntry = {

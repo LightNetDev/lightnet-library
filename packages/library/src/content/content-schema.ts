@@ -4,18 +4,20 @@ import { reference } from "astro:content"
 
 import { astroImage } from "./astro-image"
 
-export const CATEGORIES = [
-  "biography",
-  "christian-living",
-  "comics",
-  "family",
-  "kids",
-  "life-support",
-  "novels",
-  "studies",
-  "teens",
-  "theology",
-] as const
+/**
+ * category schema
+ */
+export const categorySchema = z.object({
+  /**
+   * Name of the category.
+   *
+   * If your site uses translations, this is a translation key that needs to be translated.
+   * If your site doesn't use translations, this can be the the name that will show up.
+   *
+   * @example "category.biography"
+   */
+  label: z.string(),
+})
 
 /**
  * Media item schema
@@ -69,7 +71,7 @@ export const mediaItemSchema = z.object({
    *
    * @example ["family"]
    */
-  categories: z.array(z.enum(CATEGORIES)).optional(),
+  categories: z.array(reference("categories")).optional(),
   /**
    * BCP-47 name of the language this media item is in.
    *

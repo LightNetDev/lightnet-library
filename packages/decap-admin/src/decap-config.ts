@@ -1,6 +1,7 @@
-import { CATEGORIES, DETAILS_PAGES } from "@lightnet/library/content"
+import { DETAILS_PAGES } from "@lightnet/library/content"
 import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n"
 import type { APIRoute } from "astro"
+import { getCollection } from "astro:content"
 import userConfig from "virtual:lightnet/decapAdminUserConfig"
 import YAML from "yaml"
 
@@ -19,6 +20,8 @@ const toSnakeCase = (object?: Record<string, unknown>) => {
   }
   return result
 }
+
+const categories = (await getCollection("categories")).map(({ id }) => id)
 
 const local_backend = import.meta.env.MODE !== "production"
 const backend =
@@ -113,7 +116,7 @@ export const config = {
           required: false,
           widget: "select",
           multiple: true,
-          options: CATEGORIES,
+          options: categories,
         },
         {
           name: "content",

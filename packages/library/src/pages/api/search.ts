@@ -29,7 +29,7 @@ export async function searchResults() {
       id,
       type: type.id,
       authors,
-      categories,
+      categories: categories?.map(({ id }) => id),
       description: description?.replaceAll(/[*#_]/g, "").slice(0, 350),
       language,
       image: { src, width, height },

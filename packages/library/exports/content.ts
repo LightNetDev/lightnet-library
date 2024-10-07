@@ -1,5 +1,5 @@
 export {
-  CATEGORIES,
+  categorySchema,
   DETAILS_PAGES,
   mediaSchema,
   mediaTypeSchema,

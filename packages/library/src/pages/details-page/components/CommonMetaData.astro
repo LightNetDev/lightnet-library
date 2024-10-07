@@ -22,4 +22,4 @@ const {
 </div>
 <Language language={language} />
 <Translations slug={slug} commonId={commonId} />
-<Categories categories={categories} />
+<Categories categories={categories?.map(({ id }) => id)} />
