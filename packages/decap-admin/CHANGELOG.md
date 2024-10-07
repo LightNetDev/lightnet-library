@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.1.0
+
+### Minor Changes
+
+- [#94](https://github.com/LightNetDev/lightnet-library/pull/94) [`4b26988`](https://github.com/LightNetDev/lightnet-library/commit/4b2698865fd70a153dd5f5313f3b4f1c71f34e42) Thanks [@si-fab](https://github.com/si-fab)! - Removes categories from the core and moves them into a content collection.
+
 ## 2.0.14
 
 ### Patch Changes
