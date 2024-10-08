@@ -5,4 +5,4 @@ export {
   mediaSchema,
   mediaTypeSchema,
 } from "../src/content/content-schema"
-export { lightnet } from "../src/content/external-api"
+export { getMediaItems } from "../src/content/external-api"

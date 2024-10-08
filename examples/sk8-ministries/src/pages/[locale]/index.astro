@@ -8,19 +8,19 @@ import {
   Page,
   Section,
 } from "@lightnet/library/components"
-import { lightnet } from "@lightnet/library/content"
+import { getMediaItems } from "@lightnet/library/content"
 import { useTranslate } from "@lightnet/library/i18n"
 import { getEntry } from "astro:content"
 
 import eventImage from "../../assets/event.webp"
 import heroImage from "../../assets/hero.webp"
 
-const latestBooks = await lightnet.getMediaItems({
+const latestBooks = await getMediaItems({
   where: { type: "book" },
   orderBy: "dateCreated",
 })
 const learnSkateboarding = await getEntry("compilations", "learn-skateboarding")
-const learnSkateboardingItems = await lightnet.getMediaItems({
+const learnSkateboardingItems = await getMediaItems({
   where: { compilation: "learn-skateboarding" },
 })
 

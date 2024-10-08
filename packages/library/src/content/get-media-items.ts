@@ -3,6 +3,11 @@ import { getCollection, getEntry } from "astro:content"
 import { verifySchemaAsync } from "../utils/verify-schema"
 import { mediaItemEntrySchema } from "./content-schema-internal"
 
+/**
+ * Internal API to get media items. Since this package is a Astro integration
+ * we cannot rely on Astro's getCollection typings. They are configured outside this package.
+ */
+
 export const getMediaItem = async (id: string) => {
   const item = await getEntry("media", id)
   return prepareItem(item)
