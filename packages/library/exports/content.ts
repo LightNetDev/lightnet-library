@@ -1,5 +1,6 @@
 export {
   categorySchema,
+  compilationSchema,
   DETAILS_PAGES,
   mediaSchema,
   mediaTypeSchema,

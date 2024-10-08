@@ -5,7 +5,7 @@ import { reference } from "astro:content"
 import { astroImage } from "./astro-image"
 
 /**
- * category schema
+ * Category schema
  */
 export const categorySchema = z.object({
   /**
@@ -17,6 +17,18 @@ export const categorySchema = z.object({
    * @example "category.biography"
    */
   label: z.string(),
+})
+
+/**
+ * Compilation schema
+ */
+export const compilationSchema = z.object({
+  /**
+   * Name of the compilation.
+   *
+   * This will be displayed as is and not be translated.
+   */
+  title: z.string(),
 })
 
 /**
@@ -72,6 +84,22 @@ export const mediaItemSchema = z.object({
    * @example ["family"]
    */
   categories: z.array(reference("categories")).optional(),
+  /**
+   * List of compilations this media item is included.
+   * Compilations can be used to group media items into series, playlists...
+   *
+   * @example [{compilation:"my-series"}]
+   */
+  compilations: z
+    .array(
+      z.object({
+        /**
+         * Id of the compilation.
+         */
+        compilation: reference("compilations"),
+      }),
+    )
+    .optional(),
   /**
    * BCP-47 name of the language this media item is in.
    *
