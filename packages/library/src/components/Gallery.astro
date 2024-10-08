@@ -1,45 +1,24 @@
 ---
+import type { ImageMetadata } from "astro"
 import { Image } from "astro:assets"
 
-import type { MediaItem } from "../content/content-schema-internal"
 import { detailsPagePath } from "../utils/paths"
 import Icon from "./Icon"
 
 type GalleryItem = {
   id: string
-  data: Pick<MediaItem, "title" | "image" | "dateCreated">
+  data: {
+    title: string
+    image: ImageMetadata
+  }
 }
 
 interface Props {
   items: GalleryItem[]
-  maxItems?: number
-  sortBy?: "dateCreated" | "title"
   layout: "book" | "video" | "portrait"
 }
 
-const { items: inputItems, layout, sortBy, maxItems } = Astro.props
-const items = limit(sort(inputItems))
-
-function sort(items: GalleryItem[]) {
-  if (sortBy === "dateCreated") {
-    return inputItems.toSorted((item1, item2) =>
-      item2.data.dateCreated.localeCompare(item1.data.dateCreated),
-    )
-  }
-  if (sortBy === "title") {
-    return inputItems.toSorted((item1, item2) =>
-      item1.data.title.localeCompare(item2.data.title),
-    )
-  }
-  return items
-}
-
-function limit(items: GalleryItem[]) {
-  if (!maxItems) {
-    return items
-  }
-  return items.slice(0, maxItems)
-}
+const { items, layout } = Astro.props
 ---
 
 {
