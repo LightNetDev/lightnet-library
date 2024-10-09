@@ -1,0 +1,29 @@
+---
+import { AstroError } from "astro/errors"
+import { getEntry } from "astro:content"
+
+import MediaItemList from "../../../components/MediaItemList.astro"
+import Section from "../../../components/Section.astro"
+import { getMediaItems } from "../../../content/get-media-items"
+import { queryMediaItems } from "../../../content/query-media-items"
+
+interface Props {
+  compilationId: string
+  excludeItem: string
+}
+const { compilationId, excludeItem } = Astro.props
+
+const compilation = await getEntry("compilations", compilationId)
+if (!compilation) {
+  throw new AstroError(`Unknown compilation id ${compilation}.`)
+}
+const items = (
+  await queryMediaItems(getMediaItems(), {
+    where: { compilation: compilation.id },
+  })
+).filter(({ id }) => id !== excludeItem)
+---
+
+<Section width="content" title={compilation.data.title}>
+  <MediaItemList items={items} />
+</Section>

@@ -1,5 +1,5 @@
-export { default as BUNDLED_LANGUAGES } from "../src/i18n/bundled-languages.json"
 export { getLocalePaths } from "../src/i18n/get-locale-paths"
+export { BUNDLED_LANGUAGES } from "../src/i18n/languages"
 import { useTranslate as useTranslateInternal } from "../src/i18n/use-translate"
 
 // Export useTranslate without auto completion for internal lightnet keys.

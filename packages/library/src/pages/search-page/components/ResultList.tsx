@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import Icon from "../../../components/Icon"
-import MediaItemList from "../../../components/MediaItemList"
+import SearchResultList from "../../../components/SearchResultList"
 import type { SearchItem } from "../../api/search-response"
 import type { MediaType } from "../utils/media-type"
 import type { Translations } from "../utils/search-translations"
@@ -31,7 +31,7 @@ export default function ResultList({
 
   return (
     <>
-      <MediaItemList
+      <SearchResultList
         items={items.slice(0, maxItems)}
         locale={locale}
         categories={categories}

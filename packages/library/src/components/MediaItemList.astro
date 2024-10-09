@@ -1,0 +1,40 @@
+---
+import type { MediaItemEntry } from "../content/content-schema-internal"
+import { getCategories } from "../content/get-categories"
+import { getMediaTypes } from "../content/get-media-types"
+import { ALL_LANGUAGES } from "../i18n/languages"
+import { createSearchItem } from "../pages/api/search"
+import SearchResultList from "./SearchResultList"
+
+interface Props {
+  items: MediaItemEntry[]
+}
+
+const { items } = Astro.props
+const searchItems = await Promise.all(
+  items.map((item) => createSearchItem(item)),
+)
+
+const mediaTypes = (await getMediaTypes()).map((type) => ({
+  id: type.id,
+  icon: type.data.icon,
+}))
+
+const categories: Record<string, string> = {}
+for (const { id, label } of await getCategories(Astro.currentLocale)) {
+  categories[id] = label
+}
+
+const contentLanguages: Record<string, string> = {}
+Object.entries(ALL_LANGUAGES).forEach(
+  ([code, language]) => (contentLanguages[code] = language.label),
+)
+---
+
+<SearchResultList
+  items={searchItems}
+  locale={Astro.currentLocale}
+  mediaTypes={mediaTypes}
+  categories={categories}
+  contentLanguages={contentLanguages}
+/>

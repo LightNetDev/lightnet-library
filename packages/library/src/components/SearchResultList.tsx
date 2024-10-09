@@ -7,11 +7,6 @@ export type MediaType = {
   icon: string
 }
 
-/**
- * This component is also used for the search
- * page. This is why we use the search result media item shape that
- * is a subset of the MediaItem shape.
- */
 interface Props {
   items: SearchItem[]
   locale: string | undefined
@@ -21,7 +16,16 @@ interface Props {
   className?: string
 }
 
-export default function MediaItemList({
+/**
+ * This component originally renders search results.
+ * But it can also be reused to render any list of media items.
+ * We want consistent look and feel btw different media items lists on our sites
+ * this is why we have extracted this list from the search page to be reused.
+ *
+ * Since search is using a subset of the MediaItem type we have to use search result shape
+ * here. Use MediaItemList.astro as wrapper to be populated with MediaItems.
+ */
+export default function SearchResultList({
   items,
   locale,
   categories,
