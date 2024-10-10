@@ -4,6 +4,7 @@ import Icon from "./Icon"
 
 export type MediaType = {
   id: string
+  label: string
   icon: string
 }
 
@@ -33,8 +34,8 @@ export default function SearchResultList({
   mediaTypes,
   className,
 }: Props) {
-  const iconsByType = Object.fromEntries(
-    mediaTypes.map(({ id, icon }) => [id, icon]),
+  const types = Object.fromEntries(
+    mediaTypes.map(({ id, icon, label }) => [id, { icon, label }]),
   )
 
   return (
@@ -62,7 +63,8 @@ export default function SearchResultList({
             <div className="ml-5 grow text-xs sm:ml-8">
               <h2 className="mb-1 line-clamp-3 text-sm font-bold text-gray-700 md:mb-3 md:text-base">
                 <Icon
-                  className={`${iconsByType[item.type]} mr-2 align-bottom text-2xl text-gray-700`}
+                  className={`${types[item.type].icon} mr-2 align-bottom text-2xl text-gray-700`}
+                  ariaLabel={types[item.type].label}
                 />
                 <span>{item.title}</span>
               </h2>
