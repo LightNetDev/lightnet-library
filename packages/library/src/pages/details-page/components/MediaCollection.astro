@@ -2,11 +2,11 @@
 import { AstroError } from "astro/errors"
 import { getEntry } from "astro:content"
 
+import Icon from "../../../components/Icon"
 import MediaItemList from "../../../components/MediaItemList.astro"
 import { getMediaItems } from "../../../content/get-media-items"
 import { queryMediaItems } from "../../../content/query-media-items"
 import { useTranslate } from "../../../i18n/use-translate"
-import Label from "./Label.astro"
 
 interface Props {
   collectionId: string
@@ -28,8 +28,12 @@ const t = useTranslate(Astro.currentLocale)
 ---
 
 <section class="mx-auto mt-14 max-w-screen-lg px-4 md:mt-16 md:px-8">
-  <Label>{t("ln.details.related-collection")}</Label>
-  <h2 class="mb-1 text-xl font-bold text-gray-700 md:mb-2 md:text-2xl">
+  <h2 class="mb-1 flex items-center gap-2 font-bold text-gray-700">
+    <Icon
+      className="mdi--format-list-group -ml-1 text-3xl text-gray-500"
+      ariaLabel={t("ln.common.collection")}
+    />
+
     {collection.data.title}
   </h2>
 
