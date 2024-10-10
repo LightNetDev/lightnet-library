@@ -19,9 +19,12 @@ const latestBooks = await getMediaItems({
   where: { type: "book" },
   orderBy: "dateCreated",
 })
-const learnSkateboarding = await getEntry("compilations", "learn-skateboarding")
+const learnSkateboarding = await getEntry(
+  "media-collections",
+  "learn-skateboarding",
+)
 const learnSkateboardingItems = await getMediaItems({
-  where: { compilation: "learn-skateboarding" },
+  where: { collection: "learn-skateboarding" },
 })
 
 const t = useTranslate(Astro.currentLocale)

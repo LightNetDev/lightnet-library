@@ -8,7 +8,7 @@ import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
 import { verifySchema } from "../../utils/verify-schema"
-import Compilations from "./components/Compilations.astro"
+import MediaCollections from "./components/MediaCollections.astro"
 import DocumentDetails from "./DocumentDetails.astro"
 import VideoDetails from "./VideoDetails.astro"
 
@@ -38,5 +38,5 @@ verifySchema(
   {detailsPage === "book" && <DocumentDetails showBookFold {...props} />}
   {detailsPage === "document" && <DocumentDetails {...props} />}
   {detailsPage === "video" && <VideoDetails {...props} />}
-  <Compilations mediaItemId={slug} />
+  <MediaCollections mediaItemId={slug} />
 </Page>

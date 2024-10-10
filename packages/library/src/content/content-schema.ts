@@ -20,11 +20,11 @@ export const categorySchema = z.object({
 })
 
 /**
- * Compilation schema
+ * Media Collection schema
  */
-export const compilationSchema = z.object({
+export const mediaCollectionSchema = z.object({
   /**
-   * Name of the compilation.
+   * Name of the collection.
    *
    * This will be displayed as is and not be translated.
    */
@@ -85,18 +85,18 @@ export const mediaItemSchema = z.object({
    */
   categories: z.array(reference("categories")).optional(),
   /**
-   * List of compilations this media item is included.
-   * Compilations can be used to group media items into series, playlists...
+   * List of media collections this media item is included.
+   * Collections can be used to group media items into series, playlists...
    *
-   * @example [{compilation:"my-series"}]
+   * @example [{collection:"my-series"}]
    */
-  compilations: z
+  collections: z
     .array(
       z.object({
         /**
-         * Id of the compilation.
+         * Id of the collection.
          */
-        compilation: reference("compilations"),
+        collection: reference("media-collections"),
       }),
     )
     .optional(),

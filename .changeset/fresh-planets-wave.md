@@ -2,4 +2,4 @@
 "@lightnet/library": minor
 ---
 
-Adds compilations.
+Adds media collections feature.

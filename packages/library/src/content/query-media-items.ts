@@ -7,9 +7,9 @@ export type MediaItemQuery<TMediaItem extends MediaItemEntry> = {
   where?: {
     type?: TMediaItem["data"]["type"]["id"]
     category?: NonNullable<TMediaItem["data"]["categories"]>[number]["id"]
-    compilation?: NonNullable<
-      TMediaItem["data"]["compilations"]
-    >[number]["compilation"]["id"]
+    collection?: NonNullable<
+      TMediaItem["data"]["collections"]
+    >[number]["collection"]["id"]
   }
   orderBy?: "dateCreated" | "title"
   limit?: number
@@ -30,11 +30,11 @@ export const queryMediaItems = async <TMediaItem extends MediaItemEntry>(
   if (where.type) {
     filters.push((item) => item.data.type.id === where.type)
   }
-  if (where.compilation) {
+  if (where.collection) {
     filters.push(
       (item) =>
-        !!item.data.compilations?.find(
-          ({ compilation }) => compilation.id === where.compilation,
+        !!item.data.collections?.find(
+          ({ collection }) => collection.id === where.collection,
         ),
     )
   }

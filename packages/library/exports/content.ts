@@ -1,7 +1,7 @@
 export {
   categorySchema,
-  compilationSchema,
   DETAILS_PAGES,
+  mediaCollectionSchema,
   mediaSchema,
   mediaTypeSchema,
 } from "../src/content/content-schema"
