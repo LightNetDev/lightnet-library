@@ -97,6 +97,10 @@ export const mediaItemSchema = z.object({
          * Id of the collection.
          */
         collection: reference("media-collections"),
+        /**
+         * Position of the item inside the collection.
+         */
+        index: z.number().optional(),
       }),
     )
     .optional(),

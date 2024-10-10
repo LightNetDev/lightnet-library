@@ -55,9 +55,36 @@ export const queryMediaItems = async <TMediaItem extends MediaItemEntry>(
       item1.data.title.localeCompare(item2.data.title),
     )
   }
+  const { collection } = where
+  if (!orderBy && collection) {
+    items = items.toSorted((a, b) => compareCollectionItems(a, b, collection))
+  }
 
   if (limit) {
     items = items.slice(0, limit)
   }
   return items
+}
+
+function compareCollectionItems(
+  item1: MediaItemEntry,
+  item2: MediaItemEntry,
+  collectionId: string,
+) {
+  const getIndex = (item: MediaItemEntry) =>
+    item.data.collections?.find(
+      ({ collection }) => collection.id === collectionId,
+    )?.index
+  const index1 = getIndex(item1)
+  const index2 = getIndex(item2)
+  if (index1 !== undefined && index2 !== undefined) {
+    return index1 - index2
+  }
+  if (index1 === undefined && index2 !== undefined) {
+    return 1
+  }
+  if (index1 !== undefined && index2 === undefined) {
+    return -1
+  }
+  return item1.id.localeCompare(item2.id)
 }
