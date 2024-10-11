@@ -77,8 +77,8 @@ function compareCollectionItems(
     )?.index
   const index1 = getIndex(item1)
   const index2 = getIndex(item2)
-  if (index1 !== undefined && index2 !== undefined) {
-    return index1 - index2
+  if (index1 === index2) {
+    return item1.id.localeCompare(item2.id)
   }
   if (index1 === undefined && index2 !== undefined) {
     return 1
@@ -86,5 +86,5 @@ function compareCollectionItems(
   if (index1 !== undefined && index2 === undefined) {
     return -1
   }
-  return item1.id.localeCompare(item2.id)
+  return index1! - index2!
 }
