@@ -5,6 +5,17 @@
  * @see https://pictogrammers.com/library/mdi/ for available icons
  * @returns icon
  */
-export default function Icon({ className }: { className?: string }) {
-  return <span className={`iconify text-2xl ${className ?? ""}`} />
+export default function Icon({
+  className,
+  ariaLabel,
+}: {
+  className?: string
+  ariaLabel?: string
+}) {
+  return (
+    <span
+      className={`iconify text-2xl ${className ?? ""}`}
+      aria-label={ariaLabel}
+    />
+  )
 }

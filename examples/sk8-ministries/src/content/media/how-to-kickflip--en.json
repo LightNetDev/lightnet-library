@@ -7,5 +7,6 @@
   "image": "./_images/how-to-kickflip--en.webp",
   "authors": ["Skiddy Skates"],
   "language": "en",
+  "collections": [{ "collection": "learn-skateboarding" }],
   "description": "This tutorial teaches you how to master the kickflip, covering stance, popping, flicking, timing, and landing. Perfect for all skill levels!"
 }

@@ -119,6 +119,31 @@ export const config = {
           options: categories,
         },
         {
+          name: "collections",
+          label: "Collections",
+          widget: "list",
+          required: false,
+          summary: "{{fields.collection}}",
+          fields: [
+            {
+              name: "collection",
+              label: "Collection",
+              widget: "relation",
+              collection: "media-collections",
+              value_field: "{{slug}}",
+              search_fields: ["{{slug}}"],
+            },
+            {
+              name: "index",
+              label: "Index",
+              hint: "The position of the media item inside the collection",
+              required: false,
+              widget: "number",
+              value_type: "int",
+            },
+          ],
+        },
+        {
           name: "content",
           label: "Content",
           widget: "list",
@@ -142,6 +167,21 @@ export const config = {
           label: "Description",
           required: false,
           widget: "markdown",
+        },
+      ],
+    },
+    {
+      name: "media-collections",
+      label: "Media Collections",
+      label_singular: "Media Collection",
+      create: true,
+      folder: "src/content/media-collections",
+      format: "json",
+      fields: [
+        {
+          name: "title",
+          label: "Title",
+          widget: "string",
         },
       ],
     },

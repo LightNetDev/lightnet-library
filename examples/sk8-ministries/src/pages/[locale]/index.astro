@@ -8,20 +8,24 @@ import {
   Page,
   Section,
 } from "@lightnet/library/components"
+import { getMediaItems } from "@lightnet/library/content"
 import { useTranslate } from "@lightnet/library/i18n"
-import { getCollection } from "astro:content"
+import { getEntry } from "astro:content"
 
 import eventImage from "../../assets/event.webp"
 import heroImage from "../../assets/hero.webp"
 
-const latestBooks = await getCollection(
-  "media",
-  (media) => media.data.type.id === "book",
+const latestBooks = await getMediaItems({
+  where: { type: "book" },
+  orderBy: "dateCreated",
+})
+const learnSkateboarding = await getEntry(
+  "media-collections",
+  "learn-skateboarding",
 )
-const tutorials = await getCollection(
-  "media",
-  (media) => media.data.type.id === "video",
-)
+const learnSkateboardingItems = await getMediaItems({
+  where: { collection: "learn-skateboarding" },
+})
 
 const t = useTranslate(Astro.currentLocale)
 ---
@@ -46,7 +50,7 @@ const t = useTranslate(Astro.currentLocale)
       label: t("home.bbq.sign-up-now"),
     }}
   />
-  <Section title={t("home.learn-skateboarding")}>
-    <Gallery items={tutorials} layout="video" />
+  <Section title={learnSkateboarding.data.title}>
+    <Gallery items={learnSkateboardingItems} layout="video" />
   </Section>
 </Page>

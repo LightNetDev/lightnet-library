@@ -5,7 +5,7 @@ import { reference } from "astro:content"
 import { astroImage } from "./astro-image"
 
 /**
- * category schema
+ * Category schema
  */
 export const categorySchema = z.object({
   /**
@@ -17,6 +17,18 @@ export const categorySchema = z.object({
    * @example "category.biography"
    */
   label: z.string(),
+})
+
+/**
+ * Media Collection schema
+ */
+export const mediaCollectionSchema = z.object({
+  /**
+   * Name of the collection.
+   *
+   * This will be displayed as is and not be translated.
+   */
+  title: z.string(),
 })
 
 /**
@@ -72,6 +84,26 @@ export const mediaItemSchema = z.object({
    * @example ["family"]
    */
   categories: z.array(reference("categories")).optional(),
+  /**
+   * List of media collections this media item is included.
+   * Collections can be used to group media items into series, playlists...
+   *
+   * @example [{collection:"my-series"}]
+   */
+  collections: z
+    .array(
+      z.object({
+        /**
+         * Id of the collection.
+         */
+        collection: reference("media-collections"),
+        /**
+         * Position of the item inside the collection.
+         */
+        index: z.number().optional(),
+      }),
+    )
+    .optional(),
   /**
    * BCP-47 name of the language this media item is in.
    *

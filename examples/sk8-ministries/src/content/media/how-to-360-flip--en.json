@@ -7,5 +7,6 @@
   "image": "./_images/how-to-360-flip--en.webp",
   "language": "en",
   "categories": ["teens"],
+  "collections": [{ "collection": "learn-skateboarding" }],
   "description": "Learn how to master the 360 flip in this step-by-step tutorial. We cover foot placement, spinning with your shoulders, popping the board, and landing smoothly."
 }
