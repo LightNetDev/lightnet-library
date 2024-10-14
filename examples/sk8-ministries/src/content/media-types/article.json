@@ -1,0 +1,5 @@
+{
+  "label": "ln.type.book",
+  "detailsPage": "ArticleDetails.astro",
+  "icon": "mdi--book-open-blank-variant"
+}

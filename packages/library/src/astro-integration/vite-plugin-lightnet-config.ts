@@ -8,15 +8,16 @@ import { configSchema, type LightnetConfig } from "./config"
 
 const CONFIG = "virtual:lightnet/config"
 const LOGO = "virtual:lightnet/logo"
+const PROJECT_CONTEXT = "virtual:lightnet/project-context"
 
-const VIRTUAL_MODULES = [CONFIG, LOGO] as const
+const VIRTUAL_MODULES = [CONFIG, LOGO, PROJECT_CONTEXT] as const
 
 export function vitePluginLightnetConfig(
   lightnetConfig: LightnetConfig,
-  { root }: AstroConfig,
+  { root, srcDir }: AstroConfig,
   logger: AstroIntegrationLogger,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
-  const resolvePath = (id: string) =>
+  const resolveFilePath = (id: string) =>
     JSON.stringify(id.startsWith(".") ? resolve(fileURLToPath(root), id) : id)
 
   const config = verifySchema(
@@ -43,7 +44,9 @@ export function vitePluginLightnetConfig(
         case CONFIG:
           return `export default ${JSON.stringify(config)};`
         case LOGO:
-          return `import logo from ${resolvePath(config.logo.src)}; export default logo;`
+          return `import logo from ${resolveFilePath(config.logo.src)}; export default logo;`
+        case PROJECT_CONTEXT:
+          return `export default ${JSON.stringify({ root, srcDir })}`
       }
     },
   }

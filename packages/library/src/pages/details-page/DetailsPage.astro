@@ -1,14 +1,12 @@
 ---
 import type { GetStaticPaths } from "astro"
-import { z } from "astro/zod"
+import { AstroError } from "astro/errors"
 import config from "virtual:lightnet/config"
 
 import { DETAILS_PAGES } from "../../content/content-schema"
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
-import { verifySchema } from "../../utils/verify-schema"
-import MediaCollections from "./components/MediaCollections.astro"
 import DocumentDetails from "./DocumentDetails.astro"
 import VideoDetails from "./VideoDetails.astro"
 
@@ -27,16 +25,26 @@ const {
   data: { detailsPage },
 } = await getMediaType(mediaItem.type.id)
 
-verifySchema(
-  z.enum(DETAILS_PAGES),
-  detailsPage,
-  "Received unknown details page",
-)
+let CustomDetails
+if (!DETAILS_PAGES.includes(detailsPage)) {
+  const d = import.meta.glob("/src/details-pages/*.astro")
+  const customDetailsImport = d[
+    `/src/details-pages/${detailsPage}`
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ] as () => Promise<any>
+  if (!customDetailsImport) {
+    throw new AstroError(
+      `Unknown details page ${detailsPage}`,
+      "Make sure to add your details component within /src/details-pages/",
+    )
+  }
+  CustomDetails = (await customDetailsImport()).default
+}
 ---
 
 <Page title={mediaItem.title} description={mediaItem.description}>
   {detailsPage === "book" && <DocumentDetails showBookFold {...props} />}
   {detailsPage === "document" && <DocumentDetails {...props} />}
   {detailsPage === "video" && <VideoDetails {...props} />}
-  <MediaCollections mediaItemId={slug} />
+  {CustomDetails && <CustomDetails slug={slug} />}
 </Page>
