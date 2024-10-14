@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.2.0
+
+### Minor Changes
+
+- [#105](https://github.com/LightNetDev/lightnet-library/pull/105) [`d3079a7`](https://github.com/LightNetDev/lightnet-library/commit/d3079a750a93904132d3da87f2fc86fbc64d27c9) Thanks [@si-fab](https://github.com/si-fab)! - Adds decap cms support for media collections.
+
 ## 2.1.0
 
 ### Minor Changes
