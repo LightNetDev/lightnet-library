@@ -5,13 +5,14 @@ import Section from "../../components/Section.astro"
 import CommonMetaData from "./components/CommonMetaData.astro"
 import Description from "./components/Description.astro"
 import DocumentActions from "./components/DocumentActions.astro"
+import MediaCollections from "./components/MediaCollections.astro"
 import type { Props as DetailsProps } from "./details-props"
 
 export type Props = DetailsProps & {
   showBookFold?: boolean
 }
 
-const { mediaItem, showBookFold } = Astro.props
+const { mediaItem, showBookFold, slug } = Astro.props
 const { description, language, image, title } = mediaItem
 ---
 
@@ -55,3 +56,4 @@ const { description, language, image, title } = mediaItem
     </div>
   </div>
 </Section>
+<MediaCollections mediaItemId={slug} />

@@ -157,7 +157,7 @@ export const mediaSchema = ({ image }: SchemaContext) =>
     image: astroImage(image),
   })
 
-export const DETAILS_PAGES = ["book", "document", "video"] as const
+export const DETAILS_PAGES = ["book", "document", "video"]
 
 /**
  * Media type schema
@@ -174,11 +174,11 @@ export const mediaTypeSchema = z.object({
   label: z.string(),
   /**
    * What media item details page to use for media items with this type.
-   * Can be one of "book", "document", "video"
+   * Can be one of "book", "document", "video", or a reference of a custom component.
    *
    * @example "book"
    */
-  detailsPage: z.enum(DETAILS_PAGES),
+  detailsPage: z.string(),
   /**
    * Pick the media type's icon from https://pictogrammers.com/library/mdi/
    * Prefix it's name with "mdi--"

@@ -7,3 +7,8 @@ declare module "virtual:lightnet/logo" {
   const logo: ImageMetadata = import("astro").ImageMetadata
   export default logo
 }
+
+declare module "virtual:lightnet/project-context" {
+  const context: import("./project-context").ProjectContext
+  export default context
+}

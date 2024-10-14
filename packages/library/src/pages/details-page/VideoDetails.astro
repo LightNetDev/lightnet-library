@@ -2,6 +2,7 @@
 import Section from "../../components/Section.astro"
 import CommonMetaData from "./components/CommonMetaData.astro"
 import Description from "./components/Description.astro"
+import MediaCollections from "./components/MediaCollections.astro"
 import VideoPlayer from "./components/VideoPlayer.astro"
 import type { Props } from "./details-props"
 
@@ -33,3 +34,4 @@ if (content.length !== 1) {
   <CommonMetaData {...Astro.props} />
   <Description description={description} />
 </Section>
+<MediaCollections mediaItemId={slug} />
