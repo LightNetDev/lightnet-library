@@ -1,5 +1,17 @@
 # @lightnet/library
 
+## 2.7.0
+
+### Minor Changes
+
+- [#102](https://github.com/LightNetDev/lightnet-library/pull/102) [`61a47b8`](https://github.com/LightNetDev/lightnet-library/commit/61a47b8562c992b7e7906a2e77bdf015315912e0) Thanks [@si-fab](https://github.com/si-fab)! - Adds media collections feature.
+
+- [#102](https://github.com/LightNetDev/lightnet-library/pull/102) [`61a47b8`](https://github.com/LightNetDev/lightnet-library/commit/61a47b8562c992b7e7906a2e77bdf015315912e0) Thanks [@si-fab](https://github.com/si-fab)! - Removes sortBy and maxItems on gallery.
+
+- [#106](https://github.com/LightNetDev/lightnet-library/pull/106) [`3d1d4a3`](https://github.com/LightNetDev/lightnet-library/commit/3d1d4a3306c25e907810c9ae684d5078ac753213) Thanks [@si-fab](https://github.com/si-fab)! - Adds custom details pages
+
+- [#102](https://github.com/LightNetDev/lightnet-library/pull/102) [`61a47b8`](https://github.com/LightNetDev/lightnet-library/commit/61a47b8562c992b7e7906a2e77bdf015315912e0) Thanks [@si-fab](https://github.com/si-fab)! - Adds LightNet API layer.
+
 ## 2.6.0
 
 ### Minor Changes
