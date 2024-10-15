@@ -11,9 +11,12 @@ interface Props {
   text?: string
   link?: { href: string; label: string }
   className?: string
+  titleClass?: string
+  textClass?: string
 }
 
-const { image, id, title, text, link, className } = Astro.props
+const { image, id, title, text, link, className, titleClass, textClass } =
+  Astro.props
 ---
 
 <section
@@ -30,8 +33,20 @@ const { image, id, title, text, link, className } = Astro.props
       class="aspect-[4/3] w-full shrink-0 object-cover md:w-1/2 xl:aspect-video"
     />
     <div class="my-12 max-w-screen-sm px-4 md:px-8 lg:my-24 xl:px-16">
-      {title && <h2 class="mb-4 text-4xl lg:mb-8 lg:text-5xl">{title}</h2>}
-      {text && <p class="text-lg">{text}</p>}
+      {
+        title && (
+          <h2 class="mb-4 text-4xl lg:mb-8 lg:text-5xl" class:list={titleClass}>
+            {title}
+          </h2>
+        )
+      }
+      {
+        text && (
+          <p class="text-lg" class:list={textClass}>
+            {text}
+          </p>
+        )
+      }
       {
         link && (
           <a class="dy-btn dy-btn-primary mt-8" href={link.href}>

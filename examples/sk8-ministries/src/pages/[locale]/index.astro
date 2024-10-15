@@ -35,8 +35,8 @@ const t = useTranslate(Astro.currentLocale)
     image={heroImage}
     title={t("ministry.name")}
     subtitle={t("ministry.slogan")}
-    titleSize="xl"
-    subtitleSize="xl"
+    titleSize="sm"
+    subtitleSize="sm"
   />
   <Section title={t("home.our-latest-books")}>
     <Gallery items={latestBooks} layout="book" />
@@ -45,6 +45,8 @@ const t = useTranslate(Astro.currentLocale)
     image={eventImage}
     title={t("home.bbq.title")}
     text={t("home.bbq.text")}
+    titleClass="text-teal-500"
+    textClass="text-teal-300"
     link={{
       href: "mailto:some-email-address-from-the-ministry",
       label: t("home.bbq.sign-up-now"),
