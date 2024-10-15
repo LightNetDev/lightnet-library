@@ -6,6 +6,7 @@ export type MediaItemQuery<TMediaItem extends MediaItemEntry> = {
    */
   where?: {
     type?: TMediaItem["data"]["type"]["id"]
+    language?: string
     category?: NonNullable<TMediaItem["data"]["categories"]>[number]["id"]
     collection?: NonNullable<
       TMediaItem["data"]["collections"]
@@ -22,13 +23,16 @@ export const queryMediaItems = async <TMediaItem extends MediaItemEntry>(
   const { where = {}, orderBy, limit } = query
   const filters: { (item: TMediaItem): boolean }[] = []
 
+  if (where.type) {
+    filters.push((item) => item.data.type.id === where.type)
+  }
+  if (where.language) {
+    filters.push((item) => item.data.language === where.language)
+  }
   if (where.category) {
     filters.push(
       (item) => !!item.data.categories?.find(({ id }) => id === where.category),
     )
-  }
-  if (where.type) {
-    filters.push((item) => item.data.type.id === where.type)
   }
   if (where.collection) {
     filters.push(

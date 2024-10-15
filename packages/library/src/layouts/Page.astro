@@ -2,6 +2,7 @@
 import { ViewTransitions } from "astro:transitions"
 import config from "virtual:lightnet/config"
 
+import { useTranslate } from "../i18n/use-translate"
 import Favicon from "./components/Favicon.astro"
 import PageNavigation from "./components/PageNavigation.astro"
 import PageTitle from "./components/PageTitle.astro"
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props
+const t = useTranslate(Astro.currentLocale)
+const configTitle = t(config.title, { fallbackToKey: true })
 ---
 
 <!doctype html>
@@ -20,7 +23,7 @@ const { title, description } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title ? `${title} | ${config.title}` : config.title}</title>
+    <title>{title ? `${title} | ${configTitle}` : configTitle}</title>
     {description && <meta name="description" content={description} />}
     {config.manifest && <link rel="manifest" href={config.manifest} />}
     <link rel="prefetch" href="/api/search.json" />

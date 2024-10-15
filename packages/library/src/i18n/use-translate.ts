@@ -28,8 +28,14 @@ export function useTranslate(locale: string | undefined) {
     )
   }
   // We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
-  return (key: TranslationKey | (string & NonNullable<unknown>)) => {
+  return (
+    key: TranslationKey | (string & NonNullable<unknown>),
+    options?: { fallbackToKey: boolean },
+  ) => {
     const value = translations[key] ?? defaultTranslations[key]
+    if (!value && options?.fallbackToKey) {
+      return key
+    }
     if (!value) {
       throw new AstroError(
         `No translation exists for key '${key}' and locale '${resolvedLocale}'.`,

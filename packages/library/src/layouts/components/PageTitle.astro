@@ -3,9 +3,11 @@ import { Image } from "astro:assets"
 import config from "virtual:lightnet/config"
 import logo from "virtual:lightnet/logo"
 
+import { useTranslate } from "../../i18n/use-translate"
 import { localizePath } from "../../utils/paths"
 
 const width = Math.floor(28 * Math.max(1, logo.width / logo.height))
+const t = useTranslate(Astro.currentLocale)
 ---
 
 <a
@@ -14,16 +16,20 @@ const width = Math.floor(28 * Math.max(1, logo.width / logo.height))
 >
   {
     logo.format === "svg" ? (
-      <img src={logo.src} alt={config.logo.alt} style={`width:${width}px;`} />
+      <img
+        src={logo.src}
+        alt={t(config.logo.alt, { fallbackToKey: true })}
+        style={`width:${width}px;`}
+      />
     ) : (
       <Image
         src={logo}
-        alt={config.logo.alt}
+        alt={t(config.logo.alt, { fallbackToKey: true })}
         style={`width:${width}px;`}
         width={width}
         densities={[1.5, 2, 3]}
         loading="eager"
       />
     )
-  }{config.title}</a
+  }{t(config.title, { fallbackToKey: true })}</a
 >
