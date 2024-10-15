@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "decap-cms": "^3.3.3",
-    "yaml": "^2.5.1"
+    "yaml": "^2.6.0"
   }
 }
