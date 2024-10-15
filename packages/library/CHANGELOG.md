@@ -1,5 +1,17 @@
 # @lightnet/library
 
+## 2.8.0
+
+### Minor Changes
+
+- [#108](https://github.com/LightNetDev/lightnet-library/pull/108) [`a4fa683`](https://github.com/LightNetDev/lightnet-library/commit/a4fa68330eb6a677a6e0826b8ba084962c977548) Thanks [@si-fab](https://github.com/si-fab)! - Adds support for filtering media items by language.
+
+### Patch Changes
+
+- [#108](https://github.com/LightNetDev/lightnet-library/pull/108) [`a4fa683`](https://github.com/LightNetDev/lightnet-library/commit/a4fa68330eb6a677a6e0826b8ba084962c977548) Thanks [@si-fab](https://github.com/si-fab)! - Adds support for translation keys as page titles and logo alts
+
+- [#108](https://github.com/LightNetDev/lightnet-library/pull/108) [`a4fa683`](https://github.com/LightNetDev/lightnet-library/commit/a4fa68330eb6a677a6e0826b8ba084962c977548) Thanks [@si-fab](https://github.com/si-fab)! - Add customization options for Hero and ImageSection.
+
 ## 2.7.0
 
 ### Minor Changes
