@@ -23,12 +23,12 @@ const { items, layout } = Astro.props
 
 {
   (layout === "book" || layout === "portrait") && (
-    <ol class="grid grid-cols-2 items-end justify-between gap-6 py-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
+    <ol class="grid grid-cols-2 items-end justify-between gap-x-7 gap-y-4 py-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
       {items.map((item) => (
         <li>
           <a
             href={detailsPagePath(Astro.currentLocale, item)}
-            class="flex flex-col gap-2"
+            class="flex flex-col gap-3"
           >
             <div class="relative overflow-hidden rounded-sm shadow-md">
               <Image
@@ -48,7 +48,7 @@ const { items, layout } = Astro.props
                 <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
               )}
             </div>
-            <span class="line-clamp-1 text-sm font-bold text-gray-800">
+            <span class="line-clamp-2 h-10 text-sm font-bold text-gray-800">
               {item.data.title}
             </span>
           </a>
@@ -59,12 +59,12 @@ const { items, layout } = Astro.props
 }
 {
   layout === "video" && (
-    <ol class="grid grid-cols-1 justify-between gap-6 py-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
+    <ol class="grid grid-cols-1 justify-between gap-x-7 gap-y-4 py-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
       {items.map((video) => (
         <li>
           <a
             href={detailsPagePath(Astro.currentLocale, video)}
-            class="flex flex-col gap-2"
+            class="flex flex-col gap-3"
           >
             <div class="relative aspect-video overflow-hidden rounded-md bg-gray-950 shadow-md">
               <Image
@@ -86,7 +86,7 @@ const { items, layout } = Astro.props
                 </span>
               </div>
             </div>
-            <span class="line-clamp-1 text-sm font-bold text-gray-800">
+            <span class="line-clamp-2 h-10 text-sm font-bold text-gray-800">
               {video.data.title}
             </span>
           </a>

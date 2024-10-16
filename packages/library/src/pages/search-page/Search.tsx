@@ -13,12 +13,14 @@ export default function Search({
   categories,
   mediaTypes,
   translations,
+  filterByUILanguage,
 }: {
-  locale: string | undefined
+  locale?: string
   contentLanguages: Record<string, string>
   categories: Record<string, string>
   translations: Translations
   mediaTypes: MediaType[]
+  filterByUILanguage: boolean
 }) {
   const { results, updateQuery, isLoading } = useSearch()
   const t = useProvidedTranslations(translations)
@@ -42,6 +44,8 @@ export default function Search({
           mediaTypes={mediaTypes}
           translations={translations}
           categories={categories}
+          locale={locale}
+          filterByUILanguage={filterByUILanguage}
           updateQuery={updateQuery}
         />
       </div>
