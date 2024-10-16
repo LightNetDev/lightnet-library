@@ -1,5 +1,17 @@
 # @lightnet/library
 
+## 2.9.0
+
+### Minor Changes
+
+- [#110](https://github.com/LightNetDev/lightnet-library/pull/110) [`eabc739`](https://github.com/LightNetDev/lightnet-library/commit/eabc739977a33d4921c68ddbe73eca3611a739e0) Thanks [@si-fab](https://github.com/si-fab)! - Adds option to filter search page by ui language by default.
+
+- [#110](https://github.com/LightNetDev/lightnet-library/pull/110) [`eabc739`](https://github.com/LightNetDev/lightnet-library/commit/eabc739977a33d4921c68ddbe73eca3611a739e0) Thanks [@si-fab](https://github.com/si-fab)! - Adds details page export.
+
+### Patch Changes
+
+- [#110](https://github.com/LightNetDev/lightnet-library/pull/110) [`eabc739`](https://github.com/LightNetDev/lightnet-library/commit/eabc739977a33d4921c68ddbe73eca3611a739e0) Thanks [@si-fab](https://github.com/si-fab)! - Adds additional line for title on gallery view.
+
 ## 2.8.0
 
 ### Minor Changes
