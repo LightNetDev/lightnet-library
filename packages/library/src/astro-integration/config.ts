@@ -74,6 +74,19 @@ export const configSchema = z.object({
    * Main menu structure.
    */
   mainMenu: z.array(linkSchema).min(1).optional(),
+  /**
+   * Configure search page behavior
+   */
+  searchPage: z
+    .object({
+      /**
+       * When this is set to true, search results will be
+       * filtered by UI language. Filter will only be set when there
+       * is any media item in the UI language.
+       */
+      filterByUILanguage: z.boolean().default(false),
+    })
+    .optional(),
 })
 
 export type Languages = z.input<typeof languagesSchema>

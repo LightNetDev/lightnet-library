@@ -16,7 +16,9 @@ interface Props {
   contentLanguages: Record<string, string>
   categories: Record<string, string>
   mediaTypes: MediaType[]
+  locale?: string
   translations: Translations
+  filterByUILanguage: boolean
   updateQuery: (query: SearchQuery) => void
 }
 
@@ -25,10 +27,23 @@ export default function SearchFilter({
   mediaTypes,
   updateQuery,
   translations,
+  filterByUILanguage,
+  locale,
   contentLanguages,
 }: Props) {
+  let initialLanguageFilter = ""
+  const hasMoreThanOneLanguage = Object.keys(contentLanguages).length > 1
+  if (
+    filterByUILanguage &&
+    locale &&
+    contentLanguages[locale] &&
+    hasMoreThanOneLanguage
+  ) {
+    initialLanguageFilter = locale
+  }
+
   const [search, setSearch] = useState("")
-  const [language, setLanguage] = useState("")
+  const [language, setLanguage] = useState(initialLanguageFilter)
   const [type, setType] = useState("")
   const [category, setCategory] = useState("")
   const searchInput = useRef<HTMLInputElement | null>(null)
