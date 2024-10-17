@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.9.3
+
+### Patch Changes
+
+- [#116](https://github.com/LightNetDev/lightnet-library/pull/116) [`f913b5c`](https://github.com/LightNetDev/lightnet-library/commit/f913b5c200fd60333513120c10f76a5ee48336cd) Thanks [@si-fab](https://github.com/si-fab)! - Hides obsolete metadata and filter for types,categories,languages.
+
 ## 2.9.2
 
 ### Patch Changes
