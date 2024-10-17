@@ -43,7 +43,8 @@ export const configSchema = z.object({
    */
   title: z.string(),
   /**
-   * Locales to use for the user interface translations.
+   * Languages to use for the user interface translation. This
+   * is BCP-47 language codes.
    */
   locales: z.string().array(),
   /**
@@ -80,11 +81,11 @@ export const configSchema = z.object({
   searchPage: z
     .object({
       /**
-       * When this is set to true, search results will be
-       * filtered by UI language. Filter will only be set when there
+       * When this is set to true, search results will be initially
+       * filtered by UI language. The filter will only be set when there
        * is any media item in the UI language.
        */
-      filterByUILanguage: z.boolean().default(false),
+      filterByLocale: z.boolean().default(false),
     })
     .optional(),
 })
