@@ -1,4 +1,5 @@
 ---
+import { contentLanguagesCount } from "../../../content/get-languages"
 import { resolveLanguageLabel } from "../../../i18n/resolve-language"
 import { useTranslate } from "../../../i18n/use-translate"
 import Label from "./Label.astro"
@@ -10,7 +11,11 @@ interface Props {
 const t = useTranslate(Astro.currentLocale)
 ---
 
-<Label>{t("ln.common.language")}</Label>
-<div class="text-sm">
-  {resolveLanguageLabel(Astro.props.language)}
-</div>
+{
+  contentLanguagesCount > 1 && (
+    <>
+      <Label>{t("ln.common.language")}</Label>
+      <div class="text-sm">{resolveLanguageLabel(Astro.props.language)}</div>
+    </>
+  )
+}
