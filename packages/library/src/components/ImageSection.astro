@@ -35,7 +35,10 @@ const { image, id, title, text, link, className, titleClass, textClass } =
     <div class="my-12 max-w-screen-sm px-4 md:px-8 lg:my-24 xl:px-16">
       {
         title && (
-          <h2 class="mb-4 text-4xl lg:mb-8 lg:text-5xl" class:list={titleClass}>
+          <h2
+            class="mb-4 text-2xl font-bold sm:text-3xl lg:mb-8"
+            class:list={titleClass}
+          >
             {title}
           </h2>
         )

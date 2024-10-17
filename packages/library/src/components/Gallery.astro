@@ -28,9 +28,12 @@ const { items, layout } = Astro.props
         <li>
           <a
             href={detailsPagePath(Astro.currentLocale, item)}
-            class="flex flex-col gap-3"
+            class="group flex flex-col gap-3"
           >
-            <div class="relative overflow-hidden rounded-sm shadow-md">
+            <div
+              class="relative overflow-hidden shadow-md outline-2 outline-gray-400 transition-all duration-75 ease-in-out sm:group-hover:outline"
+              class:list={layout === "book" ? "rounded-sm" : "rounded-md"}
+            >
               <Image
                 class="h-full w-full object-contain"
                 src={item.data.image}
@@ -64,9 +67,9 @@ const { items, layout } = Astro.props
         <li>
           <a
             href={detailsPagePath(Astro.currentLocale, video)}
-            class="flex flex-col gap-3"
+            class="group flex flex-col gap-3"
           >
-            <div class="relative aspect-video overflow-hidden rounded-md bg-gray-950 shadow-md">
+            <div class="relative aspect-video overflow-hidden rounded-md bg-gray-950 shadow-md outline-2 outline-gray-400 transition-all duration-75 ease-in-out sm:group-hover:outline">
               <Image
                 class="absolute top-0 h-full w-full object-contain"
                 src={video.data.image}
