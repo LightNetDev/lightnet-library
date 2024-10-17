@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.9.1
+
+### Patch Changes
+
+- [#112](https://github.com/LightNetDev/lightnet-library/pull/112) [`47bbd2b`](https://github.com/LightNetDev/lightnet-library/commit/47bbd2b7c10e6e3f0342109384a8fa7203e3ff2c) Thanks [@si-fab](https://github.com/si-fab)! - Renames searchPage config option from `filterByUILanguage` to `filterByLocale`.
+
 ## 2.9.0
 
 ### Minor Changes
