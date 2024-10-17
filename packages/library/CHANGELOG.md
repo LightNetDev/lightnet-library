@@ -1,5 +1,15 @@
 # @lightnet/library
 
+## 2.9.2
+
+### Patch Changes
+
+- [#114](https://github.com/LightNetDev/lightnet-library/pull/114) [`65acd41`](https://github.com/LightNetDev/lightnet-library/commit/65acd4154bd791f14d59e3842ad1d4a29774120c) Thanks [@si-fab](https://github.com/si-fab)! - Adds indicator of currently hovered gallery item.
+
+- [#114](https://github.com/LightNetDev/lightnet-library/pull/114) [`65acd41`](https://github.com/LightNetDev/lightnet-library/commit/65acd4154bd791f14d59e3842ad1d4a29774120c) Thanks [@si-fab](https://github.com/si-fab)! - Changes border radius of gallery items.
+
+- [#114](https://github.com/LightNetDev/lightnet-library/pull/114) [`65acd41`](https://github.com/LightNetDev/lightnet-library/commit/65acd4154bd791f14d59e3842ad1d4a29774120c) Thanks [@si-fab](https://github.com/si-fab)! - Increase title fonts on home screen, make them more consistent.
+
 ## 2.9.1
 
 ### Patch Changes
