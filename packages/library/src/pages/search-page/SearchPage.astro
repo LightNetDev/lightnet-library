@@ -36,7 +36,7 @@ const mediaTypes = (await getMediaTypes())
     a.label.localeCompare(b.label, Astro.currentLocale ?? config.defaultLocale),
   )
 
-const filterByUILanguage = !!config.searchPage?.filterByUILanguage
+const filterByLocale = !!config.searchPage?.filterByLocale
 ---
 
 <Page>
@@ -48,7 +48,7 @@ const filterByUILanguage = !!config.searchPage?.filterByUILanguage
       translations={provideTranslations(t)}
       locale={Astro.currentLocale}
       categories={categories}
-      filterByUILanguage={filterByUILanguage}
+      filterByLocale={filterByLocale}
     />
   </div>
 </Page>

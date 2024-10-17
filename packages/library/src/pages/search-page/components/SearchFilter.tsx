@@ -18,7 +18,7 @@ interface Props {
   mediaTypes: MediaType[]
   locale?: string
   translations: Translations
-  filterByUILanguage: boolean
+  filterByLocale: boolean
   updateQuery: (query: SearchQuery) => void
 }
 
@@ -27,14 +27,14 @@ export default function SearchFilter({
   mediaTypes,
   updateQuery,
   translations,
-  filterByUILanguage,
+  filterByLocale,
   locale,
   contentLanguages,
 }: Props) {
   let initialLanguageFilter = ""
   const hasMoreThanOneLanguage = Object.keys(contentLanguages).length > 1
   if (
-    filterByUILanguage &&
+    filterByLocale &&
     locale &&
     contentLanguages[locale] &&
     hasMoreThanOneLanguage
