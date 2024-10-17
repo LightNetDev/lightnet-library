@@ -37,6 +37,7 @@ export default function SearchResultList({
   const types = Object.fromEntries(
     mediaTypes.map(({ id, icon, label }) => [id, { icon, label }]),
   )
+  const showLanguageLabel = Object.keys(contentLanguages).length > 1
 
   return (
     <ol className={`divide-y divide-gray-200 ${className}`}>
@@ -74,9 +75,11 @@ export default function SearchResultList({
                     {item.authors.join(", ")}
                   </p>
                 )}
-                <span className="rounded-lg border border-gray-300 px-2 py-1 text-gray-500">
-                  {contentLanguages[item.language]}
-                </span>
+                {showLanguageLabel && (
+                  <span className="rounded-lg border border-gray-300 px-2 py-1 text-gray-500">
+                    {contentLanguages[item.language]}
+                  </span>
+                )}
                 <ul lang={locale} className="flex flex-wrap gap-1">
                   {item.categories?.map((category) => (
                     <li
