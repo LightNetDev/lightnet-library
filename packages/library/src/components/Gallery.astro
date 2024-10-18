@@ -23,7 +23,7 @@ const { items, layout } = Astro.props
 
 {
   (layout === "book" || layout === "portrait") && (
-    <ol class="grid grid-cols-2 items-end justify-between gap-x-7 gap-y-4 py-6 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
+    <ol class="grid grid-cols-2 items-end justify-between gap-x-7 gap-y-4 sm:grid-cols-3 md:grid-cols-4 md:gap-8 lg:grid-cols-5">
       {items.map((item) => (
         <li>
           <a
@@ -62,7 +62,7 @@ const { items, layout } = Astro.props
 }
 {
   layout === "video" && (
-    <ol class="grid grid-cols-1 justify-between gap-x-7 gap-y-4 py-6 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
+    <ol class="grid grid-cols-1 justify-between gap-x-7 gap-y-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
       {items.map((video) => (
         <li>
           <a

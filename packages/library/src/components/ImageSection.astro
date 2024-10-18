@@ -20,7 +20,7 @@ const { image, id, title, text, link, className, titleClass, textClass } =
 ---
 
 <section
-  class="mt-16 w-full bg-gray-200 md:mt-20"
+  class="mt-24 w-full bg-gray-200 md:mt-28"
   class:list={[className]}
   id={id}
 >
@@ -32,11 +32,11 @@ const { image, id, title, text, link, className, titleClass, textClass } =
       sizes="(max-width: 768px) 100vw, 50vw"
       class="aspect-[4/3] w-full shrink-0 object-cover md:w-1/2 xl:aspect-video"
     />
-    <div class="my-12 max-w-screen-sm px-4 md:px-8 lg:my-24 xl:px-16">
+    <div class="my-16 max-w-screen-sm px-4 md:px-8 lg:my-24 xl:px-16">
       {
         title && (
           <h2
-            class="mb-4 text-2xl font-bold sm:text-3xl lg:mb-8"
+            class="mb-4 text-2xl font-bold sm:mb-8 sm:text-3xl"
             class:list={titleClass}
           >
             {title}
@@ -45,14 +45,14 @@ const { image, id, title, text, link, className, titleClass, textClass } =
       }
       {
         text && (
-          <p class="text-lg" class:list={textClass}>
+          <p class="mb-10 text-lg sm:mb-12" class:list={textClass}>
             {text}
           </p>
         )
       }
       {
         link && (
-          <a class="dy-btn dy-btn-primary mt-8" href={link.href}>
+          <a class="dy-btn dy-btn-primary" href={link.href}>
             {link.label}
             <Icon className="mdi--arrow-right" />
           </a>

@@ -34,6 +34,9 @@ export default defineConfig({
           label: "navigation.about-lightnet",
         },
       ],
+      searchPage: {
+        filterByLocale: true,
+      },
     }),
     lightnetDecapAdmin({ languages, defaultLocale }),
   ],

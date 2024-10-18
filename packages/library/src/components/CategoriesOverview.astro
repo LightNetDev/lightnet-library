@@ -17,7 +17,7 @@ const categories = await getCategories(Astro.currentLocale)
 {
   categories.length && (
     <Section title={title ?? t("ln.common.categories")}>
-      <ul class="flex w-full flex-wrap gap-2 py-6 sm:gap-3">
+      <ul class="flex w-full flex-wrap gap-2 sm:gap-3">
         {categories.map((category) => (
           <li class="flex max-w-56 grow">
             <a

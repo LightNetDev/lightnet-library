@@ -34,7 +34,7 @@ const filterByLocale = !!config.searchPage?.filterByLocale
 <Page>
   <div class="mx-auto max-w-screen-lg">
     <Search
-      client:load
+      client:only="react"
       contentLanguages={contentLanguages}
       mediaTypes={mediaTypes}
       translations={provideTranslations(t)}
