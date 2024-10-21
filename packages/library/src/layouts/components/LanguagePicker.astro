@@ -6,12 +6,14 @@ import { localizePath } from "../../utils/paths"
 import Menu from "./Menu.astro"
 import MenuItem from "./MenuItem.astro"
 
-const translations = config.locales.map((locale) => ({
-  locale,
-  label: resolveLanguageLabel(locale),
-  active: locale === Astro.currentLocale,
-  href: currentPathWithLocale(locale),
-}))
+const translations = config.locales
+  .map((locale) => ({
+    locale,
+    label: resolveLanguageLabel(locale),
+    active: locale === Astro.currentLocale,
+    href: currentPathWithLocale(locale),
+  }))
+  .sort((a, b) => a.label.localeCompare(b.label))
 
 function currentPathWithLocale(locale: string) {
   const currentPath = Astro.url.pathname

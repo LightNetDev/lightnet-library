@@ -122,7 +122,7 @@ export default function SearchFilter({
             >
               <option value="">{t("ln.search.all-languages")}</option>
               {Object.entries(contentLanguages)
-                .sort((a, b) => a[1].localeCompare(b[1], locale))
+                .sort((a, b) => a[1].localeCompare(b[1]))
                 .map(([lang, label]) => (
                   <option key={lang} value={lang} lang={lang}>
                     {label}
