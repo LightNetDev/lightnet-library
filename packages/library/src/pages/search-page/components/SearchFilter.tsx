@@ -121,11 +121,13 @@ export default function SearchFilter({
               onChange={(e) => setLanguage(e.currentTarget.value)}
             >
               <option value="">{t("ln.search.all-languages")}</option>
-              {Object.entries(contentLanguages).map(([lang, label]) => (
-                <option key={lang} value={lang} lang={lang}>
-                  {label}
-                </option>
-              ))}
+              {Object.entries(contentLanguages)
+                .sort((a, b) => a[1].localeCompare(b[1], locale))
+                .map(([lang, label]) => (
+                  <option key={lang} value={lang} lang={lang}>
+                    {label}
+                  </option>
+                ))}
             </select>
           </label>
         )}
@@ -171,11 +173,13 @@ export default function SearchFilter({
               <option key="" value="">
                 {t("ln.search.all-categories")}
               </option>
-              {Object.entries(categories).map(([id, label]) => (
-                <option key={id} value={id}>
-                  {label}
-                </option>
-              ))}
+              {Object.entries(categories)
+                .sort((a, b) => a[1].localeCompare(b[1], locale))
+                .map(([id, label]) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
             </select>
           </label>
         )}
