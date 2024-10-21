@@ -7,10 +7,11 @@ import type { MediaType } from "../utils/media-type"
 import type { Translations } from "../utils/search-translations"
 import { useProvidedTranslations } from "../utils/use-provided-translations"
 
-const QUERY_PARAM_SEARCH = "search"
-const QUERY_PARAM_LANGUAGE = "language"
-const QUERY_PARAM_TYPE = "type"
-const QUERY_PARAM_CATEGORY = "category"
+// URL search params
+const SEARCH = "search"
+const LANGUAGE = "language"
+const TYPE = "type"
+const CATEGORY = "category"
 
 interface Props {
   contentLanguages: Record<string, string>
@@ -47,10 +48,21 @@ export default function SearchFilter({
   // sense to have the filter when there is only one category.
   const categoriesFilterEnabled = Object.keys(categories).length > 0
 
-  const [search, setSearch] = useState("")
-  const [language, setLanguage] = useState(initialLanguageFilter)
-  const [type, setType] = useState("")
-  const [category, setCategory] = useState("")
+  const getSearchParam = (name: string, defaultValue = "") => {
+    // be lazy to avoid parsing search params all the time
+    return () => {
+      const searchParams = new URLSearchParams(window.location.search)
+      return searchParams.get(name) ?? defaultValue
+    }
+  }
+
+  const [search, setSearch] = useState(getSearchParam(SEARCH))
+  const [language, setLanguage] = useState(
+    getSearchParam(LANGUAGE, initialLanguageFilter),
+  )
+  const [type, setType] = useState(getSearchParam(TYPE))
+  const [category, setCategory] = useState(getSearchParam(CATEGORY))
+
   const searchInput = useRef<HTMLInputElement | null>(null)
 
   const t = useProvidedTranslations(translations)
@@ -60,38 +72,19 @@ export default function SearchFilter({
   }, 300)
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search)
-
-    const search = searchParams.get(QUERY_PARAM_SEARCH) ?? undefined
-    const language = searchParams.get(QUERY_PARAM_LANGUAGE) ?? undefined
-    const type = searchParams.get(QUERY_PARAM_TYPE) ?? undefined
-    const category = searchParams.get(QUERY_PARAM_CATEGORY) ?? undefined
-
-    if (search) {
-      setSearch(search)
-    }
-    if (language) {
-      setLanguage(language)
-    }
-    if (type) {
-      setType(type)
-    }
-    if (category) {
-      setCategory(category)
-    }
-
-    updateQuery({ search, language, type, category })
-  }, [])
-
-  useEffect(() => {
-    // update search params
     const url = new URL(window.location.href)
-    const updateParams = (name: string, value: string) =>
-      value ? url.searchParams.set(name, value) : url.searchParams.delete(name)
-    updateParams(QUERY_PARAM_SEARCH, search)
-    updateParams(QUERY_PARAM_LANGUAGE, language)
-    updateParams(QUERY_PARAM_TYPE, type)
-    updateParams(QUERY_PARAM_CATEGORY, category)
+    const updateSearchParam = (name: string, value: string) => {
+      // Only update when value before and after are different and both are non empty.
+      if (value === (url.searchParams.get(name) ?? "")) {
+        return
+      }
+      url.searchParams.set(name, value)
+    }
+
+    updateSearchParam(SEARCH, search)
+    updateSearchParam(LANGUAGE, language)
+    updateSearchParam(TYPE, type)
+    updateSearchParam(CATEGORY, category)
     history.replaceState({ ...history.state }, "", url.toString())
 
     updateQuery({ search, language, type, category })
@@ -128,11 +121,13 @@ export default function SearchFilter({
               onChange={(e) => setLanguage(e.currentTarget.value)}
             >
               <option value="">{t("ln.search.all-languages")}</option>
-              {Object.entries(contentLanguages).map(([lang, label]) => (
-                <option key={lang} value={lang} lang={lang}>
-                  {label}
-                </option>
-              ))}
+              {Object.entries(contentLanguages)
+                .sort((a, b) => a[1].localeCompare(b[1]))
+                .map(([lang, label]) => (
+                  <option key={lang} value={lang} lang={lang}>
+                    {label}
+                  </option>
+                ))}
             </select>
           </label>
         )}
@@ -178,11 +173,13 @@ export default function SearchFilter({
               <option key="" value="">
                 {t("ln.search.all-categories")}
               </option>
-              {Object.entries(categories).map(([id, label]) => (
-                <option key={id} value={id}>
-                  {label}
-                </option>
-              ))}
+              {Object.entries(categories)
+                .sort((a, b) => a[1].localeCompare(b[1], locale))
+                .map(([id, label]) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
             </select>
           </label>
         )}

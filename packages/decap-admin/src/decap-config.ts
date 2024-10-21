@@ -36,6 +36,7 @@ export const config = {
   public_folder: "/files",
   editor: { preview: false },
   site_url: userConfig.site,
+  search: false,
   collections: [
     {
       name: "media",
