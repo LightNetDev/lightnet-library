@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.2.1
+
+### Patch Changes
+
+- [#118](https://github.com/LightNetDev/lightnet-library/pull/118) [`7c406a0`](https://github.com/LightNetDev/lightnet-library/commit/7c406a0c4a555804249951a7a91dee3545b308b8) Thanks [@si-fab](https://github.com/si-fab)! - Disables Decap's search, as this was not helpful and only confusing users.
+
 ## 2.2.0
 
 ### Minor Changes
