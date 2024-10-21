@@ -1,5 +1,17 @@
 # @lightnet/library
 
+## 2.9.4
+
+### Patch Changes
+
+- [#118](https://github.com/LightNetDev/lightnet-library/pull/118) [`7c406a0`](https://github.com/LightNetDev/lightnet-library/commit/7c406a0c4a555804249951a7a91dee3545b308b8) Thanks [@si-fab](https://github.com/si-fab)! - Adds more spacing on HomePage + makes it more consistent
+
+- [#118](https://github.com/LightNetDev/lightnet-library/pull/118) [`7c406a0`](https://github.com/LightNetDev/lightnet-library/commit/7c406a0c4a555804249951a7a91dee3545b308b8) Thanks [@si-fab](https://github.com/si-fab)! - Fixes search is resetting the all languages filter on browser back navigation.
+
+- [#118](https://github.com/LightNetDev/lightnet-library/pull/118) [`7c406a0`](https://github.com/LightNetDev/lightnet-library/commit/7c406a0c4a555804249951a7a91dee3545b308b8) Thanks [@si-fab](https://github.com/si-fab)! - Sorts UI language picker alphabetically.
+
+- [#118](https://github.com/LightNetDev/lightnet-library/pull/118) [`7c406a0`](https://github.com/LightNetDev/lightnet-library/commit/7c406a0c4a555804249951a7a91dee3545b308b8) Thanks [@si-fab](https://github.com/si-fab)! - Sorts language, categories, types filter alphabetically
+
 ## 2.9.3
 
 ### Patch Changes
