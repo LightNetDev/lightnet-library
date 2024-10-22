@@ -15,9 +15,4 @@ export const languages: Language[] = [
     code: "it",
     name: "Italiano",
   },
-  {
-    code: "fa",
-    name: "Farsi",
-    direction: "rtl",
-  },
 ]
