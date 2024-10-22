@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.2.2
+
+### Patch Changes
+
+- [#127](https://github.com/LightNetDev/lightnet-library/pull/127) [`0adf355`](https://github.com/LightNetDev/lightnet-library/commit/0adf3555c21bd19120ef8982ca3f5d7e139f433b) Thanks [@si-fab](https://github.com/si-fab)! - Support rtl text fragments.
+
 ## 2.2.1
 
 ### Patch Changes
