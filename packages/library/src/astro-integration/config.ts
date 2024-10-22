@@ -15,13 +15,11 @@ const translationsSchema = z.record(
   ),
 )
 
-const languagesSchema = z.record(
-  z.string({ description: "language-code" }),
-  z.object({
-    label: z.string({ description: "This label will not be translated" }),
-    direction: z.enum(["rtl", "ltr"]).default("ltr"),
-  }),
-)
+const languageSchema = z.object({
+  code: z.string(),
+  name: z.string({ description: "This name will not be translated" }),
+  direction: z.enum(["rtl", "ltr"]).default("ltr"),
+})
 
 const absolutePath = (path: string) =>
   `${path.startsWith("/") ? "" : "/"}${path}`
@@ -70,7 +68,7 @@ export const configSchema = z.object({
   /**
    * Content and user interface languages.
    */
-  languages: languagesSchema,
+  languages: languageSchema.array(),
   /**
    * Main menu structure.
    */
@@ -90,7 +88,7 @@ export const configSchema = z.object({
     .optional(),
 })
 
-export type Languages = z.input<typeof languagesSchema>
+export type Language = z.input<typeof languageSchema>
 export type Translations = z.input<typeof translationsSchema>
 export type Link = z.input<typeof linkSchema>
 

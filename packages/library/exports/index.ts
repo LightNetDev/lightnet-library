@@ -1,5 +1,5 @@
 export {
-  type Languages,
+  type Language,
   type LightnetConfig,
   type Link,
   type Translations,

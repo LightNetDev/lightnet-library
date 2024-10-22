@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import Icon from "../../../components/Icon"
 import SearchResultList from "../../../components/SearchResultList"
+import type { Language } from "../../../i18n/languages"
 import type { SearchItem } from "../../api/search-response"
 import type { MediaType } from "../utils/media-type"
 import type { Translations } from "../utils/search-translations"
@@ -14,7 +15,7 @@ interface Props {
   locale: string | undefined
   translations: Translations
   categories: Record<string, string>
-  contentLanguages: Record<string, string>
+  contentLanguages: Language[]
   mediaTypes: MediaType[]
 }
 

@@ -1,6 +1,6 @@
 ---
 import { getMediaItems } from "../../../content/get-media-items"
-import { resolveLanguageLabel } from "../../../i18n/resolve-language"
+import { resolveLanguage } from "../../../i18n/resolve-language"
 import { useTranslate } from "../../../i18n/use-translate"
 import { detailsPagePath } from "../../../utils/paths"
 import Label from "./Label.astro"
@@ -29,7 +29,7 @@ const t = useTranslate(Astro.currentLocale)
               href={detailsPagePath(Astro.currentLocale, translation)}
               hreflang={translation.data.language}
             >
-              {resolveLanguageLabel(translation.data.language)}
+              {resolveLanguage(translation.data.language).name}
             </a>
           </li>
         ))}

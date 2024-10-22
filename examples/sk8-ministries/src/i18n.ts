@@ -1,15 +1,23 @@
-import type { Languages } from "@lightnet/library"
+import type { Language } from "@lightnet/library"
 
 export const defaultLocale = "en"
 
-export const languages = {
-  de: {
-    label: "Deutsch",
+export const languages: Language[] = [
+  {
+    code: "de",
+    name: "Deutsch",
   },
-  en: {
-    label: "English",
+  {
+    code: "en",
+    name: "English",
   },
-  it: {
-    label: "Italiano",
+  {
+    code: "it",
+    name: "Italiano",
   },
-} satisfies Languages
+  {
+    code: "fa",
+    name: "Farsi",
+    direction: "rtl",
+  },
+]

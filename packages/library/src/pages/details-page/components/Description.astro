@@ -1,6 +1,7 @@
 ---
 import { marked } from "marked"
-import config from "virtual:lightnet/config"
+
+import { resolveLanguage } from "../../../i18n/resolve-language"
 
 interface Props {
   description?: string
@@ -10,7 +11,7 @@ interface Props {
 const { description, language } = Astro.props
 const formattedDescription = description && (await marked.parse(description))
 
-const direction = config.languages[language].direction
+const direction = resolveLanguage(language).direction
 ---
 
 {
