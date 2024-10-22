@@ -105,6 +105,7 @@ export default function SearchResultList({
                 <p
                   className="line-clamp-3 max-w-screen-sm text-xs text-gray-500"
                   lang={item.language}
+                  dir={languages[item.language].direction}
                 >
                   {item.description}
                 </p>
