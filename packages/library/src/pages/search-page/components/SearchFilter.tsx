@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 import Icon from "../../../components/Icon"
+import type { Language } from "../../../i18n/languages"
 import { useDebounce } from "../hooks/use-debounce"
 import type { SearchQuery } from "../hooks/use-search"
 import type { MediaType } from "../utils/media-type"
@@ -14,7 +15,7 @@ const TYPE = "type"
 const CATEGORY = "category"
 
 interface Props {
-  contentLanguages: Record<string, string>
+  contentLanguages: Language[]
   categories: Record<string, string>
   mediaTypes: MediaType[]
   locale?: string
@@ -32,17 +33,7 @@ export default function SearchFilter({
   locale,
   contentLanguages,
 }: Props) {
-  let initialLanguageFilter = ""
-  const languageFilterEnabled = Object.keys(contentLanguages).length > 1
-  if (
-    filterByLocale &&
-    locale &&
-    contentLanguages[locale] &&
-    languageFilterEnabled
-  ) {
-    initialLanguageFilter = locale
-  }
-
+  const languageFilterEnabled = contentLanguages.length > 1
   const typesFilterEnabled = mediaTypes.length > 1
   // Not every media item has a category. So it makes
   // sense to have the filter when there is only one category.
@@ -57,9 +48,21 @@ export default function SearchFilter({
   }
 
   const [search, setSearch] = useState(getSearchParam(SEARCH))
-  const [language, setLanguage] = useState(
-    getSearchParam(LANGUAGE, initialLanguageFilter),
-  )
+  const [language, setLanguage] = useState(() => {
+    let initialLanguageFilter = ""
+    const hasContentLanguage = contentLanguages.find(
+      ({ code }) => code === locale,
+    )
+    if (
+      filterByLocale &&
+      locale &&
+      hasContentLanguage &&
+      languageFilterEnabled
+    ) {
+      initialLanguageFilter = locale
+    }
+    return getSearchParam(LANGUAGE, initialLanguageFilter)()
+  })
   const [type, setType] = useState(getSearchParam(TYPE))
   const [category, setCategory] = useState(getSearchParam(CATEGORY))
 
@@ -121,13 +124,11 @@ export default function SearchFilter({
               onChange={(e) => setLanguage(e.currentTarget.value)}
             >
               <option value="">{t("ln.search.all-languages")}</option>
-              {Object.entries(contentLanguages)
-                .sort((a, b) => a[1].localeCompare(b[1]))
-                .map(([lang, label]) => (
-                  <option key={lang} value={lang} lang={lang}>
-                    {label}
-                  </option>
-                ))}
+              {contentLanguages.map(({ code, name }) => (
+                <option key={code} value={code} lang={code}>
+                  {name}
+                </option>
+              ))}
             </select>
           </label>
         )}

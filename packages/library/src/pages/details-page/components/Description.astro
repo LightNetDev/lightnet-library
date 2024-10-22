@@ -1,16 +1,25 @@
 ---
 import { marked } from "marked"
 
+import { resolveLanguage } from "../../../i18n/resolve-language"
+
 interface Props {
   description?: string
+  language: string
 }
 
-const { description } = Astro.props
+const { description, language } = Astro.props
 const formattedDescription = description && (await marked.parse(description))
+
+const direction = resolveLanguage(language).direction
 ---
 
 {
   formattedDescription && (
-    <div class="prose prose-gray mt-6" set:html={formattedDescription} />
+    <div
+      dir={direction}
+      class="prose prose-gray mt-6"
+      set:html={formattedDescription}
+    />
   )
 }

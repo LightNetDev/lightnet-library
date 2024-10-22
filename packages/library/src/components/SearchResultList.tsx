@@ -1,3 +1,6 @@
+import { useMemo } from "react"
+
+import type { Language } from "../i18n/languages"
 import type { SearchItem } from "../pages/api/search-response"
 import { detailsPagePath } from "../utils/paths"
 import Icon from "./Icon"
@@ -12,7 +15,7 @@ interface Props {
   items: SearchItem[]
   locale: string | undefined
   categories: Record<string, string>
-  contentLanguages: Record<string, string>
+  contentLanguages: Language[]
   mediaTypes: MediaType[]
   className?: string
 }
@@ -34,11 +37,17 @@ export default function SearchResultList({
   mediaTypes,
   className,
 }: Props) {
-  const types = Object.fromEntries(
-    mediaTypes.map(({ id, icon, label }) => [id, { icon, label }]),
+  const types = useMemo(
+    () =>
+      Object.fromEntries(
+        mediaTypes.map(({ id, icon, label }) => [id, { icon, label }]),
+      ),
+    [mediaTypes],
   )
-  const showLanguageLabel = Object.keys(contentLanguages).length > 1
-
+  const languages = useMemo(
+    () => Object.fromEntries(contentLanguages.map((lang) => [lang.code, lang])),
+    [contentLanguages],
+  )
   return (
     <ol className={`divide-y divide-gray-200 ${className}`}>
       {items.map((item) => (
@@ -75,9 +84,9 @@ export default function SearchResultList({
                     {item.authors.join(", ")}
                   </p>
                 )}
-                {showLanguageLabel && (
+                {contentLanguages.length > 1 && (
                   <span className="rounded-lg border border-gray-300 px-2 py-1 text-gray-500">
-                    {contentLanguages[item.language]}
+                    {languages[item.language].name}
                   </span>
                 )}
                 <ul lang={locale} className="flex flex-wrap gap-1">
@@ -96,6 +105,7 @@ export default function SearchResultList({
                 <p
                   className="line-clamp-3 max-w-screen-sm text-xs text-gray-500"
                   lang={item.language}
+                  dir={languages[item.language].direction}
                 >
                   {item.description}
                 </p>

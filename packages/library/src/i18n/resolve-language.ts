@@ -1,15 +1,16 @@
-import { z } from "astro/zod"
+import { AstroError } from "astro/errors"
 
-import { verifySchema } from "../utils/verify-schema"
 import { ALL_LANGUAGES } from "./languages"
 
-export const resolveLanguageLabel = (bcp47: string) => {
-  const label = ALL_LANGUAGES[bcp47]?.label
+const languages = Object.fromEntries(
+  ALL_LANGUAGES.map((lang) => [lang.code, lang]),
+)
 
-  verifySchema(
-    z.string().min(1),
-    label,
-    `There is no language definition for: ${bcp47}`,
-  )
-  return label as string
+export const resolveLanguage = (bcp47: string) => {
+  const language = languages[bcp47]
+
+  if (!language) {
+    throw new AstroError(`There is no language definition for: ${bcp47}`)
+  }
+  return language
 }

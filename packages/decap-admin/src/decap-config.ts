@@ -81,7 +81,9 @@ export const config = {
           name: "language",
           label: "Language",
           widget: "select",
-          options: Object.keys(userConfig.languages ?? BUNDLED_LANGUAGES),
+          options: (userConfig.languages ?? BUNDLED_LANGUAGES).map(
+            ({ code }) => code,
+          ),
         },
         {
           name: "authors",

@@ -5,11 +5,6 @@ import { z } from "astro/zod"
 
 import { vitePluginExportAdminImages } from "./export-admin-images"
 
-const languagesSchema = z.record(
-  z.string({ description: "language-code" }),
-  z.object({}),
-)
-
 /**
  * @see https://decapcms.org/docs/gitlab-backend/
  */
@@ -34,7 +29,7 @@ const githubSchema = z.object({
 const userConfigSchema = z.object({
   path: z.string().default("admin"),
   defaultLocale: z.string().optional(),
-  languages: languagesSchema.optional(),
+  languages: z.object({ code: z.string() }).array().optional(),
   backend: gitlabSchema.or(githubSchema).optional(),
 })
 

@@ -29,7 +29,7 @@ const { description, language, image, title } = mediaItem
     <div class="grow">
       <CommonMetaData {...Astro.props} />
       <DocumentActions className="my-8 sm:hidden" mediaItem={mediaItem} />
-      <Description description={description} />
+      <Description description={description} language={language} />
     </div>
     <div
       class="flex h-full min-w-64 shrink flex-col items-stretch gap-8 md:min-w-72"

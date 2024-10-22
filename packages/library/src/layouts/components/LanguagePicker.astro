@@ -1,7 +1,7 @@
 ---
 import config from "virtual:lightnet/config"
 
-import { resolveLanguageLabel } from "../../i18n/resolve-language"
+import { resolveLanguage } from "../../i18n/resolve-language"
 import { localizePath } from "../../utils/paths"
 import Menu from "./Menu.astro"
 import MenuItem from "./MenuItem.astro"
@@ -9,7 +9,7 @@ import MenuItem from "./MenuItem.astro"
 const translations = config.locales
   .map((locale) => ({
     locale,
-    label: resolveLanguageLabel(locale),
+    label: resolveLanguage(locale).name,
     active: locale === Astro.currentLocale,
     href: currentPathWithLocale(locale),
   }))
