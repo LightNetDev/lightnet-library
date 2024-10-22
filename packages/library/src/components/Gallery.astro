@@ -2,6 +2,7 @@
 import type { ImageMetadata } from "astro"
 import { Image } from "astro:assets"
 
+import { getMediaTypes } from "../content/get-media-types"
 import { detailsPagePath } from "../utils/paths"
 import Icon from "./Icon"
 
@@ -9,9 +10,14 @@ type GalleryItem = {
   id: string
   data: {
     title: string
+    type: { id: string }
     image: ImageMetadata
   }
 }
+
+const typeIcons = Object.fromEntries(
+  (await getMediaTypes()).map((type) => [type.id, type.data.icon]),
+)
 
 interface Props {
   items: GalleryItem[]
@@ -52,6 +58,9 @@ const { items, layout } = Astro.props
               )}
             </div>
             <span class="line-clamp-2 h-10 text-sm font-bold text-gray-800">
+              <Icon
+                className={`${typeIcons[item.data.type.id]} mr-1 align-text-top text-base`}
+              />
               {item.data.title}
             </span>
           </a>
@@ -83,13 +92,11 @@ const { items, layout } = Astro.props
                   "280px"
                 }
               />
-              <div class="absolute top-0 flex h-full w-full items-center justify-center">
-                <span class="z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-800">
-                  <Icon className="mdi--play" />
-                </span>
-              </div>
             </div>
             <span class="line-clamp-2 h-10 text-sm font-bold text-gray-800">
+              <Icon
+                className={`${typeIcons[video.data.type.id]} mr-1 align-text-top text-base`}
+              />
               {video.data.title}
             </span>
           </a>
