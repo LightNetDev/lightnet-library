@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.9.5
+
+### Patch Changes
+
+- [#121](https://github.com/LightNetDev/lightnet-library/pull/121) [`4c6fed3`](https://github.com/LightNetDev/lightnet-library/commit/4c6fed36dea2ea26325bc847487860b419e299e0) Thanks [@si-fab](https://github.com/si-fab)! - Add type indicator on gallery titles.
+
 ## 2.9.4
 
 ### Patch Changes
