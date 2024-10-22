@@ -70,7 +70,7 @@ export const configSchema = z.object({
   /**
    * Content and user interface languages.
    */
-  languages: languagesSchema.optional(),
+  languages: languagesSchema,
   /**
    * Main menu structure.
    */

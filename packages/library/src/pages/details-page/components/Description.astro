@@ -1,16 +1,24 @@
 ---
 import { marked } from "marked"
+import config from "virtual:lightnet/config"
 
 interface Props {
   description?: string
+  language: string
 }
 
-const { description } = Astro.props
+const { description, language } = Astro.props
 const formattedDescription = description && (await marked.parse(description))
+
+const direction = config.languages[language].direction
 ---
 
 {
   formattedDescription && (
-    <div class="prose prose-gray mt-6" set:html={formattedDescription} />
+    <div
+      dir={direction}
+      class="prose prose-gray mt-6"
+      set:html={formattedDescription}
+    />
   )
 }
