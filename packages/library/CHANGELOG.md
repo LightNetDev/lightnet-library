@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.9.7
+
+### Patch Changes
+
+- [#125](https://github.com/LightNetDev/lightnet-library/pull/125) [`bf6ea58`](https://github.com/LightNetDev/lightnet-library/commit/bf6ea58e7bf02e2066e283ced97cc18423777071) Thanks [@si-fab](https://github.com/si-fab)! - Makes type icons on gallery even bigger.
+
+- [#127](https://github.com/LightNetDev/lightnet-library/pull/127) [`0adf355`](https://github.com/LightNetDev/lightnet-library/commit/0adf3555c21bd19120ef8982ca3f5d7e139f433b) Thanks [@si-fab](https://github.com/si-fab)! - Support rtl text fragments.
+
 ## 2.9.6
 
 ### Patch Changes
