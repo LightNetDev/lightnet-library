@@ -57,9 +57,9 @@ const { items, layout } = Astro.props
                 <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
               )}
             </div>
-            <span class="line-clamp-2 h-10 text-sm font-bold text-gray-800">
+            <span class="line-clamp-2 h-10 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[item.data.type.id]} mr-1 align-text-top text-base`}
+                className={`${typeIcons[item.data.type.id]} mr-2 align-bottom text-xl`}
               />
               {item.data.title}
             </span>
@@ -93,9 +93,9 @@ const { items, layout } = Astro.props
                 }
               />
             </div>
-            <span class="line-clamp-2 h-10 text-sm font-bold text-gray-800">
+            <span class="line-clamp-2 h-10 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[video.data.type.id]} mr-1 align-text-top text-base`}
+                className={`${typeIcons[video.data.type.id]} mr-2 align-bottom text-xl`}
               />
               {video.data.title}
             </span>
