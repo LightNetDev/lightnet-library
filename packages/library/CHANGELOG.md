@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.9.6
+
+### Patch Changes
+
+- [#123](https://github.com/LightNetDev/lightnet-library/pull/123) [`a45a6dd`](https://github.com/LightNetDev/lightnet-library/commit/a45a6dd47e88f610ce1c81e943628dc1a073e5a5) Thanks [@si-fab](https://github.com/si-fab)! - Increases gallery type icon size.
+
 ## 2.9.5
 
 ### Patch Changes
