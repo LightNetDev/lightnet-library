@@ -182,8 +182,8 @@ export const config = {
       format: "json",
       fields: [
         {
-          name: "title",
-          label: "Title",
+          name: "name",
+          label: "Name",
           widget: "string",
         },
       ],

@@ -28,7 +28,7 @@ export const mediaCollectionSchema = z.object({
    *
    * This will be displayed as is and not be translated.
    */
-  title: z.string(),
+  name: z.string(),
 })
 
 /**
