@@ -27,13 +27,14 @@ export function useSearch() {
           keys: [
             { name: "title", weight: 3 },
             "language",
-            { name: "author", weight: 2 },
+            { name: "authors", weight: 2 },
             "description",
             "type",
             "categories",
             "id",
           ],
           useExtendedSearch: true,
+          threshold: 0.3,
           ignoreLocation: true,
         })
         setAllItems(items)
@@ -63,7 +64,7 @@ export function useSearch() {
       $or: [
         { title: search },
         { description: search },
-        { author: search },
+        { authors: search },
         { id: search },
       ],
     })
