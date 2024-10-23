@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.9.8
+
+### Patch Changes
+
+- [#128](https://github.com/LightNetDev/lightnet-library/pull/128) [`46af0e3`](https://github.com/LightNetDev/lightnet-library/commit/46af0e3ad00b16f60ad541e3c9d0a36647bf6bcd) Thanks [@si-fab](https://github.com/si-fab)! - Renames collection `title` to `name`.
+
+- [#128](https://github.com/LightNetDev/lightnet-library/pull/128) [`46af0e3`](https://github.com/LightNetDev/lightnet-library/commit/46af0e3ad00b16f60ad541e3c9d0a36647bf6bcd) Thanks [@si-fab](https://github.com/si-fab)! - Improves search config.
+
 ## 2.9.7
 
 ### Patch Changes
