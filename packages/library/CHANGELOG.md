@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.10.0
+
+### Minor Changes
+
+- [#130](https://github.com/LightNetDev/lightnet-library/pull/130) [`43f3aa2`](https://github.com/LightNetDev/lightnet-library/commit/43f3aa283f494daaa90708fac196ceaba5393545) Thanks [@si-fab](https://github.com/si-fab)! - Simplifies astro collection config by introducing a shared `LIGHTNET_COLLECTIONS` object.
+
 ## 2.9.8
 
 ### Patch Changes
