@@ -180,6 +180,7 @@ export const config = {
       create: true,
       folder: "src/content/media-collections",
       format: "json",
+      slug: "{{name}}",
       fields: [
         {
           name: "name",
