@@ -171,9 +171,6 @@ importers:
       '@playwright/test':
         specifier: ^1.48.1
         version: 1.48.1
-      playwright:
-        specifier: ^1.48.1
-        version: 1.48.1
 
 packages:
 
