@@ -66,7 +66,7 @@ export default function SearchResultList({
                 height={item.image.height}
                 alt=""
                 decoding="async"
-                loading="eager"
+                loading="lazy"
               />
             </div>
 

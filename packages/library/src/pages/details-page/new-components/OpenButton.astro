@@ -1,0 +1,30 @@
+---
+import Icon from "../../../components/Icon"
+import { getMediaItem } from "../../../content/get-media-items"
+import { useTranslate } from "../../../i18n/use-translate"
+import { isExternalUrl } from "../../../utils/urls"
+
+interface Props {
+  slug: string
+}
+
+const item = await getMediaItem(Astro.props.slug)
+const content = item.data.content[0]
+const isExternal = isExternalUrl(content.url)
+const target = isExternal ? "_blank" : "_self"
+const icon = isExternal ? "mdi--external-link" : "mdi--eye-outline"
+const t = useTranslate(Astro.currentLocale)
+const text = isExternal
+  ? t("ln.details.open-on-external-site")
+  : t("ln.details.open")
+---
+
+<a
+  class="mt-8 flex min-w-52 items-center justify-center gap-2 rounded-xl bg-gray-900 px-6 py-3 text-gray-100 hover:bg-gray-700 hover:text-gray-50"
+  href={content.url}
+  target={target}
+  hreflang={item.data.language}
+>
+  <Icon className={`${icon} shrink-0`} />
+  {text}
+</a>

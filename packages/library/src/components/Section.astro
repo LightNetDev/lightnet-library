@@ -1,7 +1,7 @@
 ---
 interface Props {
   id?: string
-  width?: "full" | "content"
+  width?: "full" | "lg" | "md"
   title?: string
   withoutDefaultTopMargin?: boolean
   lang?: string
@@ -19,7 +19,8 @@ const {
 
 const widths = {
   full: "max-w-screen-xl",
-  content: "max-w-screen-lg",
+  lg: "max-w-screen-lg",
+  md: "max-w-screen-md",
 }
 ---
 

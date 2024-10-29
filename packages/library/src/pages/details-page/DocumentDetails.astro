@@ -1,59 +1,22 @@
 ---
-import { Image } from "astro:assets"
+import Cover from "./new-components/Cover.astro"
+import Description from "./new-components/Description.astro"
+import OpenButton from "./new-components/OpenButton.astro"
+import ShareButton from "./new-components/ShareButton.astro"
+import Title from "./new-components/Title.astro"
 
-import Section from "../../components/Section.astro"
-import CommonMetaData from "./components/CommonMetaData.astro"
-import Description from "./components/Description.astro"
-import DocumentActions from "./components/DocumentActions.astro"
-import MediaCollections from "./components/MediaCollections.astro"
-import type { Props as DetailsProps } from "./details-props"
-
-export type Props = DetailsProps & {
-  showBookFold?: boolean
+export type Props = {
+  slug: string
+  style?: "base" | "book"
 }
 
-const { mediaItem, showBookFold, slug } = Astro.props
-const { description, language, image, title } = mediaItem
+const { slug, style = "base" } = Astro.props
 ---
 
-<Section
-  withoutDefaultTopMargin
-  className="pt-2 sm:pt-10 lg:pt-16"
-  lang={mediaItem.language}
-  width="content"
->
-  <div
-    class="flex flex-col justify-center gap-8 sm:flex-row-reverse md:gap-12"
-    lang={mediaItem.language}
-  >
-    <div class="grow">
-      <CommonMetaData {...Astro.props} />
-      <DocumentActions className="my-8 sm:hidden" mediaItem={mediaItem} />
-      <Description description={description} language={language} />
-    </div>
-    <div
-      class="flex h-full min-w-64 shrink flex-col items-stretch gap-8 md:min-w-72"
-    >
-      <a
-        class="relative overflow-hidden rounded-sm shadow-md"
-        href={mediaItem.content[0].url}
-        hreflang={language}
-      >
-        <Image
-          src={image}
-          alt={title}
-          class="w-full"
-          widths={[150, 256, 512, 768]}
-          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 16rem, 18rem"
-        />
-        {
-          showBookFold && (
-            <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
-          )
-        }
-      </a>
-      <DocumentActions className="hidden sm:flex" mediaItem={mediaItem} />
-    </div>
-  </div>
-</Section>
-<MediaCollections mediaItemId={slug} />
+<Cover slug={slug} style={style} />
+<Title slug={slug} />
+<div class="mx-auto flex flex-col items-center px-4 md:px-8">
+  <OpenButton slug={slug} />
+  <ShareButton />
+</div>
+<Description slug={slug} />

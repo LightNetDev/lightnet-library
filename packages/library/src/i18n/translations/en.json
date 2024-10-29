@@ -10,7 +10,9 @@
   "ln.details.download-epub": "Download ePub",
   "ln.details.download-file": "Download file",
   "ln.details.read": "Read",
-  "ln.details.read-on-external-site": "Read on external site",
+  "ln.details.open": "Open",
+  "ln.details.share": "Share",
+  "ln.details.open-on-external-site": "Open on external site",
   "ln.header.a11y.open-main-menu": "Open Main Menu",
   "ln.header.a11y.select-language": "Select language",
   "ln.home.title": "Home",
@@ -21,7 +23,6 @@
   "ln.search.no-results": "No Results",
   "ln.search.placeholder": "Search in Title, Author, Description...",
   "ln.search.title": "Search",
-  "ln.share.a11y.share-with-others": "Share with others",
   "ln.share.url-copied-to-clipboard": "URL copied to clipboard",
   "ln.type.book": "Book",
   "ln.type.video": "Video"

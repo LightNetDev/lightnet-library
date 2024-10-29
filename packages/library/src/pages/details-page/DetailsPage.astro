@@ -8,7 +8,6 @@ import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
 import DocumentDetails from "./DocumentDetails.astro"
-import VideoDetails from "./VideoDetails.astro"
 
 export const getStaticPaths = (async () => {
   const mediaItems = await getMediaItems()
@@ -17,9 +16,8 @@ export const getStaticPaths = (async () => {
   )
 }) satisfies GetStaticPaths
 
-const { slug, locale } = Astro.params
+const { slug } = Astro.params
 const mediaItem = (await getMediaItem(Astro.params.slug)).data
-const props = { mediaItem, slug, locale }
 
 const {
   data: { detailsPage },
@@ -43,8 +41,8 @@ if (!DETAILS_PAGES.includes(detailsPage)) {
 ---
 
 <Page title={mediaItem.title} description={mediaItem.description}>
-  {detailsPage === "book" && <DocumentDetails showBookFold {...props} />}
-  {detailsPage === "document" && <DocumentDetails {...props} />}
-  {detailsPage === "video" && <VideoDetails {...props} />}
+  {detailsPage === "book" && <DocumentDetails slug={slug} style="book" />}
+  {detailsPage === "document" && <DocumentDetails slug={slug} />}
+  {detailsPage === "video" && <DocumentDetails slug={slug} />}
   {CustomDetails && <CustomDetails slug={slug} />}
 </Page>

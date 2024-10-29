@@ -14,7 +14,7 @@ const VIRTUAL_MODULES = [CONFIG, LOGO, PROJECT_CONTEXT] as const
 
 export function vitePluginLightnetConfig(
   lightnetConfig: LightnetConfig,
-  { root, srcDir }: AstroConfig,
+  { root, srcDir, site }: AstroConfig,
   logger: AstroIntegrationLogger,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   const resolveFilePath = (id: string) =>
@@ -46,7 +46,7 @@ export function vitePluginLightnetConfig(
         case LOGO:
           return `import logo from ${resolveFilePath(config.logo.src)}; export default logo;`
         case PROJECT_CONTEXT:
-          return `export default ${JSON.stringify({ root, srcDir })}`
+          return `export default ${JSON.stringify({ root, srcDir, site })}`
       }
     },
   }
