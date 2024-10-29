@@ -139,6 +139,11 @@ export const mediaItemSchema = z.object({
          * @example "/files/a-book-about-love.pdf"
          */
         url: z.string(),
+        /**
+         * The name of the content. If this is not set. The file name
+         * from URL will be used.
+         */
+        name: z.string().optional(),
       }),
     )
     .min(1),
