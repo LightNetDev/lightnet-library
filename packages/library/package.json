@@ -35,7 +35,7 @@
     "@iconify/tailwind": "^1.1.3",
     "@tailwindcss/typography": "^0.5.15",
     "@types/react": "^18.3.12",
-    "daisyui": "^4.12.13",
+    "daisyui": "^4.12.14",
     "fuse.js": "^7.0.0",
     "marked": "^14.1.3",
     "zod-validation-error": "^3.4.0"
