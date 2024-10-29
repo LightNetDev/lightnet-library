@@ -1,38 +1,77 @@
 ---
+import { Image } from "astro:assets"
+
 import type { MediaItemEntry } from "../content/content-schema-internal"
-import { getCategories } from "../content/get-categories"
-import { contentLanguages } from "../content/get-languages"
 import { getMediaTypes } from "../content/get-media-types"
 import { useTranslate } from "../i18n/use-translate"
-import { createSearchItem } from "../pages/api/search"
-import SearchResultList from "./SearchResultList"
+import { detailsPagePath } from "../utils/paths"
+import Icon from "./Icon"
 
 interface Props {
-  items: MediaItemEntry[]
+  items: (MediaItemEntry & { disabled?: boolean })[]
 }
 
 const { items } = Astro.props
-const searchItems = await Promise.all(
-  items.map((item) => createSearchItem(item)),
-)
 
 const t = useTranslate(Astro.currentLocale)
-const mediaTypes = (await getMediaTypes()).map((type) => ({
-  id: type.id,
-  label: t(type.data.label),
-  icon: type.data.icon,
-}))
-
-const categories: Record<string, string> = {}
-for (const { id, label } of await getCategories(Astro.currentLocale)) {
-  categories[id] = label
-}
+const mediaTypes = Object.fromEntries(
+  (await getMediaTypes()).map((type) => [
+    type.id,
+    {
+      id: type.id,
+      label: t(type.data.label),
+      icon: type.data.icon,
+    },
+  ]),
+)
 ---
 
-<SearchResultList
-  items={searchItems}
-  locale={Astro.currentLocale}
-  mediaTypes={mediaTypes}
-  categories={categories}
-  contentLanguages={contentLanguages}
-/>
+<ol class={`divide-y divide-gray-200`}>
+  {
+    items.map((item) => (
+      <li lang={item.data.language}>
+        <a
+          href={
+            item.disabled
+              ? "javascript:void(0)"
+              : detailsPagePath(Astro.currentLocale, {
+                  id: item.id,
+                })
+          }
+          class="group flex overflow-hidden py-4 transition-colors ease-in-out md:rounded-sm md:py-8 md:hover:bg-gray-100"
+          class:list={
+            item.disabled ? "pointer-events-none cursor-default opacity-50" : ""
+          }
+          tabindex={item.disabled ? -1 : 0}
+        >
+          <div class="flex h-32 w-32 shrink-0 flex-col items-start justify-center">
+            <Image
+              class="max-h-32 w-auto max-w-32 rounded-sm object-contain shadow-md"
+              src={item.data.image}
+              alt=""
+            />
+          </div>
+
+          <div class="ml-5 flex grow flex-col justify-center sm:ml-8">
+            <p class="mb-1 line-clamp-3 font-bold text-gray-700 md:mb-3">
+              <Icon
+                className={`${mediaTypes[item.data.type.id].icon} mr-2 align-bottom text-2xl text-gray-700`}
+                ariaLabel={mediaTypes[item.data.type.id].label}
+              />
+              <span>{item.data.title}</span>
+            </p>
+            <div class="mb-3 flex flex-col flex-wrap items-start gap-2 md:flex-row md:items-center md:gap-3">
+              {!!item.data.authors?.length && (
+                <p class="mb-1 md:mb-0 md:text-base">
+                  {item.data.authors.join(", ")}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <Icon className="mdi--chevron-right hidden sm:block md:group-hover:text-primary my-auto ml-2 mr-4 shrink-0 text-2xl text-gray-300" />
+        </a>
+      </li>
+    ))
+  }
+</ol>

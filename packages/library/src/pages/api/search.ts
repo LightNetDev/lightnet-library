@@ -20,7 +20,7 @@ export async function searchResults() {
   })
 }
 
-export async function createSearchItem(mediaItem: MediaItemEntry) {
+async function createSearchItem(mediaItem: MediaItemEntry) {
   const {
     id,
     data: { image, title, authors, categories, language, description, type },

@@ -1,0 +1,21 @@
+---
+import { getMediaItem } from "../../../content/get-media-items"
+import MediaCollection from "./MediaCollection.astro"
+
+interface Props {
+  slug: string
+}
+
+const { slug } = Astro.props
+const item = await getMediaItem(slug)
+
+const collections = item.data.collections?.map(
+  ({ collection }) => collection.id,
+)
+---
+
+{
+  collections?.map((id) => (
+    <MediaCollection collectionId={id} disableItem={slug} />
+  ))
+}

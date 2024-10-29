@@ -2,6 +2,7 @@
 import Cover from "./new-components/Cover.astro"
 import Description from "./new-components/Description.astro"
 import Details from "./new-components/details/Details.astro"
+import MediaCollections from "./new-components/MediaCollections.astro"
 import OpenButton from "./new-components/OpenButton.astro"
 import ShareButton from "./new-components/ShareButton.astro"
 import Title from "./new-components/Title.astro"
@@ -21,4 +22,5 @@ const { slug, style = "base" } = Astro.props
   <ShareButton />
 </div>
 <Description slug={slug} />
+<MediaCollections slug={slug} />
 <Details slug={slug} />
