@@ -45,29 +45,24 @@ export const queryMediaItems = async <TMediaItem extends MediaItemEntry>(
   const combinedFilter = (item: TMediaItem) =>
     filters.every((filter) => filter(item))
 
-  let items = await allItems
-
-  items = items.filter(combinedFilter)
+  const items = (await allItems).filter(combinedFilter)
 
   if (orderBy === "dateCreated") {
-    items = items.toSorted((item1, item2) =>
+    items.sort((item1, item2) =>
       item2.data.dateCreated.localeCompare(item1.data.dateCreated),
     )
   }
   if (orderBy === "title") {
-    items = items.toSorted((item1, item2) =>
+    items.sort((item1, item2) =>
       item1.data.title.localeCompare(item2.data.title),
     )
   }
   const { collection } = where
   if (!orderBy && collection) {
-    items = items.toSorted((a, b) => compareCollectionItems(a, b, collection))
+    items.sort((a, b) => compareCollectionItems(a, b, collection))
   }
 
-  if (limit) {
-    items = items.slice(0, limit)
-  }
-  return items
+  return items.slice(0, limit)
 }
 
 function compareCollectionItems(
