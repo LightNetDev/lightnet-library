@@ -1,0 +1,27 @@
+---
+import Icon from "../../../components/Icon"
+import { useTranslate } from "../../../i18n/use-translate"
+import { getDownloads } from "../utils/get-downloads"
+
+interface Props {
+  slug: string
+}
+
+const downloads = await getDownloads(Astro.props.slug)
+if (!downloads.length) {
+  return
+}
+
+const useDirectDownload = downloads.length === 1
+const href = useDirectDownload ? downloads[0].url : "#downloads"
+const label = useDirectDownload ? "ln.details.download" : "ln.details.downloads"
+
+const t = useTranslate(Astro.currentLocale)
+---
+
+<a
+  download={useDirectDownload}
+  href={href}
+  class="flex items-center justify-center gap-2 rounded-md p-2 text-gray-700 hover:text-gray-500"
+  ><Icon className="mdi--tray-arrow-down" />{t(label)}</a
+>

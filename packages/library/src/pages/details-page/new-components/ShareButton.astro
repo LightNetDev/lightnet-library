@@ -10,7 +10,7 @@ const t = useTranslate(Astro.currentLocale)
 ---
 
 <button
-  class="mt-3 flex items-center justify-center gap-2 rounded-md p-2 text-gray-700 hover:text-gray-500"
+  class="flex items-center justify-center gap-2 rounded-md p-2 text-gray-700 hover:text-gray-500"
   class:list={[Astro.props.className]}
   id="share-btn"
   ><Icon className="mdi--share-variant-outline" />
@@ -37,9 +37,11 @@ const t = useTranslate(Astro.currentLocale)
     }
     btn?.addEventListener("click", () => {
       if (navigator.share) {
-        navigator.share({
-          url: window.location.href,
-        })
+        navigator
+          .share({
+            url: window.location.href,
+          })
+          .catch((e) => console.debug("Could not share", e))
       } else {
         navigator.clipboard
           .writeText(window.location.href)
