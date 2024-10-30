@@ -22,7 +22,7 @@ const t = useTranslate(Astro.currentLocale)
       <Label>{t("ln.common.categories")}</Label>
       <ul class="flex flex-wrap gap-2">
         {categories.map(async (category) => (
-          <li class="py-1text-gray-600 flex rounded-lg bg-gray-200 px-2 py-1 hover:bg-gray-300">
+          <li class="flex rounded-lg bg-gray-200 px-2 py-1 text-gray-500 hover:bg-gray-300">
             <a href={searchPagePath(Astro.currentLocale, { category })}>
               {resolveCategoryLabel(t, category)}
             </a>

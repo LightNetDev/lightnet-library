@@ -1,4 +1,5 @@
 ---
+import Authors from "./new-components/Authors.astro"
 import Cover from "./new-components/Cover.astro"
 import Description from "./new-components/Description.astro"
 import Details from "./new-components/details/Details.astro"
@@ -15,11 +16,16 @@ export type Props = {
 const { slug, style = "base" } = Astro.props
 ---
 
-<Cover slug={slug} style={style} />
-<Title slug={slug} />
-<div class="mx-auto flex flex-col items-center px-4 md:px-8">
-  <OpenButton slug={slug} />
-  <ShareButton />
+<div
+  class="mx-auto mt-12 flex max-w-screen-md flex-col items-center gap-8 px-4 sm:mt-16 md:flex-row md:items-start md:gap-16 md:px-8"
+>
+  <Cover slug={slug} style={style} />
+  <div class="flex flex-col items-center md:items-start">
+    <Title slug={slug} />
+    <Authors slug={slug} />
+    <OpenButton slug={slug} />
+    <ShareButton className="" />
+  </div>
 </div>
 <Description slug={slug} />
 <MediaCollections slug={slug} />
