@@ -20,5 +20,5 @@ export function isExternalUrl(url: string) {
   if (!site) {
     return true
   }
-  return url.startsWith(site)
+  return !url.startsWith(site)
 }
