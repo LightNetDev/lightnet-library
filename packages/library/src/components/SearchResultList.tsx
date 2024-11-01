@@ -58,7 +58,7 @@ export default function SearchResultList({
             })}
             className="group flex overflow-hidden py-6 transition-colors ease-in-out md:rounded-sm md:py-10 md:hover:bg-gray-100"
           >
-            <div className="h-36 w-36 shrink-0">
+            <div className="flex h-36 w-36 shrink-0 flex-col items-start justify-center">
               <img
                 className="max-h-36 w-auto max-w-36 rounded-sm object-contain shadow-md"
                 src={item.image.src}
@@ -70,7 +70,7 @@ export default function SearchResultList({
               />
             </div>
 
-            <div className="ml-5 grow text-xs sm:ml-8">
+            <div className="ml-5 flex grow flex-col justify-center text-xs sm:ml-8">
               <h2 className="mb-1 line-clamp-3 text-sm font-bold text-gray-700 md:mb-3 md:text-base">
                 <Icon
                   className={`${types[item.type].icon} mr-2 align-bottom text-2xl text-gray-700`}

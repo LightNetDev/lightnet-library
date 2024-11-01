@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.10.1
+
+### Patch Changes
+
+- [#133](https://github.com/LightNetDev/lightnet-library/pull/133) [`ed8d0f4`](https://github.com/LightNetDev/lightnet-library/commit/ed8d0f41feb787e6cd36e38b6d4feb3b64053fa9) Thanks [@si-fab](https://github.com/si-fab)! - Vertically center align search result item content.
+
 ## 2.10.0
 
 ### Minor Changes
