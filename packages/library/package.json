@@ -6,14 +6,6 @@
   "keywords": [
     "astro-integration"
   ],
-  "scripts": {
-    "test:e2e": "playwright install && playwright test",
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
   "exports": {
     ".": "./exports/index.ts",
     "./content": "./exports/content.ts",
