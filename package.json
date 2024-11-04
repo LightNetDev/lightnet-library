@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter=sk8* dev",
-    "test": "",
     "build": "pnpm typecheck && pnpm --filter=sk8* build",
     "admin": "cd examples/sk8-ministries && pnpm dlx decap-server",
     "typecheck": "pnpm --filter='@example/*' astro sync && astro check",
