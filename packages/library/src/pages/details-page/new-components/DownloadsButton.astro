@@ -1,13 +1,15 @@
 ---
 import Icon from "../../../components/Icon"
+import { getMediaItem } from "../../../content/get-media-items"
 import { useTranslate } from "../../../i18n/use-translate"
-import { getContent } from "../utils/get-content"
 
 interface Props {
   slug: string
 }
 
-const content = await getContent(Astro.props.slug)
+const item = await getMediaItem(Astro.props.slug)
+
+const { content } = item.data
 if (!content.length) {
   return
 }

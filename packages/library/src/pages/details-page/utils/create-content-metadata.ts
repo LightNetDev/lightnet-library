@@ -1,10 +1,4 @@
-import { getMediaItem } from "../../../content/get-media-items"
 import { isExternalUrl } from "../../../utils/urls"
-
-export async function getContent(slug: string) {
-  const item = await getMediaItem(slug)
-  return item.data.content.map((c) => createContentInfo(c))
-}
 
 const BROWSER_SUPPORTED_TYPES = new Set([
   "pdf",
@@ -15,7 +9,7 @@ const BROWSER_SUPPORTED_TYPES = new Set([
   "html",
 ])
 
-function createContentInfo({
+export function createContentMetadata({
   url,
   name: customName,
 }: {
@@ -25,7 +19,7 @@ function createContentInfo({
   const lastUrlSegment = url.split("/").slice(-1)[0]
   const hasExtension = lastUrlSegment.includes(".")
   const extension = hasExtension
-    ? lastUrlSegment.split(".").slice(-1)[0]
+    ? lastUrlSegment.split(".").slice(-1)[0].toLowerCase()
     : "link"
 
   const isExternal = isExternalUrl(url)
@@ -39,7 +33,7 @@ function createContentInfo({
   const canBeOpened = !hasExtension || BROWSER_SUPPORTED_TYPES.has(extension)
   const canBeDownloaded =
     (!isExternal && hasExtension) ||
-    (isExternal && !BROWSER_SUPPORTED_TYPES.has(extension))
+    (isExternal && hasExtension && !BROWSER_SUPPORTED_TYPES.has(extension))
 
   return {
     url,
