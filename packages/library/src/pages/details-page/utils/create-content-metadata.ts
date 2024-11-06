@@ -1,12 +1,33 @@
 import { isExternalUrl } from "../../../utils/urls"
 
 const BROWSER_SUPPORTED_TYPES = new Set([
-  "pdf",
-  "png",
-  "jpg",
-  "mp3",
-  "mp4",
+  // web
   "html",
+  "htm",
+  "json",
+  "xml",
+  "svg",
+  "php",
+  // image
+  "jpg",
+  "jpeg",
+  "png",
+  "gif",
+  "ico",
+  "webp",
+  "svg",
+  // audio
+  "mp3",
+  "wav",
+  "aac",
+  "ogg",
+  // video
+  "mp4",
+  "webm",
+  "ogv",
+  // text
+  "pdf",
+  "txt",
 ])
 
 export function createContentMetadata({
