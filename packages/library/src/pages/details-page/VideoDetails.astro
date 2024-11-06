@@ -5,6 +5,7 @@ import DownloadButton from "./components/actions/DownloadButton.astro"
 import OpenExternalButton from "./components/actions/OpenExternalButton.astro"
 import ShareButton from "./components/actions/ShareButton.astro"
 import Authors from "./components/Authors.astro"
+import Content from "./components/Content.astro"
 import Description from "./components/Description.astro"
 import Details from "./components/details/Details.astro"
 import MediaCollections from "./components/MediaCollections.astro"
@@ -46,5 +47,6 @@ const item = await getMediaItem(slug)
 </div>
 
 <Description slug={slug} />
+<Content slug={slug} />
 <MediaCollections slug={slug} />
 <Details slug={slug} />

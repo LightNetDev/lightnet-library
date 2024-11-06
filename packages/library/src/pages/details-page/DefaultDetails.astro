@@ -4,6 +4,7 @@ import DownloadsButton from "./components/actions/DownloadButton.astro"
 import MainActionButton from "./components/actions/MainActionButton.astro"
 import ShareButton from "./components/actions/ShareButton.astro"
 import Authors from "./components/Authors.astro"
+import Content from "./components/Content.astro"
 import Cover from "./components/Cover.astro"
 import Description from "./components/Description.astro"
 import Details from "./components/details/Details.astro"
@@ -39,5 +40,6 @@ const {
   </div>
 </div>
 <Description slug={slug} />
+<Content slug={slug} />
 <MediaCollections slug={slug} />
 <Details slug={slug} />

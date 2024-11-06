@@ -1,0 +1,15 @@
+---
+import { getMediaItem } from "../../../content/get-media-items"
+
+interface Props {
+  slug: string
+}
+
+const item = await getMediaItem(Astro.props.slug)
+
+if (item.data.content.length < 2) {
+  return
+}
+---
+
+Downloads
