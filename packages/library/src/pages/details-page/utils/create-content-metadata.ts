@@ -42,8 +42,6 @@ export function createContentMetadata({
     name,
     canBeOpened,
     canBeDownloaded,
-    downloadLabel: "ln.details.download",
-    openLabel: "ln.details.open",
     target: isExternal ? "_blank" : "_self",
   }
 }

@@ -1,13 +1,13 @@
 ---
+import DetailsButton from "./new-components/actions/DetailsButton.astro"
+import DownloadsButton from "./new-components/actions/DownloadButton.astro"
+import MainActionButton from "./new-components/actions/MainActionButton.astro"
+import ShareButton from "./new-components/actions/ShareButton.astro"
 import Authors from "./new-components/Authors.astro"
 import Cover from "./new-components/Cover.astro"
 import Description from "./new-components/Description.astro"
 import Details from "./new-components/details/Details.astro"
-import DetailsButton from "./new-components/DetailsButton.astro"
-import DownloadsButton from "./new-components/DownloadsButton.astro"
 import MediaCollections from "./new-components/MediaCollections.astro"
-import OpenButton from "./new-components/OpenButton.astro"
-import ShareButton from "./new-components/ShareButton.astro"
 import Title from "./new-components/Title.astro"
 
 export type Props = {
@@ -25,8 +25,8 @@ const { slug, style = "base" } = Astro.props
   <div class="flex flex-col items-center md:items-start">
     <Title slug={slug} />
     <Authors slug={slug} />
-    <OpenButton slug={slug} />
-    <div class="mt-4 flex flex-wrap justify-center gap-2">
+    <MainActionButton slug={slug} />
+    <div class="mt-5 flex flex-wrap justify-center gap-3 sm:justify-start">
       <ShareButton />
       <DownloadsButton slug={slug} />
       <DetailsButton />

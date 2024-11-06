@@ -7,8 +7,6 @@ test("Should create complete content metadata", () => {
     url: "https://some.host/some.pDf",
     canBeDownloaded: false,
     canBeOpened: true,
-    downloadLabel: "ln.details.download",
-    openLabel: "ln.details.open",
     target: "_blank",
     name: "some",
     isExternal: true,
