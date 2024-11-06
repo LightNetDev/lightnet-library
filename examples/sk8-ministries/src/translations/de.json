@@ -16,5 +16,7 @@
   "category.novels": "Romane",
   "category.studies": "Studium",
   "category.teens": "Teens",
-  "category.theology": "Theologie"
+  "category.theology": "Theologie",
+  "type.book": "Buch",
+  "type.video": "Video"
 }
