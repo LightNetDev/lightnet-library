@@ -3,11 +3,10 @@ import type { GetStaticPaths } from "astro"
 import { AstroError } from "astro/errors"
 import config from "virtual:lightnet/config"
 
-import { DETAILS_PAGES } from "../../content/content-schema"
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
-import DocumentDetails from "./DocumentDetails.astro"
+import BaseDetails from "./BaseDetails.astro"
 
 export const getStaticPaths = (async () => {
   const mediaItems = await getMediaItems()
@@ -24,7 +23,8 @@ const {
 } = await getMediaType(mediaItem.type.id)
 
 let CustomDetails
-if (!DETAILS_PAGES.includes(detailsPage)) {
+const pageType = detailsPage?.type ?? "base"
+if (pageType === "custom") {
   const d = import.meta.glob("/src/details-pages/*.astro")
   const customDetailsImport = d[
     `/src/details-pages/${detailsPage}`
@@ -41,8 +41,12 @@ if (!DETAILS_PAGES.includes(detailsPage)) {
 ---
 
 <Page title={mediaItem.title} description={mediaItem.description}>
-  {detailsPage === "book" && <DocumentDetails slug={slug} style="book" />}
-  {detailsPage === "document" && <DocumentDetails slug={slug} />}
-  {detailsPage === "video" && <DocumentDetails slug={slug} />}
-  {CustomDetails && <CustomDetails slug={slug} />}
+  {
+    pageType === "book" && (
+      <BaseDetails slug={slug} style="book" {...detailsPage} />
+    )
+  }
+  {pageType === "base" && <BaseDetails slug={slug} {...detailsPage} />}
+  {pageType === "video" && <BaseDetails slug={slug} {...detailsPage} />}
+  {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
 </Page>

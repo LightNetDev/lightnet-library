@@ -18,5 +18,7 @@
   "category.teens": "Teens",
   "category.theology": "Theology",
   "type.book": "Book",
-  "type.video": "Video"
+  "type.video": "Video",
+  "details.action.read": "Read",
+  "details.action.watch": "Watch"
 }

@@ -179,11 +179,34 @@ export const mediaTypeSchema = z.object({
   label: z.string(),
   /**
    * What media item details page to use for media items with this type.
-   * Can be one of "book", "document", "video", or a reference of a custom component.
    *
-   * @example "book"
    */
-  detailsPage: z.string(),
+  detailsPage: z
+    .object({
+      /**
+       * Type of the details page can be one of "base", "book", "video", "custom".
+       * Default is "base"
+       *
+       * @example "book"
+       */
+      type: z.enum(["base", "book", "video", "custom"]).default("base"),
+      /**
+       * If type is custom. This references a custom component name to be used for the
+       * details page. The custom component has be located at src/details-pages
+       */
+      customComponent: z.string().optional(),
+      /**
+       * Label for the open action button. Use this if you want to change the text
+       * of the big "Open" button to be more matching to your media item.
+       * For example you could change the text to be "Read" in case of a book.
+       *
+       * The label is a translation key.
+       *
+       * @example "ln.details.open"
+       */
+      openActionLabel: z.string().optional(),
+    })
+    .optional(),
   /**
    * Pick the media type's icon from https://pictogrammers.com/library/mdi/
    * Prefix it's name with "mdi--"

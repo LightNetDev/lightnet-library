@@ -1,5 +1,5 @@
 {
   "label": "type.book",
-  "detailsPage": "book",
+  "detailsPage": { "type": "book", "openActionLabel": "details.action.read" },
   "icon": "mdi--book-open-blank-variant"
 }

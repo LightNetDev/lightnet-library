@@ -6,8 +6,9 @@ import { createContentMetadata } from "../../utils/create-content-metadata"
 
 interface Props {
   slug: string
+  openActionLabel: string
 }
-const { slug } = Astro.props
+const { slug, openActionLabel } = Astro.props
 const item = await getMediaItem(slug)
 const content = createContentMetadata(item.data.content[0])
 
@@ -20,7 +21,7 @@ const t = useTranslate(Astro.currentLocale)
   target={content.target}
   hreflang={item.data.language}
 >
-  {content.canBeOpened ? t("ln.details.open") : t("ln.details.download")}
+  {content.canBeOpened ? t(openActionLabel) : t("ln.details.download")}
   {
     content.isExternal && (
       <Icon
