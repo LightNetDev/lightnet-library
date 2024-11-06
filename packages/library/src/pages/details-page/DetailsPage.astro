@@ -6,6 +6,7 @@ import config from "virtual:lightnet/config"
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
+import { markdownToPlainText } from "../../utils/markdown"
 import DefaultDetails from "./DefaultDetails.astro"
 import VideoDetails from "./VideoDetails.astro"
 
@@ -41,7 +42,10 @@ if (detailsPage?.type === "custom") {
 }
 ---
 
-<Page title={mediaItem.title} description={mediaItem.description}>
+<Page
+  title={mediaItem.title}
+  description={markdownToPlainText(mediaItem.description)}
+>
   {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
   {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
   {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}

@@ -1,8 +1,7 @@
 ---
-import { marked } from "marked"
-
 import { getMediaItem } from "../../../content/get-media-items"
 import { resolveLanguage } from "../../../i18n/resolve-language"
+import { markdownToHtml } from "../../../utils/markdown"
 
 interface Props {
   slug: string
@@ -11,17 +10,15 @@ const item = await getMediaItem(Astro.props.slug)
 
 const { description, language } = item.data
 
-const formattedDescription = description && (await marked.parse(description))
-
 const { direction, code: lang } = resolveLanguage(language)
 ---
 
 {
-  formattedDescription && (
+  description && (
     <div
       dir={direction}
       class="prose prose-gray mx-auto mt-14 max-w-screen-md px-4 sm:mt-16 md:px-8"
-      set:html={formattedDescription}
+      set:html={await markdownToHtml(description)}
       lang={lang}
       id="description"
     />
