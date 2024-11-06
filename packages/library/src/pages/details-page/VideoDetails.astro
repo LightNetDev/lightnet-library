@@ -1,5 +1,50 @@
 ---
+import { getMediaItem } from "../../content/get-media-items"
+import DetailsButton from "./components/actions/DetailsButton.astro"
+import DownloadButton from "./components/actions/DownloadButton.astro"
+import OpenExternalButton from "./components/actions/OpenExternalButton.astro"
+import ShareButton from "./components/actions/ShareButton.astro"
+import Authors from "./components/Authors.astro"
+import Description from "./components/Description.astro"
+import Details from "./components/details/Details.astro"
+import MediaCollections from "./components/MediaCollections.astro"
+import Title from "./components/Title.astro"
+import VideoPlayer from "./components/VideoPlayer.astro"
 
+export type Props = {
+  slug: string
+  openActionLabel?: string
+}
+
+const { slug, openActionLabel = "ln.details.open" } = Astro.props
+
+const item = await getMediaItem(slug)
 ---
 
-Todo
+<div class="mx-auto max-w-screen-md md:px-8">
+  <div
+    class="aspect-video w-full overflow-hidden bg-black md:mt-8 md:rounded-lg"
+  >
+    <VideoPlayer
+      url={item.data.content[0].url!}
+      title={item.data.title}
+      image={item.data.image}
+    />
+  </div>
+</div>
+<div
+  class="mx-auto mt-12 flex max-w-screen-md flex-col items-start px-4 md:mt-14 md:px-8"
+>
+  <Title slug={slug} />
+  <Authors slug={slug} />
+  <div class="mt-8 flex flex-wrap justify-start gap-3">
+    <ShareButton />
+    <DownloadButton slug={slug} />
+    <OpenExternalButton openActionLabel={openActionLabel} slug={slug} />
+    <DetailsButton />
+  </div>
+</div>
+
+<Description slug={slug} />
+<MediaCollections slug={slug} />
+<Details slug={slug} />

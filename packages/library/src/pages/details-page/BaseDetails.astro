@@ -28,8 +28,8 @@ const {
 >
   <Cover slug={slug} style={style} />
   <div class="flex flex-col items-center md:items-start">
-    <Title slug={slug} />
-    <Authors slug={slug} />
+    <Title className="text-center md:text-start" slug={slug} />
+    <Authors className="text-center md:text-start" slug={slug} />
     <MainActionButton slug={slug} openActionLabel={openActionLabel} />
     <div class="mt-5 flex flex-wrap justify-center gap-3 sm:justify-start">
       <ShareButton />

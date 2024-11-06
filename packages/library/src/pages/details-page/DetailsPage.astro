@@ -7,6 +7,7 @@ import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
 import BaseDetails from "./BaseDetails.astro"
+import VideoDetails from "./VideoDetails.astro"
 
 export const getStaticPaths = (async () => {
   const mediaItems = await getMediaItems()
@@ -47,6 +48,6 @@ if (pageType === "custom") {
     )
   }
   {pageType === "base" && <BaseDetails slug={slug} {...detailsPage} />}
-  {pageType === "video" && <BaseDetails slug={slug} {...detailsPage} />}
+  {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
   {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
 </Page>

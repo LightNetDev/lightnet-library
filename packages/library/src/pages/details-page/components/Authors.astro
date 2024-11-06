@@ -3,6 +3,7 @@ import { getMediaItem } from "../../../content/get-media-items"
 
 interface Props {
   slug: string
+  className?: string
 }
 
 const item = await getMediaItem(Astro.props.slug)
@@ -11,6 +12,8 @@ const authors = item.data.authors?.join(", ")
 
 {
   authors && (
-    <p class="mt-2 text-center text-xl sm:text-2xl md:text-start">{authors}</p>
+    <p class="mt-2 text-xl sm:text-2xl" class:list={Astro.props.className}>
+      {authors}
+    </p>
   )
 }

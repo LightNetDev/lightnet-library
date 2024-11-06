@@ -1,7 +1,7 @@
 {
   "label": "type.video",
   "detailsPage": {
-    "type:": "video",
+    "type": "video",
     "openActionLabel": "details.action.watch"
   },
   "icon": "mdi--video-outline"
