@@ -1,37 +1,5 @@
 ---
-import Section from "../../components/Section.astro"
-import CommonMetaData from "./components/CommonMetaData.astro"
-import Description from "./components/Description.astro"
-import MediaCollections from "./components/MediaCollections.astro"
-import VideoPlayer from "./components/VideoPlayer.astro"
-import type { Props } from "./details-props"
 
-const {
-  mediaItem: { content, title, language, image, description },
-  slug,
-} = Astro.props
-
-if (content.length !== 1) {
-  throw new Error(
-    `Currently the video page only supports exactly one content url but ${slug} has ${content.length}.`,
-  )
-}
 ---
 
-<div class="mx-auto max-w-screen-lg md:px-8">
-  <div
-    class="aspect-video w-full overflow-hidden bg-black lg:mt-8 lg:rounded-lg"
-  >
-    <VideoPlayer url={content[0].url!} title={title} image={image} />
-  </div>
-</div>
-<Section
-  className="mt-10 md:mt-14"
-  withoutDefaultTopMargin
-  lang={language}
-  width="content"
->
-  <CommonMetaData {...Astro.props} />
-  <Description description={description} language={language} />
-</Section>
-<MediaCollections mediaItemId={slug} />
+Todo
