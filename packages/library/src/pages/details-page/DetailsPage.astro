@@ -6,7 +6,7 @@ import config from "virtual:lightnet/config"
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
-import BaseDetails from "./BaseDetails.astro"
+import DefaultDetails from "./DefaultDetails.astro"
 import VideoDetails from "./VideoDetails.astro"
 
 export const getStaticPaths = (async () => {
@@ -24,16 +24,16 @@ const {
 } = await getMediaType(mediaItem.type.id)
 
 let CustomDetails
-const pageType = detailsPage?.type ?? "base"
-if (pageType === "custom") {
+const pageType = detailsPage?.type ?? "default"
+if (detailsPage?.type === "custom") {
   const d = import.meta.glob("/src/details-pages/*.astro")
   const customDetailsImport = d[
-    `/src/details-pages/${detailsPage}`
+    `/src/details-pages/${detailsPage.customComponent}`
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ] as () => Promise<any>
   if (!customDetailsImport) {
     throw new AstroError(
-      `Unknown details page ${detailsPage}`,
+      `Unknown details page ${detailsPage.customComponent}`,
       "Make sure to add your details component within /src/details-pages/",
     )
   }
@@ -42,12 +42,7 @@ if (pageType === "custom") {
 ---
 
 <Page title={mediaItem.title} description={mediaItem.description}>
-  {
-    pageType === "book" && (
-      <BaseDetails slug={slug} style="book" {...detailsPage} />
-    )
-  }
-  {pageType === "base" && <BaseDetails slug={slug} {...detailsPage} />}
+  {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
   {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
   {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
 </Page>

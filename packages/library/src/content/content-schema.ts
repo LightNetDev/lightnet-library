@@ -182,30 +182,59 @@ export const mediaTypeSchema = z.object({
    *
    */
   detailsPage: z
-    .object({
-      /**
-       * Type of the details page can be one of "base", "book", "video", "custom".
-       * Default is "base"
-       *
-       * @example "book"
-       */
-      type: z.enum(["base", "book", "video", "custom"]).default("base"),
-      /**
-       * If type is custom. This references a custom component name to be used for the
-       * details page. The custom component has be located at src/details-pages
-       */
-      customComponent: z.string().optional(),
-      /**
-       * Label for the open action button. Use this if you want to change the text
-       * of the big "Open" button to be more matching to your media item.
-       * For example you could change the text to be "Read" in case of a book.
-       *
-       * The label is a translation key.
-       *
-       * @example "ln.details.open"
-       */
-      openActionLabel: z.string().optional(),
-    })
+    .discriminatedUnion("type", [
+      z.object({
+        /**
+         * Details page for all media types.
+         */
+        type: z.literal("default"),
+        /**
+         * Label for the open action button. Use this if you want to change the text
+         * of the "Open" button to be more matching to your media item.
+         * For example you could change the text to be "Read" for a book media type.
+         *
+         * The label is a translation key.
+         *
+         * @example "ln.details.open"
+         */
+        openActionLabel: z.string().optional(),
+        /**
+         * What style to use for the cover image.
+         *
+         * @example "book"
+         */
+        coverStyle: z.enum(["default", "book"]).default("default"),
+      }),
+      z.object({
+        /**
+         * Custom details page.
+         */
+        type: z.literal("custom"),
+        /**
+         * This references a custom component name to be used for the
+         * details page. The custom component has be located at src/details-pages/
+         *
+         * @example "MyArticleDetails.astro"
+         */
+        customComponent: z.string(),
+      }),
+      z.object({
+        /**
+         * Detail page for videos.
+         */
+        type: z.literal("video"),
+        /**
+         * Label for the open action button. Use this if you want to change the text
+         * of the "Open" button to be more matching to your media item.
+         * For example you could change the text to be "Watch".
+         *
+         * The label is a translation key.
+         *
+         * @example "ln.details.open"
+         */
+        openActionLabel: z.string().optional(),
+      }),
+    ])
     .optional(),
   /**
    * Pick the media type's icon from https://pictogrammers.com/library/mdi/

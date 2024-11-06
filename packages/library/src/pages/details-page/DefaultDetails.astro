@@ -12,13 +12,13 @@ import Title from "./components/Title.astro"
 
 export type Props = {
   slug: string
-  style?: "base" | "book"
+  coverStyle?: "default" | "book"
   openActionLabel?: string
 }
 
 const {
   slug,
-  style = "base",
+  coverStyle = "default",
   openActionLabel = "ln.details.open",
 } = Astro.props
 ---
@@ -26,7 +26,7 @@ const {
 <div
   class="mx-auto mt-14 flex max-w-screen-md flex-col items-center gap-8 px-4 sm:mt-20 md:flex-row md:items-start md:gap-16 md:px-8"
 >
-  <Cover slug={slug} style={style} />
+  <Cover slug={slug} style={coverStyle} />
   <div class="flex flex-col items-center md:items-start">
     <Title className="text-center md:text-start" slug={slug} />
     <Authors className="text-center md:text-start" slug={slug} />

@@ -5,9 +5,9 @@ import { getMediaItem } from "../../../content/get-media-items"
 
 interface Props {
   slug: string
-  style?: "base" | "book"
+  style?: "default" | "book"
 }
-const { slug, style = "base" } = Astro.props
+const { slug, style = "default" } = Astro.props
 
 const item = await getMediaItem(slug)
 const image = item.data.image
