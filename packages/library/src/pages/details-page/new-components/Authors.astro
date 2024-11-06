@@ -9,4 +9,8 @@ const item = await getMediaItem(Astro.props.slug)
 const authors = item.data.authors?.join(", ")
 ---
 
-{authors && <p class="mt-2 text-xl sm:text-2xl">{authors}</p>}
+{
+  authors && (
+    <p class="mt-2 text-center text-xl sm:text-2xl md:text-start">{authors}</p>
+  )
+}

@@ -23,8 +23,8 @@ const items = (
 ).map((item) => ({ ...item, disabled: item.id === disableItem }))
 ---
 
-<section class="mx-auto mt-12 max-w-screen-md px-4 md:mt-16 md:px-8">
-  <h2 class="mb-1 text-lg font-bold text-gray-700">
+<section class="mx-auto mt-20 max-w-screen-md px-4 md:mt-24 md:px-8">
+  <h2 class="mb-2 text-lg font-bold text-gray-700">
     {collection.data.name}
   </h2>
   <MediaItemList items={items} />

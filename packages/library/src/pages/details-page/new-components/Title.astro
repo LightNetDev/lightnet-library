@@ -9,7 +9,7 @@ const item = await getMediaItem(Astro.props.slug)
 ---
 
 <h1
-  class="text-3xl font-bold sm:text-4xl md:text-5xl"
+  class="text-center text-3xl font-bold sm:text-4xl md:text-start md:text-5xl"
   lang={item.data.language}
 >
   {item.data.title}
