@@ -21,8 +21,8 @@ importers:
         specifier: ^9.14.0
         version: 9.14.0
       astro:
-        specifier: ^4.16.9
-        version: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+        specifier: ^4.16.10
+        version: 4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       eslint:
         specifier: ^9.14.0
         version: 9.14.0(jiti@1.21.6)
@@ -70,7 +70,7 @@ importers:
         version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       '@astrojs/tailwind':
         specifier: ^5.1.2
-        version: 5.1.2(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))(tailwindcss@3.4.14)
+        version: 5.1.2(astro@4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))(tailwindcss@3.4.14)
       '@lightnet/decap-admin':
         specifier: ^2.2.4
         version: link:../../packages/decap-admin
@@ -78,8 +78,8 @@ importers:
         specifier: ^2.10.1
         version: link:../../packages/library
       astro:
-        specifier: ^4.16.9
-        version: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+        specifier: ^4.16.10
+        version: 4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -103,7 +103,7 @@ importers:
         version: link:../library
       astro:
         specifier: ^4.11.5
-        version: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+        version: 4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       decap-cms:
         specifier: ^3.3.3
         version: 3.3.3(@types/hoist-non-react-statics@3.3.5)(@types/node@22.9.0)(@types/react@18.3.12)(decap-cms-lib-util@3.1.0(immutable@3.8.2)(lodash@4.17.21))(graphql@15.9.0)(webpack@5.93.0)
@@ -124,7 +124,7 @@ importers:
         version: 3.6.2(@types/react-dom@18.3.0)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.10(@types/node@22.9.0)(terser@5.36.0))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.2(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))(tailwindcss@3.4.14)
+        version: 5.1.2(astro@4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))(tailwindcss@3.4.14)
       '@iconify-json/mdi':
         specifier: ^1.2.1
         version: 1.2.1
@@ -139,7 +139,7 @@ importers:
         version: 18.3.12
       astro:
         specifier: ^4.11.5
-        version: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+        version: 4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       daisyui:
         specifier: ^4.12.14
         version: 4.12.14(postcss@8.4.47)
@@ -1467,8 +1467,8 @@ packages:
     resolution: {integrity: sha512-AGsGgcg7Jg9UpyCDgvl/EkdYpe1oMkFdmC2Zl+KWneoieLCtQIFjmcY8yt41gcNx4mby0w8BBJQcBmPuf8UAoQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro@4.16.9:
-    resolution: {integrity: sha512-DFYzPZooVArKSGu969BBByUV44tJMVDPGKxgqWNFBaIrkvGljdVUqQSVwD+/iPYACoSkI8BRYvDMEBDkathIUQ==}
+  astro@4.16.10:
+    resolution: {integrity: sha512-a+nB4bZE50NXHLzVXUHtx/lYct2Aa8kbqZnWNrWqkU97RuhBuWJ5H5/LQbKRnBWGvqChKfJBiMWJe53TY9ieYQ==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -5443,9 +5443,9 @@ snapshots:
       - supports-color
       - vite
 
-  '@astrojs/tailwind@5.1.2(astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))(tailwindcss@3.4.14)':
+  '@astrojs/tailwind@5.1.2(astro@4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3))(tailwindcss@3.4.14)':
     dependencies:
-      astro: 4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
+      astro: 4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3)
       autoprefixer: 10.4.20(postcss@8.4.47)
       postcss: 8.4.47
       postcss-load-config: 4.0.2(postcss@8.4.47)
@@ -6920,7 +6920,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro@4.16.9(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3):
+  astro@4.16.10(@types/node@22.9.0)(rollup@4.24.4)(terser@5.36.0)(typescript@5.6.3):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
