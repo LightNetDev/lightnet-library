@@ -52,7 +52,10 @@ const mediaTypes = Object.fromEntries(
             />
           </div>
 
-          <div class="ml-5 flex grow flex-col justify-center sm:ml-8">
+          <div
+            class="ml-5 flex grow flex-col justify-center sm:ml-8"
+            lang={item.data.language}
+          >
             <p class="mb-1 line-clamp-3 font-bold text-gray-700 md:mb-3">
               <Icon
                 className={`${mediaTypes[item.data.type.id].icon} mr-2 align-bottom text-2xl text-gray-700`}
