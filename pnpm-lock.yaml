@@ -75,7 +75,7 @@ importers:
         specifier: ^2.2.4
         version: link:../../packages/decap-admin
       '@lightnet/library':
-        specifier: ^2.10.1
+        specifier: ^2.11.0
         version: link:../../packages/library
       astro:
         specifier: ^4.16.10
