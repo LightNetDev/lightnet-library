@@ -29,7 +29,6 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "pnpm"
       - run: pnpm i
-      - run: pnpm exec playwright install --with-deps
       - run: pnpm -r e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
