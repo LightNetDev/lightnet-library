@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.11.1
+
+### Patch Changes
+
+- [#141](https://github.com/LightNetDev/lightnet-library/pull/141) [`cd1a9a1`](https://github.com/LightNetDev/lightnet-library/commit/cd1a9a1fc7f85a503207d333c7cb0b17825782ef) Thanks [@si-fab](https://github.com/si-fab)! - Fixes missing download attribute in content section.
+
 ## 2.11.0
 
 ### Minor Changes
