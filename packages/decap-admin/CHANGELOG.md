@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.2.5
+
+### Patch Changes
+
+- [#140](https://github.com/LightNetDev/lightnet-library/pull/140) [`079dfdc`](https://github.com/LightNetDev/lightnet-library/commit/079dfdc54c9be4a71f890846ce1e82dd3d98699f) Thanks [@si-fab](https://github.com/si-fab)! - Cleanup details pages export.
+
 ## 2.2.4
 
 ### Patch Changes

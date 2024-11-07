@@ -2,7 +2,7 @@
   "name": "@lightnet/decap-admin",
   "type": "module",
   "license": "MIT",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "keywords": [
     "astro-integration"
   ],

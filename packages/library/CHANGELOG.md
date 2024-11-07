@@ -1,5 +1,19 @@
 # @lightnet/library
 
+## 2.11.0
+
+### Minor Changes
+
+- [#135](https://github.com/LightNetDev/lightnet-library/pull/135) [`f67143d`](https://github.com/LightNetDev/lightnet-library/commit/f67143d500dc81760b740c4f27d04ad5f41d240f) Thanks [@si-fab](https://github.com/si-fab)! - Improve details page design. Allow for any number of content links on all pages.
+
+### Patch Changes
+
+- [#135](https://github.com/LightNetDev/lightnet-library/pull/135) [`f67143d`](https://github.com/LightNetDev/lightnet-library/commit/f67143d500dc81760b740c4f27d04ad5f41d240f) Thanks [@si-fab](https://github.com/si-fab)! - Restructure media types config.
+
+- [#140](https://github.com/LightNetDev/lightnet-library/pull/140) [`079dfdc`](https://github.com/LightNetDev/lightnet-library/commit/079dfdc54c9be4a71f890846ce1e82dd3d98699f) Thanks [@si-fab](https://github.com/si-fab)! - Cleanup details pages export.
+
+- [#135](https://github.com/LightNetDev/lightnet-library/pull/135) [`f67143d`](https://github.com/LightNetDev/lightnet-library/commit/f67143d500dc81760b740c4f27d04ad5f41d240f) Thanks [@si-fab](https://github.com/si-fab)! - Do not use Array.toSorted function as this is not widely available with nodejs.
+
 ## 2.10.1
 
 ### Patch Changes
