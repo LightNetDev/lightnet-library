@@ -27,7 +27,7 @@ const t = useTranslate(Astro.currentLocale)
 
 <ActionButton
   icon="mdi--download"
-  download
+  download={true}
   href={contentMetadata.url}
   text={t("ln.details.download")}
 />

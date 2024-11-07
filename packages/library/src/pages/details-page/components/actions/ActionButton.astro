@@ -13,7 +13,7 @@ const { text, icon, target = "_self", href, download = false } = Astro.props
 ---
 
 <a
-  download={download}
+  download={download ? "" : undefined}
   href={href}
   target={target}
   class="flex items-center justify-center gap-2 rounded-2xl bg-gray-200 px-4 py-2 text-xs font-bold uppercase text-gray-600 shadow-sm hover:bg-gray-300"
