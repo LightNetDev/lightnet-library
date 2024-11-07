@@ -1,6 +1,5 @@
 export {
   categorySchema,
-  DETAILS_PAGES,
   LIGHTNET_COLLECTIONS,
   mediaCollectionSchema,
   mediaSchema,

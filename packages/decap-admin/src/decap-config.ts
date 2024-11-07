@@ -1,4 +1,3 @@
-import { DETAILS_PAGES } from "@lightnet/library/content"
 import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n"
 import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
@@ -208,12 +207,6 @@ export const config = {
           label: "Icon",
           widget: "string",
           hint: "Find icons on https://pictogrammers.com/library/mdi/. Prefix icon name with 'mdi--'",
-        },
-        {
-          name: "detailsPage",
-          label: "Details Page",
-          widget: "select",
-          options: DETAILS_PAGES,
         },
       ],
     },
