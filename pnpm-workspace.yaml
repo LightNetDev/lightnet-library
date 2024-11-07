@@ -1,4 +1,3 @@
 packages:
   - "packages/*"
   - "examples/**"
-  - "tests/e2e/fixtures/**"

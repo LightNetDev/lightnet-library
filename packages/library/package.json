@@ -41,6 +41,5 @@
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.48.1"
   }
 }

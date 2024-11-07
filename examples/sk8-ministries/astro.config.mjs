@@ -1,4 +1,3 @@
-import lightnetDecapAdmin from "@lightnet/decap-admin"
 import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 
@@ -38,6 +37,5 @@ export default defineConfig({
         filterByLocale: true,
       },
     }),
-    lightnetDecapAdmin({ languages, defaultLocale }),
   ],
 })

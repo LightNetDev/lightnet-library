@@ -1,9 +1,7 @@
 import { expect, type Page,test } from "@playwright/test";
 
-test.describe('some test suite', () => {
-
 test.beforeEach(async ({ page }) => {
-  await page.goto("http://localhost:4322/");
+  await page.goto("/");
   await page.waitForTimeout(2000);
 })
 
@@ -29,5 +27,4 @@ test('Verify language mutation', async ({ page }) => {
   await switchLanguage(page, 'English');
   console.log(page.url())
   expect(page.url().endsWith(`/en/`)).toBe(true);
-});
 });

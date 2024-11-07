@@ -13,11 +13,11 @@
     "format": "prettier . --write --cache",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "version": "pnpm changeset version && pnpm i --no-frozen-lockfile",
-    "build:tests": "pnpm --filter='./packages/library/tests/e2e/fixtures/basicWebsite' build",
-    "preview:tests": "pnpm --filter='./packages/library/tests/e2e/fixtures/basicWebsite' preview",
+    "build:tests": "pnpm --filter='sk8*' build",
+    "preview:tests": "pnpm --filter='sk8*' preview",
     "install-tests": "playwright install",
     "run-tests": "playwright test",
-    "test:e2e": "pnpm run build:tests && run-p preview:tests install-tests run-tests"
+    "test:e2e": "pnpm run build && start /b pnpm run preview && wait-on http://localhost:4321 && pnpm run install-tests && pnpm run-tests"
   },
   "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
   "repository": {
@@ -42,10 +42,12 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^15.11.0",
     "npm-run-all": "^4.1.5",
+    "playwright": "^1.48.2",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.11.0"
+    "typescript-eslint": "^8.11.0",
+    "wait-on": "^8.0.1"
   }
 }

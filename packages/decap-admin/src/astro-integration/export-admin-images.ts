@@ -1,5 +1,5 @@
 import { access, mkdir, readdir } from "node:fs/promises"
-import { join } from "node:path"
+import { join, normalize } from "node:path"
 
 import sharp from "sharp"
 
@@ -15,10 +15,16 @@ export async function vitePluginExportAdminImages(
   },
   config: DecapAdminUserConfig,
 ) {
+  const srcDirPath = normalize(srcDir.pathname.replace(/^\/+/, ""));
+  const outDirPath = normalize(outDir.pathname.replace(/^\/+/, ""));
+
+  console.log("Normalized srcDirPath:", srcDirPath);
+  console.log("Normalized outDirPath:", outDirPath);
+
   return {
     name: "vite-plugin-lightnet-decap-admin-images",
     writeBundle: async () =>
-      exportAdminImages(srcDir.pathname, outDir.pathname, config.path),
+      exportAdminImages(srcDirPath, outDirPath, config.path),
   }
 }
 
