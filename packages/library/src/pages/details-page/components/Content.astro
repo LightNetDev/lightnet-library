@@ -1,0 +1,59 @@
+---
+import Icon from "../../../components/Icon"
+import { getMediaItem } from "../../../content/get-media-items"
+import { useTranslate } from "../../../i18n/use-translate"
+import { createContentMetadata } from "../utils/create-content-metadata"
+
+interface Props {
+  slug: string
+}
+
+const item = await getMediaItem(Astro.props.slug)
+
+if (item.data.content.length < 2) {
+  return
+}
+
+const content = item.data.content.map(createContentMetadata)
+const t = useTranslate(Astro.currentLocale)
+---
+
+<ol
+  class="mx-auto mt-20 max-w-screen-md divide-y divide-gray-300 bg-gray-200 px-4 md:mt-24 md:rounded-xl md:px-8"
+>
+  {
+    content.map(
+      ({ extension, name, canBeOpened, canBeDownloaded, isExternal, url }) => (
+        <li class="flex gap-2 py-8 sm:items-center">
+          <div class="block w-20 shrink-0 overflow-hidden text-ellipsis font-bold uppercase text-gray-600">
+            {extension}
+          </div>
+          <div class="flex grow flex-col justify-between gap-2 sm:flex-row sm:items-center">
+            <div class="line-clamp-1">{name}</div>
+            <div class="flex shrink-0 gap-6">
+              {canBeOpened && (
+                <a
+                  href={url}
+                  class="flex items-center gap-1 py-2 font-bold text-gray-600 underline hover:text-gray-950"
+                  target={isExternal ? "_blank" : "_self"}
+                >
+                  {t("ln.details.open")}
+                  {isExternal && <Icon className="mdi--external-link" />}
+                </a>
+              )}
+              {canBeDownloaded && (
+                <a
+                  href={url}
+                  class="flex items-center gap-1 py-2 font-bold text-gray-600 underline hover:text-gray-950"
+                >
+                  {t("ln.details.download")}
+                  {isExternal && <Icon className="mdi--external-link" />}
+                </a>
+              )}
+            </div>
+          </div>
+        </li>
+      ),
+    )
+  }
+</ol>

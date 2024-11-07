@@ -1,5 +1,8 @@
 {
-  "label": "ln.type.video",
-  "detailsPage": "video",
+  "label": "type.video",
+  "detailsPage": {
+    "type": "video",
+    "openActionLabel": "details.action.watch"
+  },
   "icon": "mdi--video-outline"
 }

@@ -1,0 +1,34 @@
+---
+import { getMediaItem } from "../../../../content/get-media-items"
+import { resolveCategoryLabel } from "../../../../content/resolve-category-label"
+import { useTranslate } from "../../../../i18n/use-translate"
+import { searchPagePath } from "../../../../utils/paths"
+import Label from "./Label.astro"
+
+interface Props {
+  slug: string
+}
+
+const item = await getMediaItem(Astro.props.slug)
+
+const categories = item.data.categories?.map(({ id }) => id)
+
+const t = useTranslate(Astro.currentLocale)
+---
+
+{
+  !!categories?.length && (
+    <>
+      <Label>{t("ln.common.categories")}</Label>
+      <ul class="flex flex-wrap gap-2">
+        {categories.map(async (category) => (
+          <li class="flex rounded-lg bg-gray-200 px-4 py-1 text-gray-500 hover:bg-gray-300">
+            <a href={searchPagePath(Astro.currentLocale, { category })}>
+              {resolveCategoryLabel(t, category)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}

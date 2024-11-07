@@ -3,11 +3,11 @@ import type { GetStaticPaths } from "astro"
 import { AstroError } from "astro/errors"
 import config from "virtual:lightnet/config"
 
-import { DETAILS_PAGES } from "../../content/content-schema"
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
 import Page from "../../layouts/Page.astro"
-import DocumentDetails from "./DocumentDetails.astro"
+import { markdownToText } from "../../utils/markdown"
+import DefaultDetails from "./DefaultDetails.astro"
 import VideoDetails from "./VideoDetails.astro"
 
 export const getStaticPaths = (async () => {
@@ -17,24 +17,24 @@ export const getStaticPaths = (async () => {
   )
 }) satisfies GetStaticPaths
 
-const { slug, locale } = Astro.params
+const { slug } = Astro.params
 const mediaItem = (await getMediaItem(Astro.params.slug)).data
-const props = { mediaItem, slug, locale }
 
 const {
   data: { detailsPage },
 } = await getMediaType(mediaItem.type.id)
 
 let CustomDetails
-if (!DETAILS_PAGES.includes(detailsPage)) {
+const pageType = detailsPage?.type ?? "default"
+if (detailsPage?.type === "custom") {
   const d = import.meta.glob("/src/details-pages/*.astro")
   const customDetailsImport = d[
-    `/src/details-pages/${detailsPage}`
+    `/src/details-pages/${detailsPage.customComponent}`
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ] as () => Promise<any>
   if (!customDetailsImport) {
     throw new AstroError(
-      `Unknown details page ${detailsPage}`,
+      `Unknown details page ${detailsPage.customComponent}`,
       "Make sure to add your details component within /src/details-pages/",
     )
   }
@@ -42,9 +42,11 @@ if (!DETAILS_PAGES.includes(detailsPage)) {
 }
 ---
 
-<Page title={mediaItem.title} description={mediaItem.description}>
-  {detailsPage === "book" && <DocumentDetails showBookFold {...props} />}
-  {detailsPage === "document" && <DocumentDetails {...props} />}
-  {detailsPage === "video" && <VideoDetails {...props} />}
-  {CustomDetails && <CustomDetails slug={slug} />}
+<Page
+  title={mediaItem.title}
+  description={markdownToText(mediaItem.description)}
+>
+  {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
+  {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
+  {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
 </Page>

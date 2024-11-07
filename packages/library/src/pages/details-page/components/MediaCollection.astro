@@ -2,17 +2,15 @@
 import { AstroError } from "astro/errors"
 import { getEntry } from "astro:content"
 
-import Icon from "../../../components/Icon"
 import MediaItemList from "../../../components/MediaItemList.astro"
 import { getMediaItems } from "../../../content/get-media-items"
 import { queryMediaItems } from "../../../content/query-media-items"
-import { useTranslate } from "../../../i18n/use-translate"
 
 interface Props {
   collectionId: string
-  excludeItem: string
+  disableItem: string
 }
-const { collectionId, excludeItem } = Astro.props
+const { collectionId, disableItem } = Astro.props
 
 const collection = await getEntry("media-collections", collectionId)
 if (!collection) {
@@ -22,20 +20,12 @@ const items = (
   await queryMediaItems(getMediaItems(), {
     where: { collection: collection.id },
   })
-).filter(({ id }) => id !== excludeItem)
-
-const t = useTranslate(Astro.currentLocale)
+).map((item) => ({ ...item, disabled: item.id === disableItem }))
 ---
 
-<section class="mx-auto mt-14 max-w-screen-lg px-4 md:mt-16 md:px-8">
-  <h2 class="mb-1 flex items-center gap-1 font-bold text-gray-700">
-    <Icon
-      className="mdi--format-list-group -ml-1 text-3xl"
-      ariaLabel={t("ln.common.collection")}
-    />
-
+<section class="mx-auto mt-20 max-w-screen-md px-4 md:mt-24 md:px-8">
+  <h2 class="mb-2 text-lg font-bold text-gray-700">
     {collection.data.name}
   </h2>
-
   <MediaItemList items={items} />
 </section>

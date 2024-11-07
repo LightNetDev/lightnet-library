@@ -1,6 +1,6 @@
 ---
-import Icon from "../../../components/Icon"
-import { useTranslate } from "../../../i18n/use-translate"
+import Icon from "../../../../components/Icon"
+import { useTranslate } from "../../../../i18n/use-translate"
 
 interface Props {
   className?: string
@@ -10,11 +10,11 @@ const t = useTranslate(Astro.currentLocale)
 ---
 
 <button
-  class="dy-btn dy-btn-ghost"
+  class="flex items-center justify-center gap-2 rounded-2xl bg-gray-200 px-4 py-2 text-xs font-bold uppercase text-gray-600 shadow-sm hover:bg-gray-300"
   class:list={[Astro.props.className]}
   id="share-btn"
-  aria-label={t("ln.share.a11y.share-with-others")}
-  ><Icon className="mdi--ios-share text-gray-600" /></button
+  ><Icon className="mdi--share-variant-outline" />
+  {t("ln.details.share")}</button
 >
 <div
   id="share-success"
@@ -37,9 +37,11 @@ const t = useTranslate(Astro.currentLocale)
     }
     btn?.addEventListener("click", () => {
       if (navigator.share) {
-        navigator.share({
-          url: window.location.href,
-        })
+        navigator
+          .share({
+            url: window.location.href,
+          })
+          .catch((e) => console.debug("Could not share", e))
       } else {
         navigator.clipboard
           .writeText(window.location.href)

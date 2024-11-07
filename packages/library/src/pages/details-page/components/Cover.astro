@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets"
+
+import { getMediaItem } from "../../../content/get-media-items"
+
+interface Props {
+  slug: string
+  style?: "default" | "book"
+}
+const { slug, style = "default" } = Astro.props
+
+const item = await getMediaItem(slug)
+const image = item.data.image
+const isPortraitImage = image.height > image.width
+---
+
+<div
+  class="relative shrink-0 overflow-hidden shadow-sm"
+  class:list={style === "book" ? "rounded-sm" : "rounded-md"}
+>
+  <Image
+    class:list={isPortraitImage ? "h-52 w-auto sm:h-72" : "h-auto w-52 sm:w-72"}
+    alt=""
+    widths={[208, 288, 576, 864]}
+    sizes="(max-width: 640px) 13rem, 18rem"
+    src={image}
+    quality="high"
+    loading="eager"
+  />
+  {
+    style === "book" && (
+      <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
+    )
+  }
+</div>

@@ -139,6 +139,11 @@ export const mediaItemSchema = z.object({
          * @example "/files/a-book-about-love.pdf"
          */
         url: z.string(),
+        /**
+         * The name of the content. If this is not set. The file name
+         * from URL will be used.
+         */
+        name: z.string().optional(),
       }),
     )
     .min(1),
@@ -174,11 +179,63 @@ export const mediaTypeSchema = z.object({
   label: z.string(),
   /**
    * What media item details page to use for media items with this type.
-   * Can be one of "book", "document", "video", or a reference of a custom component.
    *
-   * @example "book"
    */
-  detailsPage: z.string(),
+  detailsPage: z
+    .discriminatedUnion("type", [
+      z.object({
+        /**
+         * Details page for all media types.
+         */
+        type: z.literal("default"),
+        /**
+         * Label for the open action button. Use this if you want to change the text
+         * of the "Open" button to be more matching to your media item.
+         * For example you could change the text to be "Read" for a book media type.
+         *
+         * The label is a translation key.
+         *
+         * @example "ln.details.open"
+         */
+        openActionLabel: z.string().optional(),
+        /**
+         * What style to use for the cover image.
+         *
+         * @example "book"
+         */
+        coverStyle: z.enum(["default", "book"]).default("default"),
+      }),
+      z.object({
+        /**
+         * Custom details page.
+         */
+        type: z.literal("custom"),
+        /**
+         * This references a custom component name to be used for the
+         * details page. The custom component has be located at src/details-pages/
+         *
+         * @example "MyArticleDetails.astro"
+         */
+        customComponent: z.string(),
+      }),
+      z.object({
+        /**
+         * Detail page for videos.
+         */
+        type: z.literal("video"),
+        /**
+         * Label for the open action button. Use this if you want to change the text
+         * of the "Open" button to be more matching to your media item.
+         * For example you could change the text to be "Watch".
+         *
+         * The label is a translation key.
+         *
+         * @example "ln.details.open"
+         */
+        openActionLabel: z.string().optional(),
+      }),
+    ])
+    .optional(),
   /**
    * Pick the media type's icon from https://pictogrammers.com/library/mdi/
    * Prefix it's name with "mdi--"
