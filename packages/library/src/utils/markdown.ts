@@ -1,6 +1,12 @@
 import { marked } from "marked"
 
-export function markdownToPlainText(markdown?: string) {
+/**
+ * Remove markdown syntax and return plain text.
+ *
+ * @param markdown string
+ * @returns plain text
+ */
+export function markdownToText(markdown?: string) {
   if (!markdown) {
     return markdown
   }
@@ -10,6 +16,8 @@ export function markdownToPlainText(markdown?: string) {
       .replaceAll(/^#+ ?/gm, "")
       // lists
       .replaceAll(/^- /gm, "")
+      // block quotes
+      .replaceAll(/^>+ ?/gm, "")
       // bold and italics
       .replaceAll(/[*_]/g, "")
       // images
@@ -19,6 +27,12 @@ export function markdownToPlainText(markdown?: string) {
   )
 }
 
+/**
+ * Converts markdown to a html string
+ *
+ * @param markdown string
+ * @returns html
+ */
 export function markdownToHtml(markdown?: string) {
   if (!markdown) {
     return markdown

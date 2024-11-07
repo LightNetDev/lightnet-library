@@ -3,7 +3,7 @@ import { getImage } from "astro:assets"
 
 import type { MediaItemEntry } from "../../content/content-schema-internal"
 import { getMediaItems } from "../../content/get-media-items"
-import { markdownToPlainText } from "../../utils/markdown"
+import { markdownToText } from "../../utils/markdown"
 import type { SearchItem } from "./search-response"
 
 export const GET: APIRoute = async () => {
@@ -40,7 +40,7 @@ async function createSearchItem(mediaItem: MediaItemEntry) {
     type: type.id,
     authors,
     categories: categories?.map(({ id }) => id),
-    description: markdownToPlainText(description)?.slice(0, 350),
+    description: markdownToText(description)?.slice(0, 350),
     language,
     image: { src, width, height },
   }
