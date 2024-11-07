@@ -1,12 +1,12 @@
 ---
-import Icon from "../../../../components/Icon"
 import { useTranslate } from "../../../../i18n/use-translate"
+import ActionButton from "./ActionButton.astro"
 
 const t = useTranslate(Astro.currentLocale)
 ---
 
-<a
+<ActionButton
+  icon="mdi--information-outline"
+  text={t("ln.details.details")}
   href="#details"
-  class="flex items-center justify-center gap-2 rounded-2xl bg-gray-200 px-4 py-2 text-xs font-bold uppercase text-gray-600 shadow-sm hover:bg-gray-300"
-  ><Icon className="mdi--information-outline" />{t("ln.details.details")}</a
->
+/>

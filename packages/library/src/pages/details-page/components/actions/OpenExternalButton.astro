@@ -1,8 +1,8 @@
 ---
-import Icon from "../../../../components/Icon"
 import { getMediaItem } from "../../../../content/get-media-items"
 import { useTranslate } from "../../../../i18n/use-translate"
 import { createContentMetadata } from "../../utils/create-content-metadata"
+import ActionButton from "./ActionButton.astro"
 
 interface Props {
   slug: string
@@ -28,11 +28,9 @@ if (!(contentMetadata.canBeOpened && contentMetadata.isExternal)) {
 const t = useTranslate(Astro.currentLocale)
 ---
 
-<a
+<ActionButton
   href={contentMetadata.url}
   target="_blank"
-  class="flex items-center justify-center gap-2 rounded-2xl bg-gray-200 px-4 py-2 text-xs font-bold uppercase text-gray-600 shadow-sm hover:bg-gray-300"
-  ><Icon className="mdi--external-link" />{
-    t(openActionLabel ?? "ln.details.open")
-  }</a
->
+  text={t(openActionLabel ?? "ln.details.open")}
+  icon="mdi--external-link"
+/>
