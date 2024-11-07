@@ -162,8 +162,6 @@ export const mediaSchema = ({ image }: SchemaContext) =>
     image: astroImage(image),
   })
 
-export const DETAILS_PAGES = ["book", "document", "video"]
-
 /**
  * Media type schema
  */
