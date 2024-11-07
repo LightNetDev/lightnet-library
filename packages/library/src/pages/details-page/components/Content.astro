@@ -44,6 +44,7 @@ const t = useTranslate(Astro.currentLocale)
               {canBeDownloaded && (
                 <a
                   href={url}
+                  download
                   class="flex items-center gap-1 py-2 font-bold text-gray-600 underline hover:text-gray-950"
                 >
                   {t("ln.details.download")}
