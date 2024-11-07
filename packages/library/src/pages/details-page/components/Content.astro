@@ -24,7 +24,7 @@ const t = useTranslate(Astro.currentLocale)
   {
     content.map(
       ({ extension, name, canBeOpened, canBeDownloaded, isExternal, url }) => (
-        <li class="flex py-8 sm:items-center">
+        <li class="flex gap-2 py-8 sm:items-center">
           <div class="block w-20 shrink-0 overflow-hidden text-ellipsis font-bold uppercase text-gray-600">
             {extension}
           </div>
