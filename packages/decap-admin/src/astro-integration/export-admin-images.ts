@@ -1,5 +1,6 @@
 import { access, mkdir, readdir } from "node:fs/promises"
 import { join } from "node:path"
+import { fileURLToPath } from "node:url"
 
 import sharp from "sharp"
 
@@ -18,7 +19,11 @@ export async function vitePluginExportAdminImages(
   return {
     name: "vite-plugin-lightnet-decap-admin-images",
     writeBundle: async () =>
-      exportAdminImages(srcDir.pathname, outDir.pathname, config.path),
+      exportAdminImages(
+        fileURLToPath(srcDir),
+        fileURLToPath(outDir),
+        config.path,
+      ),
   }
 }
 
