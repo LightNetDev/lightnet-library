@@ -70,8 +70,11 @@ class LightNetPage {
 
   // Navigate to a URL relative to the server used during a test run and return the resource response.
   goto(path: string) {
-    const url = `http://localhost:${this.server.port}${path.replace(/^\/?/, "/")}`
-    return this.page.goto(url)
+    this.page.goto(this.resolveURL(path))
+  }
+
+  resolveURL(path: string) {
+    return `http://localhost:${this.server.port}${path.replace(/^\/?/, "/")}`
   }
 }
 
