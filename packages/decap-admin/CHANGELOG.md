@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.2.6
+
+### Patch Changes
+
+- [#144](https://github.com/LightNetDev/lightnet-library/pull/144) [`fdb0c3b`](https://github.com/LightNetDev/lightnet-library/commit/fdb0c3be6156177b7c8e892272fd280a377024e6) Thanks [@si-fab](https://github.com/si-fab)! - Fixes build on windows.
+
 ## 2.2.5
 
 ### Patch Changes
