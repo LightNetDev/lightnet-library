@@ -40,15 +40,17 @@ export function lightnetTest(fixturePath: string) {
 
   let server: Server | null = null
   const test = baseTest.extend<{
-    lightnet: () => Promise<LightNetPage>
+    startLightnet: (path?: string) => Promise<LightNetPage>
   }>({
-    lightnet: ({ page }, use) =>
-      use(async () => {
+    startLightnet: ({ page }, use) =>
+      use(async (path) => {
         if (!server) {
           await build({ logLevel: "error", root })
           server = await preview({ logLevel: "error", root })
         }
-        return new LightNetPage(server, page)
+        const ln = new LightNetPage(server, page)
+        await ln.goto(path ?? "/")
+        return ln
       }),
   })
 
@@ -67,13 +69,9 @@ class LightNetPage {
   ) {}
 
   // Navigate to a URL relative to the server used during a test run and return the resource response.
-  goto(url: string) {
-    return this.page.goto(this.resolveUrl(url))
-  }
-
-  // Resolve a URL relative to the server used during a test run.
-  resolveUrl(url: string) {
-    return `http://localhost:${this.server.port}${url.replace(/^\/?/, "/")}`
+  goto(path: string) {
+    const url = `http://localhost:${this.server.port}${path.replace(/^\/?/, "/")}`
+    return this.page.goto(url)
   }
 }
 

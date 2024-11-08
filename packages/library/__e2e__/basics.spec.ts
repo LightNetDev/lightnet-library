@@ -4,9 +4,7 @@ import { lightnetTest } from "./test-utils"
 
 const test = lightnetTest("./fixtures/basics/")
 
-test("Should have title", async ({ page, lightnet }) => {
-  const ln = await lightnet()
-  await ln.goto("/")
-
+test("Should have title set", async ({ page, startLightnet }) => {
+  await startLightnet()
   await expect(page).toHaveTitle("Basic Test")
 })
