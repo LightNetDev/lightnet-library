@@ -19,3 +19,20 @@ jobs:
           cache: "pnpm"
       - run: pnpm i
       - run: pnpm -r test
+  run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+      - run: pnpm i
+      - run: pnpm -r e2e
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: library-playwright-report
+          path: packages/library/playwright-report/
+          retention-days: 30

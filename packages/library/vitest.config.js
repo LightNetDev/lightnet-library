@@ -1,6 +1,11 @@
+import { defineConfig } from "vitest/config"
+
 import { vitePluginLightnetConfig } from "./src/astro-integration/vite-plugin-lightnet-config"
 
-export default {
+export default defineConfig({
+  test: {
+    include: ["__tests__/**/*.spec.ts"],
+  },
   plugins: [
     vitePluginLightnetConfig(
       {
@@ -13,4 +18,4 @@ export default {
       { site: "https://sk8-ministries.dev" },
     ),
   ],
-}
+})

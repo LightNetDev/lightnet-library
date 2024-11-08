@@ -1,0 +1,17 @@
+---
+export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
+
+import { Gallery, Page, Section } from "@lightnet/library/components"
+import { getMediaItems } from "@lightnet/library/content"
+import { useTranslate } from "@lightnet/library/i18n"
+
+const allItems = await getMediaItems({})
+
+const t = useTranslate(Astro.currentLocale)
+---
+
+<Page>
+  <Section title={t("home.all-items")}>
+    <Gallery items={allItems} layout="book" />
+  </Section>
+</Page>

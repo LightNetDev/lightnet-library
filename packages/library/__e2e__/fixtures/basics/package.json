@@ -1,0 +1,19 @@
+{
+  "name": "@e2e/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/tailwind": "^5.1.2",
+    "@lightnet/decap-admin": "^2.2.4",
+    "@lightnet/library": "^2.11.0",
+    "astro": "^4.16.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  }
+}
