@@ -37,3 +37,62 @@ test("Should navigate to search page from main menu", async ({
 
   await expect(page).toHaveURL(ln.resolveURL("/en/media"))
 })
+
+test("Should switch languages", async ({ page, startLightnet }) => {
+  const ln = await startLightnet()
+
+  await page.getByRole("button", { name: "Select language" }).click()
+  await page.getByLabel("Select language").click()
+  await page.getByRole("link", { name: "Deutsch" }).click()
+  await expect(page).toHaveURL(ln.resolveURL("/de/"))
+  await expect(page.getByRole("heading")).toHaveText("Alle Artikel")
+
+  await page.getByLabel("Sprache auswählen").click()
+  await page.getByRole("link", { name: "English" }).click()
+  await expect(page).toHaveURL(ln.resolveURL("/en/"))
+})
+
+test("Should verify EN Detail media page url and title", async ({
+  page,
+  startLightnet,
+}) => {
+  const ln = await startLightnet()
+
+  await page.getByRole("link", { name: "Faithful Freestyle" }).click()
+  await page.getByRole("heading", { name: "Faithful Freestyle" }).click()
+  await expect(page).toHaveURL(
+    ln.resolveURL("/en/media/faithful-freestyle--en"),
+  )
+
+  await page.goBack()
+
+  await page.getByRole("link", { name: "Kickflip Anleitung" }).click()
+  await page.getByRole("heading", { name: "Kickflip Anleitung" }).click()
+  await expect(page).toHaveURL(ln.resolveURL("/en/media/how-to-kickflip--de"))
+})
+
+test("Should verify DE Detail media page url and title", async ({
+  page,
+  startLightnet,
+}) => {
+  const ln = await startLightnet()
+
+  await page.getByLabel('Select language').click();
+  await page.getByRole('link', { name: 'Deutsch' }).click();
+  await page.getByRole('link', { name: 'Faithful Freestyle' }).click();
+  await expect(page).toHaveURL(ln.resolveURL("/de/media/faithful-freestyle--en"))
+
+  const lesenLink = page.getByRole("link", { name: "Lesen" })
+  await expect(lesenLink).toBeVisible()
+  await expect(lesenLink).toBeEnabled()
+  await lesenLink.click()
+  await page.goBack()
+
+  await expect(page.getByRole("button", { name: "Teilen" }).isVisible()).toBeTruthy()
+  await expect(page.getByRole("link", { name: "Download" }).isVisible()).toBeTruthy()
+
+  await expect(page.getByRole("link", { name: "Details" }).isVisible()).toBeTruthy()
+  await page.getByRole("link", { name: "Details" }).click()
+  await expect(page.getByText("Sprache")).toBeVisible()
+  await expect(page.getByText("Kategorien")).toBeVisible()
+})
