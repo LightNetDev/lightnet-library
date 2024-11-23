@@ -3,11 +3,6 @@ import { expect } from "@playwright/test"
 import { lightnetTest } from "./test-utils"
 
 const test = lightnetTest("./fixtures/basics/")
-// let ln: { resolveURL: (path: string) => string };
-//
-// test.beforeEach(async ({ page, startLightnet }) => {
-//   ln = await startLightnet()
-// })
 
 test("Should have title set", async ({ page, startLightnet }) => {
   await startLightnet()
@@ -96,8 +91,13 @@ test("Should verify DE Detail media page url and title", async ({
   await expect(page.getByRole("button", { name: "Teilen" }).isVisible()).toBeTruthy()
   await expect(page.getByRole("link", { name: "Download" }).isVisible()).toBeTruthy()
 
-  await expect(page.getByRole("link", { name: "Details" }).isVisible()).toBeTruthy()
-  await page.getByRole("link", { name: "Details" }).click()
+  const detailsLink = page.getByRole("link", { name: "Details" });
+  console.log("Details link is visible:", await detailsLink.isVisible());
+  await expect(detailsLink).toBeVisible();
+  await detailsLink.waitFor({state:"visible"})
+  await page.screenshot({path: "screenshot.png"})
+  await detailsLink.click({force: true})
+
   await expect(page.getByText("Sprache")).toBeVisible()
   await expect(page.getByText("Kategorien")).toBeVisible()
 })

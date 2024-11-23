@@ -19,6 +19,8 @@ export default defineConfig({
   use: {
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    viewport: { width: 1280, height: 800 }, // Set default viewport
+    headless: true,
   },
 
   /* Configure projects for major browsers */
