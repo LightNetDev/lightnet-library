@@ -29,6 +29,7 @@ test("Should navigate to search page from main menu", async ({
   startLightnet,
 }) => {
   const ln = await startLightnet()
+  await expect(page.getByRole("button", { name: "Open Main Menu" })).toBeVisible();
   await page
     .getByRole("navigation")
     .getByRole("button", { name: "Open Main Menu" })
@@ -41,6 +42,7 @@ test("Should navigate to search page from main menu", async ({
 test("Should switch languages", async ({ page, startLightnet }) => {
   const ln = await startLightnet()
 
+  await expect(page.getByRole("button", { name: "Select language" })).toBeVisible();
   await page.getByRole("button", { name: "Select language" }).click()
   await page.getByLabel("Select language").click()
   await page.getByRole("link", { name: "Deutsch" }).click()
