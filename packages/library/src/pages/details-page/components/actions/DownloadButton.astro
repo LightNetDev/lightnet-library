@@ -2,7 +2,7 @@
 import { getMediaItem } from "../../../../content/get-media-items"
 import { useTranslate } from "../../../../i18n/use-translate"
 import { createContentMetadata } from "../../utils/create-content-metadata"
-import Download from "./Download"
+import ActionButton from "./ActionButton.astro"
 
 interface Props {
   slug: string
@@ -25,9 +25,9 @@ if (!(contentMetadata.canBeOpened && contentMetadata.canBeDownloaded)) {
 const t = useTranslate(Astro.currentLocale)
 ---
 
-<Download
-  client:idle
-  fileName={contentMetadata.name}
+<ActionButton
+  icon="mdi--download"
   href={contentMetadata.url}
-  label={t("ln.details.download")}
+  text={t("ln.details.download")}
+  download={true}
 />
