@@ -21,6 +21,10 @@ const items = (
     where: { collection: collection.id },
   })
 ).map((item) => ({ ...item, disabled: item.id === disableItem }))
+
+if (items.length < 2) {
+  return
+}
 ---
 
 <section class="mx-auto mt-20 max-w-screen-md px-4 md:mt-24 md:px-8">
