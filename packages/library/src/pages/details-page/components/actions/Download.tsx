@@ -19,14 +19,15 @@ export default function Download({
       .then((response) => response.blob())
       .then((blob) => {
         setIsDownloading(false)
-        const blobURL = URL.createObjectURL(blob)
+        const objectUrl = URL.createObjectURL(blob)
         const a = document.createElement("a")
-        a.href = blobURL
+        a.href = objectUrl
         a.classList.add("hidden")
         a.download = fileName
         document.body.appendChild(a)
         a.click()
-        URL.revokeObjectURL(blobURL)
+        document.body.removeChild(a)
+        URL.revokeObjectURL(objectUrl)
       })
   }
 
