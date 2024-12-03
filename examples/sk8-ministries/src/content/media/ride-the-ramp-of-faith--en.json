@@ -1,12 +1,12 @@
 {
   "commonId": "ride-the-ramp-of-faith",
-  "title": "Ride the ramp of Faith",
+  "title": "Ride the Ramp of Faith",
   "type": "book",
   "dateCreated": "2024-04-21",
   "authors": ["Sk8 Ministries"],
   "content": [
-    { "url": "/files/example.epub" },
-    { "url": "/files/example.pdf" }
+    { "url": "/files/example.epub", "name": "eBook" },
+    { "url": "/files/example.pdf", "name": "Table of Contents" }
   ],
   "image": "./_images/ride-the-ramp-of-faith--en.webp",
   "language": "en",

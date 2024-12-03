@@ -1,12 +1,12 @@
 ---
-import MainActionButton from "./components/actions/MainActionButton.astro"
-import ShareButton from "./components/actions/ShareButton.astro"
 import Authors from "./components/Authors.astro"
 import Content from "./components/Content.astro"
 import Cover from "./components/Cover.astro"
 import Description from "./components/Description.astro"
 import Details from "./components/details/Details.astro"
 import MediaCollections from "./components/MediaCollections.astro"
+import OpenButton from "./components/OpenButton.astro"
+import ShareButton from "./components/ShareButton.astro"
 import Title from "./components/Title.astro"
 
 export type Props = {
@@ -33,7 +33,7 @@ const {
     <div
       class="mt-8 flex flex-col justify-center gap-4 sm:justify-start md:mt-14"
     >
-      <MainActionButton slug={slug} openActionLabel={openActionLabel} />
+      <OpenButton slug={slug} openActionLabel={openActionLabel} />
       <ShareButton />
     </div>
   </div>
