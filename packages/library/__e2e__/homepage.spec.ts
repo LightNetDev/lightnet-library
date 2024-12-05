@@ -37,6 +37,7 @@ test("Should navigate to search page from main menu", async ({
   await page.getByRole("navigation").getByText("Search").click()
 
   await expect(page).toHaveURL(ln.resolveURL("/en/media"))
+  await expect(page.getByRole("heading", { name: "Search" })).toBeVisible()
 })
 
 test("Should switch languages", async ({ page, startLightnet }) => {
