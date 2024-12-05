@@ -7,4 +7,8 @@ export const languages: Language[] = [
     code: "en",
     name: "English",
   },
+  {
+    code: "de",
+    name: "Deutsch",
+  },
 ]
