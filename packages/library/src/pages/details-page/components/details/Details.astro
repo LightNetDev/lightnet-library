@@ -10,6 +10,8 @@ const { slug } = Astro.props
 ---
 
 <div class="mx-auto mt-20 max-w-screen-md px-4 sm:mt-24 md:px-8" id="details">
-  <Languages slug={slug} />
-  <Categories slug={slug} />
+  <div class="flex flex-col gap-4">
+    <Languages slug={slug} />
+    <Categories slug={slug} />
+  </div>
 </div>

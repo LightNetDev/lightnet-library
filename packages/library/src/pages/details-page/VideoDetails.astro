@@ -1,23 +1,19 @@
 ---
 import { getMediaItem } from "../../content/get-media-items"
-import DetailsButton from "./components/actions/DetailsButton.astro"
-import DownloadButton from "./components/actions/DownloadButton.astro"
-import OpenExternalButton from "./components/actions/OpenExternalButton.astro"
-import ShareButton from "./components/actions/ShareButton.astro"
 import Authors from "./components/Authors.astro"
 import Content from "./components/Content.astro"
 import Description from "./components/Description.astro"
 import Details from "./components/details/Details.astro"
 import MediaCollections from "./components/MediaCollections.astro"
+import ShareButton from "./components/ShareButton.astro"
 import Title from "./components/Title.astro"
 import VideoPlayer from "./components/VideoPlayer.astro"
 
 export type Props = {
   slug: string
-  openActionLabel?: string
 }
 
-const { slug, openActionLabel = "ln.details.open" } = Astro.props
+const { slug } = Astro.props
 
 const item = await getMediaItem(slug)
 ---
@@ -38,12 +34,7 @@ const item = await getMediaItem(slug)
 >
   <Title slug={slug} />
   <Authors slug={slug} />
-  <div class="mt-8 flex flex-wrap justify-start gap-3">
-    <ShareButton />
-    <DownloadButton slug={slug} />
-    <OpenExternalButton openActionLabel={openActionLabel} slug={slug} />
-    <DetailsButton />
-  </div>
+  <ShareButton className="mt-8" />
 </div>
 
 <Description slug={slug} />

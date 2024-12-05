@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.11.2
+
+### Patch Changes
+
+- [#147](https://github.com/LightNetDev/lightnet-library/pull/147) [`4e4b6e3`](https://github.com/LightNetDev/lightnet-library/commit/4e4b6e356400ce548e014ee824e87845651bc9f8) Thanks [@si-fab](https://github.com/si-fab)! - Improved details page layout/behavior.
+
 ## 2.11.1
 
 ### Patch Changes
