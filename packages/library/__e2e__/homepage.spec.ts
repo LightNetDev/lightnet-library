@@ -99,6 +99,7 @@ test("Should verify DE Detail media page url and title", async ({
   await expect(lesenLink).toBeVisible()
   await expect(lesenLink).toBeEnabled()
   await lesenLink.click()
+  await page.waitForLoadState("networkidle")
   await page.goBack()
 
   await expect(
