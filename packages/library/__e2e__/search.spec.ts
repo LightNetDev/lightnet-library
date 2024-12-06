@@ -4,9 +4,10 @@ import { lightnetTest } from "./test-utils"
 
 const test = lightnetTest("./fixtures/basics/")
 
-test("Should have item section", async ({ page, startLightnet }) => {
+test("Search should have heading section and URL", async ({ page, startLightnet }) => {
   const ln = await startLightnet()
-  await page.goto(ln.resolveURL("/en/media"), { timeout: 60000 })
 
+  await page.getByLabel('Search').click();
   await expect(page.getByRole("heading", { name: "Search" })).toBeVisible()
+  await expect(page).toHaveURL(ln.resolveURL("/en/media"))
 })
