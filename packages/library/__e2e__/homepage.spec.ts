@@ -29,7 +29,9 @@ test("Should navigate to search page from main menu", async ({
   startLightnet,
 }) => {
   const ln = await startLightnet()
-  await expect(page.getByRole("button", { name: "Open Main Menu" })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Open Main Menu" }),
+  ).toBeVisible()
   await page
     .getByRole("navigation")
     .getByRole("button", { name: "Open Main Menu" })
@@ -43,7 +45,9 @@ test("Should navigate to search page from main menu", async ({
 test("Should switch languages", async ({ page, startLightnet }) => {
   const ln = await startLightnet()
 
-  await expect(page.getByRole("button", { name: "Select language" })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Select language" }),
+  ).toBeVisible()
   await page.getByRole("button", { name: "Select language" }).click()
   await page.getByLabel("Select language").click()
   await page.getByRole("link", { name: "Deutsch" }).click()
@@ -62,7 +66,9 @@ test("Should verify EN Detail media page url and title", async ({
   const ln = await startLightnet()
 
   await page.getByRole("link", { name: "Faithful Freestyle" }).click()
-  await expect(page.getByRole("heading", { name: "Faithful Freestyle" })).toBeVisible()
+  await expect(
+    page.getByRole("heading", { name: "Faithful Freestyle" }),
+  ).toBeVisible()
   await expect(page).toHaveURL(
     ln.resolveURL("/en/media/faithful-freestyle--en"),
   )
@@ -70,7 +76,9 @@ test("Should verify EN Detail media page url and title", async ({
   await page.goBack()
 
   await page.getByRole("link", { name: "Kickflip Anleitung" }).click()
-  await expect(page.getByRole("heading", { name: "Kickflip Anleitung" })).toBeVisible()
+  await expect(
+    page.getByRole("heading", { name: "Kickflip Anleitung" }),
+  ).toBeVisible()
   await expect(page).toHaveURL(ln.resolveURL("/en/media/how-to-kickflip--de"))
 })
 
@@ -80,10 +88,12 @@ test("Should verify DE Detail media page url and title", async ({
 }) => {
   const ln = await startLightnet()
 
-  await page.getByLabel('Select language').click();
-  await page.getByRole('link', { name: 'Deutsch' }).click();
-  await page.getByRole('link', { name: 'Faithful Freestyle' }).click();
-  await expect(page).toHaveURL(ln.resolveURL("/de/media/faithful-freestyle--en"))
+  await page.getByLabel("Select language").click()
+  await page.getByRole("link", { name: "Deutsch" }).click()
+  await page.getByRole("link", { name: "Faithful Freestyle" }).click()
+  await expect(page).toHaveURL(
+    ln.resolveURL("/de/media/faithful-freestyle--en"),
+  )
 
   const lesenLink = page.getByRole("link", { name: "Lesen" })
   await expect(lesenLink).toBeVisible()
@@ -91,7 +101,9 @@ test("Should verify DE Detail media page url and title", async ({
   await lesenLink.click()
   await page.goBack()
 
-  await expect(page.getByRole("button", { name: "Teilen" }).isVisible()).toBeTruthy()
+  await expect(
+    page.getByRole("button", { name: "Teilen" }).isVisible(),
+  ).toBeTruthy()
   await expect(page.getByText("Sprache")).toBeVisible()
   await expect(page.getByText("Kategorien")).toBeVisible()
 })
