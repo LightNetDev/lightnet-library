@@ -34,7 +34,6 @@ export { expect, type Locator } from "@playwright/test"
 
 process.env.ASTRO_TELEMETRY_DISABLED = "true"
 process.env.ASTRO_DISABLE_UPDATE_CHECK = "true"
-
 export function lightnetTest(fixturePath: string) {
   const root = fileURLToPath(new URL(fixturePath, import.meta.url))
 
