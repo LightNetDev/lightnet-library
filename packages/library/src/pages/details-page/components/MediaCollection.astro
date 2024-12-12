@@ -5,6 +5,7 @@ import { getEntry } from "astro:content"
 import MediaItemList from "../../../components/MediaItemList.astro"
 import { getMediaItems } from "../../../content/get-media-items"
 import { queryMediaItems } from "../../../content/query-media-items"
+import { useTranslate } from "../../../i18n/use-translate"
 
 interface Props {
   collectionId: string
@@ -21,11 +22,19 @@ const items = (
     where: { collection: collection.id },
   })
 ).map((item) => ({ ...item, disabled: item.id === disableItem }))
+
+if (items.length < 2) {
+  return
+}
+const t = useTranslate(Astro.currentLocale)
 ---
 
-<section class="mx-auto mt-20 max-w-screen-md px-4 md:mt-24 md:px-8">
-  <h2 class="mb-2 text-lg font-bold text-gray-700">
-    {collection.data.name}
+<section class="mx-auto mt-16 max-w-screen-md px-4 md:mt-20 md:px-8">
+  <h2 class="mb-3 text-xs font-bold uppercase text-gray-600">
+    {t("ln.details.part-of-collection")}
   </h2>
+  <h3 class="mb-2 text-lg font-bold text-gray-700">
+    {collection.data.name}
+  </h3>
   <MediaItemList items={items} />
 </section>

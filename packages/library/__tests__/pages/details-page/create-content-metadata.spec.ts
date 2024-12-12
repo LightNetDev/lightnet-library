@@ -5,8 +5,8 @@ import { createContentMetadata } from "../../../src/pages/details-page/utils/cre
 test("Should create complete content metadata", () => {
   expect(createContentMetadata({ url: "https://some.host/some.pDf" })).toEqual({
     url: "https://some.host/some.pDf",
-    canBeDownloaded: false,
     canBeOpened: true,
+    type: "text",
     target: "_blank",
     name: "some",
     isExternal: true,
@@ -17,19 +17,19 @@ test("Should create complete content metadata", () => {
   {
     url: "https://youtube.com/watch?v=k2exixc",
     expected: {
-      canBeDownloaded: false,
       canBeOpened: true,
       target: "_blank",
       name: "youtube.com",
       isExternal: true,
-      extension: "link",
+      extension: "",
+      type: "link",
     },
   },
   {
     url: "https://some.host/some.pDf",
     expected: {
-      canBeDownloaded: false,
       canBeOpened: true,
+      type: "text",
       target: "_blank",
       name: "some",
       isExternal: true,
@@ -39,7 +39,7 @@ test("Should create complete content metadata", () => {
   {
     url: "https://some.host/some.unknown",
     expected: {
-      canBeDownloaded: true,
+      type: "link",
       canBeOpened: false,
       target: "_blank",
       name: "some",
@@ -50,8 +50,8 @@ test("Should create complete content metadata", () => {
   {
     url: "/files/my.pdf",
     expected: {
-      canBeDownloaded: true,
       canBeOpened: true,
+      type: "text",
       target: "_self",
       name: "my",
       isExternal: false,
@@ -61,34 +61,34 @@ test("Should create complete content metadata", () => {
   {
     url: "/paths/my-id",
     expected: {
-      canBeDownloaded: false,
       canBeOpened: true,
       target: "_self",
       name: "my-id",
       isExternal: false,
-      extension: "link",
+      extension: "",
+      type: "link",
     },
   },
   {
     url: "/files/my.unknown",
     expected: {
-      canBeDownloaded: true,
       canBeOpened: false,
       target: "_self",
       name: "my",
       isExternal: false,
+      type: "link",
       extension: "unknown",
     },
   },
   {
     url: "/some.zip",
     expected: {
-      canBeDownloaded: true,
       canBeOpened: false,
       target: "_self",
       name: "some",
       isExternal: false,
       extension: "zip",
+      type: "package",
     },
   },
 ].forEach(({ url, expected }) => {

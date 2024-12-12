@@ -25,25 +25,23 @@ const t = useTranslate(Astro.currentLocale)
 const label = translations.length ? "ln.common.languages" : "ln.common.language"
 ---
 
-{
-  (
-    <>
-      <Label>{t(label)}</Label>
-      <ul class="flex flex-wrap gap-2">
-        <li class="py-1 pe-2 text-gray-800">
-          {resolveLanguage(item.data.language).name}
+<div>
+  <Label>{t(label)}</Label>
+  <ul class="flex flex-wrap gap-2">
+    <li class="py-1 pe-2 text-gray-800">
+      {resolveLanguage(item.data.language).name}
+    </li>
+    {
+      translations.map((translation) => (
+        <li class="flex rounded-lg border border-gray-200 px-4 py-1 text-gray-600 hover:bg-gray-200">
+          <a
+            href={detailsPagePath(Astro.currentLocale, translation)}
+            hreflang={translation.data.language}
+          >
+            {resolveLanguage(translation.data.language).name}
+          </a>
         </li>
-        {translations.map((translation) => (
-          <li class="flex rounded-lg border border-gray-200 px-4 py-1 text-gray-600 hover:bg-gray-200">
-            <a
-              href={detailsPagePath(Astro.currentLocale, translation)}
-              hreflang={translation.data.language}
-            >
-              {resolveLanguage(translation.data.language).name}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </>
-  )
-}
+      ))
+    }
+  </ul>
+</div>
