@@ -1,5 +1,16 @@
 # @lightnet/decap-admin
 
+## 2.2.7
+
+### Patch Changes
+
+- [#158](https://github.com/LightNetDev/lightnet-library/pull/158) [`c7e752d`](https://github.com/LightNetDev/lightnet-library/commit/c7e752d0af37d3b8d70cfc4fba14e767537aec9e) Thanks [@si-fab](https://github.com/si-fab)! - Simplify config format.
+
+  This changes the structure of the language config. `locales`, `defaultLocale`, `translations` have been moved into
+  the `languages` array.
+
+  The redirecting `index.astro` on root level can now be removed.
+
 ## 2.2.6
 
 ### Patch Changes
