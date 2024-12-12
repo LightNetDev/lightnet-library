@@ -12,8 +12,7 @@ export default defineConfig({
       title: "Basic Test",
       logo: { src: "./src/assets/logo.png" },
       defaultLocale,
-      locales: ["en"],
-      translations: { en },
+      uiTranslations: { en },
       languages,
       favicon: [{ href: "favicon.svg" }],
       mainMenu: [

@@ -1,26 +1,24 @@
 import { AstroError } from "astro/errors"
 import config from "virtual:lightnet/config"
 
+import { resolveDefaultLocale } from "./resolve-default-locale"
 import de from "./translations/de.json"
 import en from "./translations/en.json"
 
 type TranslationsByLocales = Record<string, Record<string, string>>
 
-const bundledTranslations: TranslationsByLocales = {
-  de,
-  en,
-}
+const configTranslations = config.languages
+  .filter((l) => !!l.translations)
+  .reduce((prev, curr) => ({ ...prev, [curr.code]: curr.translations }), {})
+const translationsByLocales = merge({ de, en }, configTranslations)
+const defaultLocale = resolveDefaultLocale(config)
 
 export type TranslationKey = keyof typeof en
 
 export function useTranslate(locale: string | undefined) {
-  const translationsByLocales = merge(
-    bundledTranslations,
-    config.translations ?? {},
-  )
-  const resolvedLocale = locale ?? config.defaultLocale
+  const resolvedLocale = locale ?? defaultLocale
   const translations = translationsByLocales[resolvedLocale]
-  const defaultTranslations = translationsByLocales[config.defaultLocale]
+  const defaultTranslations = translationsByLocales[defaultLocale]
   if (!translations) {
     throw new AstroError(
       `No translations found for locale ${resolvedLocale}`,

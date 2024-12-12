@@ -4,6 +4,7 @@ import config from "virtual:lightnet/config"
 import { getCategories } from "../../content/get-categories"
 import { contentLanguages } from "../../content/get-languages"
 import { getMediaTypes } from "../../content/get-media-types"
+import { resolveDefaultLocale } from "../../i18n/resolve-default-locale"
 import { useTranslate } from "../../i18n/use-translate"
 import Page from "../../layouts/Page.astro"
 import Search from "./Search"
@@ -25,7 +26,10 @@ const mediaTypes = (await getMediaTypes())
     icon: type.data.icon,
   }))
   .sort((a, b) =>
-    a.label.localeCompare(b.label, Astro.currentLocale ?? config.defaultLocale),
+    a.label.localeCompare(
+      b.label,
+      Astro.currentLocale ?? resolveDefaultLocale(config),
+    ),
   )
 
 const filterByLocale = !!config.searchPage?.filterByLocale

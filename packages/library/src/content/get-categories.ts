@@ -1,5 +1,6 @@
 import config from "virtual:lightnet/config"
 
+import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
 import { useTranslate } from "../i18n/use-translate"
 import { getMediaItems } from "./get-media-items"
 import { resolveCategoryLabel } from "./resolve-category-label"
@@ -15,6 +16,6 @@ export async function getCategories(locale?: string) {
   return [...contentCategories.values()]
     .map((id) => ({ id, label: resolveCategoryLabel(t, id) }))
     .sort((a, b) =>
-      a.label.localeCompare(b.label, locale ?? config.defaultLocale),
+      a.label.localeCompare(b.label, locale ?? resolveDefaultLocale(config)),
     )
 }

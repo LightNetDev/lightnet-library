@@ -1,4 +1,4 @@
-import { BUNDLED_LANGUAGES } from "@lightnet/library/i18n"
+import { resolveDefaultLocale } from "@lightnet/library/i18n"
 import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
 import userConfig from "virtual:lightnet/decapAdminUserConfig"
@@ -19,6 +19,8 @@ const toSnakeCase = (object?: Record<string, unknown>) => {
   }
   return result
 }
+
+const defaultLocale = resolveDefaultLocale(userConfig)
 
 const categories = (await getCollection("categories")).map(({ id }) => id)
 
@@ -43,9 +45,7 @@ export const config = {
       label_singular: "Media Item",
       folder: "src/content/media",
       create: true,
-      preview_path:
-        userConfig.defaultLocale &&
-        `${userConfig.defaultLocale}/media/{{filename}}`,
+      preview_path: `${defaultLocale}/media/{{filename}}`,
       format: "json",
       sortable_fields: [
         "commit_date",
@@ -80,9 +80,7 @@ export const config = {
           name: "language",
           label: "Language",
           widget: "select",
-          options: (userConfig.languages ?? BUNDLED_LANGUAGES).map(
-            ({ code }) => code,
-          ),
+          options: userConfig.languages.map(({ code }) => code),
         },
         {
           name: "authors",

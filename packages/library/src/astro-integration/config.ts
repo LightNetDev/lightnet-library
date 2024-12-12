@@ -7,18 +7,19 @@ const linkSchema = z.object({
   requiresLocale: z.boolean().default(true),
 })
 
-const translationsSchema = z.record(
-  z.string({ description: "language-code" }),
-  z.record(
-    z.string({ description: "translation key" }),
-    z.string({ description: "translation value" }),
-  ),
-)
-
 const languageSchema = z.object({
-  code: z.string(),
+  code: z.string({ description: "BCP-47 language code" }),
   name: z.string({ description: "This name will not be translated" }),
   direction: z.enum(["rtl", "ltr"]).default("ltr"),
+  translations: z
+    .record(
+      z.string({ description: "translation key" }),
+      z.string({ description: "translation value" }),
+    )
+    .optional(),
+  isDefaultLocale: z
+    .boolean({ description: "Is this the default ui language?" })
+    .default(false),
 })
 
 const absolutePath = (path: string) =>
@@ -41,14 +42,9 @@ export const configSchema = z.object({
    */
   title: z.string(),
   /**
-   * Languages to use for the user interface translation. This
-   * is BCP-47 language codes.
+   * All languages: content languages and ui languages.
    */
-  locales: z.string().array(),
-  /**
-   * Default user interface language.
-   */
-  defaultLocale: z.string(),
+  languages: languageSchema.array(),
   /**
    * Favicons for your site.
    */
@@ -64,11 +60,6 @@ export const configSchema = z.object({
     src: z.string(),
     alt: z.string().default(""),
   }),
-  translations: translationsSchema.optional(),
-  /**
-   * Content and user interface languages.
-   */
-  languages: languageSchema.array(),
   /**
    * Main menu structure.
    */
@@ -89,7 +80,6 @@ export const configSchema = z.object({
 })
 
 export type Language = z.input<typeof languageSchema>
-export type Translations = z.input<typeof translationsSchema>
 export type Link = z.input<typeof linkSchema>
 
 export type LightnetConfig = z.input<typeof configSchema>

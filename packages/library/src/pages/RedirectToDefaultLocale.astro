@@ -1,0 +1,12 @@
+---
+import config from "virtual:lightnet/config"
+
+import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
+
+const defaultLocale = resolveDefaultLocale(config)
+
+// this is actually needed to stop Astro warning about unused variables :)
+console.debug(`Redirecting to default locale ${defaultLocale}`)
+
+return Astro.rewrite(`/${defaultLocale}`)
+---

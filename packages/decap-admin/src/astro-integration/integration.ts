@@ -28,8 +28,13 @@ const githubSchema = z.object({
 
 const userConfigSchema = z.object({
   path: z.string().default("admin"),
-  defaultLocale: z.string().optional(),
-  languages: z.object({ code: z.string() }).array().optional(),
+  languages: z
+    .object({
+      code: z.string(),
+      isDefaultLocale: z.boolean().default(false),
+      translations: z.unknown().optional(),
+    })
+    .array(),
   backend: gitlabSchema.or(githubSchema).optional(),
 })
 
@@ -40,7 +45,7 @@ export type DecapAdminUserConfig = z.output<typeof userConfigSchema> & {
 }
 
 export default function lightnetDecapAdmin(
-  config: DecapAdminConfig = {},
+  config: DecapAdminConfig,
 ): AstroIntegration {
   return {
     name: "@lightnet/decap-admin",
