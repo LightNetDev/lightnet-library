@@ -2,21 +2,37 @@ import lightnetDecapAdmin from "@lightnet/decap-admin"
 import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 
-import { defaultLocale, languages } from "./src/i18n"
-import de from "./src/translations/de.json"
-import en from "./src/translations/en.json"
+import deTranslations from "./src/translations/de.json"
+import enTranslations from "./src/translations/en.json"
 
-// https://astro.build/config
+/**
+ * Defines the languages available on the site.
+ *
+ * This array includes both user interface languages and content languages.
+ *
+ * @type {import('@lightnet/library').Language[]}
+ */
+const languages = [
+  {
+    code: "en", // Language code for English
+    name: "English", // Display name of the language
+    translations: enTranslations, // UI Translations for English
+    isDefaultLocale: true, // Indicates if this is the default language
+  },
+  {
+    code: "de",
+    name: "Deutsch",
+    translations: deTranslations,
+  },
+]
+
 export default defineConfig({
   site: "https://sk8-ministries.pages.dev",
   integrations: [
     lightnetLibrary({
       title: "Sk8 Ministries",
       logo: { src: "./src/assets/logo.png" },
-      defaultLocale,
-      locales: ["en", "de"],
-      translations: { de, en },
-      languages,
+      languages: languages,
       favicon: [
         { href: "favicon.ico", sizes: "32x32" },
         { href: "favicon.svg" },
@@ -38,6 +54,8 @@ export default defineConfig({
         filterByLocale: true,
       },
     }),
-    lightnetDecapAdmin({ languages, defaultLocale }),
+    lightnetDecapAdmin({
+      languages: languages,
+    }),
   ],
 })

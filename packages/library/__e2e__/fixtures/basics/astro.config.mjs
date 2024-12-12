@@ -1,7 +1,6 @@
 import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 
-import { defaultLocale, languages } from "./src/i18n"
 import de from "./src/translations/de.json"
 import en from "./src/translations/en.json"
 
@@ -12,10 +11,19 @@ export default defineConfig({
     lightnetLibrary({
       title: "Basic Test",
       logo: { src: "./src/assets/logo.png" },
-      defaultLocale,
-      locales: ["en", "de"],
-      translations: { en, de },
-      languages,
+      languages: [
+        {
+          code: "en",
+          name: "English",
+          translations: en,
+          isDefaultLocale: true,
+        },
+        {
+          code: "de",
+          name: "Deutsch",
+          translations: de,
+        },
+      ],
       favicon: [{ href: "favicon.svg" }],
       mainMenu: [
         {

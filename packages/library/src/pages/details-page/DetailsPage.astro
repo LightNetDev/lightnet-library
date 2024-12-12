@@ -5,6 +5,7 @@ import config from "virtual:lightnet/config"
 
 import { getMediaItem, getMediaItems } from "../../content/get-media-items"
 import { getMediaType } from "../../content/get-media-types"
+import { resolveLocales } from "../../i18n/resolve-locales"
 import Page from "../../layouts/Page.astro"
 import { markdownToText } from "../../utils/markdown"
 import DefaultDetails from "./DefaultDetails.astro"
@@ -12,7 +13,7 @@ import VideoDetails from "./VideoDetails.astro"
 
 export const getStaticPaths = (async () => {
   const mediaItems = await getMediaItems()
-  return config.locales.flatMap((locale) =>
+  return resolveLocales(config).flatMap((locale) =>
     mediaItems.map(({ id: slug }) => ({ params: { slug, locale } })),
   )
 }) satisfies GetStaticPaths

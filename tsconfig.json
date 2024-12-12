@@ -1,4 +1,4 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "exclude": ["**/dist", "**/public"]
+  "exclude": ["**/dist", "**/public", "**/playwright-report/"]
 }

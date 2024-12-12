@@ -2,6 +2,8 @@ import react from "@astrojs/react"
 import tailwind from "@astrojs/tailwind"
 import type { AstroIntegration } from "astro"
 
+import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
+import { resolveLocales } from "../i18n/resolve-locales"
 import type { LightnetConfig } from "./config"
 import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
 
@@ -15,6 +17,12 @@ export function lightnetLibrary(
         injectRoute({
           pattern: "404",
           entrypoint: "@lightnet/library/pages/404.astro",
+          prerender: true,
+        })
+
+        injectRoute({
+          pattern: "",
+          entrypoint: "@lightnet/library/pages/RedirectToDefaultLocale.astro",
           prerender: true,
         })
 
@@ -38,17 +46,13 @@ export function lightnetLibrary(
 
         config.integrations.push(tailwind(), react())
 
-        const { defaultLocale, locales } = lightnetConfig
         updateConfig({
           vite: {
             plugins: [vitePluginLightnetConfig(lightnetConfig, config, logger)],
           },
           i18n: {
-            defaultLocale,
-            // make sure default locale is included
-            locales: locales.includes(defaultLocale)
-              ? locales
-              : [defaultLocale, ...locales],
+            defaultLocale: resolveDefaultLocale(lightnetConfig),
+            locales: resolveLocales(lightnetConfig),
             routing: {
               redirectToDefaultLocale: false,
               prefixDefaultLocale: false,

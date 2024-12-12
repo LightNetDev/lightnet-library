@@ -2,6 +2,7 @@
 import { ViewTransitions } from "astro:transitions"
 import config from "virtual:lightnet/config"
 
+import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
 import { useTranslate } from "../i18n/use-translate"
 import Favicon from "./components/Favicon.astro"
 import PageNavigation from "./components/PageNavigation.astro"
@@ -19,7 +20,7 @@ const configTitle = t(config.title, { fallbackToKey: true })
 ---
 
 <!doctype html>
-<html lang={Astro.currentLocale ?? config.defaultLocale}>
+<html lang={Astro.currentLocale ?? resolveDefaultLocale(config)}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
