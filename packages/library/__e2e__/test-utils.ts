@@ -34,7 +34,7 @@ export { expect, type Locator } from "@playwright/test"
 
 process.env.ASTRO_TELEMETRY_DISABLED = "true"
 process.env.ASTRO_DISABLE_UPDATE_CHECK = "true"
-export function lightnetTest(fixturePath: string) {
+export function lightnetTest(fixturePath: string, isMonolingual: boolean = false) {
   const root = fileURLToPath(new URL(fixturePath, import.meta.url))
 
   let server: Server | null = null
@@ -44,8 +44,8 @@ export function lightnetTest(fixturePath: string) {
     startLightnet: ({ page }, use) =>
       use(async (path) => {
         if (!server) {
-          await build({ logLevel: "error", root })
-          server = await preview({ logLevel: "error", root })
+          await build({ logLevel: "error", root, isMonolingual })
+          server = await preview({ logLevel: "error", root, isMonolingual })
         }
         const ln = new LightNetPage(server, page)
         await ln.goto(path ?? "/")
