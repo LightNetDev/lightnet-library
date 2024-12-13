@@ -1,0 +1,12 @@
+---
+import { Gallery, Page, Section } from "../../../../../exports/components"
+import { getMediaItems } from "../../../../../exports/content"
+
+const allItems = await getMediaItems({})
+---
+
+<Page>
+  <Section title={"All Items"}>
+    <Gallery items={allItems} layout="book" />
+  </Section>
+</Page>

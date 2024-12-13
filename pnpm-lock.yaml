@@ -214,6 +214,42 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
 
+  packages/library/__e2e__/fixtures/monolingual-page:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)
+      '@astrojs/react':
+        specifier: ^3.6.3
+        version: 3.6.3(@types/node@22.10.2)(@types/react-dom@18.3.0)(@types/react@19.0.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)
+      '@astrojs/tailwind':
+        specifier: ^5.1.3
+        version: 5.1.3(astro@4.16.17(@types/node@22.10.2)(rollup@4.28.1)(terser@5.37.0)(typescript@5.7.2))(tailwindcss@3.4.16)
+      '@lightnet/decap-admin':
+        specifier: ^2.2.6
+        version: link:../../../../decap-admin
+      '@lightnet/library':
+        specifier: ^2.11.2
+        version: link:../../..
+      astro:
+        specifier: ^4.16.17
+        version: 4.16.17(@types/node@22.10.2)(rollup@4.28.1)(terser@5.37.0)(typescript@5.7.2)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
+      tailwindcss:
+        specifier: ^3.4.16
+        version: 3.4.16
+      typescript:
+        specifier: ^5.7.2
+        version: 5.7.2
+
 packages:
 
   '@alloc/quick-lru@5.2.0':
@@ -6507,7 +6543,7 @@ snapshots:
 
   '@types/react-dom@18.3.0':
     dependencies:
-      '@types/react': 19.0.1
+      '@types/react': 18.3.16
 
   '@types/react-redux@7.1.34':
     dependencies:

@@ -1,0 +1,8 @@
+{
+  "label": "Video",
+  "detailsPage": {
+    "type": "video",
+    "openActionLabel": "Watch"
+  },
+  "icon": "mdi--video-outline"
+}
