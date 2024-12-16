@@ -41,11 +41,19 @@ if (detailsPage?.type === "custom") {
   }
   CustomDetails = (await customDetailsImport()).default
 }
+const description = markdownToText(mediaItem.description)
 ---
 
 <Page
   title={mediaItem.title}
-  description={markdownToText(mediaItem.description)}
+  description={description}
+  openGraphTags={{
+    title: mediaItem.title,
+    description,
+    type: "website",
+    image: mediaItem.image,
+    id: `/media/${slug}`,
+  }}
 >
   {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
   {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
