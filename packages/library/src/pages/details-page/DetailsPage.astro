@@ -41,10 +41,12 @@ if (detailsPage?.type === "custom") {
   }
   CustomDetails = (await customDetailsImport()).default
 }
-const description = markdownToText(mediaItem.description)
 ---
 
-<Page title={mediaItem.title} description={description}>
+<Page
+  title={mediaItem.title}
+  description={markdownToText(mediaItem.description)}
+>
   {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
   {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
   {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
