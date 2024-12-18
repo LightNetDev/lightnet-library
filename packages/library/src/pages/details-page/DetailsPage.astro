@@ -44,16 +44,7 @@ if (detailsPage?.type === "custom") {
 const description = markdownToText(mediaItem.description)
 ---
 
-<Page
-  title={mediaItem.title}
-  description={description}
-  openGraphTags={{
-    title: mediaItem.title,
-    description,
-    image: mediaItem.image,
-    id: `/media/${slug}`,
-  }}
->
+<Page title={mediaItem.title} description={description}>
   {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
   {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
   {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
