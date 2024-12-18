@@ -1,5 +1,15 @@
 # @lightnet/library
 
+## 2.12.0
+
+### Minor Changes
+
+- [#162](https://github.com/LightNetDev/lightnet-library/pull/162) [`c6aea9a`](https://github.com/LightNetDev/lightnet-library/commit/c6aea9acb836024da9f7bf5a8e474dfbf9aaec73) Thanks [@si-fab](https://github.com/si-fab)! - Adds `internalDomains` config option. To include domains that should not show as external e.g. for a large file server.
+
+### Patch Changes
+
+- [#162](https://github.com/LightNetDev/lightnet-library/pull/162) [`c6aea9a`](https://github.com/LightNetDev/lightnet-library/commit/c6aea9acb836024da9f7bf5a8e474dfbf9aaec73) Thanks [@si-fab](https://github.com/si-fab)! - Removes unused config openAction label for video details page.
+
 ## 2.11.3
 
 ### Patch Changes
