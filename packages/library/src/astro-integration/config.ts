@@ -65,6 +65,18 @@ export const configSchema = z.object({
    */
   mainMenu: z.array(linkSchema).min(1).optional(),
   /**
+   * The internalDomains configuration setting specifies a list of
+   * domain names that should be treated as internal.
+   *
+   * This setting is useful for bypassing external-link handling or marking
+   * trusted domains as internal resources.
+   *
+   * @notes
+   * - Domains are matched exactly as listed; wildcard or regex patterns are not supported.
+   * - Ensure that only trusted and necessary domains are included in this list.
+   */
+  internalDomains: z.array(z.string()).default([]),
+  /**
    * Configure search page behavior
    */
   searchPage: z

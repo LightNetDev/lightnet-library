@@ -221,16 +221,6 @@ export const mediaTypeSchema = z.object({
          * Detail page for videos.
          */
         type: z.literal("video"),
-        /**
-         * Label for the open action button. Use this if you want to change the text
-         * of the "Open" button to be more matching to your media item.
-         * For example you could change the text to be "Watch".
-         *
-         * The label is a translation key.
-         *
-         * @example "ln.details.open"
-         */
-        openActionLabel: z.string().optional(),
       }),
     ])
     .optional(),

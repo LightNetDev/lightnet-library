@@ -1,3 +1,4 @@
+import config from "virtual:lightnet/config"
 import projectContext from "virtual:lightnet/project-context"
 
 /**
@@ -9,11 +10,15 @@ import projectContext from "virtual:lightnet/project-context"
  * @returns is the url external?
  */
 export function isExternalUrl(url: string) {
+  let parsedUrl
   try {
     // test if url is absolute
-    new URL(url)
+    parsedUrl = new URL(url)
   } catch {
     // url is relative
+    return false
+  }
+  if (config.internalDomains.includes(parsedUrl.hostname)) {
     return false
   }
   const { site } = projectContext
