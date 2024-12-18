@@ -24,7 +24,6 @@ const configTitle = t(config.title, { fallbackToKey: true })
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>{title ? `${title} | ${configTitle}` : configTitle}</title>
     {description && <meta name="description" content={description} />}
     {config.manifest && <link rel="manifest" href={config.manifest} />}
