@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.12.1
+
+### Patch Changes
+
+- [#166](https://github.com/LightNetDev/lightnet-library/pull/166) [`41f92d3`](https://github.com/LightNetDev/lightnet-library/commit/41f92d3c21447623fd0545933087dbbcb790fb09) Thanks [@si-fab](https://github.com/si-fab)! - Allow fixed strings for main menu items.
+
+- [#166](https://github.com/LightNetDev/lightnet-library/pull/166) [`41f92d3`](https://github.com/LightNetDev/lightnet-library/commit/41f92d3c21447623fd0545933087dbbcb790fb09) Thanks [@si-fab](https://github.com/si-fab)! - Automatically infer `isExternal` for main menu items.
+
 ## 2.12.0
 
 ### Minor Changes
