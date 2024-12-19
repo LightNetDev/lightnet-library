@@ -2,7 +2,6 @@ import { z } from "astro/zod"
 
 const linkSchema = z.object({
   href: z.string(),
-  isExternal: z.boolean().default(false),
   label: z.string(),
   requiresLocale: z.boolean().default(true),
 })
