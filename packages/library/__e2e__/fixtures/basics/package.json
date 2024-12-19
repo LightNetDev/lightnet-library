@@ -5,7 +5,7 @@
   "private": "true",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^3.6.3",
+    "@astrojs/react": "^4.1.1",
     "@astrojs/tailwind": "^5.1.3",
     "@lightnet/decap-admin": "^2.2.6",
     "@lightnet/library": "^2.12.0",
