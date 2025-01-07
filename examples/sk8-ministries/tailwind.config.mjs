@@ -24,7 +24,7 @@ export default {
        * and provides good contrast against a white background for accessibility.
        *
        * Example:
-       * - #14004B is a dark purple, often suitable for formal or elegant branding.
+       * - #14004B is a dark purple
        */
       primaryColor: "#14004B",
     }),
