@@ -1,3 +1,4 @@
+import { glob } from "astro/loaders"
 import { z } from "astro/zod"
 import type { SchemaContext } from "astro:content"
 import { defineCollection, reference } from "astro:content"
@@ -234,11 +235,29 @@ export const mediaTypeSchema = z.object({
 })
 
 export const LIGHTNET_COLLECTIONS = {
-  categories: defineCollection({ type: "data", schema: categorySchema }),
+  categories: defineCollection({
+    loader: glob({ pattern: "*.json", base: "./src/content/categories" }),
+    schema: categorySchema,
+  }),
   "media-collections": defineCollection({
-    type: "data",
+    loader: glob({
+      pattern: "*.json",
+      base: "./src/content/media-collections",
+    }),
     schema: mediaCollectionSchema,
   }),
-  media: defineCollection({ type: "data", schema: mediaSchema }),
-  "media-types": defineCollection({ type: "data", schema: mediaTypeSchema }),
+  media: defineCollection({
+    loader: glob({
+      pattern: "*.json",
+      base: "./src/content/media",
+    }),
+    schema: mediaSchema,
+  }),
+  "media-types": defineCollection({
+    loader: glob({
+      pattern: "*.json",
+      base: "./src/content/media-types",
+    }),
+    schema: mediaTypeSchema,
+  }),
 }

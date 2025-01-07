@@ -1,3 +1,4 @@
+// @ts-check
 import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
 

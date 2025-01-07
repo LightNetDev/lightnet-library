@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions"
+import { ClientRouter } from "astro:transitions"
 import config from "virtual:lightnet/config"
 
 import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
@@ -29,7 +29,7 @@ const configTitle = t(config.title, { fallbackToKey: true })
     {config.manifest && <link rel="manifest" href={config.manifest} />}
     <link rel="prefetch" href="/api/search.json" />
     <Favicon />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="overflow-y-scroll bg-gray-50 text-gray-900">
     <header

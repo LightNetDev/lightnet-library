@@ -1,4 +1,7 @@
 ---
+/**
+ * Provide the paths for the supported locales (user interface languages).
+ */
 export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
 
 import {
@@ -15,32 +18,73 @@ import { getEntry } from "astro:content"
 import eventImage from "../../assets/event.webp"
 import heroImage from "../../assets/hero.webp"
 
+/**
+ * Fetch the latest books.
+ * Order them by the date they were created.
+ */
 const latestBooks = await getMediaItems({
   where: { type: "book" },
   orderBy: "dateCreated",
 })
+
+/**
+ * Fetch the learn skateboarding collection meta data.
+ */
 const learnSkateboarding = await getEntry(
   "media-collections",
   "learn-skateboarding",
 )
+/**
+ * Fetch the items of the learn skateboarding collection.
+ */
 const learnSkateboardingItems = await getMediaItems({
   where: { collection: "learn-skateboarding" },
 })
 
+/**
+ * Prepare the translation function.
+ */
 const t = useTranslate(Astro.currentLocale)
 ---
 
+{
+  /* 
+  Render a lightnet page. This will automatically include the
+  page structure, header, menu system...
+   */
+}
 <Page>
+  {
+    /* 
+    The hero section is the big image of two skateboarders at the top of the page.
+    Also it shows the ministry name (Sk8 Ministries) and slogan (Living faith, building 
+    community).
+
+    The ministry slogan is translated using the t function.
+     */
+  }
   <Hero
     image={heroImage}
-    title={t("ministry.name")}
+    title={"Sk8 Ministries"}
     subtitle={t("ministry.slogan")}
     titleSize="xl"
     subtitleSize="xl"
   />
+  {
+    /* 
+    This section shows the latest books that have been added to the library.
+     */
+  }
   <Section title={t("home.our-latest-books")}>
     <Gallery items={latestBooks} layout="book" />
   </Section>
+
+  {
+    /* 
+    This section shows the BBQ event. It includes an image, a title, some description text and a link
+    to sign up for the event.
+     */
+  }
   <ImageSection
     image={eventImage}
     title={t("home.bbq.title")}
@@ -50,7 +94,13 @@ const t = useTranslate(Astro.currentLocale)
       label: t("home.bbq.sign-up-now"),
     }}
   />
-  <Section title={learnSkateboarding.data.name}>
+
+  {
+    /* 
+    This section shows the learn skateboarding collection. It uses the collection name as the title.
+     */
+  }
+  <Section title={learnSkateboarding?.data.name}>
     <Gallery items={learnSkateboardingItems} layout="video" />
   </Section>
 </Page>

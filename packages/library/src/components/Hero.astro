@@ -2,15 +2,13 @@
 import type { ImageMetadata } from "astro"
 import { Image } from "astro:assets"
 
-type Size = "sm" | "md" | "lg" | "xl"
-
 interface Props {
   image: ImageMetadata
   title?: string
   subtitle?: string
-  titleSize?: Size
+  titleSize?: "sm" | "md" | "lg" | "xl"
   titleClass?: string
-  subtitleSize?: Size
+  subtitleSize?: "sm" | "md" | "lg" | "xl"
   subtitleClass?: string
   className?: string
 }

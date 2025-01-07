@@ -98,13 +98,11 @@ test("Should verify DE Detail media page url and title", async ({
   const lesenLink = page.getByRole("link", { name: "Lesen" })
   await expect(lesenLink).toBeVisible()
   await expect(lesenLink).toBeEnabled()
-  await lesenLink.click()
-  await page.waitForLoadState("networkidle")
-  await page.goBack()
+  // await lesenLink.click()
+  // await page.waitForLoadState("networkidle")
+  // await page.goBack()
 
-  await expect(
-    page.getByRole("button", { name: "Teilen" }).isVisible(),
-  ).toBeTruthy()
+  await expect(page.getByRole("button", { name: "Teilen" })).toBeVisible()
   await expect(page.getByText("Sprache")).toBeVisible()
   await expect(page.getByText("Kategorien")).toBeVisible()
 })

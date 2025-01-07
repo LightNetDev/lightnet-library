@@ -1,6 +1,5 @@
 import { verifySchema } from "@lightnet/library/utils"
-import type { AstroIntegration } from "astro"
-import type { ViteUserConfig } from "astro/config"
+import type { AstroIntegration, ViteUserConfig } from "astro"
 import { z } from "astro/zod"
 
 import { vitePluginExportAdminImages } from "./export-admin-images"
