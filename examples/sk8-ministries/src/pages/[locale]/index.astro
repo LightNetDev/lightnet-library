@@ -100,7 +100,7 @@ const t = useTranslate(Astro.currentLocale)
     This section shows the learn skateboarding collection. It uses the collection name as the title.
      */
   }
-  <Section title={learnSkateboarding.data.name}>
+  <Section title={learnSkateboarding?.data.name}>
     <Gallery items={learnSkateboardingItems} layout="video" />
   </Section>
 </Page>

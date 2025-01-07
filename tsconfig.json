@@ -1,4 +1,5 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "include": ["examples/sk8-ministries/.astro/types.d.ts", "**/*"],
   "exclude": ["**/dist", "**/public", "**/playwright-report/"]
 }
