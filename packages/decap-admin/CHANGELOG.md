@@ -1,5 +1,27 @@
 # @lightnet/decap-admin
 
+## 2.3.0
+
+### Minor Changes
+
+- [#174](https://github.com/LightNetDev/lightnet-library/pull/174) [`bb011bf`](https://github.com/LightNetDev/lightnet-library/commit/bb011bfef8c2d7745e3c3417f7f6ef608867e184) Thanks [@si-fab](https://github.com/si-fab)! - Update Astro to version 5.
+
+  Fix your project by doing this:
+
+  - move `/src/content/config.ts` to `/src/content.config.ts`.
+  - update tsconfig.json to match the following:
+
+  ```json
+  {
+    "extends": "astro/tsconfigs/strict",
+    "include": [".astro/types.d.ts", "**/*"],
+    "exclude": ["dist"]
+  }
+  ```
+
+  - remove `src/env.d.ts`
+  - add `// @ts-check` on top of `astro.config.mjs`
+
 ## 2.2.7
 
 ### Patch Changes
