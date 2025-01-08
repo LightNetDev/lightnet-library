@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../i18n/locals.d.ts" />
 import react from "@astrojs/react"
 import tailwind from "@astrojs/tailwind"
 import type { AstroIntegration } from "astro"
@@ -13,7 +15,13 @@ export function lightnetLibrary(
   return {
     name: "@lightnet/library",
     hooks: {
-      "astro:config:setup": ({ injectRoute, config, updateConfig, logger }) => {
+      "astro:config:setup": ({
+        injectRoute,
+        config,
+        updateConfig,
+        logger,
+        addMiddleware,
+      }) => {
         injectRoute({
           pattern: "404",
           entrypoint: "@lightnet/library/pages/404.astro",
@@ -43,6 +51,8 @@ export function lightnetLibrary(
           entrypoint: "@lightnet/library/pages/DetailsPage.astro",
           prerender: true,
         })
+
+        addMiddleware({ entrypoint: "@lightnet/library/locals", order: "pre" })
 
         config.integrations.push(tailwind(), react())
 

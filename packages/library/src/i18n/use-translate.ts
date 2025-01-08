@@ -7,13 +7,15 @@ import en from "./translations/en.json"
 
 type TranslationsByLocales = Record<string, Record<string, string>>
 
+// We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
+export type TranslationKey = keyof typeof en | (string & NonNullable<unknown>)
+export type TranslationOptions = { fallbackToKey?: boolean }
+
 const configTranslations = config.languages
   .filter((l) => !!l.translations)
   .reduce((prev, curr) => ({ ...prev, [curr.code]: curr.translations }), {})
 const translationsByLocales = merge({ de, en }, configTranslations)
 const defaultLocale = resolveDefaultLocale(config)
-
-export type TranslationKey = keyof typeof en
 
 export function useTranslate(locale: string | undefined) {
   const resolvedLocale = locale ?? defaultLocale
@@ -25,11 +27,7 @@ export function useTranslate(locale: string | undefined) {
       "Add them to your lightnet config",
     )
   }
-  // We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
-  return (
-    key: TranslationKey | (string & NonNullable<unknown>),
-    options?: { fallbackToKey: boolean },
-  ) => {
+  return (key: TranslationKey, options?: TranslationOptions) => {
     const value = translations[key] ?? defaultTranslations[key]
     if (!value && options?.fallbackToKey) {
       return key
