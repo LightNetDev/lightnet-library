@@ -23,6 +23,7 @@ export async function vitePluginExportAdminImages(
         fileURLToPath(srcDir),
         fileURLToPath(outDir),
         config.path,
+        config.imagesFolder,
       ),
   }
 }
@@ -31,9 +32,10 @@ async function exportAdminImages(
   srcDir: string,
   outDir: string,
   adminPath: string,
+  imageFolder: string,
 ) {
-  const imageDir = join(srcDir, "content", "media", "_images")
-  const outImageDir = join(outDir, adminPath, "_images")
+  const imageDir = join(srcDir, "content", "media", imageFolder)
+  const outImageDir = join(outDir, adminPath, imageFolder)
 
   try {
     await access(outImageDir)

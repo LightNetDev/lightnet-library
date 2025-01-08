@@ -27,6 +27,10 @@ const githubSchema = z.object({
 
 const userConfigSchema = z.object({
   path: z.string().default("admin"),
+  /**
+   * Name of the images folder next to the content files.
+   */
+  imagesFolder: z.string().default("images"),
   languages: z
     .object({
       code: z.string(),

@@ -96,7 +96,7 @@ export const config = {
           label: "Image",
           widget: "image",
           choose_url: false,
-          media_folder: "_images",
+          media_folder: userConfig.imagesFolder,
           pattern: [
             "\\.(jpg|png|jpeg|webp)$",
             "Unsupported image format. Supported formats are jpg, png, webp",

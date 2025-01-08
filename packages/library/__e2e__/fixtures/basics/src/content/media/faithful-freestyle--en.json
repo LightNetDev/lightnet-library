@@ -5,7 +5,7 @@
   "dateCreated": "2024-04-21",
   "authors": ["Sk8 Ministries"],
   "content": [{ "url": "/files/example.pdf" }],
-  "image": "./_images/cover.jpg",
+  "image": "./images/cover.jpg",
   "language": "en",
   "categories": ["christian-living"],
   "collections": [{ "collection": "how-to-articles" }],
