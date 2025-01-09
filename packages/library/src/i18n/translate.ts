@@ -11,13 +11,18 @@ type TranslationsByLocales = Record<string, Record<string, string>>
 export type TranslationKey = keyof typeof en | (string & NonNullable<unknown>)
 export type TranslationOptions = { fallbackToKey?: boolean }
 
+export type TranslateFn = (
+  key: TranslationKey,
+  options?: TranslationOptions,
+) => string
+
 const configTranslations = config.languages
   .filter((l) => !!l.translations)
   .reduce((prev, curr) => ({ ...prev, [curr.code]: curr.translations }), {})
 const translationsByLocales = merge({ de, en }, configTranslations)
 const defaultLocale = resolveDefaultLocale(config)
 
-export function useTranslate(locale: string | undefined) {
+export function useTranslate(locale: string | undefined): TranslateFn {
   const resolvedLocale = locale ?? defaultLocale
   const translations = translationsByLocales[resolvedLocale]
   const defaultTranslations = translationsByLocales[defaultLocale]

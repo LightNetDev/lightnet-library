@@ -1,7 +1,7 @@
 import config from "virtual:lightnet/config"
 
 import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
-import { useTranslate } from "../i18n/use-translate"
+import { useTranslate } from "../i18n/translate"
 import { getMediaItems } from "./get-media-items"
 import { resolveCategoryLabel } from "./resolve-category-label"
 

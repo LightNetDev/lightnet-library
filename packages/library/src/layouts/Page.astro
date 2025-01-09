@@ -3,7 +3,6 @@ import { ClientRouter } from "astro:transitions"
 import config from "virtual:lightnet/config"
 
 import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
-import { useTranslate } from "../i18n/use-translate"
 import Favicon from "./components/Favicon.astro"
 import PageNavigation from "./components/PageNavigation.astro"
 import PageTitle from "./components/PageTitle.astro"
@@ -15,8 +14,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props
-const t = useTranslate(Astro.currentLocale)
-const configTitle = t(config.title, { fallbackToKey: true })
+const configTitle = Astro.locals.i18n.t(config.title, { fallbackToKey: true })
 ---
 
 <!doctype html>

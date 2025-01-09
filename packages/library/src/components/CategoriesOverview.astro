@@ -1,6 +1,5 @@
 ---
 import { getCategories } from "../content/get-categories"
-import { useTranslate } from "../i18n/use-translate"
 import { searchPagePath } from "../utils/paths"
 import Section from "./Section.astro"
 
@@ -10,13 +9,12 @@ interface Props {
 
 const { title } = Astro.props
 
-const t = useTranslate(Astro.currentLocale)
 const categories = await getCategories(Astro.currentLocale)
 ---
 
 {
   categories.length && (
-    <Section title={title ?? t("ln.common.categories")}>
+    <Section title={title ?? Astro.locals.i18n.t("ln.common.categories")}>
       <ul class="flex w-full flex-wrap gap-2 sm:gap-3">
         {categories.map((category) => (
           <li class="flex max-w-56 grow">

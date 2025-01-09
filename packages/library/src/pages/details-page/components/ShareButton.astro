@@ -1,12 +1,9 @@
 ---
 import Icon from "../../../components/Icon"
-import { useTranslate } from "../../../i18n/use-translate"
 
 interface Props {
   className?: string
 }
-
-const t = useTranslate(Astro.currentLocale)
 ---
 
 <button
@@ -14,14 +11,14 @@ const t = useTranslate(Astro.currentLocale)
   class:list={[Astro.props.className]}
   id="share-btn"
   ><Icon className="mdi--share-variant-outline" />
-  {t("ln.details.share")}</button
+  {Astro.locals.i18n.t("ln.details.share")}</button
 >
 <div
   id="share-success"
   class="dy-toast pointer-events-none opacity-0 transition-opacity duration-300"
 >
   <div class="dy-alert dy-alert-success">
-    <span>{t("ln.share.url-copied-to-clipboard")}</span>
+    <span>{Astro.locals.i18n.t("ln.share.url-copied-to-clipboard")}</span>
   </div>
 </div>
 <script>

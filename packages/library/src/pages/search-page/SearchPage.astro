@@ -5,14 +5,11 @@ import { getCategories } from "../../content/get-categories"
 import { contentLanguages } from "../../content/get-languages"
 import { getMediaTypes } from "../../content/get-media-types"
 import { resolveDefaultLocale } from "../../i18n/resolve-default-locale"
-import { useTranslate } from "../../i18n/use-translate"
 import Page from "../../layouts/Page.astro"
 import Search from "./Search"
 import { provideTranslations } from "./utils/search-translations"
 
 export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
-
-const t = useTranslate(Astro.currentLocale)
 
 const categories: Record<string, string> = {}
 for (const { id, label } of await getCategories(Astro.currentLocale)) {
@@ -22,7 +19,7 @@ for (const { id, label } of await getCategories(Astro.currentLocale)) {
 const mediaTypes = (await getMediaTypes())
   .map((type) => ({
     id: type.id,
-    label: t(type.data.label),
+    label: Astro.locals.i18n.t(type.data.label),
     icon: type.data.icon,
   }))
   .sort((a, b) =>
@@ -41,7 +38,7 @@ const filterByLocale = !!config.searchPage?.filterByLocale
       client:only="react"
       contentLanguages={contentLanguages}
       mediaTypes={mediaTypes}
-      translations={provideTranslations(t)}
+      translations={provideTranslations(Astro.locals.i18n.t)}
       locale={Astro.currentLocale}
       categories={categories}
       filterByLocale={filterByLocale}

@@ -8,7 +8,7 @@ const allItems = await getMediaItems({})
 ---
 
 <Page>
-  <Section title={Astro.locals.t("home.all-items")}>
+  <Section title={Astro.locals.i18n.t("home.all-items")}>
     <Gallery items={allItems} layout="book" />
   </Section>
 </Page>

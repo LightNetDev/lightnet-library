@@ -32,7 +32,7 @@ const items = (config.mainMenu ?? []).map(({ href, label, requiresLocale }) => {
 <nav class="-mr-3 flex items-center">
   <a
     class="hover:text-primary flex p-3 text-gray-600"
-    aria-label={Astro.locals.t("ln.search.title")}
+    aria-label={Astro.locals.i18n.t("ln.search.title")}
     data-astro-prefetch="viewport"
     href={searchPagePath(Astro.currentLocale)}
     ><Icon className="mdi--magnify" /></a
@@ -48,7 +48,7 @@ const items = (config.mainMenu ?? []).map(({ href, label, requiresLocale }) => {
             active={isActive}
             target={isExternal ? "_blank" : "_self"}
           >
-            {Astro.locals.t(label, { fallbackToKey: true })}
+            {Astro.locals.i18n.t(label, { fallbackToKey: true })}
             {isExternal && (
               <Icon className="mdi--external-link shrink-0 text-base" />
             )}

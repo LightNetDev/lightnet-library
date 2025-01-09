@@ -60,7 +60,7 @@ const learnSkateboardingItems = await getMediaItems({
   <Hero
     image={heroImage}
     title={"Sk8 Ministries"}
-    subtitle={Astro.locals.t("ministry.slogan")}
+    subtitle={Astro.locals.i18n.t("ministry.slogan")}
     titleSize="xl"
     subtitleSize="xl"
   />
@@ -69,7 +69,7 @@ const learnSkateboardingItems = await getMediaItems({
     This section shows the latest books that have been added to the library.
      */
   }
-  <Section title={Astro.locals.t("home.our-latest-books")}>
+  <Section title={Astro.locals.i18n.t("home.our-latest-books")}>
     <Gallery items={latestBooks} layout="book" />
   </Section>
 
@@ -81,11 +81,11 @@ const learnSkateboardingItems = await getMediaItems({
   }
   <ImageSection
     image={eventImage}
-    title={Astro.locals.t("home.bbq.title")}
-    text={Astro.locals.t("home.bbq.text")}
+    title={Astro.locals.i18n.t("home.bbq.title")}
+    text={Astro.locals.i18n.t("home.bbq.text")}
     link={{
       href: "mailto:some-email-address-from-the-ministry",
-      label: Astro.locals.t("home.bbq.sign-up-now"),
+      label: Astro.locals.i18n.t("home.bbq.sign-up-now"),
     }}
   />
 

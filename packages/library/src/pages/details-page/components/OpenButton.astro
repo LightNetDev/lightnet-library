@@ -1,7 +1,6 @@
 ---
 import Icon from "../../../components/Icon"
 import { getMediaItem } from "../../../content/get-media-items"
-import { useTranslate } from "../../../i18n/use-translate"
 import { createContentMetadata } from "../utils/create-content-metadata"
 
 interface Props {
@@ -11,8 +10,6 @@ interface Props {
 const { slug, openActionLabel } = Astro.props
 const item = await getMediaItem(slug)
 const content = createContentMetadata(item.data.content[0])
-
-const t = useTranslate(Astro.currentLocale)
 ---
 
 <a
@@ -21,11 +18,15 @@ const t = useTranslate(Astro.currentLocale)
   target={content.target}
   hreflang={item.data.language}
 >
-  {content.canBeOpened ? t(openActionLabel) : t("ln.details.download")}
+  {
+    content.canBeOpened
+      ? Astro.locals.i18n.t(openActionLabel)
+      : Astro.locals.i18n.t("ln.details.download")
+  }
   {
     content.isExternal && (
       <Icon
-        ariaLabel={t("ln.common.a11y.external-link")}
+        ariaLabel={Astro.locals.i18n.t("ln.common.a11y.external-link")}
         className={`mdi--external-link shrink-0`}
       />
     )
