@@ -7,7 +7,7 @@ export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
 import {
   Gallery,
   Hero,
-  ImageSection,
+  HighlightSection,
   Page,
   Section,
 } from "@lightnet/library/components"
@@ -79,7 +79,7 @@ const learnSkateboardingItems = await getMediaItems({
     to sign up for the event.
      */
   }
-  <ImageSection
+  <HighlightSection
     image={eventImage}
     title={Astro.locals.i18n.t("home.bbq.title")}
     text={Astro.locals.i18n.t("home.bbq.text")}
