@@ -13,6 +13,9 @@ declare namespace App {
 
       /**
        *  The current locale or the default locale if the current locale is not available.
+       *
+       *  In comparison to Astro.currentLocale this will always return a locale.
+       *  Use Astro.currentLocale if you want to know the locale that is included in the current path.
        */
       currentLocale: string
 
