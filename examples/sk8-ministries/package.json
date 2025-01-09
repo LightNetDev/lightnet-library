@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.1.0",
+    "@astrojs/react": "^4.1.2",
     "@astrojs/tailwind": "^5.1.4",
     "@lightnet/decap-admin": "^2.3.0",
     "@lightnet/library": "^2.13.0",
-    "astro": "^5.1.0",
+    "astro": "^5.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }
