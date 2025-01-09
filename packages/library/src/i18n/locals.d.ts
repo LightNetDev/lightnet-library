@@ -10,6 +10,21 @@ declare namespace App {
        * @param TranslationKey to be translated.
        */
       t: import("./translate").TranslateFn
+
+      /**
+       *  The current locale or the default locale if the current locale is not available.
+       */
+      currentLocale: string
+
+      /**
+       * The default locale as defined in the project configuration.
+       */
+      defaultLocale: string
+
+      /**
+       * The available locales as defined in the project configuration.
+       */
+      locales: string[]
     }
   }
 }

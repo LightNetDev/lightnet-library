@@ -8,19 +8,20 @@ interface Props {
 }
 
 const { title } = Astro.props
+const { t, currentLocale } = Astro.locals.i18n
 
-const categories = await getCategories(Astro.currentLocale)
+const categories = await getCategories(currentLocale, t)
 ---
 
 {
   categories.length && (
-    <Section title={title ?? Astro.locals.i18n.t("ln.common.categories")}>
+    <Section title={title ?? t("ln.common.categories")}>
       <ul class="flex w-full flex-wrap gap-2 sm:gap-3">
         {categories.map((category) => (
           <li class="flex max-w-56 grow">
             <a
               class="flex h-12 w-full items-center justify-center rounded-xl bg-gray-200 p-2 px-8 shadow-sm hover:bg-gray-300 sm:h-14"
-              href={searchPagePath(Astro.currentLocale, {
+              href={searchPagePath(currentLocale, {
                 category: category.id,
               })}
             >

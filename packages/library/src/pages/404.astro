@@ -1,7 +1,4 @@
 ---
-import config from "virtual:lightnet/config"
-
-import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
 import Page from "../layouts/Page.astro"
 ---
 
@@ -10,7 +7,7 @@ import Page from "../layouts/Page.astro"
     <p class="pb-8 pt-20 text-center text-3xl opacity-80">
       {Astro.locals.i18n.t("ln.404.page-not-found")}
     </p>
-    <a href={`/${resolveDefaultLocale(config)}`} class="dy-btn"
+    <a href={`/${Astro.locals.i18n.defaultLocale}`} class="dy-btn"
       >{Astro.locals.i18n.t("ln.404.go-to-the-home-page")}</a
     >
   </div>

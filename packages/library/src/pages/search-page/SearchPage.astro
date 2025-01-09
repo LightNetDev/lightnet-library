@@ -4,30 +4,26 @@ import config from "virtual:lightnet/config"
 import { getCategories } from "../../content/get-categories"
 import { contentLanguages } from "../../content/get-languages"
 import { getMediaTypes } from "../../content/get-media-types"
-import { resolveDefaultLocale } from "../../i18n/resolve-default-locale"
 import Page from "../../layouts/Page.astro"
 import Search from "./Search"
 import { provideTranslations } from "./utils/search-translations"
 
 export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
 
+const { t, currentLocale } = Astro.locals.i18n
+
 const categories: Record<string, string> = {}
-for (const { id, label } of await getCategories(Astro.currentLocale)) {
+for (const { id, label } of await getCategories(currentLocale, t)) {
   categories[id] = label
 }
 
 const mediaTypes = (await getMediaTypes())
   .map((type) => ({
     id: type.id,
-    label: Astro.locals.i18n.t(type.data.label),
+    label: t(type.data.label),
     icon: type.data.icon,
   }))
-  .sort((a, b) =>
-    a.label.localeCompare(
-      b.label,
-      Astro.currentLocale ?? resolveDefaultLocale(config),
-    ),
-  )
+  .sort((a, b) => a.label.localeCompare(b.label, currentLocale))
 
 const filterByLocale = !!config.searchPage?.filterByLocale
 ---
@@ -38,8 +34,8 @@ const filterByLocale = !!config.searchPage?.filterByLocale
       client:only="react"
       contentLanguages={contentLanguages}
       mediaTypes={mediaTypes}
-      translations={provideTranslations(Astro.locals.i18n.t)}
-      locale={Astro.currentLocale}
+      translations={provideTranslations(t)}
+      locale={currentLocale}
       categories={categories}
       filterByLocale={filterByLocale}
     />
