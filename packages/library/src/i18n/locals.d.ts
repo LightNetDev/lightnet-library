@@ -5,7 +5,7 @@ declare namespace App {
      */
     i18n: {
       /**
-       * Use this function to translate a key to the current locale.
+       * Translate a key to the language of the current locale.
        *
        * @param TranslationKey to be translated.
        */
