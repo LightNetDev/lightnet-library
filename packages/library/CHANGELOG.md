@@ -1,5 +1,44 @@
 # @lightnet/library
 
+## 2.14.0
+
+### Minor Changes
+
+- [#176](https://github.com/LightNetDev/lightnet-library/pull/176) [`6b4a664`](https://github.com/LightNetDev/lightnet-library/commit/6b4a66490079b0688577e6052ab9d7f2d0686170) Thanks [@si-fab](https://github.com/si-fab)! - Rename `ImageSection` to `HighlightSection`
+
+- [#176](https://github.com/LightNetDev/lightnet-library/pull/176) [`6b4a664`](https://github.com/LightNetDev/lightnet-library/commit/6b4a66490079b0688577e6052ab9d7f2d0686170) Thanks [@si-fab](https://github.com/si-fab)! - Breaking Change: Changes how translations are used.
+
+  Previously you would do something like this:
+
+  ```js
+  const t = useTranslate(Astro.currentLocale)
+
+  const translatedString = t("key")
+  ```
+
+  Now you do this:
+
+  ```js
+  const translatedString = Astro.locals.i18n.t("key")
+  ```
+
+- [#176](https://github.com/LightNetDev/lightnet-library/pull/176) [`6b4a664`](https://github.com/LightNetDev/lightnet-library/commit/6b4a66490079b0688577e6052ab9d7f2d0686170) Thanks [@si-fab](https://github.com/si-fab)! - Extend Astro.locals.i18n object
+
+  Provide:
+
+  - `defaultLocale`
+  - `currentLocale`
+  - `locales`
+
+### Patch Changes
+
+- [#176](https://github.com/LightNetDev/lightnet-library/pull/176) [`6b4a664`](https://github.com/LightNetDev/lightnet-library/commit/6b4a66490079b0688577e6052ab9d7f2d0686170) Thanks [@si-fab](https://github.com/si-fab)! - Renamed default images folder from `\_images` to `images`.
+
+  To update your project, rename the folder `src/\_images` to `src/images`.
+  Also update all image paths inside your media content files.
+
+  Alternatively, you can keep the old name `_images`. In this case, you need to set the `imagesFolder` config option in your `astro.config.mjs` file to `_images`.
+
 ## 2.13.0
 
 ### Minor Changes
