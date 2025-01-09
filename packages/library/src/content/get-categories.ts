@@ -1,7 +1,4 @@
-import config from "virtual:lightnet/config"
-
-import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
-import { useTranslate } from "../i18n/use-translate"
+import { type TranslateFn } from "../i18n/translate"
 import { getMediaItems } from "./get-media-items"
 import { resolveCategoryLabel } from "./resolve-category-label"
 
@@ -11,11 +8,8 @@ const contentCategories = new Set<string>(
     .map((c) => c.id),
 )
 
-export async function getCategories(locale?: string) {
-  const t = useTranslate(locale)
+export async function getCategories(currentLocale: string, t: TranslateFn) {
   return [...contentCategories.values()]
     .map((id) => ({ id, label: resolveCategoryLabel(t, id) }))
-    .sort((a, b) =>
-      a.label.localeCompare(b.label, locale ?? resolveDefaultLocale(config)),
-    )
+    .sort((a, b) => a.label.localeCompare(b.label, currentLocale))
 }

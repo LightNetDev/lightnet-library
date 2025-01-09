@@ -1,21 +1,14 @@
 ---
-import config from "virtual:lightnet/config"
-
-import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
-import { useTranslate } from "../i18n/use-translate"
 import Page from "../layouts/Page.astro"
-
-// Translations will be in default locale
-const t = useTranslate(Astro.currentLocale)
 ---
 
 <Page>
   <div class="flex flex-col items-center">
     <p class="pb-8 pt-20 text-center text-3xl opacity-80">
-      {t("ln.404.page-not-found")}
+      {Astro.locals.i18n.t("ln.404.page-not-found")}
     </p>
-    <a href={`/${resolveDefaultLocale(config)}`} class="dy-btn"
-      >{t("ln.404.go-to-the-home-page")}</a
+    <a href={`/${Astro.locals.i18n.defaultLocale}`} class="dy-btn"
+      >{Astro.locals.i18n.t("ln.404.go-to-the-home-page")}</a
     >
   </div>
 </Page>

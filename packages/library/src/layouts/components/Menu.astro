@@ -1,6 +1,5 @@
 ---
 import Icon from "../../components/Icon"
-import { useTranslate } from "../../i18n/use-translate"
 
 interface Props {
   icon: string
@@ -8,15 +7,13 @@ interface Props {
 }
 
 const { icon, label } = Astro.props
-
-const t = useTranslate(Astro.currentLocale)
 ---
 
 <div class="dy-dropdown dy-dropdown-end">
   <div
     role="button"
     tabindex="0"
-    aria-label={t(label)}
+    aria-label={Astro.locals.i18n.t(label)}
     class="hover:text-primary flex rounded-md p-3 text-gray-600"
   >
     <Icon className={icon} />

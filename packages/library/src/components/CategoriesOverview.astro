@@ -1,6 +1,5 @@
 ---
 import { getCategories } from "../content/get-categories"
-import { useTranslate } from "../i18n/use-translate"
 import { searchPagePath } from "../utils/paths"
 import Section from "./Section.astro"
 
@@ -9,9 +8,9 @@ interface Props {
 }
 
 const { title } = Astro.props
+const { t, currentLocale } = Astro.locals.i18n
 
-const t = useTranslate(Astro.currentLocale)
-const categories = await getCategories(Astro.currentLocale)
+const categories = await getCategories(currentLocale, t)
 ---
 
 {
@@ -22,7 +21,7 @@ const categories = await getCategories(Astro.currentLocale)
           <li class="flex max-w-56 grow">
             <a
               class="flex h-12 w-full items-center justify-center rounded-xl bg-gray-200 p-2 px-8 shadow-sm hover:bg-gray-300 sm:h-14"
-              href={searchPagePath(Astro.currentLocale, {
+              href={searchPagePath(currentLocale, {
                 category: category.id,
               })}
             >

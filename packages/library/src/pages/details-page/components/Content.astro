@@ -1,7 +1,6 @@
 ---
 import Icon from "../../../components/Icon"
 import { getMediaItem } from "../../../content/get-media-items"
-import { useTranslate } from "../../../i18n/use-translate"
 import {
   createContentMetadata,
   type UrlType,
@@ -27,8 +26,6 @@ const typeIcons: { [k in UrlType]: string } = {
   video: "mdi--video-outline",
   package: "mdi--zip-box-outline",
 } as const
-
-const t = useTranslate(Astro.currentLocale)
 ---
 
 <ol
@@ -56,7 +53,9 @@ const t = useTranslate(Astro.currentLocale)
             <Icon
               className={`${canBeOpened ? "mdi--chevron-right" : "mdi--download"} shrink-0 bg-gray-600 group-hover:bg-gray-800`}
               ariaLabel={
-                canBeOpened ? t("ln.details.open") : t("ln.details.download")
+                canBeOpened
+                  ? Astro.locals.i18n.t("ln.details.open")
+                  : Astro.locals.i18n.t("ln.details.download")
               }
             />
           </a>

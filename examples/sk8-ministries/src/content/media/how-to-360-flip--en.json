@@ -4,7 +4,7 @@
   "type": "video",
   "dateCreated": "2024-04-22",
   "content": [{ "url": "https://vimeo.com/28708485" }],
-  "image": "./_images/how-to-360-flip--en.webp",
+  "image": "./images/how-to-360-flip--en.webp",
   "language": "en",
   "categories": ["teens"],
   "collections": [{ "collection": "learn-skateboarding" }],
