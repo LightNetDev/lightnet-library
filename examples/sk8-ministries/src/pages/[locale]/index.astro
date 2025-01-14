@@ -12,6 +12,7 @@ import {
   Section,
 } from "@lightnet/library/components"
 import { getMediaItems } from "@lightnet/library/content"
+import { AstroError } from "astro/errors"
 import { getEntry } from "astro:content"
 
 import eventImage from "../../assets/event.webp"
@@ -34,11 +35,23 @@ const learnSkateboarding = await getEntry(
   "learn-skateboarding",
 )
 /**
+ * If the learn skateboarding collection does not exist, throw an error.
+ */
+if (!learnSkateboarding) {
+  throw new AstroError("Media Collection 'learn-skateboarding' not found")
+}
+/**
  * Fetch the items of the learn skateboarding collection.
  */
 const learnSkateboardingItems = await getMediaItems({
   where: { collection: "learn-skateboarding" },
 })
+
+/**
+ * Reference the translation function to avoid
+ * having to write Astro.locals.i18n.t every time.
+ */
+const t = Astro.locals.i18n.t
 ---
 
 {
@@ -60,7 +73,7 @@ const learnSkateboardingItems = await getMediaItems({
   <Hero
     image={heroImage}
     title={"Sk8 Ministries"}
-    subtitle={Astro.locals.i18n.t("ministry.slogan")}
+    subtitle={t("ministry.slogan")}
     titleSize="xl"
     subtitleSize="xl"
   />
@@ -69,7 +82,7 @@ const learnSkateboardingItems = await getMediaItems({
     This section shows the latest books that have been added to the library.
      */
   }
-  <Section title={Astro.locals.i18n.t("home.our-latest-books")}>
+  <Section title={t("home.our-latest-books")}>
     <Gallery items={latestBooks} layout="book" />
   </Section>
 
@@ -81,11 +94,11 @@ const learnSkateboardingItems = await getMediaItems({
   }
   <HighlightSection
     image={eventImage}
-    title={Astro.locals.i18n.t("home.bbq.title")}
-    text={Astro.locals.i18n.t("home.bbq.text")}
+    title={t("home.bbq.title")}
+    text={t("home.bbq.text")}
     link={{
       href: "mailto:some-email-address-from-the-ministry",
-      label: Astro.locals.i18n.t("home.bbq.sign-up-now"),
+      label: t("home.bbq.sign-up-now"),
     }}
   />
 
@@ -94,7 +107,7 @@ const learnSkateboardingItems = await getMediaItems({
     This section shows the learn skateboarding collection. It uses the collection name as the title.
      */
   }
-  <Section title={learnSkateboarding?.data.name}>
+  <Section title={learnSkateboarding.data.label}>
     <Gallery items={learnSkateboardingItems} layout="video" />
   </Section>
 </Page>

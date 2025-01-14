@@ -177,11 +177,11 @@ export const config = {
       create: true,
       folder: "src/content/media-collections",
       format: "json",
-      slug: "{{name}}",
+      slug: "{{label}}",
       fields: [
         {
-          name: "name",
-          label: "Name",
+          name: "label",
+          label: "Label",
           widget: "string",
         },
       ],
