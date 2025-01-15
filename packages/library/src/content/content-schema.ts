@@ -182,12 +182,12 @@ export const mediaTypeSchema = z.object({
    *
    */
   detailsPage: z
-    .discriminatedUnion("type", [
+    .discriminatedUnion("layout", [
       z.object({
         /**
          * Details page for all media types.
          */
-        type: z.literal("default"),
+        layout: z.literal("default"),
         /**
          * Label for the open action button. Use this if you want to change the text
          * of the "Open" button to be more matching to your media item.
@@ -209,7 +209,7 @@ export const mediaTypeSchema = z.object({
         /**
          * Custom details page.
          */
-        type: z.literal("custom"),
+        layout: z.literal("custom"),
         /**
          * This references a custom component name to be used for the
          * details page. The custom component has be located at src/details-pages/
@@ -222,7 +222,7 @@ export const mediaTypeSchema = z.object({
         /**
          * Detail page for videos.
          */
-        type: z.literal("video"),
+        layout: z.literal("video"),
       }),
     ])
     .optional(),

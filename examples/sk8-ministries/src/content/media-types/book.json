@@ -1,7 +1,7 @@
 {
   "label": "type.book",
   "detailsPage": {
-    "type": "default",
+    "layout": "default",
     "coverStyle": "book",
     "openActionLabel": "details.action.read"
   },

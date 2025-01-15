@@ -26,8 +26,8 @@ const {
 } = await getMediaType(mediaItem.type.id)
 
 let CustomDetails
-const pageType = detailsPage?.type ?? "default"
-if (detailsPage?.type === "custom") {
+const layout = detailsPage?.layout ?? "default"
+if (detailsPage?.layout === "custom") {
   const d = import.meta.glob("/src/details-pages/*.astro")
   const customDetailsImport = d[
     `/src/details-pages/${detailsPage.customComponent}`
@@ -47,7 +47,7 @@ if (detailsPage?.type === "custom") {
   title={mediaItem.title}
   description={markdownToText(mediaItem.description)}
 >
-  {pageType === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
-  {pageType === "video" && <VideoDetails slug={slug} {...detailsPage} />}
+  {layout === "default" && <DefaultDetails slug={slug} {...detailsPage} />}
+  {layout === "video" && <VideoDetails slug={slug} {...detailsPage} />}
   {CustomDetails && <CustomDetails slug={slug} {...detailsPage} />}
 </Page>
