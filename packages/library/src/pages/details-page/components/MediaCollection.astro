@@ -25,14 +25,15 @@ const items = (
 if (items.length < 2) {
   return
 }
+const t = Astro.locals.i18n.t
 ---
 
 <section class="mx-auto mt-16 max-w-screen-md px-4 md:mt-20 md:px-8">
   <h2 class="mb-3 text-xs font-bold uppercase text-gray-600">
-    {Astro.locals.i18n.t("ln.details.part-of-collection")}
+    {t("ln.details.part-of-collection")}
   </h2>
   <h3 class="mb-2 text-lg font-bold text-gray-700">
-    {collection.data.name}
+    {t(collection.data.label, { fallbackToKey: true })}
   </h3>
   <MediaItemList items={items} />
 </section>

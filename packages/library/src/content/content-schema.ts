@@ -6,14 +6,14 @@ import { defineCollection, reference } from "astro:content"
 import { astroImage } from "./astro-image"
 
 /**
- * Category schema
+ * Category Schema
  */
 export const categorySchema = z.object({
   /**
    * Name of the category.
    *
-   * If your site uses translations, this is a translation key that needs to be translated.
-   * If your site doesn't use translations, this can be the the name that will show up.
+   * This can either be a translation key or a string that will be displayed as is.
+   * LightNet will try to use it as translation key first if no translation is found it will use the string as is.
    *
    * @example "category.biography"
    */
@@ -21,19 +21,20 @@ export const categorySchema = z.object({
 })
 
 /**
- * Media Collection schema
+ * Media Collection Schema
  */
 export const mediaCollectionSchema = z.object({
   /**
    * Name of the collection.
    *
-   * This will be displayed as is and not be translated.
+   * This can either be a translation key or a string that will be displayed as is.
+   * LightNet will try to use it as translation key first if no translation is found it will use the string as is.
    */
-  name: z.string(),
+  label: z.string(),
 })
 
 /**
- * Media item schema
+ * Media Item Schema
  */
 export const mediaItemSchema = z.object({
   /**
@@ -164,7 +165,7 @@ export const mediaSchema = ({ image }: SchemaContext) =>
   })
 
 /**
- * Media type schema
+ * Media Type Schema
  */
 export const mediaTypeSchema = z.object({
   /**
