@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.14.1
+
+### Patch Changes
+
+- [#180](https://github.com/LightNetDev/lightnet-library/pull/180) [`fcf7414`](https://github.com/LightNetDev/lightnet-library/commit/fcf741427c247c09412e58a3e255294f7b0e69cd) Thanks [@si-fab](https://github.com/si-fab)! - Rename media-type detailsPage.type to detailPage.layout
+
+- [#178](https://github.com/LightNetDev/lightnet-library/pull/178) [`71bf2cf`](https://github.com/LightNetDev/lightnet-library/commit/71bf2cf92450c74c1521dd235e2c87bf827c9cc6) Thanks [@si-fab](https://github.com/si-fab)! - Breaking Change: Renames media-collection `name` property to `label`.
+
 ## 2.14.0
 
 ### Minor Changes
