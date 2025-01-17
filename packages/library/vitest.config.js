@@ -10,10 +10,8 @@ export default defineConfig({
     vitePluginLightnetConfig(
       {
         title: "Sk8 Ministries",
-        locales: ["en"],
-        defaultLocale: "en",
         logo: { src: "./logo.svg" },
-        languages: [{ code: "en", name: "English" }],
+        languages: [{ code: "en", label: "English" }],
       },
       { site: "https://sk8-ministries.dev" },
     ),

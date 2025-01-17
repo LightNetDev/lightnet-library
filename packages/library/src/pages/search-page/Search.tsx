@@ -1,10 +1,9 @@
 import { useEffect } from "react"
 
-import type { Language } from "../../i18n/languages"
 import ResultList from "./components/ResultList"
 import SearchFilter from "./components/SearchFilter"
 import { useSearch } from "./hooks/use-search"
-import type { MediaType } from "./utils/media-type"
+import type { MediaType, TranslatedLanguage } from "./types"
 import type { Translations } from "./utils/search-translations"
 import { useProvidedTranslations } from "./utils/use-provided-translations"
 
@@ -17,7 +16,7 @@ export default function Search({
   filterByLocale,
 }: {
   locale?: string
-  contentLanguages: Language[]
+  contentLanguages: TranslatedLanguage[]
   categories: Record<string, string>
   translations: Translations
   mediaTypes: MediaType[]

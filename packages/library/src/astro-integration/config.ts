@@ -1,40 +1,108 @@
 import { z } from "astro/zod"
 
+/**
+ * Link Schema.
+ */
 const linkSchema = z.object({
+  /**
+   * Address this should link to.
+   * Can either be a path like "/about" or a full
+   * url, like "https://your-ministry.com".
+   */
   href: z.string(),
+  /**
+   * Label to be used for the link.
+   * Can either be a translation key or a fixed string.
+   */
   label: z.string(),
+  /**
+   * If this is set to true the currentLocale will be appended to
+   * the href path. Eg. for href="/about"
+   * the resolved value will be "/en/about" if the current locale is "en".
+   *
+   * This option will be ignored if the path is a external url.
+   *
+   * Default is true.
+   */
   requiresLocale: z.boolean().default(true),
 })
 
+/**
+ * Language Schema.
+ */
 const languageSchema = z.object({
+  /**
+   * BCP-47 language code for this language.
+   *
+   * This will be the identifier of this language and will
+   * also appear on the URL paths of the website.
+   */
   code: z.string({ description: "BCP-47 language code" }),
-  name: z.string({ description: "This name will not be translated" }),
+  /**
+   * The name of the language that will be shown on the Website.
+   *
+   * Can either be a fixed string or a translation key.
+   */
+  label: z.string(),
+  /**
+   * The text direction of this language.
+   *
+   * Either right-to-left = rtl, or left-to-right = ltr.
+   *
+   * Default is "ltr".
+   */
   direction: z.enum(["rtl", "ltr"]).default("ltr"),
-  translations: z
-    .record(
-      z.string({ description: "translation key" }),
-      z.string({ description: "translation value" }),
-    )
-    .optional(),
-  isDefaultLocale: z
-    .boolean({ description: "Is this the default ui language?" })
-    .default(false),
+  /**
+   * Translations for this language.
+   * This needs to be set if the the language should be used a UI locale.
+   *
+   * We expect a flat object with the keys being the translation keys and
+   * the values being the translated strings for this language.
+   */
+  translations: z.record(z.string(), z.string()).optional(),
+  /**
+   * Should this language be used as the default language for the User Interface.
+   *
+   * Default locale will be the first language the user sees. Also translations
+   * will fallback to use the default locale if no translation entry is found.
+   *
+   * Default is false.
+   */
+  isDefaultLocale: z.boolean().default(false),
 })
 
 const absolutePath = (path: string) =>
   `${path.startsWith("/") ? "" : "/"}${path}`
 
+/**
+ * This API for setting a favicon uses the
+ * HTML standard attributes.
+ *
+ * @see https://en.wikipedia.org/wiki/Favicon
+ *
+ * We automatically infer the "type" of the icon. So you
+ * do not have to set this.
+ */
 const faviconSchema = z.object({
-  href: z
-    .string({
-      description:
-        "The favicon for your site which should be a path to an image in the `public/` directory.",
-    })
-    .transform(absolutePath),
+  /**
+   * Reference the favicon. This must be a path to an image in the `public/` directory.
+   *
+   * @example "/favicon.svg"
+   */
+  href: z.string().transform(absolutePath),
+  /**
+   * See HTML standard.
+   */
   rel: z.enum(["icon", "apple-touch-icon"]).default("icon"),
+  /**
+   * See HTML standard.
+   */
   sizes: z.string().optional(),
 })
 
+/**
+ * LightNet Config Schema.
+ */
 export const configSchema = z.object({
   /**
    * Title of the web site.

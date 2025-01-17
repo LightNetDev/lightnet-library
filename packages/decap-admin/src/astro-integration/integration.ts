@@ -31,6 +31,9 @@ const userConfigSchema = z.object({
    * Name of the images folder next to the content files.
    */
   imagesFolder: z.string().default("images"),
+  /**
+   * Content languages and UI languages.
+   */
   languages: z
     .object({
       code: z.string(),
@@ -38,6 +41,9 @@ const userConfigSchema = z.object({
       translations: z.unknown().optional(),
     })
     .array(),
+  /**
+   * Connected Git Host.
+   */
   backend: gitlabSchema.or(githubSchema).optional(),
 })
 
