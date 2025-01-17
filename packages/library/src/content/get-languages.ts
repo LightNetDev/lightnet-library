@@ -2,7 +2,7 @@ import { resolveLanguage } from "../i18n/resolve-language"
 import { getMediaItems } from "./get-media-items"
 
 /**
- * Language names by language codes.
+ * Array of distinct content languages.
  */
 export const contentLanguages = Object.values(
   Object.fromEntries(
@@ -11,4 +11,4 @@ export const contentLanguages = Object.values(
       resolveLanguage(language),
     ]),
   ),
-).sort((a, b) => a.name.localeCompare(b.name))
+)

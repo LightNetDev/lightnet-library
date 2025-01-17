@@ -15,13 +15,13 @@ export default defineConfig({
       languages: [
         {
           code: "en",
-          name: "English",
+          label: "English",
           translations: en,
           isDefaultLocale: true,
         },
         {
           code: "de",
-          name: "Deutsch",
+          label: "Deutsch",
           translations: de,
         },
       ],

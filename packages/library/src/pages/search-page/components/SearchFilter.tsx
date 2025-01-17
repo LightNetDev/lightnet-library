@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 
 import Icon from "../../../components/Icon"
-import type { Language } from "../../../i18n/languages"
 import { useDebounce } from "../hooks/use-debounce"
 import type { SearchQuery } from "../hooks/use-search"
-import type { MediaType } from "../utils/media-type"
+import type { MediaType, TranslatedLanguage } from "../types"
 import type { Translations } from "../utils/search-translations"
 import { useProvidedTranslations } from "../utils/use-provided-translations"
 
@@ -15,7 +14,7 @@ const TYPE = "type"
 const CATEGORY = "category"
 
 interface Props {
-  contentLanguages: Language[]
+  contentLanguages: TranslatedLanguage[]
   categories: Record<string, string>
   mediaTypes: MediaType[]
   locale?: string

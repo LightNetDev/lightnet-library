@@ -9,7 +9,7 @@ interface Props {
   id?: string
   title?: string
   text?: string
-  link?: { href: string; label: string }
+  link?: { href: string; text: string }
   className?: string
   titleClass?: string
   textClass?: string
@@ -53,7 +53,7 @@ const { image, id, title, text, link, className, titleClass, textClass } =
       {
         link && (
           <a class="dy-btn dy-btn-primary" href={link.href}>
-            {link.label}
+            {link.text}
             <Icon className="mdi--arrow-right" />
           </a>
         )

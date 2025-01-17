@@ -25,6 +25,13 @@ const mediaTypes = (await getMediaTypes())
   }))
   .sort((a, b) => a.label.localeCompare(b.label, currentLocale))
 
+const translatedContentLanguages = contentLanguages
+  .map((language) => ({
+    ...language,
+    name: t(language.label, { fallbackToKey: true }),
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name, currentLocale))
+
 const filterByLocale = !!config.searchPage?.filterByLocale
 ---
 
@@ -32,7 +39,7 @@ const filterByLocale = !!config.searchPage?.filterByLocale
   <div class="mx-auto max-w-screen-md">
     <Search
       client:only="react"
-      contentLanguages={contentLanguages}
+      contentLanguages={translatedContentLanguages}
       mediaTypes={mediaTypes}
       translations={provideTranslations(t)}
       locale={currentLocale}

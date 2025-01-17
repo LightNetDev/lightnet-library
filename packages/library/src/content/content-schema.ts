@@ -171,8 +171,7 @@ export const mediaTypeSchema = z.object({
   /**
    * Name of this media type that will be shown on the pages.
    *
-   * If your site uses translations, this is a translation key that needs to be translated.
-   * If your site doesn't use translations, this can be the the name that will show up.
+   * This can either be a fixed string or a translation key.
    *
    * @example "media-type.book"
    */

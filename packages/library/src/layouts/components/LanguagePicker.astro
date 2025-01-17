@@ -1,13 +1,15 @@
 ---
-import { resolveLanguage } from "../../i18n/resolve-language"
+import { resolveTranslatedLanguage } from "../../i18n/resolve-language"
 import { localizePath } from "../../utils/paths"
 import Menu from "./Menu.astro"
 import MenuItem from "./MenuItem.astro"
 
-const translations = Astro.locals.i18n.locales
+const { t, locales } = Astro.locals.i18n
+
+const translations = locales
   .map((locale) => ({
     locale,
-    label: resolveLanguage(locale).name,
+    label: resolveTranslatedLanguage(locale, t).name,
     active: locale === Astro.currentLocale,
     href: currentPathWithLocale(locale),
   }))

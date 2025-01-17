@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react"
 
 import Icon from "../../../components/Icon"
-import type { Language } from "../../../i18n/languages"
 import { detailsPagePath } from "../../../utils/paths"
 import type { SearchItem } from "../../api/search-response"
-import type { MediaType } from "../utils/media-type"
+import type { MediaType, TranslatedLanguage } from "../types"
 import type { Translations } from "../utils/search-translations"
 import { useProvidedTranslations } from "../utils/use-provided-translations"
 
@@ -15,7 +14,7 @@ interface Props {
   locale: string | undefined
   translations: Translations
   categories: Record<string, string>
-  contentLanguages: Language[]
+  contentLanguages: TranslatedLanguage[]
   mediaTypes: MediaType[]
 }
 
