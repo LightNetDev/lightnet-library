@@ -75,7 +75,7 @@ const absolutePath = (path: string) =>
   `${path.startsWith("/") ? "" : "/"}${path}`
 
 /**
- * The API of setting a favicon matches the
+ * This API for setting a favicon uses the
  * HTML standard attributes.
  *
  * @see https://en.wikipedia.org/wiki/Favicon
@@ -85,7 +85,7 @@ const absolutePath = (path: string) =>
  */
 const faviconSchema = z.object({
   /**
-   * Reference the favicon. This should be a path to an image in the `public/` directory.
+   * Reference the favicon. This must be a path to an image in the `public/` directory.
    *
    * @example "/favicon.svg"
    */
