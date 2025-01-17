@@ -1,5 +1,13 @@
 # @lightnet/library
 
+## 2.14.2
+
+### Patch Changes
+
+- [#181](https://github.com/LightNetDev/lightnet-library/pull/181) [`d5ab239`](https://github.com/LightNetDev/lightnet-library/commit/d5ab239ae4ebae45d50c40c47c62e7891d316585) Thanks [@si-fab](https://github.com/si-fab)! - Rename HightlightSection link.label to link.text.
+
+- [#181](https://github.com/LightNetDev/lightnet-library/pull/181) [`d5ab239`](https://github.com/LightNetDev/lightnet-library/commit/d5ab239ae4ebae45d50c40c47c62e7891d316585) Thanks [@si-fab](https://github.com/si-fab)! - Change language 'name' to be a 'label' that can be translated.
+
 ## 2.14.1
 
 ### Patch Changes
