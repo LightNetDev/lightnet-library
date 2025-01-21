@@ -17,7 +17,7 @@ const mediaTypes = Object.fromEntries(
     type.id,
     {
       id: type.id,
-      label: Astro.locals.i18n.t(type.data.label),
+      label: Astro.locals.i18n.t(type.data.label, { fallbackToKey: true }),
       icon: type.data.icon,
     },
   ]),
