@@ -1,10 +1,12 @@
 import { AstroError } from "astro/errors"
 import { getCollection } from "astro:content"
 
+import type { TranslateFn } from "../i18n/translate"
+
 const categories = await getCollection("categories")
 
 export const resolveCategoryLabel = (
-  translate: (key: string) => string,
+  translate: TranslateFn,
   categoryId: string,
 ) => {
   const category = categories.find((c) => c.id === categoryId)
@@ -14,5 +16,5 @@ export const resolveCategoryLabel = (
       "Make sure you add the category to the categories content collection.",
     )
   }
-  return translate(category.data.label)
+  return translate(category.data.label, { fallbackToKey: true })
 }

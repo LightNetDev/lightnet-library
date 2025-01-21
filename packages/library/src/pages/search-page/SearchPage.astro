@@ -13,8 +13,8 @@ export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
 const { t, currentLocale } = Astro.locals.i18n
 
 const categories: Record<string, string> = {}
-for (const { id, label } of await getCategories(currentLocale, t)) {
-  categories[id] = label
+for (const { id, name } of await getCategories(currentLocale, t)) {
+  categories[id] = name
 }
 
 const mediaTypes = (await getMediaTypes())
