@@ -16,18 +16,18 @@ const width = Math.floor(28 * Math.max(1, logo.width / logo.height))
     logo.format === "svg" ? (
       <img
         src={logo.src}
-        alt={Astro.locals.i18n.t(config.logo.alt, { fallbackToKey: true })}
+        alt={Astro.locals.i18n.t(config.logo.alt, { allowFixedStrings: true })}
         style={`width:${width}px;`}
       />
     ) : (
       <Image
         src={logo}
-        alt={Astro.locals.i18n.t(config.logo.alt, { fallbackToKey: true })}
+        alt={Astro.locals.i18n.t(config.logo.alt, { allowFixedStrings: true })}
         style={`width:${width}px;`}
         width={width}
         densities={[1.5, 2, 3]}
         loading="eager"
       />
     )
-  }{Astro.locals.i18n.t(config.title, { fallbackToKey: true })}</a
+  }{Astro.locals.i18n.t(config.title, { allowFixedStrings: true })}</a
 >

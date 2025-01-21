@@ -48,7 +48,7 @@ const items = (config.mainMenu ?? []).map(({ href, label, requiresLocale }) => {
             active={isActive}
             target={isExternal ? "_blank" : "_self"}
           >
-            {Astro.locals.i18n.t(label, { fallbackToKey: true })}
+            {Astro.locals.i18n.t(label, { allowFixedStrings: true })}
             {isExternal && (
               <Icon className="mdi--external-link shrink-0 text-base" />
             )}

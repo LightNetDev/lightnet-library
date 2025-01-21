@@ -16,5 +16,5 @@ export const resolveCategoryLabel = (
       "Make sure you add the category to the categories content collection.",
     )
   }
-  return translate(category.data.label, { fallbackToKey: true })
+  return translate(category.data.label, { allowFixedStrings: true })
 }

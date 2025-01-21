@@ -89,7 +89,7 @@ export default defineConfig({
            * Link to a custom About page.
            */
           href: "/about",
-          label: "navigation.about", // Custom translation key defined in translations
+          label: "custom.navigation.about", // Custom translation key defined in translations
         },
         {
           /**
