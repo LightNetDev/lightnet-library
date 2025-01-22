@@ -20,7 +20,7 @@ const languages = [
     isDefaultLocale: true, // Sets English as the default language
   },
   {
-    code: "de", // BCP language code for German
+    code: "de", // BCP47 language code for German
     label: "Deutsch", // Display name for German
     translations: deTranslations, // UI translations for German
   },
