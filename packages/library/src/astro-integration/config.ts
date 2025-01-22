@@ -123,10 +123,12 @@ export const configSchema = z.object({
   /**
    * Logo to be used for the header.
    */
-  logo: z.object({
-    src: z.string(),
-    alt: z.string().default(""),
-  }),
+  logo: z
+    .object({
+      src: z.string(),
+      alt: z.string().default(""),
+    })
+    .optional(),
   /**
    * Main menu structure.
    */

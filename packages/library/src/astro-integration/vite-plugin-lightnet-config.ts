@@ -44,7 +44,9 @@ export function vitePluginLightnetConfig(
         case CONFIG:
           return `export default ${JSON.stringify(config)};`
         case LOGO:
-          return `import logo from ${resolveFilePath(config.logo.src)}; export default logo;`
+          return config.logo
+            ? `import logo from ${resolveFilePath(config.logo.src)}; export default logo;`
+            : ""
         case PROJECT_CONTEXT:
           return `export default ${JSON.stringify({ root, srcDir, site })}`
       }
