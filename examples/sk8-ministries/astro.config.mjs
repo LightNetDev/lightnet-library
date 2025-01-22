@@ -14,13 +14,13 @@ import enTranslations from "./src/translations/en.json"
  */
 const languages = [
   {
-    code: "en", // ISO language code for English
+    code: "en", // BCP47 language code for English
     label: "English", // Name displayed in the language selector
     translations: enTranslations, // UI translations for English
     isDefaultLocale: true, // Sets English as the default language
   },
   {
-    code: "de", // ISO language code for German
+    code: "de", // BCP language code for German
     label: "Deutsch", // Display name for German
     translations: deTranslations, // UI translations for German
   },
