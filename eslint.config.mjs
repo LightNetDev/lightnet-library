@@ -9,7 +9,15 @@ import tseslint from "typescript-eslint"
 
 /** @type { import("eslint").Linter.Config[] } */
 export default [
-  { ignores: ["**/.astro/", "**/dist/", "**/env.d.ts", "**/node_modules/"] },
+  {
+    ignores: [
+      "**/.astro/",
+      "**/dist/",
+      "**/env.d.ts",
+      "**/node_modules/",
+      "**/playwright-report/",
+    ],
+  },
   {
     files: ["**/*.{js,mjs,ts,jsx,tsx,astro}"],
     rules: {
