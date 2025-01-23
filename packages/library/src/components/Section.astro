@@ -3,19 +3,11 @@ interface Props {
   id?: string
   width?: "full" | "content"
   title?: string
-  withoutDefaultTopMargin?: boolean
   lang?: string
   className?: string
 }
 
-const {
-  id,
-  width = "full",
-  title,
-  withoutDefaultTopMargin = false,
-  lang,
-  className,
-} = Astro.props
+const { id, width = "full", title, lang, className } = Astro.props
 
 const widths = {
   full: "max-w-screen-xl",
@@ -24,12 +16,8 @@ const widths = {
 ---
 
 <section
-  class="mx-auto px-4 md:px-8"
-  class:list={[
-    widths[width],
-    !withoutDefaultTopMargin && "mt-24 md:mt-28",
-    className,
-  ]}
+  class="mx-auto mt-24 px-4 md:mt-28 md:px-8"
+  class:list={[widths[width], className]}
   id={id}
   lang={lang}
 >
