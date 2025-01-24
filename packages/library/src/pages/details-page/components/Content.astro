@@ -26,6 +26,8 @@ const typeIcons: { [k in UrlType]: string } = {
   video: "mdi--video-outline",
   package: "mdi--zip-box-outline",
 } as const
+
+const { t, direction } = Astro.locals.i18n
 ---
 
 <ol
@@ -41,7 +43,10 @@ const typeIcons: { [k in UrlType]: string } = {
             class="flex items-center justify-between py-8"
           >
             <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-800">
-              <Icon className={`${typeIcons[type]} text-gray-200`} />
+              <Icon
+                className={`${typeIcons[type]} text-gray-200`}
+                ariaLabel=""
+              />
             </span>
 
             <div class="ms-4 line-clamp-1 shrink grow overflow-hidden sm:ms-8">
@@ -53,11 +58,9 @@ const typeIcons: { [k in UrlType]: string } = {
             <Icon
               className={`${canBeOpened ? "mdi--chevron-right" : "mdi--download"} shrink-0 bg-gray-600 group-hover:bg-gray-800`}
               ariaLabel={
-                canBeOpened
-                  ? Astro.locals.i18n.t("ln.details.open")
-                  : Astro.locals.i18n.t("ln.details.download")
+                canBeOpened ? t("ln.details.open") : t("ln.details.download")
               }
-              flipIcon={Astro.locals.i18n.direction === "rtl"}
+              flipIcon={direction === "rtl"}
             />
           </a>
           {index !== content.length - 1 && (

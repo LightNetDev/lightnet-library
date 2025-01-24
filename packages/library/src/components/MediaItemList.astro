@@ -12,12 +12,14 @@ interface Props {
 
 const { items } = Astro.props
 
+const { t, direction } = Astro.locals.i18n
+
 const mediaTypes = Object.fromEntries(
   (await getMediaTypes()).map((type) => [
     type.id,
     {
       id: type.id,
-      label: Astro.locals.i18n.t(type.data.label, { allowFixedStrings: true }),
+      name: t(type.data.label, { allowFixedStrings: true }),
       icon: type.data.icon,
     },
   ]),
@@ -57,7 +59,7 @@ const mediaTypes = Object.fromEntries(
             <p class="mb-1 line-clamp-3 font-bold text-gray-700 md:mb-3">
               <Icon
                 className={`${mediaTypes[item.data.type.id].icon} me-2 align-bottom text-2xl text-gray-700`}
-                ariaLabel={mediaTypes[item.data.type.id].label}
+                ariaLabel={mediaTypes[item.data.type.id].name}
               />
               <span>{item.data.title}</span>
             </p>
@@ -72,7 +74,8 @@ const mediaTypes = Object.fromEntries(
 
           <Icon
             className="mdi--chevron-right hidden sm:block md:group-hover:text-primary my-auto ms-2 me-4 shrink-0 text-2xl text-gray-300"
-            flipIcon={Astro.locals.i18n.direction === "rtl"}
+            flipIcon={direction === "rtl"}
+            ariaLabel=""
           />
         </a>
       </li>

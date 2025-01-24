@@ -110,6 +110,7 @@ export default function ResultList({
               <Icon
                 className="mdi--chevron-right md:group-hover:text-primary my-auto me-4 ms-2 hidden shrink-0 text-2xl text-gray-300 sm:block"
                 flipIcon={direction === "rtl"}
+                ariaLabel=""
               />
             </a>
           </li>
@@ -124,7 +125,7 @@ export default function ResultList({
               onClick={() => setMaxItems(maxItems + PAGE_SIZE)}
             >
               {t("ln.search.more-results")}
-              <Icon className="mdi--chevron-down" />
+              <Icon className="mdi--chevron-down" ariaLabel="" />
             </button>
           </div>
         </div>

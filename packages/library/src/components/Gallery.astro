@@ -15,8 +15,13 @@ type GalleryItem = {
   }
 }
 
-const typeIcons = Object.fromEntries(
-  (await getMediaTypes()).map((type) => [type.id, type.data.icon]),
+const t = Astro.locals.i18n.t
+
+const types = Object.fromEntries(
+  (await getMediaTypes()).map((type) => [
+    type.id,
+    { ...type.data, name: t(type.data.label, { allowFixedStrings: true }) },
+  ]),
 )
 
 interface Props {
@@ -59,7 +64,8 @@ const { items, layout } = Astro.props
             </div>
             <span class="line-clamp-2 h-12 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[item.data.type.id]} me-2 align-bottom`}
+                className={`${types[item.data.type.id].icon} me-2 align-bottom`}
+                ariaLabel={types[item.data.type.id].name}
               />
               {item.data.title}
             </span>
@@ -102,7 +108,8 @@ const { items, layout } = Astro.props
             </div>
             <span class="line-clamp-2 h-12 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[item.data.type.id]} me-2 align-bottom`}
+                className={`${types[item.data.type.id].icon} me-2 align-bottom`}
+                ariaLabel={types[item.data.type.id].name}
               />
               {item.data.title}
             </span>
