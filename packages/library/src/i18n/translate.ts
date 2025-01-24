@@ -40,7 +40,8 @@ export function useTranslate(locale: string | undefined): TranslateFn {
     }
     if (!value) {
       throw new AstroError(
-        `No translation exists for key '${key}' and locale '${resolvedLocale}'.`,
+        `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
+        `Add a translation for '${key}' to src/translations/${resolvedLocale}.json`,
       )
     }
     return value
