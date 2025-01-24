@@ -42,7 +42,7 @@ export default defineConfig({
       /**
        * Title of the website. It appears in the browser tab and the header bar.
        */
-      title: "Sk8 Ministries",
+      title: "custom.site.title",
 
       /**
        * Path to the logo displayed in the header, located in ./src/assets.

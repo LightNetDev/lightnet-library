@@ -67,12 +67,12 @@ const t = Astro.locals.i18n.t
     Also it shows the ministry name (Sk8 Ministries) and slogan (Living faith, building 
     community).
 
-    The ministry slogan is translated using the locals.t function.
+    The both text are translated to the current locale using the i18n.t function.
      */
   }
   <Hero
     image={heroImage}
-    title={"Sk8 Ministries"}
+    title={t("custom.site.title")}
     subtitle={t("custom.ministry.slogan")}
     titleSize="xl"
     subtitleSize="xl"
