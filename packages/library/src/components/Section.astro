@@ -1,22 +1,41 @@
 ---
 interface Props {
+  /**
+   * Id to set to the section element.
+   * For example this can be used to reference it inside anchors.
+   */
   id?: string
-  width?: "full" | "content"
+  /**
+   * Maximum width of the section container.
+   *
+   * - "full" takes the full available width of the LightNet page. This is not equal to the screen width.
+   *    For example the full width typically is used on the homepage.
+   * - "prose" width ensures text is well readable. This is the width used on the details page.
+   *
+   * @default "full"
+   */
+  maxWidth?: "full" | "prose"
+  /**
+   * Title on top of the section.
+   */
   title?: string
+  /**
+   * Css classes to set to the section element.
+   */
   className?: string
 }
 
-const { id, width = "full", title, className } = Astro.props
+const { id, maxWidth = "full", title, className } = Astro.props
 
-const widths = {
+const maxWidths = {
   full: "max-w-screen-xl",
-  content: "max-w-screen-md",
+  prose: "max-w-screen-md",
 }
 ---
 
 <section
   class="mx-auto mt-24 px-4 md:mt-28 md:px-8"
-  class:list={[widths[width], className]}
+  class:list={[maxWidths[maxWidth], className]}
   id={id}
 >
   {
