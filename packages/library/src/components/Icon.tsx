@@ -12,13 +12,13 @@ export default function Icon({
   ariaLabel,
   flipIcon,
 }: {
-  className?: string
+  className: string
   ariaLabel?: string
   flipIcon?: boolean
 }) {
   return (
     <span
-      className={`iconify text-2xl ${className ?? ""} ${flipIcon && "scale-x-[-1]"}`}
+      className={`iconify text-2xl ${className} ${flipIcon && "scale-x-[-1]"}`}
       aria-label={ariaLabel}
     />
   )
