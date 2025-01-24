@@ -54,12 +54,12 @@ const { items, layout } = Astro.props
                 }
               />
               {layout === "book" && (
-                <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
+                <span class="absolute start-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
               )}
             </div>
             <span class="line-clamp-2 h-12 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[item.data.type.id]} mr-2 align-bottom`}
+                className={`${typeIcons[item.data.type.id]} me-2 align-bottom`}
               />
               {item.data.title}
             </span>
@@ -102,7 +102,7 @@ const { items, layout } = Astro.props
             </div>
             <span class="line-clamp-2 h-12 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[item.data.type.id]} mr-2 align-bottom`}
+                className={`${typeIcons[item.data.type.id]} me-2 align-bottom`}
               />
               {item.data.title}
             </span>

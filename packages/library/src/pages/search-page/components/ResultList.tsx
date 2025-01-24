@@ -15,6 +15,7 @@ interface Props {
   translations: Translations
   categories: Record<string, string>
   contentLanguages: TranslatedLanguage[]
+  direction: "rtl" | "ltr"
   mediaTypes: MediaType[]
 }
 
@@ -24,6 +25,7 @@ export default function ResultList({
   categories,
   translations,
   contentLanguages,
+  direction,
   mediaTypes,
 }: Props) {
   const [maxItems, setMaxItems] = useState(15)
@@ -64,10 +66,10 @@ export default function ResultList({
                 />
               </div>
 
-              <div className="ml-5 flex grow flex-col justify-center text-xs sm:ml-8">
+              <div className="ms-5 flex grow flex-col justify-center text-xs sm:ms-8">
                 <h2 className="mb-1 line-clamp-3 text-sm font-bold text-gray-700 md:mb-3 md:text-base">
                   <Icon
-                    className={`${types[item.type].icon} mr-2 align-bottom text-2xl text-gray-700`}
+                    className={`${types[item.type].icon} me-2 align-bottom text-2xl text-gray-700`}
                     ariaLabel={types[item.type].label}
                   />
                   <span>{item.title}</span>
@@ -105,7 +107,10 @@ export default function ResultList({
                   </p>
                 </div>
               </div>
-              <Icon className="mdi--chevron-right md:group-hover:text-primary my-auto ml-2 mr-4 hidden shrink-0 text-2xl text-gray-300 sm:block" />
+              <Icon
+                className="mdi--chevron-right md:group-hover:text-primary my-auto me-4 ms-2 hidden shrink-0 text-2xl text-gray-300 sm:block"
+                flipIcon={direction === "rtl"}
+              />
             </a>
           </li>
         ))}

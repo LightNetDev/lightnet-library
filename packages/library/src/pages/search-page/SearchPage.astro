@@ -43,6 +43,7 @@ const filterByLocale = !!config.searchPage?.filterByLocale
       mediaTypes={mediaTypes}
       translations={provideTranslations(t)}
       locale={currentLocale}
+      direction={Astro.locals.i18n.direction}
       categories={categories}
       filterByLocale={filterByLocale}
     />

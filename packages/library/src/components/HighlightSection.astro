@@ -57,7 +57,10 @@ const { image, id, title, text, link, className, titleClass, textClass } =
             href={link.href}
           >
             {link.text}
-            <Icon className="mdi--arrow-right" />
+            <Icon
+              flipIcon={Astro.locals.i18n.direction === "rtl"}
+              className="mdi--arrow-right"
+            />
           </a>
         )
       }

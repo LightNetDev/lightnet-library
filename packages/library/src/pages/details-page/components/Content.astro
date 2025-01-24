@@ -44,10 +44,10 @@ const typeIcons: { [k in UrlType]: string } = {
               <Icon className={`${typeIcons[type]} text-gray-200`} />
             </span>
 
-            <div class="ml-4 line-clamp-1 shrink grow overflow-hidden sm:ml-8">
+            <div class="ms-4 line-clamp-1 shrink grow overflow-hidden sm:ms-8">
               {name}
             </div>
-            <div class="ml-2 mr-4 shrink-0 font-bold uppercase text-gray-600 sm:mr-8">
+            <div class="me-4 ms-2 shrink-0 font-bold uppercase text-gray-600 sm:me-8">
               {extension}
             </div>
             <Icon
@@ -57,6 +57,7 @@ const typeIcons: { [k in UrlType]: string } = {
                   ? Astro.locals.i18n.t("ln.details.open")
                   : Astro.locals.i18n.t("ln.details.download")
               }
+              flipIcon={Astro.locals.i18n.direction === "rtl"}
             />
           </a>
           {index !== content.length - 1 && (

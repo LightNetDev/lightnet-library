@@ -12,6 +12,7 @@ export default function Search({
   contentLanguages,
   categories,
   mediaTypes,
+  direction,
   translations,
   filterByLocale,
 }: {
@@ -20,6 +21,7 @@ export default function Search({
   categories: Record<string, string>
   translations: Translations
   mediaTypes: MediaType[]
+  direction: "rtl" | "ltr"
   filterByLocale: boolean
 }) {
   const { results, updateQuery, isLoading } = useSearch()
@@ -53,6 +55,7 @@ export default function Search({
       <ResultList
         items={results}
         locale={locale}
+        direction={direction}
         translations={translations}
         categories={categories}
         mediaTypes={mediaTypes}

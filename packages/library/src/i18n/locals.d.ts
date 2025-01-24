@@ -20,6 +20,11 @@ declare namespace App {
       currentLocale: string
 
       /**
+       * The current text direction. Left-to-right or right-to-left.
+       */
+      direction: "ltr" | "rtl"
+
+      /**
        * The default locale as defined in the project configuration.
        */
       defaultLocale: string
