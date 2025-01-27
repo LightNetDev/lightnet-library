@@ -1,5 +1,54 @@
 # @lightnet/library
 
+## 2.15.0
+
+### Minor Changes
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Makes logo config optional.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Rename `Section` component properties
+
+  - change property name `width` to `maxWidth`
+  - change property value `content` to `prose`
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Add config option to change the size of the header logo.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Improve validation of label properties.
+
+  This adds more validation to `label` properties. They all support fixed strings. Currently we are not able to identify if a label value is a translation key or a fixed string. With this release, labels that start with `custom.` or `ln.` prefix will be treated as translation keys. They will fail the build if no translation is found.
+
+  Prefixing custom translation strings with `custom.` is non mandatory but recommended as it improves validation.
+
+  This is changed:
+
+  - rename translate parameter `fallbackToKey` to `allowFixedStrings`.
+  - change behavior of the translate function. If `allowFixedStrings` is set to `true`, return the translation key if no translation is found. But fail if the key starts with `custom.` or `ln.` prefix.
+  - change example to reflect the new convention of prefixing custom translation keys with `custom.`.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Implement `landscape` layout for Gallery component.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Add Right-to-Left support
+
+### Patch Changes
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Remove unused `withoutDefaultTopMargin` option from Section Component.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Make Icon `className` a required property.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Adds option to flip an icon.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Improves error message for missing translations.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Remove `lang` property from Section component.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Improve visibility of Primary Button on Hightlight Section
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Require `ariaLabel` param on icons.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Support fixed strings for category labels.
+
+- [#183](https://github.com/LightNetDev/lightnet-library/pull/183) [`9c0bb8d`](https://github.com/LightNetDev/lightnet-library/commit/9c0bb8d2508f8bfbb18dd224a36e7f5d75f89268) Thanks [@si-fab](https://github.com/si-fab)! - Support fixed strings for media types.
+
 ## 2.14.2
 
 ### Patch Changes
