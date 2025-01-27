@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.15.1
+
+### Patch Changes
+
+- [#185](https://github.com/LightNetDev/lightnet-library/pull/185) [`c04b9eb`](https://github.com/LightNetDev/lightnet-library/commit/c04b9ebb263aaab89d6d4a79862a7b0eb6dfcf33) Thanks [@si-fab](https://github.com/si-fab)! - Fix missing logo was failing the build.
+
 ## 2.15.0
 
 ### Minor Changes
