@@ -4,7 +4,7 @@ declare module "virtual:lightnet/config" {
 }
 
 declare module "virtual:lightnet/logo" {
-  const logo: ImageMetadata = import("astro").ImageMetadata
+  const logo: ImageMetadata | undefined = import("astro").ImageMetadata
   export default logo
 }
 

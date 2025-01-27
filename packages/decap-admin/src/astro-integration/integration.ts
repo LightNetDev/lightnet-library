@@ -26,6 +26,11 @@ const githubSchema = z.object({
 })
 
 const userConfigSchema = z.object({
+  /**
+   * Path for the admin page.
+   *
+   * Default is /admin
+   */
   path: z.string().default("admin"),
   /**
    * Name of the images folder next to the content files.

@@ -15,13 +15,18 @@ type GalleryItem = {
   }
 }
 
-const typeIcons = Object.fromEntries(
-  (await getMediaTypes()).map((type) => [type.id, type.data.icon]),
+const t = Astro.locals.i18n.t
+
+const types = Object.fromEntries(
+  (await getMediaTypes()).map((type) => [
+    type.id,
+    { ...type.data, name: t(type.data.label, { allowFixedStrings: true }) },
+  ]),
 )
 
 interface Props {
   items: GalleryItem[]
-  layout: "book" | "video" | "portrait"
+  layout: "book" | "video" | "portrait" | "landscape"
 }
 
 const { items, layout } = Astro.props
@@ -54,12 +59,13 @@ const { items, layout } = Astro.props
                 }
               />
               {layout === "book" && (
-                <span class="absolute left-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
+                <span class="absolute start-[3px] top-0 h-full w-[4px] bg-gradient-to-r from-gray-500/20 to-transparent" />
               )}
             </div>
             <span class="line-clamp-2 h-12 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[item.data.type.id]} mr-2 align-bottom`}
+                className={`${types[item.data.type.id].icon} me-2 align-bottom`}
+                ariaLabel={types[item.data.type.id].name}
               />
               {item.data.title}
             </span>
@@ -70,18 +76,25 @@ const { items, layout } = Astro.props
   )
 }
 {
-  layout === "video" && (
-    <ol class="grid grid-cols-1 justify-between gap-x-7 gap-y-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4">
-      {items.map((video) => (
+  (layout === "video" || layout === "landscape") && (
+    <ol
+      class="grid grid-cols-1 justify-between gap-x-7 gap-y-4 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4 xl:grid-cols-4"
+      class:list={[layout === "landscape" && "items-end"]}
+    >
+      {items.map((item) => (
         <li>
           <a
-            href={detailsPagePath(Astro.currentLocale, video)}
+            href={detailsPagePath(Astro.currentLocale, item)}
             class="group flex flex-col gap-3"
           >
-            <div class="relative aspect-video overflow-hidden rounded-md bg-gray-950 shadow-md outline-2 outline-gray-400 transition-all duration-75 ease-in-out sm:group-hover:outline">
+            <div
+              class="relative overflow-hidden rounded-md shadow-md outline-2 outline-gray-400 transition-all duration-75 ease-in-out sm:group-hover:outline"
+              class:list={[layout === "video" && "aspect-video bg-gray-950"]}
+            >
               <Image
-                class="absolute top-0 h-full w-full object-contain"
-                src={video.data.image}
+                class="h-full w-full object-contain"
+                class:list={[layout === "video" && "absolute top-0"]}
+                src={item.data.image}
                 alt=""
                 widths={[120, 160, 240, 320, 640]}
                 sizes={
@@ -95,9 +108,10 @@ const { items, layout } = Astro.props
             </div>
             <span class="line-clamp-2 h-12 text-sm font-bold text-gray-700">
               <Icon
-                className={`${typeIcons[video.data.type.id]} mr-2 align-bottom`}
+                className={`${types[item.data.type.id].icon} me-2 align-bottom`}
+                ariaLabel={types[item.data.type.id].name}
               />
-              {video.data.title}
+              {item.data.title}
             </span>
           </a>
         </li>

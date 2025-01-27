@@ -2,6 +2,7 @@
 import { ClientRouter } from "astro:transitions"
 import config from "virtual:lightnet/config"
 
+import { resolveLanguage } from "../i18n/resolve-language"
 import Favicon from "./components/Favicon.astro"
 import PageNavigation from "./components/PageNavigation.astro"
 import PageTitle from "./components/PageTitle.astro"
@@ -13,11 +14,16 @@ interface Props {
 }
 
 const { title, description } = Astro.props
-const configTitle = Astro.locals.i18n.t(config.title, { fallbackToKey: true })
+const configTitle = Astro.locals.i18n.t(config.title, {
+  allowFixedStrings: true,
+})
+
+const { currentLocale } = Astro.locals.i18n
+const language = resolveLanguage(currentLocale)
 ---
 
 <!doctype html>
-<html lang={Astro.locals.i18n.currentLocale}>
+<html lang={currentLocale} dir={language.direction}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

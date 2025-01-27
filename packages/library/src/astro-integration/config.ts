@@ -123,10 +123,30 @@ export const configSchema = z.object({
   /**
    * Logo to be used for the header.
    */
-  logo: z.object({
-    src: z.string(),
-    alt: z.string().default(""),
-  }),
+  logo: z
+    .object({
+      /**
+       * Path to a logo based in the /src/assets folder.
+       * We recommend a size of at least 150x150px. The logo
+       * will be optimized for performance.
+       *
+       * @example "/src/assets/your-logo.png"
+       */
+      src: z.string(),
+      /**
+       * Alt attribute to add for screen reader etc.
+       * This can be a fixed string or a translation key.
+       */
+      alt: z.string().default(""),
+      /**
+       * Size in px to use for the logo on the header bar.
+       * The size will be applied to the shorter side of your logo image.
+       *
+       * Default is 28 px.
+       */
+      size: z.number().default(28),
+    })
+    .optional(),
   /**
    * Main menu structure.
    */

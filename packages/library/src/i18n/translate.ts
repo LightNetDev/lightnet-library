@@ -9,7 +9,7 @@ type TranslationsByLocales = Record<string, Record<string, string>>
 
 // We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
 export type TranslationKey = keyof typeof en | (string & NonNullable<unknown>)
-export type TranslationOptions = { fallbackToKey?: boolean }
+export type TranslationOptions = { allowFixedStrings?: boolean }
 
 export type TranslateFn = (
   key: TranslationKey,
@@ -28,18 +28,20 @@ export function useTranslate(locale: string | undefined): TranslateFn {
   const defaultTranslations = translationsByLocales[defaultLocale]
   if (!translations) {
     throw new AstroError(
-      `No translations found for locale ${resolvedLocale}`,
-      "Add them to your lightnet config",
+      `No translations found for language ${resolvedLocale}`,
+      "Add them to your lightnet config inside astro.config.mjs.",
     )
   }
   return (key: TranslationKey, options?: TranslationOptions) => {
     const value = translations[key] ?? defaultTranslations[key]
-    if (!value && options?.fallbackToKey) {
+    const isTranslationKey = key.startsWith("custom.") || key.startsWith("ln.")
+    if (!value && options?.allowFixedStrings && !isTranslationKey) {
       return key
     }
     if (!value) {
       throw new AstroError(
-        `No translation exists for key '${key}' and locale '${resolvedLocale}'.`,
+        `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
+        `Add a translation for '${key}' to src/translations/${resolvedLocale}.json`,
       )
     }
     return value

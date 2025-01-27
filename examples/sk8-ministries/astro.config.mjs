@@ -14,13 +14,13 @@ import enTranslations from "./src/translations/en.json"
  */
 const languages = [
   {
-    code: "en", // ISO language code for English
+    code: "en", // BCP47 language code for English
     label: "English", // Name displayed in the language selector
     translations: enTranslations, // UI translations for English
     isDefaultLocale: true, // Sets English as the default language
   },
   {
-    code: "de", // ISO language code for German
+    code: "de", // BCP47 language code for German
     label: "Deutsch", // Display name for German
     translations: deTranslations, // UI translations for German
   },
@@ -42,11 +42,11 @@ export default defineConfig({
       /**
        * Title of the website. It appears in the browser tab and the header bar.
        */
-      title: "Sk8 Ministries",
+      title: "custom.site.title",
 
       /**
        * Path to the logo displayed in the header, located in ./src/assets.
-       * Supported formats: svg, png, jpg, webp. Your logo will be optimized for size.
+       * Supported formats: svg, png, jpg, webp. Your logo will be optimized for performance.
        */
       logo: { src: "./src/assets/logo.png" },
 
@@ -89,7 +89,7 @@ export default defineConfig({
            * Link to a custom About page.
            */
           href: "/about",
-          label: "navigation.about", // Custom translation key defined in translations
+          label: "custom.navigation.about", // Custom translation key defined in translations
         },
         {
           /**

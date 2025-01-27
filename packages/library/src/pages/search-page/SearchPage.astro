@@ -13,14 +13,14 @@ export { getLocalePaths as getStaticPaths } from "../../i18n/get-locale-paths"
 const { t, currentLocale } = Astro.locals.i18n
 
 const categories: Record<string, string> = {}
-for (const { id, label } of await getCategories(currentLocale, t)) {
-  categories[id] = label
+for (const { id, name } of await getCategories(currentLocale, t)) {
+  categories[id] = name
 }
 
 const mediaTypes = (await getMediaTypes())
   .map((type) => ({
     id: type.id,
-    label: t(type.data.label),
+    label: t(type.data.label, { allowFixedStrings: true }),
     icon: type.data.icon,
   }))
   .sort((a, b) => a.label.localeCompare(b.label, currentLocale))
@@ -28,7 +28,7 @@ const mediaTypes = (await getMediaTypes())
 const translatedContentLanguages = contentLanguages
   .map((language) => ({
     ...language,
-    name: t(language.label, { fallbackToKey: true }),
+    name: t(language.label, { allowFixedStrings: true }),
   }))
   .sort((a, b) => a.name.localeCompare(b.name, currentLocale))
 
@@ -43,6 +43,7 @@ const filterByLocale = !!config.searchPage?.filterByLocale
       mediaTypes={mediaTypes}
       translations={provideTranslations(t)}
       locale={currentLocale}
+      direction={Astro.locals.i18n.direction}
       categories={categories}
       filterByLocale={filterByLocale}
     />

@@ -67,13 +67,13 @@ const t = Astro.locals.i18n.t
     Also it shows the ministry name (Sk8 Ministries) and slogan (Living faith, building 
     community).
 
-    The ministry slogan is translated using the locals.t function.
+    The both text are translated to the current locale using the i18n.t function.
      */
   }
   <Hero
     image={heroImage}
-    title={"Sk8 Ministries"}
-    subtitle={t("ministry.slogan")}
+    title={t("custom.site.title")}
+    subtitle={t("custom.ministry.slogan")}
     titleSize="xl"
     subtitleSize="xl"
   />
@@ -82,7 +82,7 @@ const t = Astro.locals.i18n.t
     This section shows the latest books that have been added to the library.
      */
   }
-  <Section title={t("home.our-latest-books")}>
+  <Section title={t("custom.home.our-latest-books")}>
     <Gallery items={latestBooks} layout="book" />
   </Section>
 
@@ -94,11 +94,11 @@ const t = Astro.locals.i18n.t
   }
   <HighlightSection
     image={eventImage}
-    title={t("home.bbq.title")}
-    text={t("home.bbq.text")}
+    title={t("custom.home.bbq.title")}
+    text={t("custom.home.bbq.text")}
     link={{
       href: "mailto:some-email-address-from-the-ministry",
-      text: t("home.bbq.sign-up-now"),
+      text: t("custom.home.bbq.sign-up-now"),
     }}
   />
 

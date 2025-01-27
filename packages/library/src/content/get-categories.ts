@@ -10,6 +10,6 @@ const contentCategories = new Set<string>(
 
 export async function getCategories(currentLocale: string, t: TranslateFn) {
   return [...contentCategories.values()]
-    .map((id) => ({ id, label: resolveCategoryLabel(t, id) }))
-    .sort((a, b) => a.label.localeCompare(b.label, currentLocale))
+    .map((id) => ({ id, name: resolveCategoryLabel(t, id) }))
+    .sort((a, b) => a.name.localeCompare(b.name, currentLocale))
 }

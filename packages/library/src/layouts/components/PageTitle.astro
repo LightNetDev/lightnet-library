@@ -1,11 +1,21 @@
 ---
+import type { ImageMetadata } from "astro"
 import { Image } from "astro:assets"
 import config from "virtual:lightnet/config"
 import logo from "virtual:lightnet/logo"
 
 import { localizePath } from "../../utils/paths"
 
-const width = Math.floor(28 * Math.max(1, logo.width / logo.height))
+function getWidth(logo: ImageMetadata) {
+  const size = config.logo?.size ?? 28
+  // Calculate width to use for the logo.
+  // This based on the size that should measure the shorter side
+  // of the image
+  return Math.floor(size * Math.max(1, logo.width / logo.height))
+}
+
+const logoAlt = config.logo?.alt ?? ""
+const t = Astro.locals.i18n.t
 ---
 
 <a
@@ -13,21 +23,22 @@ const width = Math.floor(28 * Math.max(1, logo.width / logo.height))
   href={localizePath(Astro.currentLocale, "/")}
 >
   {
-    logo.format === "svg" ? (
-      <img
-        src={logo.src}
-        alt={Astro.locals.i18n.t(config.logo.alt, { fallbackToKey: true })}
-        style={`width:${width}px;`}
-      />
-    ) : (
-      <Image
-        src={logo}
-        alt={Astro.locals.i18n.t(config.logo.alt, { fallbackToKey: true })}
-        style={`width:${width}px;`}
-        width={width}
-        densities={[1.5, 2, 3]}
-        loading="eager"
-      />
-    )
-  }{Astro.locals.i18n.t(config.title, { fallbackToKey: true })}</a
+    logo &&
+      (logo.format === "svg" ? (
+        <img
+          src={logo.src}
+          alt={t(logoAlt, { allowFixedStrings: true })}
+          style={`width:${getWidth(logo)}px;`}
+        />
+      ) : (
+        <Image
+          src={logo}
+          alt={t(logoAlt, { allowFixedStrings: true })}
+          style={`width:${getWidth(logo)}px;`}
+          width={getWidth(logo)}
+          densities={[1.5, 2, 3]}
+          loading="eager"
+        />
+      ))
+  }{t(config.title, { allowFixedStrings: true })}</a
 >

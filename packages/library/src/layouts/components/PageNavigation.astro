@@ -27,15 +27,17 @@ const items = (config.mainMenu ?? []).map(({ href, label, requiresLocale }) => {
     isActive,
   }
 })
+
+const t = Astro.locals.i18n.t
 ---
 
-<nav class="-mr-3 flex items-center">
+<nav class="-me-3 flex items-center">
   <a
     class="hover:text-primary flex p-3 text-gray-600"
-    aria-label={Astro.locals.i18n.t("ln.search.title")}
+    aria-label={t("ln.search.title")}
     data-astro-prefetch="viewport"
     href={searchPagePath(Astro.currentLocale)}
-    ><Icon className="mdi--magnify" /></a
+    ><Icon className="mdi--magnify" ariaLabel="" /></a
   >
   <LanguagePicker />
 
@@ -48,9 +50,12 @@ const items = (config.mainMenu ?? []).map(({ href, label, requiresLocale }) => {
             active={isActive}
             target={isExternal ? "_blank" : "_self"}
           >
-            {Astro.locals.i18n.t(label, { fallbackToKey: true })}
+            {t(label, { allowFixedStrings: true })}
             {isExternal && (
-              <Icon className="mdi--external-link shrink-0 text-base" />
+              <Icon
+                className="mdi--external-link shrink-0 text-base"
+                ariaLabel=""
+              />
             )}
           </MenuItem>
         ))}

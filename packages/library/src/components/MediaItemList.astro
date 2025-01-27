@@ -12,12 +12,14 @@ interface Props {
 
 const { items } = Astro.props
 
+const { t, direction } = Astro.locals.i18n
+
 const mediaTypes = Object.fromEntries(
   (await getMediaTypes()).map((type) => [
     type.id,
     {
       id: type.id,
-      label: Astro.locals.i18n.t(type.data.label),
+      name: t(type.data.label, { allowFixedStrings: true }),
       icon: type.data.icon,
     },
   ]),
@@ -51,13 +53,13 @@ const mediaTypes = Object.fromEntries(
           </div>
 
           <div
-            class="ml-5 flex grow flex-col justify-center sm:ml-8"
+            class="ms-5 flex grow flex-col justify-center sm:ms-8"
             lang={item.data.language}
           >
             <p class="mb-1 line-clamp-3 font-bold text-gray-700 md:mb-3">
               <Icon
-                className={`${mediaTypes[item.data.type.id].icon} mr-2 align-bottom text-2xl text-gray-700`}
-                ariaLabel={mediaTypes[item.data.type.id].label}
+                className={`${mediaTypes[item.data.type.id].icon} me-2 align-bottom text-2xl text-gray-700`}
+                ariaLabel={mediaTypes[item.data.type.id].name}
               />
               <span>{item.data.title}</span>
             </p>
@@ -70,7 +72,11 @@ const mediaTypes = Object.fromEntries(
             </div>
           </div>
 
-          <Icon className="mdi--chevron-right hidden sm:block md:group-hover:text-primary my-auto ml-2 mr-4 shrink-0 text-2xl text-gray-300" />
+          <Icon
+            className="mdi--chevron-right hidden sm:block md:group-hover:text-primary my-auto ms-2 me-4 shrink-0 text-2xl text-gray-300"
+            flipIcon={direction === "rtl"}
+            ariaLabel=""
+          />
         </a>
       </li>
     ))
