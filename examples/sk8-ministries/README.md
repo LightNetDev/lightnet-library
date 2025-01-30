@@ -5,7 +5,7 @@ View online at [sk8-ministries.pages.dev](https://sk8-ministries.pages.dev/)
 Create a local copy of this example:
 
 ```sh
-npm create astro@latest -- --template LightNetDev/lightnet-library/examples/sk8-ministries
+npm create astro@latest -- --template LightNetDev/lightnet/examples/sk8-ministries
 ```
 
 ## 🚀 Commands

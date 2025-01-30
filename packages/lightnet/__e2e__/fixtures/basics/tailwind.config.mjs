@@ -1,4 +1,4 @@
-import { lightnetStyles } from "@lightnet/library/tailwind.config.ts"
+import { lightnetStyles } from "lightnet/tailwind.config.ts"
 
 /**
  * @type {import('tailwindcss').Config}

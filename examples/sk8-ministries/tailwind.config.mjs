@@ -1,9 +1,9 @@
-import { lightnetStyles } from "@lightnet/library/tailwind.config.ts"
+import { lightnetStyles } from "lightnet/tailwind.config.ts"
 
 /**
  * Tailwind CSS configuration for LightNet projects.
  *
- * This file customizes the appearance of your LightNet library by defining styles
+ * This file customizes the appearance of your LightNet site by defining styles
  * such as the primary color. The configuration uses a preset provided by LightNet,
  * ensuring consistent styling and best practices.
  *

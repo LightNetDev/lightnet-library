@@ -1,4 +1,4 @@
-# LightNet library
+# LightNet
 
 ## CLI
 

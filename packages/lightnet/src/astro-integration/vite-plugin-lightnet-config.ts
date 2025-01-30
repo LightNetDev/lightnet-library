@@ -23,7 +23,7 @@ export function vitePluginLightnetConfig(
   const config = verifySchema(
     configSchema,
     lightnetConfig,
-    "Invalid config passed to LightNet Library integration.",
+    "Invalid config passed to LightNet integration.",
   )
   return {
     name: "vite-plugin-lightnet-config",

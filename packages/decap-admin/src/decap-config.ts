@@ -1,6 +1,6 @@
-import { resolveDefaultLocale } from "@lightnet/library/i18n"
 import type { APIRoute } from "astro"
 import { getCollection } from "astro:content"
+import { resolveDefaultLocale } from "lightnet/i18n"
 import userConfig from "virtual:lightnet/decapAdminUserConfig"
 import YAML from "yaml"
 

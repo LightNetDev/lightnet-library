@@ -9,11 +9,9 @@ import { resolveLocales } from "../i18n/resolve-locales"
 import type { LightnetConfig } from "./config"
 import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
 
-export function lightnetLibrary(
-  lightnetConfig: LightnetConfig,
-): AstroIntegration {
+export function lightnet(lightnetConfig: LightnetConfig): AstroIntegration {
   return {
-    name: "@lightnet/library",
+    name: "lightnet",
     hooks: {
       "astro:config:setup": ({
         injectRoute,
@@ -24,35 +22,35 @@ export function lightnetLibrary(
       }) => {
         injectRoute({
           pattern: "404",
-          entrypoint: "@lightnet/library/pages/404.astro",
+          entrypoint: "lightnet/pages/404.astro",
           prerender: true,
         })
 
         injectRoute({
           pattern: "",
-          entrypoint: "@lightnet/library/pages/RedirectToDefaultLocale.astro",
+          entrypoint: "lightnet/pages/RedirectToDefaultLocale.astro",
           prerender: true,
         })
 
         injectRoute({
           pattern: "/[locale]/media",
-          entrypoint: "@lightnet/library/pages/SearchPage.astro",
+          entrypoint: "lightnet/pages/SearchPage.astro",
           prerender: true,
         })
 
         injectRoute({
           pattern: "/api/search.json",
-          entrypoint: "@lightnet/library/pages/api/search.ts",
+          entrypoint: "lightnet/pages/api/search.ts",
           prerender: true,
         })
 
         injectRoute({
           pattern: "/[locale]/media/[slug]",
-          entrypoint: "@lightnet/library/pages/DetailsPage.astro",
+          entrypoint: "lightnet/pages/DetailsPage.astro",
           prerender: true,
         })
 
-        addMiddleware({ entrypoint: "@lightnet/library/locals", order: "pre" })
+        addMiddleware({ entrypoint: "lightnet/locals", order: "pre" })
 
         config.integrations.push(tailwind(), react())
 

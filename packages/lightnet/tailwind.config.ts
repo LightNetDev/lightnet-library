@@ -13,7 +13,7 @@ export function lightnetStyles({
   const primary = primaryColor ?? DEFAULT_COLOR_PRIMARY
   return {
     content: [
-      "./node_modules/@lightnet/library/src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+      "./node_modules/lightnet/src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
       "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
       "./src/content/media-types/*.json",
     ],

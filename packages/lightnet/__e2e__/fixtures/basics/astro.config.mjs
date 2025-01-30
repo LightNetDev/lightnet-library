@@ -1,6 +1,6 @@
 // @ts-check
-import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
+import lightnet from "lightnet"
 
 import de from "./src/translations/de.json"
 import en from "./src/translations/en.json"
@@ -9,7 +9,7 @@ import en from "./src/translations/en.json"
 export default defineConfig({
   site: "https://test.com",
   integrations: [
-    lightnetLibrary({
+    lightnet({
       title: "Basic Test",
       logo: { src: "./src/assets/logo.png" },
       languages: [

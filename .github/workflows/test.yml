@@ -33,6 +33,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: library-playwright-report
-          path: packages/library/playwright-report/
+          name: lightnet-playwright-report
+          path: packages/lightnet/playwright-report/
           retention-days: 30
