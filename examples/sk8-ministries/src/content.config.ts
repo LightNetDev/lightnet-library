@@ -1,10 +1,10 @@
-import { LIGHTNET_COLLECTIONS } from "@lightnet/library/content"
+import { LIGHTNET_COLLECTIONS } from "lightnet/content"
 
 /**
  * Astro Content Collections Configuration for LightNet.
  *
  * This file defines the content collections for your LightNet project,
- * using the default collection presets provided by the LightNet library.
+ * using the default collection presets provided by the LightNet.
  *
  * Content collections in Astro are used to structure and organize various types
  * of content in your project, such as pages, posts, or media items. By using the

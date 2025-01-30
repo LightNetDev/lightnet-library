@@ -1,1 +1,0 @@
-# LightNet Library SDK

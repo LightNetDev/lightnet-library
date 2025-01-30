@@ -2,18 +2,18 @@
 /**
  * Provide the paths for the supported locales (user interface languages).
  */
-export { getLocalePaths as getStaticPaths } from "@lightnet/library/i18n"
+export { getLocalePaths as getStaticPaths } from "lightnet/i18n"
 
+import { AstroError } from "astro/errors"
+import { getEntry } from "astro:content"
 import {
   Gallery,
   Hero,
   HighlightSection,
   Page,
   Section,
-} from "@lightnet/library/components"
-import { getMediaItems } from "@lightnet/library/content"
-import { AstroError } from "astro/errors"
-import { getEntry } from "astro:content"
+} from "lightnet/components"
+import { getMediaItems } from "lightnet/content"
 
 import eventImage from "../../assets/event.webp"
 import heroImage from "../../assets/hero.webp"

@@ -1,6 +1,6 @@
 ---
 # Use Lightnet layout for markdown pages.
-layout: "@lightnet/library/layouts/MarkdownPage.astro"
+layout: "lightnet/layouts/MarkdownPage.astro"
 ---
 
 # Über uns

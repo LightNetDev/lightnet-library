@@ -1,7 +1,7 @@
 // @ts-check
 import lightnetDecapAdmin from "@lightnet/decap-admin"
-import lightnetLibrary from "@lightnet/library"
 import { defineConfig } from "astro/config"
+import lightnet from "lightnet"
 
 import deTranslations from "./src/translations/de.json"
 import enTranslations from "./src/translations/en.json"
@@ -10,7 +10,7 @@ import enTranslations from "./src/translations/en.json"
  * Defines the available languages for the site, covering both
  * user interface and content languages.
  *
- * @type {import('@lightnet/library').Language[]}
+ * @type {import('lightnet').Language[]}
  */
 const languages = [
   {
@@ -35,10 +35,10 @@ export default defineConfig({
 
   integrations: [
     /**
-     * Configuration for the LightNet Library integration.
+     * Configuration for the LightNet integration.
      * This defines core settings such as title, logo, languages, and menu.
      */
-    lightnetLibrary({
+    lightnet({
       /**
        * Title of the website. It appears in the browser tab and the header bar.
        */
@@ -117,7 +117,7 @@ export default defineConfig({
      */
     lightnetDecapAdmin({
       /**
-       * Content languages. This should match the languages array of the lightnetLibrary config.
+       * Content languages. This should match the languages array of the lightnet config.
        */
       languages: languages,
     }),

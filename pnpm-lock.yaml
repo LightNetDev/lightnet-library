@@ -74,12 +74,12 @@ importers:
       '@lightnet/decap-admin':
         specifier: ^2.3.2
         version: link:../../packages/decap-admin
-      '@lightnet/library':
-        specifier: ^2.15.0
-        version: link:../../packages/library
       astro:
         specifier: ^5.1.9
         version: 5.1.9(@types/node@22.10.10)(jiti@1.21.7)(rollup@4.32.0)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+      lightnet:
+        specifier: ^2.15.0
+        version: link:../../packages/lightnet
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -98,15 +98,15 @@ importers:
 
   packages/decap-admin:
     dependencies:
-      '@lightnet/library':
-        specifier: ^2.0.22
-        version: link:../library
       astro:
         specifier: ^5.1.0
         version: 5.1.9(@types/node@22.10.10)(jiti@1.21.7)(rollup@4.32.0)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
       decap-cms:
         specifier: ^3.5.0
         version: 3.5.0(@types/hoist-non-react-statics@3.3.6)(@types/node@22.10.10)(@types/react@19.0.8)(decap-cms-lib-util@3.1.0(immutable@3.8.2)(lodash@4.17.21))(graphql@15.10.1)(webpack@5.93.0)
+      lightnet:
+        specifier: ^2.0.22
+        version: link:../lightnet
       sharp:
         specifier: ^0.33.4
         version: 0.33.5
@@ -117,7 +117,7 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0
 
-  packages/library:
+  packages/lightnet:
     dependencies:
       '@astrojs/react':
         specifier: ^4.1.0
@@ -178,7 +178,7 @@ importers:
         specifier: ^3.0.4
         version: 3.0.4(@types/debug@4.1.12)(@types/node@22.10.10)(jiti@1.21.7)(terser@5.37.0)(yaml@2.7.0)
 
-  packages/library/__e2e__/fixtures/basics:
+  packages/lightnet/__e2e__/fixtures/basics:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.4
@@ -192,12 +192,12 @@ importers:
       '@lightnet/decap-admin':
         specifier: ^2.3.2
         version: link:../../../../decap-admin
-      '@lightnet/library':
-        specifier: ^2.15.0
-        version: link:../../..
       astro:
         specifier: ^5.1.9
         version: 5.1.9(@types/node@22.10.10)(jiti@1.21.7)(rollup@4.32.0)(terser@5.37.0)(typescript@5.7.3)(yaml@2.7.0)
+      lightnet:
+        specifier: ^2.15.0
+        version: link:../../..
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -6615,7 +6615,7 @@ snapshots:
 
   '@types/hoist-non-react-statics@3.3.6':
     dependencies:
-      '@types/react': 19.0.8
+      '@types/react': 18.3.18
       hoist-non-react-statics: 3.3.2
 
   '@types/is-hotkey@0.1.10': {}
@@ -6655,7 +6655,7 @@ snapshots:
   '@types/react-redux@7.1.34':
     dependencies:
       '@types/hoist-non-react-statics': 3.3.6
-      '@types/react': 19.0.8
+      '@types/react': 18.3.18
       hoist-non-react-statics: 3.3.2
       redux: 4.2.1
 

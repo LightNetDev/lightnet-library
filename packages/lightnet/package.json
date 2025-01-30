@@ -1,5 +1,5 @@
 {
-  "name": "@lightnet/library",
+  "name": "lightnet",
   "type": "module",
   "license": "MIT",
   "version": "2.15.1",
