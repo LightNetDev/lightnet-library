@@ -1,5 +1,11 @@
 # @lightnet/library
 
+## 2.15.2
+
+### Patch Changes
+
+- [#189](https://github.com/LightNetDev/lightnet/pull/189) [`1e4458a`](https://github.com/LightNetDev/lightnet/commit/1e4458a000684273337b7f9705c0e59fd98b36d2) Thanks [@si-fab](https://github.com/si-fab)! - Rename "LightNet Library" to "LightNet"
+
 ## 2.15.1
 
 ### Patch Changes
