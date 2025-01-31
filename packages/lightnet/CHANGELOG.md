@@ -1,4 +1,4 @@
-# @lightnet/library
+# lightnet
 
 ## 2.15.2
 
