@@ -1,29 +1,36 @@
 # LightNet
 
-## CLI
+Share the message of Jesus and strengthen believers worldwide. LightNet empowers you to create digital media libraries, making your Christian content accessible on the web — including videos, audio, images, and books.
 
-When you have downloaded the repository for the first time, run `pnpm install` inside the folder to install its dependencies. After that this commands will be available on your command line:
+LightNet is built as an integration for the Astro framework, enabling the creation of statically generated sites that can be hosted on any file server. These sites are fast, easily extendable, and fully support internationalization. Explore more in our [developer documentation](https://lightnet-docs.pages.dev).
+
+Check out our [example page](https://sk8-ministries.pages.dev) showcasing LightNet in action for a fictional skateboard ministry.
+
+## Contributing
+
+This repository contains the LightNet source code. If you'd like to contribute, these commands will be helpful.
 
 ```sh
-# run the development server for sk8 ministries example
+# Install/Update the dependencies by running
+pnpm install
+
+# Run the development server for sk8 ministries example
 pnpm dev
 
-# build the application within examples/sk8-ministries/dist
+# Build the application within examples/sk8-ministries/dist
 pnpm build
 
-# run a local server to preview the current build from examples/sk8-ministries/dist
+# Run a local server to preview the current build from examples/sk8-ministries/dist
 pnpm preview
 
-# reformat code
+# Reformat code
 pnpm format
 
-# check code style
+# Check the code style
 pnpm lint
 ```
 
-## Extensions
-
-This VS-Code extensions are recommended for development:
+This VS-Code extensions are recommended for development on this repository:
 
 - [Astro](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) adds support for working with Astro projects.
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) adds TailwindCSS (this is how we write css in this project) support.
