@@ -21,13 +21,13 @@
     "./decap-config.ts": "./src/decap-config.ts"
   },
   "peerDependencies": {
-    "lightnet": "^2.0.22",
     "astro": "^5.1.0",
+    "lightnet": "^2.0.22",
     "sharp": "^0.33.4",
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "decap-cms": "^3.5.0",
+    "decap-cms": "^3.6.1",
     "yaml": "^2.7.0"
   }
 }
