@@ -1,5 +1,11 @@
 # @lightnet/decap-admin
 
+## 2.3.4
+
+### Patch Changes
+
+- [#192](https://github.com/LightNetDev/LightNet/pull/192) [`986b2a3`](https://github.com/LightNetDev/LightNet/commit/986b2a37b7f3aa829708cc0e2ab8d15229b6bdbf) Thanks [@si-fab](https://github.com/si-fab)! - Update dependencies.
+
 ## 2.3.3
 
 ### Patch Changes
