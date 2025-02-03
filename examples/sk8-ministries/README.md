@@ -1,8 +1,9 @@
 # Sk8 Ministries Example
 
-View online at [sk8-ministries.pages.dev](https://sk8-ministries.pages.dev/)
+This example show cases LightNet´s capabilities with a fictional skateboard ministry.
+View it online at [sk8-ministries.pages.dev](https://sk8-ministries.pages.dev/).
 
-Create a local copy of this example:
+Use this example to explore how to build a LightNet site or as a starting point for your own site. To **create a local copy**, run the following from your terminal:
 
 ```sh
 npm create astro@latest -- --template LightNetDev/lightnet/examples/sk8-ministries
