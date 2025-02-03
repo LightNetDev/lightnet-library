@@ -1,5 +1,11 @@
 # lightnet
 
+## 2.15.4
+
+### Patch Changes
+
+- [#194](https://github.com/LightNetDev/LightNet/pull/194) [`3122a50`](https://github.com/LightNetDev/LightNet/commit/3122a50654b335c84033add33e036ff81e1bdc16) Thanks [@si-fab](https://github.com/si-fab)! - Change header background color to be pure white.
+
 ## 2.15.3
 
 ### Patch Changes
