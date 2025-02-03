@@ -3,6 +3,15 @@
   "type": "module",
   "license": "MIT",
   "version": "2.3.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LightNetDev/lightnet",
+    "directory": "packages/decap-admin"
+  },
+  "bugs": {
+    "url": "https://github.com/LightNetDev/lightnet/issues"
+  },
+  "homepage": "https://lightnet-docs.pages.dev",
   "keywords": [
     "astro-integration"
   ],
