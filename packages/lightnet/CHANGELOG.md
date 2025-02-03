@@ -1,5 +1,13 @@
 # lightnet
 
+## 2.15.3
+
+### Patch Changes
+
+- [#192](https://github.com/LightNetDev/LightNet/pull/192) [`986b2a3`](https://github.com/LightNetDev/LightNet/commit/986b2a37b7f3aa829708cc0e2ab8d15229b6bdbf) Thanks [@si-fab](https://github.com/si-fab)! - Update dependencies.
+
+- [#192](https://github.com/LightNetDev/LightNet/pull/192) [`986b2a3`](https://github.com/LightNetDev/LightNet/commit/986b2a37b7f3aa829708cc0e2ab8d15229b6bdbf) Thanks [@si-fab](https://github.com/si-fab)! - Make details page main buttons more consistent.
+
 ## 2.15.2
 
 ### Patch Changes
