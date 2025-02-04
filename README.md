@@ -8,7 +8,7 @@ LightNet is built as an integration for the [Astro](https://astro.build) framewo
 
 [Read the LightNet docs](https://lightnet-docs.pages.dev) to learn how to use LightNet.
 
-## Explore the Example
+## Example site
 
 [Check out the example site](/examples/sk8-ministries/) showcasing LightNet in action for a fictional skateboard ministry.
 
