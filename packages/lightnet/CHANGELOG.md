@@ -1,5 +1,11 @@
 # lightnet
 
+## 2.15.5
+
+### Patch Changes
+
+- [#197](https://github.com/LightNetDev/LightNet/pull/197) [`71fbffc`](https://github.com/LightNetDev/LightNet/commit/71fbffcd9cbe5224ea7ee66a7a7b05e6ecb39d62) Thanks [@si-fab](https://github.com/si-fab)! - Update dependencies.
+
 ## 2.15.4
 
 ### Patch Changes
