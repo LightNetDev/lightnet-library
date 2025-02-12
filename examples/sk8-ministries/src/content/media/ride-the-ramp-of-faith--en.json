@@ -5,8 +5,8 @@
   "dateCreated": "2024-04-21",
   "authors": ["Sk8 Ministries"],
   "content": [
-    { "url": "/files/example.epub", "name": "eBook" },
-    { "url": "/files/example.pdf", "name": "Table of Contents" }
+    { "url": "/files/example.epub", "label": "eBook" },
+    { "url": "/files/example.pdf", "label": "Table of Contents" }
   ],
   "image": "./images/ride-the-ramp-of-faith--en.webp",
   "language": "en",

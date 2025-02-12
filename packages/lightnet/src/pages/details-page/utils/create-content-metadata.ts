@@ -44,10 +44,10 @@ const KNOWN_EXTENSIONS: Record<
 
 export function createContentMetadata({
   url,
-  name: customName,
+  label: customLabel,
 }: {
   url: string
-  name?: string
+  label?: string
 }) {
   const lastUrlSegment = url.split("/").slice(-1)[0]
   const hasExtension = lastUrlSegment.includes(".")
@@ -61,7 +61,7 @@ export function createContentMetadata({
   const fileName = hasExtension
     ? lastUrlSegment.slice(0, -(extension.length + 1))
     : undefined
-  const name = customName ?? fileName ?? linkName
+  const label = customLabel ?? fileName ?? linkName
   const type = KNOWN_EXTENSIONS[extension]?.type ?? "link"
   const canBeOpened =
     !hasExtension || !!KNOWN_EXTENSIONS[extension]?.canBeOpened
@@ -70,7 +70,7 @@ export function createContentMetadata({
     url,
     extension,
     isExternal,
-    name,
+    label,
     canBeOpened,
     type,
     target: isExternal ? "_blank" : "_self",
