@@ -1,5 +1,12 @@
 # lightnet
 
+## 2.15.6
+
+### Patch Changes
+
+- [#200](https://github.com/LightNetDev/LightNet/pull/200) [`1cfec1b`](https://github.com/LightNetDev/LightNet/commit/1cfec1b0a0605541879fae86985daaa589a69c2a) Thanks [@si-fab](https://github.com/si-fab)! - Rename content `name` property to content `label` property.
+  Support translations keys as well.
+
 ## 2.15.5
 
 ### Patch Changes
