@@ -35,7 +35,7 @@ const { t, direction } = Astro.locals.i18n
 >
   {
     content.map(
-      ({ extension, name, type, canBeOpened, url, target }, index) => (
+      ({ extension, label, type, canBeOpened, url, target }, index) => (
         <li class="group -mt-px px-4 transition-colors ease-in-out hover:bg-gray-300 md:px-8">
           <a
             href={url}
@@ -50,7 +50,7 @@ const { t, direction } = Astro.locals.i18n
             </span>
 
             <div class="ms-4 line-clamp-1 shrink grow overflow-hidden sm:ms-8">
-              {name}
+              {t(label, { allowFixedStrings: true })}
             </div>
             <div class="me-4 ms-2 shrink-0 font-bold uppercase text-gray-600 sm:me-8">
               {extension}

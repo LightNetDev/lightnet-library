@@ -143,9 +143,9 @@ export const mediaItemSchema = z.object({
         url: z.string(),
         /**
          * The name of the content. If this is not set. The file name
-         * from URL will be used.
+         * from URL will be used. This can either be a fixed string or a translation key.
          */
-        name: z.string().optional(),
+        label: z.string().optional(),
       }),
     )
     .min(1),

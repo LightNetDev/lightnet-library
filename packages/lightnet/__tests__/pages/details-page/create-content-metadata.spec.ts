@@ -8,7 +8,7 @@ test("Should create complete content metadata", () => {
     canBeOpened: true,
     type: "text",
     target: "_blank",
-    name: "some",
+    label: "some",
     isExternal: true,
     extension: "pdf",
   })
@@ -19,7 +19,7 @@ test("Should create complete content metadata", () => {
     expected: {
       canBeOpened: true,
       target: "_blank",
-      name: "youtube.com",
+      label: "youtube.com",
       isExternal: true,
       extension: "",
       type: "link",
@@ -31,7 +31,7 @@ test("Should create complete content metadata", () => {
       canBeOpened: true,
       type: "text",
       target: "_blank",
-      name: "some",
+      label: "some",
       isExternal: true,
       extension: "pdf",
     },
@@ -42,7 +42,7 @@ test("Should create complete content metadata", () => {
       type: "link",
       canBeOpened: false,
       target: "_blank",
-      name: "some",
+      label: "some",
       isExternal: true,
       extension: "unknown",
     },
@@ -53,7 +53,7 @@ test("Should create complete content metadata", () => {
       canBeOpened: true,
       type: "text",
       target: "_self",
-      name: "my",
+      label: "my",
       isExternal: false,
       extension: "pdf",
     },
@@ -63,7 +63,7 @@ test("Should create complete content metadata", () => {
     expected: {
       canBeOpened: true,
       target: "_self",
-      name: "my-id",
+      label: "my-id",
       isExternal: false,
       extension: "",
       type: "link",
@@ -74,7 +74,7 @@ test("Should create complete content metadata", () => {
     expected: {
       canBeOpened: false,
       target: "_self",
-      name: "my",
+      label: "my",
       isExternal: false,
       type: "link",
       extension: "unknown",
@@ -85,7 +85,7 @@ test("Should create complete content metadata", () => {
     expected: {
       canBeOpened: false,
       target: "_self",
-      name: "some",
+      label: "some",
       isExternal: false,
       extension: "zip",
       type: "package",
@@ -99,6 +99,6 @@ test("Should create complete content metadata", () => {
 
 test("Should override name with input", () => {
   expect(
-    createContentMetadata({ url: "/path/to/a.file", name: "My file" }),
-  ).toMatchObject({ name: "My file" })
+    createContentMetadata({ url: "/path/to/a.file", label: "My file" }),
+  ).toMatchObject({ label: "My file" })
 })
