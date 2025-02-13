@@ -24,19 +24,19 @@ body:
 
         # Background & Motivation
 
-        Include any useful background detail that that explains why this RFC is important.
-        What are the problems that this RFC sets out to solve? Why now? Be brief!
+        Include any useful background detail that that explains why this feature is important.
+        What are the problems that this feature sets out to solve? Why now? Be brief!
 
-        It can be useful to illustrate your RFC as a user problem in this section.
-        (ex: "Users have reported that it is difficult to do X in Astro today.")
+        It can be useful to illustrate your feature as a user problem in this section.
+        (ex: "Users have reported that it is difficult to do X in LightNet today.")
 
         # Goals
 
-        A **concise, bulleted-list** outlining the intended goals of this RFC. 
+        A **concise, bulleted-list** outlining the intended goals of this feature. 
 
-        - What are the exact problems that you are trying to solve with this RFC?
+        - What are the exact problems that you are trying to solve with this feature?
         - Separate these goals from the solution that you will outline below.
-        - If this RFC isn't approved, these goals can be used to develop alternative solutions.
+        - If this feature isn't approved, these goals can be used to develop alternative solutions.
 
         # Example
 
@@ -49,9 +49,3 @@ body:
       options:
         - label: I am willing to submit a pull request for this feature.
           required: false
-  - type: markdown
-    attributes:
-      value: |
-        [Learn more](https://github.com/withastro/roadmap) about our proposal and RFC process.
-    validations:
-      required: true
