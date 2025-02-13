@@ -1,4 +1,4 @@
-name: "💬 Feature Proposal"
+name: "💡 Feature Proposal"
 description: Suggest a new feature to be added
 labels: ["Feature"]
 body:
@@ -12,40 +12,43 @@ body:
         If you are interested in proposing a new feature or improvement to LightNet, then you are in the right place! 
 
         This template covers most of the questions you will be asked about your proposal.
-        **This template is completely optional!** You are free to delete it, and use whatever format or length you prefer. You can always come back later to restructure your proposal.
-  - type: textarea
-    id: main
+
+        Want to report a bug instead? [Use our bug report form](https://github.com/lightnetdev/lightnet/issues/new?assignees=&labels=&projects=&template=---01-bug-report.yml)
+  - type: input
+    id: lightnet-version
     attributes:
-      label: Body
-      value: |
-        # Summary
-
-        A brief, one or two sentence explanation of the proposal.
-
-        # Background & Motivation
-
-        Include any useful background detail that that explains why this feature is important.
-        What are the problems that this feature sets out to solve? Why now? Be brief!
-
-        It can be useful to illustrate your feature as a user problem in this section.
-        (ex: "Users have reported that it is difficult to do X in LightNet today.")
-
-        # Goals
-
-        A **concise, bulleted-list** outlining the intended goals of this feature. 
-
-        - What are the exact problems that you are trying to solve with this feature?
-        - Separate these goals from the solution that you will outline below.
-        - If this feature isn't approved, these goals can be used to develop alternative solutions.
-
-        # Example
-
-        If the proposal involves a new or changed API, then include a basic code example.
-        Otherwise, omit this section if it's not applicable.
+      label: What version of `lightnet` are you using?
+      placeholder: 0.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What is your idea?
+      description: A brief, one or two sentence description of your idea for a new feature.
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: Why is this feature necessary?
+      description: Explain why this feature is important. What problems would it solve? Which users would it help?
+    validations:
+      required: true
+  - type: textarea
+    id: prior-art
+    attributes:
+      label: Do you have examples of this feature in other projects?
+      description: Help us understand your idea by sharing links to example implementations we can compare against.
+      placeholder: |
+        - Example
+        - Example
+        - Example
   - type: checkboxes
     id: will-pr
     attributes:
       label: Participation
+      description: Let us know if your interested in contributing this feature yourself.
       options:
         - label: I am willing to submit a pull request for this feature.
           required: false
