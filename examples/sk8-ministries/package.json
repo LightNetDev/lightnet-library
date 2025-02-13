@@ -11,7 +11,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.2.0",
     "@astrojs/tailwind": "^6.0.0",
     "@lightnet/decap-admin": "^2.3.4",
