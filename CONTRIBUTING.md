@@ -16,18 +16,18 @@ There are lots of ways to contribute to LightNet.
 Maintaining LightNet requires writing Astro code, as well as addressing accessibility, styling, and UX concerns.
 Help writing docs, catching typos and errors, as well as translating docs into other languages is always welcome.
 
-You can also get involved by leaving feedback on [issues][issues] or reviewing [pull requests][pulls] by other contributors.
+You can also get involved by leaving feedback on [issues](https://github.com/LightNetDev/LightNet/issues) or reviewing [pull requests](https://github.com/LightNetDev/LightNet/pulls) by other contributors.
 
 We encourage you to:
 
-- [**Open an issue**][new-issue] to let us know of bugs & other issues in LightNet or propose a new feature.
+- [**Open an issue**](https://github.com/LightNetDev/LightNet/issues/new/choose) to let us know of bugs & other issues in LightNet or propose a new feature.
 
-- [**Look at existing issues**][issues] (especially those labelled [“good first issue”][gfi]) to find ways to contribute.
+- [**Look at existing issues**](https://github.com/LightNetDev/LightNet/issues) (especially those labelled [“good first issue”](https://github.com/LightNetDev/LightNet//issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+)) to find ways to contribute.
 
 - **Make a pull request (PR)** to address an open issue or to fix obvious problems.
-  Read more about [making a PR in GitHub’s docs][pr-docs]
+  Read more about [making a PR in GitHub’s docs](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request)
 
-- [**Review existing PRs**][pulls] to help us merge contributions sooner.
+- [**Review existing PRs**](https://github.com/LightNetDev/LightNet/pulls) to help us merge contributions sooner.
 
 - [**Add or update translations**](#translations). We need help translating LightNet’s UI.
 
