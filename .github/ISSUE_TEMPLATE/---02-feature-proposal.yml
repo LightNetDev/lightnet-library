@@ -1,0 +1,47 @@
+name: "💡 Feature Proposal"
+description: Suggest a new feature to be added
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Feature Proposal
+
+        Welcome! 👋
+
+        If you are interested in proposing a new feature or improvement to LightNet, then you are in the right place! 
+
+        This template covers most of the questions you will be asked about your proposal.
+
+        Want to report a bug instead? [Use our bug report form](https://github.com/lightnetdev/lightnet/issues/new?assignees=&labels=&projects=&template=---01-bug-report.yml)
+  - type: textarea
+    id: summary
+    attributes:
+      label: What is your idea?
+      description: A brief, one or two sentence description of your idea for a new feature.
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: Why is this feature necessary?
+      description: Explain why this feature is important. What problems would it solve? Which users would it help?
+    validations:
+      required: true
+  - type: textarea
+    id: prior-art
+    attributes:
+      label: Do you have examples of this feature in other projects?
+      description: Help us understand your idea by sharing links to example implementations we can compare against.
+      placeholder: |
+        - Example
+        - Example
+        - Example
+  - type: checkboxes
+    id: will-pr
+    attributes:
+      label: Participation
+      description: Let us know if your interested in contributing this feature yourself.
+      options:
+        - label: I am willing to submit a pull request for this feature.
+          required: false
