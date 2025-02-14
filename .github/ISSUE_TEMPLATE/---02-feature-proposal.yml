@@ -1,6 +1,6 @@
 name: "💡 Feature Proposal"
 description: Suggest a new feature to be added
-labels: ["feature"]
+labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
