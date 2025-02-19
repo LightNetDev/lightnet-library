@@ -42,8 +42,7 @@ const userConfigSchema = z.object({
   languages: z
     .object({
       code: z.string(),
-      isDefaultLocale: z.boolean().default(false),
-      translations: z.unknown().optional(),
+      isDefaultUILanguage: z.boolean().default(false),
     })
     .array(),
   /**

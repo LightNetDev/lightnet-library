@@ -3,8 +3,7 @@ import { fileURLToPath } from "node:url"
 
 import type { AstroConfig, AstroIntegrationLogger, ViteUserConfig } from "astro"
 
-import { verifySchema } from "../utils/verify-schema"
-import { configSchema, type LightnetConfig } from "./config"
+import { type LightnetConfig } from "./config"
 
 const CONFIG = "virtual:lightnet/config"
 const LOGO = "virtual:lightnet/logo"
@@ -13,18 +12,13 @@ const PROJECT_CONTEXT = "virtual:lightnet/project-context"
 const VIRTUAL_MODULES = [CONFIG, LOGO, PROJECT_CONTEXT] as const
 
 export function vitePluginLightnetConfig(
-  lightnetConfig: LightnetConfig,
+  config: LightnetConfig,
   { root, srcDir, site }: Pick<AstroConfig, "root" | "srcDir" | "site">,
   logger: AstroIntegrationLogger,
 ): NonNullable<ViteUserConfig["plugins"]>[number] {
   const resolveFilePath = (id: string) =>
     JSON.stringify(id.startsWith(".") ? resolve(fileURLToPath(root), id) : id)
 
-  const config = verifySchema(
-    configSchema,
-    lightnetConfig,
-    "Invalid config passed to LightNet integration.",
-  )
   return {
     name: "vite-plugin-lightnet-config",
     resolveId(id): string | undefined {
