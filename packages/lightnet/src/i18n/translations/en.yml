@@ -1,23 +1,101 @@
-ln.404.go-to-the-home-page: Go to the Home page
-ln.404.page-not-found: Page not found
-ln.common.categories: Categories
-ln.common.category: Category
-ln.common.language: Language
-ln.common.languages: Languages
-ln.common.a11y.external-link: External link
-ln.common.type: Type
-ln.details.open: Open
-ln.details.share: Share
-ln.details.part-of-collection: Part of Collection
-ln.details.download: Download
+# Accessibility label to open the main menu of the page. This is used for the hamburger
+# icon in the top right corner of every page.
+# This text is only "visible" to a screen reader.
+# Example on: https://sk8-ministries.pages.dev/en
 ln.header.a11y.open-main-menu: Open Main Menu
+
+# Accessibility label to open the page language menu. This is used for the language
+# icon in header bar of every page.
+# This text is only "visible" to a screen reader.
+# Example on: https://sk8-ministries.pages.dev/en
 ln.header.a11y.select-language: Select language
+
+# Name of the home page
+# Example on: https://sk8-ministries.pages.dev/en (first item inside the main menu)
 ln.home.title: Home
-ln.search.all-categories: All Categories
-ln.search.all-languages: All Languages
-ln.search.all-types: All Types
-ln.search.more-results: More results
-ln.search.no-results: No Results
-ln.search.placeholder: Search in Title, Author, Description...
+
+# Label for many media item categories.
+# Example on: https://sk8-ministries.pages.dev/en/media/how-to-360-flip--en/
+ln.common.categories: Categories
+
+# Label for one media item category
+#
+# Example on: https://sk8-ministries.pages.dev/en/media
+ln.common.category: Category
+
+# Label for one language
+# Example on: https://sk8-ministries.pages.dev/en/media
+ln.common.language: Language
+
+# Label for many languages
+# Example on: https://sk8-ministries.pages.dev/en/media/how-to-kickflip--en/
+ln.common.languages: Languages
+
+# Accessibility label for a external link to a different website.
+# This text is only "visible" to a screen reader.
+# Example on: https://sk8-ministries.pages.dev/en/media/ollie-with-integrity--en/
+# => used by the read button.
+ln.common.a11y.external-link: External link
+
+# Label for a media type.
+# Example on: https://sk8-ministries.pages.dev/en/media
+ln.common.type: Type
+
+# Title of the search page
+# Example on: https://sk8-ministries.pages.dev/en/media/
 ln.search.title: Search
+
+# Hint inside the main text box on the search page.
+# Example on: https://sk8-ministries.pages.dev/en/media/
+ln.search.placeholder: Search in Title, Author, Description...
+
+# Search filter option to filter for all content languages.
+# Example on: https://sk8-ministries.pages.dev/en/media/
+ln.search.all-languages: All Languages
+
+# Search filter option to filter for all media types.
+# Example on: https://sk8-ministries.pages.dev/en/media/
+ln.search.all-types: All Types
+
+# Search filter option to filter for all media item categories.
+# Example on: https://sk8-ministries.pages.dev/en/media/
+ln.search.all-categories: All Categories
+
+# Button label on the search page to show more result items.
+ln.search.more-results: More results
+
+# Label on the search page if no results are found
+# Example on: https://sk8-ministries.pages.dev/en/media/?language=de&type=book
+ln.search.no-results: No Results
+
+# Label for a button to open a media item.
+ln.details.open: Open
+
+# Label for a button to share a media item.
+# Example on: https://sk8-ministries.pages.dev/en/media/ollie-with-integrity--en/
+ln.details.share: Share
+
+# Label on the media item details page used above
+# collections this media item is included.
+# Example on: https://sk8-ministries.pages.dev/en/media/ollie-with-integrity--en/
+ln.details.part-of-collection: Part of Collection
+
+# Label for a button to download a media item
+# Example on: https://sk8-ministries.pages.dev/en/media/ride-the-ramp-of-faith--en/
+ln.details.download: Download
+
+# Message that will inform the user after pressing "Share", that
+# the current URL has been copied to his clipboard. This message will only be used
+# for browsers that do not support native sharing.
+# Example on: https://sk8-ministries.pages.dev/en/media/ride-the-ramp-of-faith--en/ (press "Share" on a Firefox browser)
 ln.share.url-copied-to-clipboard: URL copied to clipboard
+
+# The title of the 404 page. The 404 page will show up when
+# a user visits a path that does not exist.
+# Example on: https://sk8-ministries.pages.dev/unexisting-path
+ln.404.page-not-found: Page not found
+
+# The button label of the 404 page. This button will
+# navigate back to the home page.
+# Example on: https://sk8-ministries.pages.dev/unexisting-path
+ln.404.go-to-the-home-page: Go to the Home page
