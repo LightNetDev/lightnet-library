@@ -40,7 +40,7 @@ export function useTranslate(locale: string | undefined): TranslateFn {
     if (value.startsWith("ln.") || value.startsWith("custom.")) {
       throw new AstroError(
         `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
-        `Add a translation for '${key}' to src/translations/${resolvedLocale}.json`,
+        `Add a translation for '${key}' to src/translations/${resolvedLocale}.yml`,
       )
     }
     return value
