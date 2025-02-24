@@ -37,7 +37,7 @@ export function useTranslate(locale: string | undefined): TranslateFn {
   const t = i18next.getFixedT<TranslationKey>(resolvedLocale)
   return (key, options) => {
     const value = t(key, options)
-    if (value.startsWith("ln.") || value.startsWith("custom.")) {
+    if (value.startsWith("ln.") || value.startsWith("x.")) {
       throw new AstroError(
         `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
         `Add a translation for '${key}' to src/translations/${resolvedLocale}.yml`,

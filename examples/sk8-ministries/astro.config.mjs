@@ -38,7 +38,7 @@ export default defineConfig({
       /**
        * Title of the website. It appears in the browser tab and the header bar.
        */
-      title: "custom.site.title",
+      title: "x.site.title",
 
       /**
        * Path to the logo displayed in the header, located in ./src/assets.
@@ -85,7 +85,7 @@ export default defineConfig({
            * Link to a custom About page.
            */
           href: "/about",
-          label: "custom.navigation.about", // Custom translation key defined in translations
+          label: "x.navigation.about", // Custom translation key defined in translations
         },
         {
           /**
