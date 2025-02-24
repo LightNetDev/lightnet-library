@@ -104,5 +104,5 @@ test("Should verify DE Detail media page url and title", async ({
 
   await expect(page.getByRole("button", { name: "Teilen" })).toBeVisible()
   await expect(page.getByText("Sprache")).toBeVisible()
-  await expect(page.getByText("Kategorien")).toBeVisible()
+  await expect(page.getByText("Kategorie")).toBeVisible()
 })

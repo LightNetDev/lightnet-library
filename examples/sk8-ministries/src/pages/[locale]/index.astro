@@ -72,8 +72,8 @@ const t = Astro.locals.i18n.t
   }
   <Hero
     image={heroImage}
-    title={t("custom.site.title")}
-    subtitle={t("custom.ministry.slogan")}
+    title={t("x.site.title")}
+    subtitle={t("x.ministry.slogan")}
     titleSize="xl"
     subtitleSize="xl"
   />
@@ -82,7 +82,7 @@ const t = Astro.locals.i18n.t
     This section shows the latest books that have been added to the library.
      */
   }
-  <Section title={t("custom.home.our-latest-books")}>
+  <Section title={t("x.home.our-latest-books")}>
     <Gallery items={latestBooks} layout="book" />
   </Section>
 
@@ -94,11 +94,11 @@ const t = Astro.locals.i18n.t
   }
   <HighlightSection
     image={eventImage}
-    title={t("custom.home.bbq.title")}
-    text={t("custom.home.bbq.text")}
+    title={t("x.home.bbq.title")}
+    text={t("x.home.bbq.text")}
     link={{
       href: "mailto:some-email-address-from-the-ministry",
-      text: t("custom.home.bbq.sign-up-now"),
+      text: t("x.home.bbq.sign-up-now"),
     }}
   />
 

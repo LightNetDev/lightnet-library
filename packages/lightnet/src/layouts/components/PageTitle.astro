@@ -27,18 +27,18 @@ const t = Astro.locals.i18n.t
       (logo.format === "svg" ? (
         <img
           src={logo.src}
-          alt={t(logoAlt, { allowFixedStrings: true })}
+          alt={t(logoAlt)}
           style={`width:${getWidth(logo)}px;`}
         />
       ) : (
         <Image
           src={logo}
-          alt={t(logoAlt, { allowFixedStrings: true })}
+          alt={t(logoAlt)}
           style={`width:${getWidth(logo)}px;`}
           width={getWidth(logo)}
           densities={[1.5, 2, 3]}
           loading="eager"
         />
       ))
-  }{t(config.title, { allowFixedStrings: true })}</a
+  }{t(config.title)}</a
 >

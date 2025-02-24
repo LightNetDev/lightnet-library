@@ -6,7 +6,8 @@ import type { AstroIntegration } from "astro"
 
 import { resolveDefaultLocale } from "../i18n/resolve-default-locale"
 import { resolveLocales } from "../i18n/resolve-locales"
-import type { LightnetConfig } from "./config"
+import { verifySchema } from "../utils/verify-schema"
+import { configSchema, type LightnetConfig } from "./config"
 import { vitePluginLightnetConfig } from "./vite-plugin-lightnet-config"
 
 export function lightnet(lightnetConfig: LightnetConfig): AstroIntegration {
@@ -15,11 +16,17 @@ export function lightnet(lightnetConfig: LightnetConfig): AstroIntegration {
     hooks: {
       "astro:config:setup": ({
         injectRoute,
-        config,
+        config: astroConfig,
         updateConfig,
         logger,
         addMiddleware,
       }) => {
+        const config = verifySchema(
+          configSchema,
+          lightnetConfig,
+          "Invalid config passed to LightNet integration.",
+        )
+
         injectRoute({
           pattern: "404",
           entrypoint: "lightnet/pages/404.astro",
@@ -52,15 +59,15 @@ export function lightnet(lightnetConfig: LightnetConfig): AstroIntegration {
 
         addMiddleware({ entrypoint: "lightnet/locals", order: "pre" })
 
-        config.integrations.push(tailwind(), react())
+        astroConfig.integrations.push(tailwind(), react())
 
         updateConfig({
           vite: {
-            plugins: [vitePluginLightnetConfig(lightnetConfig, config, logger)],
+            plugins: [vitePluginLightnetConfig(config, astroConfig, logger)],
           },
           i18n: {
-            defaultLocale: resolveDefaultLocale(lightnetConfig),
-            locales: resolveLocales(lightnetConfig),
+            defaultLocale: resolveDefaultLocale(config),
+            locales: resolveLocales(config),
             routing: {
               redirectToDefaultLocale: false,
               prefixDefaultLocale: false,
