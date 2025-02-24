@@ -2,8 +2,6 @@ export type LightNetTranslationKey =
   | "ln.404.go-to-the-home-page"
   | "ln.404.page-not-found"
   | "ln.categories"
-  | "ln.category"
-  | "ln.language"
   | "ln.languages"
   | "ln.external-link"
   | "ln.type"

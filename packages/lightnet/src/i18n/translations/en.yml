@@ -13,25 +13,25 @@ ln.header.select-language: Select language
 # Example: https://sk8-ministries.pages.dev/en (first item in the main menu)
 ln.home.title: Home
 
-# Label for multiple media item categories.
-# English: Categories
-# Example: https://sk8-ministries.pages.dev/en/media/how-to-360-flip--en/
-ln.categories: Categories
-
 # Label for a single media item category.
 # English: Category
 # Example: https://sk8-ministries.pages.dev/en/media
-ln.category: Category
+ln.categories_one: Category
+
+# Label for multiple media item categories.
+# English: Categories
+# Example: https://sk8-ministries.pages.dev/en/media/how-to-360-flip--en/
+ln.categories_other: Categories
 
 # Label for a single language.
 # English: Language
 # Example: https://sk8-ministries.pages.dev/en/media
-ln.language: Language
+ln.languages_one: Language
 
 # Label for multiple languages.
 # English: Languages
 # Example: https://sk8-ministries.pages.dev/en/media/how-to-kickflip--en/
-ln.languages: Languages
+ln.languages_other: Languages
 
 # Label for a media type.
 # English: Type
