@@ -1,12 +1,12 @@
 # Accessibility label for opening the main menu.
 # English: Open main menu
 # Example: https://sk8-ministries.pages.dev/en
-ln.header.a11y.open-main-menu: Open main menu
+ln.header.open-main-menu: Open main menu
 
 # Accessibility label for the language menu.
 # English: Select language
 # Example: https://sk8-ministries.pages.dev/en
-ln.header.a11y.select-language: Select language
+ln.header.select-language: Select language
 
 # Display name for the home page.
 # English: Home
@@ -16,32 +16,32 @@ ln.home.title: Home
 # Label for multiple media item categories.
 # English: Categories
 # Example: https://sk8-ministries.pages.dev/en/media/how-to-360-flip--en/
-ln.common.categories: Categories
+ln.categories: Categories
 
 # Label for a single media item category.
 # English: Category
 # Example: https://sk8-ministries.pages.dev/en/media
-ln.common.category: Category
+ln.category: Category
 
 # Label for a single language.
 # English: Language
 # Example: https://sk8-ministries.pages.dev/en/media
-ln.common.language: Language
+ln.language: Language
 
 # Label for multiple languages.
 # English: Languages
 # Example: https://sk8-ministries.pages.dev/en/media/how-to-kickflip--en/
-ln.common.languages: Languages
-
-# Accessibility label for an external link.
-# English: External link
-# Example: https://sk8-ministries.pages.dev/en/media/ollie-with-integrity--en/
-ln.common.a11y.external-link: External link
+ln.languages: Languages
 
 # Label for a media type.
 # English: Type
 # Example: https://sk8-ministries.pages.dev/en/media
-ln.common.type: Type
+ln.type: Type
+
+# Accessibility label for an external link.
+# English: External link
+# Example: https://sk8-ministries.pages.dev/en/media/ollie-with-integrity--en/
+ln.external-link: External link
 
 # Title for the search page.
 # English: Search

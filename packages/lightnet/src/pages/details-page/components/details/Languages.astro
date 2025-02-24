@@ -20,7 +20,7 @@ const translations = (await getMediaItems())
   )
   .sort((a, b) => a.data.language.localeCompare(b.data.language))
 
-const label = translations.length ? "ln.common.languages" : "ln.common.language"
+const label = translations.length ? "ln.languages" : "ln.language"
 const { t } = Astro.locals.i18n
 ---
 

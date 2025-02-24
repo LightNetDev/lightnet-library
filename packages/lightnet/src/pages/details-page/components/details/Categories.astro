@@ -11,8 +11,7 @@ interface Props {
 const item = await getMediaItem(Astro.props.slug)
 
 const categories = item.data.categories?.map(({ id }) => id)
-const label =
-  (categories?.length ?? 0) <= 1 ? "ln.common.category" : "ln.common.categories"
+const label = (categories?.length ?? 0) <= 1 ? "ln.category" : "ln.categories"
 const { t } = Astro.locals.i18n
 ---
 

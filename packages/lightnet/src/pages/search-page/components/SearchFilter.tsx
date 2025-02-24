@@ -113,7 +113,7 @@ export default function SearchFilter({
           <label className="dy-form-control">
             <div className="dy-label">
               <span className="text-xs font-bold uppercase text-gray-500">
-                {t("ln.common.language")}
+                {t("ln.language")}
               </span>
             </div>
             <select
@@ -136,7 +136,7 @@ export default function SearchFilter({
           <label className="dy-form-control">
             <div className="dy-label">
               <span className="text-xs font-bold uppercase text-gray-500">
-                {t("ln.common.type")}
+                {t("ln.type")}
               </span>
             </div>
             <select
@@ -161,7 +161,7 @@ export default function SearchFilter({
           <label className="dy-form-control">
             <div className="dy-label">
               <span className="text-xs font-bold uppercase text-gray-500">
-                {t("ln.common.category")}
+                {t("ln.category")}
               </span>
             </div>
             <select

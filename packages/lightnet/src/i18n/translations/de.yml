@@ -1,17 +1,17 @@
 ln.404.go-to-the-home-page: Zurück zur Startseite
 ln.404.page-not-found: Seite nicht gefunden
-ln.common.categories: Kategorien
-ln.common.category: Kategorie
-ln.common.language: Sprache
-ln.common.languages: Sprachen
-ln.common.type: Typ
-ln.common.a11y.external-link: Externer link
+ln.categories: Kategorien
+ln.category: Kategorie
+ln.language: Sprache
+ln.languages: Sprachen
+ln.type: Typ
+ln.external-link: Externer link
 ln.details.open: Öffnen
 ln.details.part-of: Teil der Sammlung
 ln.details.download: Download
 ln.details.share: Teilen
-ln.header.a11y.open-main-menu: Öffne Hauptmenü
-ln.header.a11y.select-language: Sprache auswählen
+ln.header.open-main-menu: Öffne Hauptmenü
+ln.header.select-language: Sprache auswählen
 ln.home.title: Startseite
 ln.search.all-categories: Alle Kategorien
 ln.search.all-languages: Alle Sprachen
