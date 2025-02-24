@@ -64,6 +64,22 @@ const languageSchema = z
      * Default is `false`
      */
     isDefaultUILanguage: z.boolean().default(false),
+    /**
+     * An array of fallback language codes.
+     *
+     * This is used when no translation key is defined for this language.
+     * The system will iterate over this array in order and use the first language for which a
+     * matching translation key is found.
+     *
+     * If no match is found from the fallback languages, the system will
+     * attempt the translation using the default UI language.
+     *
+     * If the translation still cannot be resolved, it will then fall back to the English
+     * translation as a final resort.
+     *
+     * @example ["fr", "it"]
+     */
+    fallbackLanguages: z.string().array().default([]),
   })
   .transform((language) => ({
     ...language,

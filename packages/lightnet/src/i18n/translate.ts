@@ -4,7 +4,7 @@ import config from "virtual:lightnet/config"
 import YAML from "yaml"
 
 import { resolveDefaultLocale } from "./resolve-default-locale"
-import { resolveLocales } from "./resolve-locales"
+import { resolveLanguage } from "./resolve-language"
 import type { LightNetTranslationKey } from "./translations/translation-key"
 
 type TranslationsByLocales = Record<string, Record<string, string>>
@@ -16,7 +16,15 @@ export type TranslationKey =
 
 export type TranslateFn = (key: TranslationKey, options?: TOptions) => string
 
-const locales = resolveLocales(config)
+const languageCodes = [
+  ...new Set(
+    config.languages.flatMap((lng) => [
+      lng.code,
+      ...lng.fallbackLanguages,
+      "en",
+    ]),
+  ),
+]
 const defaultLocale = resolveDefaultLocale(config)
 
 const builtInTranslations = await loadTranslations("/i18n/translations")
@@ -24,7 +32,6 @@ const userTranslations = await loadTranslations("/src/translations")
 
 await i18next.init({
   lng: defaultLocale,
-  fallbackLng: [defaultLocale, "en"],
   // don't use name spacing
   nsSeparator: false,
   // only use flat keys
@@ -32,11 +39,16 @@ await i18next.init({
   resources: prepareI18nextTranslations(),
 })
 
-export function useTranslate(locale: string | undefined): TranslateFn {
-  const resolvedLocale = locale ?? defaultLocale
+export function useTranslate(bcp47: string | undefined): TranslateFn {
+  const resolvedLocale = bcp47 ?? defaultLocale
   const t = i18next.getFixedT<TranslationKey>(resolvedLocale)
+  const fallbackLng = [
+    ...resolveLanguage(resolvedLocale).fallbackLanguages,
+    defaultLocale,
+    "en",
+  ]
   return (key, options) => {
-    const value = t(key, options)
+    const value = t(key, { fallbackLng, ...options })
     if (value.startsWith("ln.") || value.startsWith("x.")) {
       throw new AstroError(
         `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
@@ -58,27 +70,27 @@ async function loadTranslations(path: string) {
       },
     ),
   )
-  const addTranslation = async (locale: string) => {
+  const addTranslation = async (bcp47: string) => {
     const translationImport = imports.find(([importPath]) =>
-      importPath.includes(`${path}/${locale}.`),
+      importPath.includes(`${path}/${bcp47}.`),
     )?.[1]
     if (!translationImport) {
       return
     }
     const translationsYml = (await translationImport()) as string
-    translations[locale] = YAML.parse(translationsYml)
+    translations[bcp47] = YAML.parse(translationsYml)
   }
-  await Promise.all(locales.map((locale) => addTranslation(locale)))
+  await Promise.all(languageCodes.map((lng) => addTranslation(lng)))
   return translations
 }
 
 function prepareI18nextTranslations() {
   const result: Record<string, { translation: Record<string, string> }> = {}
-  for (const locale of locales) {
-    result[locale] = {
+  for (const bcp47 of languageCodes) {
+    result[bcp47] = {
       translation: {
-        ...builtInTranslations[locale],
-        ...userTranslations[locale],
+        ...builtInTranslations[bcp47],
+        ...userTranslations[bcp47],
       },
     }
   }
