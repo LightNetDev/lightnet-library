@@ -50,7 +50,7 @@ const t = Astro.locals.i18n.t
             active={isActive}
             target={isExternal ? "_blank" : "_self"}
           >
-            {t(label, { allowFixedStrings: true })}
+            {t(label)}
             {isExternal && (
               <Icon
                 className="mdi--external-link shrink-0 text-base"

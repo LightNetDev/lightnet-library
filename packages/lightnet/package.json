@@ -54,7 +54,8 @@
     "fuse.js": "^7.1.0",
     "marked": "^15.0.7",
     "yaml": "^2.7.0",
-    "zod-validation-error": "^3.4.0"
+    "zod-validation-error": "^3.4.0",
+    "i18next": "^24.2.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.50.1",

@@ -1,6 +1,7 @@
 import { AstroError } from "astro/errors"
 import config from "virtual:lightnet/config"
 import YAML from "yaml"
+import i18next, { type TOptions } from "i18next"
 
 import { resolveDefaultLocale } from "./resolve-default-locale"
 import { resolveLocales } from "./resolve-locales"
@@ -12,12 +13,8 @@ type TranslationsByLocales = Record<string, Record<string, string>>
 export type TranslationKey =
   | LightNetTranslationKey
   | (string & NonNullable<unknown>)
-export type TranslationOptions = { allowFixedStrings?: boolean }
 
-export type TranslateFn = (
-  key: TranslationKey,
-  options?: TranslationOptions,
-) => string
+export type TranslateFn = (key: TranslationKey, options?: TOptions) => string
 
 const locales = resolveLocales(config)
 const defaultLocale = resolveDefaultLocale(config)
@@ -25,25 +22,22 @@ const defaultLocale = resolveDefaultLocale(config)
 const builtInTranslations = await loadTranslations("/i18n/translations")
 const userTranslations = await loadTranslations("/src/translations")
 
-const translationsByLocales = merge(builtInTranslations, userTranslations)
+await i18next.init({
+  lng: defaultLocale,
+  fallbackLng: [defaultLocale, "en"],
+  // don't use name spacing
+  nsSeparator: false,
+  // only use flat keys
+  keySeparator: false,
+  resources: prepareI18nextTranslations(),
+})
 
 export function useTranslate(locale: string | undefined): TranslateFn {
   const resolvedLocale = locale ?? defaultLocale
-  const translations = translationsByLocales[resolvedLocale]
-  const fallbackTranslations = translationsByLocales[defaultLocale]
-  if (!translations) {
-    throw new AstroError(
-      `No translations found for language ${resolvedLocale}`,
-      "Add them to your project's src/translations folder",
-    )
-  }
-  return (key: TranslationKey, options?: TranslationOptions) => {
-    const value = translations[key] ?? fallbackTranslations[key]
-    const isTranslationKey = key.startsWith("custom.") || key.startsWith("ln.")
-    if (!value && options?.allowFixedStrings && !isTranslationKey) {
-      return key
-    }
-    if (!value) {
+  const t = i18next.getFixedT<TranslationKey>(resolvedLocale)
+  return (key, options) => {
+    const value = t(key, options)
+    if (value.startsWith("ln.") || value.startsWith("custom.")) {
       throw new AstroError(
         `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
         `Add a translation for '${key}' to src/translations/${resolvedLocale}.json`,
@@ -78,16 +72,14 @@ async function loadTranslations(path: string) {
   return translations
 }
 
-function merge(
-  source: TranslationsByLocales,
-  toMerge: TranslationsByLocales,
-): TranslationsByLocales {
-  const result = { ...source }
-  for (const key of Object.keys(toMerge)) {
-    if (!source[key]) {
-      result[key] = toMerge[key]
-    } else {
-      result[key] = { ...source[key], ...toMerge[key] }
+function prepareI18nextTranslations() {
+  const result: Record<string, { translation: Record<string, string> }> = {}
+  for (const locale of locales) {
+    result[locale] = {
+      translation: {
+        ...builtInTranslations[locale],
+        ...userTranslations[locale],
+      },
     }
   }
   return result
