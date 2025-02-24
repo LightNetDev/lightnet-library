@@ -1,8 +1,8 @@
 import { AstroError } from "astro/errors"
+import i18next from "i18next"
 import config from "virtual:lightnet/config"
 
 import type { TranslateFn } from "./translate"
-import i18next from "i18next"
 
 const languages = Object.fromEntries(
   config.languages.map((lang) => [lang.code, lang]),

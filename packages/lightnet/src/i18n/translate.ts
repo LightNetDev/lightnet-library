@@ -1,7 +1,7 @@
 import { AstroError } from "astro/errors"
+import i18next, { type TOptions } from "i18next"
 import config from "virtual:lightnet/config"
 import YAML from "yaml"
-import i18next, { type TOptions } from "i18next"
 
 import { resolveDefaultLocale } from "./resolve-default-locale"
 import { resolveLocales } from "./resolve-locales"
