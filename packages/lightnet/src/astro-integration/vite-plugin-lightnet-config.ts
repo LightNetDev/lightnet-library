@@ -27,7 +27,10 @@ export function vitePluginLightnetConfig(
     },
     handleHotUpdate({ file, server }) {
       const srcPath = resolve(fileURLToPath(root), "src/translations/")
-      if (file.endsWith(".json") && file.startsWith(srcPath)) {
+      if (
+        (file.endsWith(".yml") || file.endsWith(".yaml")) &&
+        file.startsWith(srcPath)
+      ) {
         logger.info(`Update translations ${file.slice(srcPath.length)}`)
         server.restart()
       }
