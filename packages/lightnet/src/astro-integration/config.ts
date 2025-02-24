@@ -33,7 +33,7 @@ const linkSchema = z.object({
 const languageSchema = z
   .object({
     /**
-     * BCP-47 language tag for this language.
+     * IETF BCP-47 language tag for this language.
      *
      * This will be the identifier of this language and will
      * also appear on the URL paths of the website.
@@ -45,14 +45,6 @@ const languageSchema = z
      * Can either be a fixed string or a translation key.
      */
     label: z.string(),
-    /**
-     * The text direction of this language.
-     *
-     * Either right-to-left = rtl, or left-to-right = ltr.
-     *
-     * Default is "ltr".
-     */
-    direction: z.enum(["rtl", "ltr"]).default("ltr"),
     /**
      * Should this language be used as an user interface language?
      *
