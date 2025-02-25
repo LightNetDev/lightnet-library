@@ -3,9 +3,6 @@ import lightnetDecapAdmin from "@lightnet/decap-admin"
 import { defineConfig } from "astro/config"
 import lightnet from "lightnet"
 
-import deTranslations from "./src/translations/de.json"
-import enTranslations from "./src/translations/en.json"
-
 /**
  * Defines the available languages for the site, covering both
  * user interface and content languages.
@@ -16,13 +13,12 @@ const languages = [
   {
     code: "en", // BCP47 language code for English
     label: "English", // Name displayed in the language selector
-    translations: enTranslations, // UI translations for English
-    isDefaultLocale: true, // Sets English as the default language
+    isDefaultUILanguage: true, // Sets English as the default user interface language
   },
   {
     code: "de", // BCP47 language code for German
     label: "Deutsch", // Display name for German
-    translations: deTranslations, // UI translations for German
+    isUILanguage: true, // Sets German as an user interface language
   },
 ]
 
@@ -42,7 +38,7 @@ export default defineConfig({
       /**
        * Title of the website. It appears in the browser tab and the header bar.
        */
-      title: "custom.site.title",
+      title: "x.site.title",
 
       /**
        * Path to the logo displayed in the header, located in ./src/assets.
@@ -89,7 +85,7 @@ export default defineConfig({
            * Link to a custom About page.
            */
           href: "/about",
-          label: "custom.navigation.about", // Custom translation key defined in translations
+          label: "x.navigation.about", // Custom translation key defined in translations
         },
         {
           /**

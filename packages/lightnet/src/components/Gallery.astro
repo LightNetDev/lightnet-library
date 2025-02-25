@@ -20,7 +20,7 @@ const t = Astro.locals.i18n.t
 const types = Object.fromEntries(
   (await getMediaTypes()).map((type) => [
     type.id,
-    { ...type.data, name: t(type.data.label, { allowFixedStrings: true }) },
+    { ...type.data, name: t(type.data.label) },
   ]),
 )
 

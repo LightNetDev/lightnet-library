@@ -12,6 +12,7 @@ export default defineConfig({
         title: "Sk8 Ministries",
         logo: { src: "./logo.svg" },
         languages: [{ code: "en", label: "English" }],
+        internalDomains: [],
       },
       { site: "https://sk8-ministries.dev" },
     ),

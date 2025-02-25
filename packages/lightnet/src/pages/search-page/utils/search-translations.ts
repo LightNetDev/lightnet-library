@@ -1,12 +1,12 @@
 const translationKeys = [
   "ln.search.no-results",
   "ln.search.title",
-  "ln.common.language",
+  "ln.language_one",
   "ln.search.placeholder",
   "ln.search.all-languages",
-  "ln.common.type",
+  "ln.type_one",
   "ln.search.all-types",
-  "ln.common.category",
+  "ln.category_one",
   "ln.search.all-categories",
   "ln.search.more-results",
 ] as const

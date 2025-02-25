@@ -20,7 +20,7 @@ for (const { id, name } of await getCategories(currentLocale, t)) {
 const mediaTypes = (await getMediaTypes())
   .map((type) => ({
     id: type.id,
-    label: t(type.data.label, { allowFixedStrings: true }),
+    label: t(type.data.label),
     icon: type.data.icon,
   }))
   .sort((a, b) => a.label.localeCompare(b.label, currentLocale))
@@ -28,7 +28,7 @@ const mediaTypes = (await getMediaTypes())
 const translatedContentLanguages = contentLanguages
   .map((language) => ({
     ...language,
-    name: t(language.label, { allowFixedStrings: true }),
+    name: t(language.label),
   }))
   .sort((a, b) => a.name.localeCompare(b.name, currentLocale))
 

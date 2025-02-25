@@ -20,12 +20,11 @@ const translations = (await getMediaItems())
   )
   .sort((a, b) => a.data.language.localeCompare(b.data.language))
 
-const label = translations.length ? "ln.common.languages" : "ln.common.language"
 const { t } = Astro.locals.i18n
 ---
 
 <div>
-  <Label>{t(label)}</Label>
+  <Label>{t("ln.language", { count: translations.length })}</Label>
   <ul class="flex flex-wrap gap-2">
     <li class="py-1 pe-2 text-gray-800">
       {resolveTranslatedLanguage(item.data.language, t).name}
