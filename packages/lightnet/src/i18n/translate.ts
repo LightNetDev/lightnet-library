@@ -18,11 +18,9 @@ export type TranslateFn = (key: TranslationKey, options?: TOptions) => string
 
 const languageCodes = [
   ...new Set(
-    config.languages.flatMap((lng) => [
-      lng.code,
-      ...lng.fallbackLanguages,
-      "en",
-    ]),
+    config.languages
+      .filter((lng) => lng.isUILanguage)
+      .flatMap((lng) => [lng.code, ...lng.fallbackLanguages, "en"]),
   ),
 ]
 const defaultLocale = resolveDefaultLocale(config)
