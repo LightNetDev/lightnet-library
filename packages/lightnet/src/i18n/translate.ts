@@ -5,7 +5,7 @@ import YAML from "yaml"
 
 import { resolveDefaultLocale } from "./resolve-default-locale"
 import { resolveLanguage } from "./resolve-language"
-import type { LightNetTranslationKey } from "./translations/translation-key"
+import type { LightNetTranslationKey } from "./translation-key"
 
 type TranslationsByLocales = Record<string, Record<string, string>>
 
