@@ -49,7 +49,10 @@ export function useTranslate(bcp47: string | undefined): TranslateFn {
   ]
   return (key, options) => {
     const value = t(key, { fallbackLng, ...options })
-    if (value.startsWith("ln.") || value.startsWith("x.")) {
+    // i18next will return the key if no translation is found.
+    // If a value starts with ln. or x. we consider it to be
+    // a untranslated translation key.
+    if (value.match(/^(?:ln|x)\../i)) {
       throw new AstroError(
         `Missing translation: '${key}' is undefined for language '${resolvedLocale}'.`,
         `Add a translation for '${key}' to src/translations/${resolvedLocale}.yml`,
