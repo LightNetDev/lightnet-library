@@ -1,9 +1,9 @@
 ln.404.go-to-the-home-page: Zurück zur Startseite
 ln.404.page-not-found: Seite nicht gefunden
-ln.categories_other: Kategorien
-ln.categories_one: Kategorie
-ln.languages_one: Sprache
-ln.languages_other: Sprachen
+ln.category_other: Kategorien
+ln.category_one: Kategorie
+ln.language_one: Sprache
+ln.language_other: Sprachen
 ln.type: Typ
 ln.external-link: Externer link
 ln.details.open: Öffnen
