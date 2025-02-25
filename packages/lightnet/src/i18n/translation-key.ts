@@ -4,7 +4,7 @@ export type LightNetTranslationKey =
   | "ln.category"
   | "ln.language"
   | "ln.external-link"
-  | "ln.type"
+  | "ln.type_one"
   | "ln.details.open"
   | "ln.details.share"
   | "ln.details.part-of-collection"

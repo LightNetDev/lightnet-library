@@ -62,11 +62,11 @@ ln.language_one: Language
 # Used on: https://sk8-ministries.pages.dev/en/media/how-to-kickflip--en/
 ln.language_other: Languages
 
-# Label for a media type.
+# Label for a single media type.
 #
 # English: Type
 # Used on: https://sk8-ministries.pages.dev/en/media
-ln.type: Type
+ln.type_one: Type
 
 # Accessibility label for an external link.
 # This is only "visible" to a screen-reader.

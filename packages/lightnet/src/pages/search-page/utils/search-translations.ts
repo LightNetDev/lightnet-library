@@ -4,7 +4,7 @@ const translationKeys = [
   "ln.language_one",
   "ln.search.placeholder",
   "ln.search.all-languages",
-  "ln.type",
+  "ln.type_one",
   "ln.search.all-types",
   "ln.category_one",
   "ln.search.all-categories",

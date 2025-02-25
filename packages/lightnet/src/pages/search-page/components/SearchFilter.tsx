@@ -136,7 +136,7 @@ export default function SearchFilter({
           <label className="dy-form-control">
             <div className="dy-label">
               <span className="text-xs font-bold uppercase text-gray-500">
-                {t("ln.type")}
+                {t("ln.type_one")}
               </span>
             </div>
             <select
