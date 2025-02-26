@@ -3,4 +3,10 @@ This report provides an overview of all built-in languages and the current progr
 
 ## **DE** (de.yml)
 
-All keys have been translated. ✅
+Missing keys:
+
+- ln.details.share
+
+Obsolete keys:
+
+- ln.details.share_foo
