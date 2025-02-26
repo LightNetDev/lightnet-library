@@ -1,15 +1,13 @@
 import YAML from "yaml"
 
-const builtInTranslations = ["en", "de"] as const
+const builtInTranslations = {
+  en: () => import("./translations/en.yml?raw"),
+  de: () => import("./translations/de.yml?raw"),
+} as const
 
-const builtInImports = Object.fromEntries(
-  builtInTranslations.map((lng) => [
-    lng,
-    () => import(`./translations/${lng}.yml?raw`),
-  ]),
-)
+type BuiltInLanguage = keyof typeof builtInTranslations
 
-const userImports = Object.fromEntries(
+const userTranslations = Object.fromEntries(
   Object.entries(
     import.meta.glob(["/src/translations/*.(yml|yaml)"], {
       query: "?raw",
@@ -17,7 +15,7 @@ const userImports = Object.fromEntries(
     }),
   ).map(([path, translationImport]) => {
     const [fileName] = path.split("/").slice(-1)
-    const lang = fileName.replace(/\.ya?ml/i, "")
+    const lang = fileName.replace(/\.ya?ml/, "")
     return [lang, translationImport]
   }),
 )
@@ -27,19 +25,23 @@ export const loadTranslations = async (bcp47: string) => ({
   ...(await loadUserTranslations(bcp47)),
 })
 
+function isBuiltInLanguage(bcp47: string): bcp47 is BuiltInLanguage {
+  return Object.hasOwn(builtInTranslations, bcp47)
+}
+
 export const loadBuiltInTranslations = async (bcp47: string) => {
-  if (!builtInImports[bcp47]) {
+  if (!isBuiltInLanguage(bcp47)) {
     return {}
   }
-  const yml = (await builtInImports[bcp47]()).default
+  const yml = (await builtInTranslations[bcp47]()).default
   return YAML.parse(yml)
 }
 
 export const loadUserTranslations = async (bcp47: string) => {
-  if (!userImports[bcp47]) {
+  if (!userTranslations[bcp47]) {
     return {}
   }
-  const yml = (await userImports[bcp47]()) as string
+  const yml = (await userTranslations[bcp47]()) as string
   return YAML.parse(yml)
 }
 
