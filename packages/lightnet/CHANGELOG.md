@@ -1,5 +1,11 @@
 # lightnet
 
+## 2.16.1
+
+### Patch Changes
+
+- [#213](https://github.com/LightNetDev/LightNet/pull/213) [`d78e4fd`](https://github.com/LightNetDev/LightNet/commit/d78e4fd0c60cef710f57ede45c204ad839ba7f0f) Thanks [@smn-cds](https://github.com/smn-cds)! - Fix loading of built in languages.
+
 ## 2.16.0
 
 ### Minor Changes
