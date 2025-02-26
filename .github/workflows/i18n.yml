@@ -16,6 +16,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           cache: "pnpm"
+      - run: pnpm i
       - run: |
           pnpm i18n
           git config user.name "github-actions[bot]"
