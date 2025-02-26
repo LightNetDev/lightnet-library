@@ -1,5 +1,11 @@
 # lightnet
 
+## 2.16.2
+
+### Patch Changes
+
+- [#215](https://github.com/LightNetDev/LightNet/pull/215) [`6d963a7`](https://github.com/LightNetDev/LightNet/commit/6d963a76df071771bf96a616a4a45103fc068c98) Thanks [@smn-cds](https://github.com/smn-cds)! - Makes translation files imports more static
+
 ## 2.16.1
 
 ### Patch Changes
