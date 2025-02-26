@@ -3,7 +3,7 @@ name: i18n 🥸
 on:
   pull_request:
     paths:
-      - packages/src/i18n/translations/*.yml
+      - packages/lightnet/src/i18n/translations/*.yml
     branches: [main]
 
 jobs:
