@@ -1,13 +1,10 @@
 import { AstroError } from "astro/errors"
 import i18next, { type TOptions } from "i18next"
 import config from "virtual:lightnet/config"
-import YAML from "yaml"
 
 import { resolveDefaultLocale } from "./resolve-default-locale"
 import { resolveLanguage } from "./resolve-language"
-import type { LightNetTranslationKey } from "./translation-key"
-
-type TranslationsByLocales = Record<string, Record<string, string>>
+import { type LightNetTranslationKey, loadTranslations } from "./translations"
 
 // We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
 export type TranslationKey =
@@ -18,17 +15,12 @@ export type TranslateFn = (key: TranslationKey, options?: TOptions) => string
 
 const languageCodes = [
   ...new Set(
-    config.languages.flatMap((lng) => [
-      lng.code,
-      ...lng.fallbackLanguages,
-      "en",
-    ]),
+    config.languages
+      .filter((lng) => lng.isUILanguage)
+      .flatMap((lng) => [lng.code, ...lng.fallbackLanguages, "en"]),
   ),
 ]
 const defaultLocale = resolveDefaultLocale(config)
-
-const builtInTranslations = await loadTranslations("/i18n/translations")
-const userTranslations = await loadTranslations("/src/translations")
 
 await i18next.init({
   lng: defaultLocale,
@@ -36,7 +28,7 @@ await i18next.init({
   nsSeparator: false,
   // only use flat keys
   keySeparator: false,
-  resources: prepareI18nextTranslations(),
+  resources: await prepareI18nextTranslations(),
 })
 
 export function useTranslate(bcp47: string | undefined): TranslateFn {
@@ -62,39 +54,11 @@ export function useTranslate(bcp47: string | undefined): TranslateFn {
   }
 }
 
-async function loadTranslations(path: string) {
-  const translations: TranslationsByLocales = {}
-  const imports = Object.entries(
-    import.meta.glob(
-      ["./translations/*.(yml|yaml)", "/src/translations/*.(yml|yaml)"],
-      {
-        query: "?raw",
-        import: "default",
-      },
-    ),
-  )
-  const addTranslation = async (bcp47: string) => {
-    const translationImport = imports.find(([importPath]) =>
-      importPath.includes(`${path}/${bcp47}.`),
-    )?.[1]
-    if (!translationImport) {
-      return
-    }
-    const translationsYml = (await translationImport()) as string
-    translations[bcp47] = YAML.parse(translationsYml)
-  }
-  await Promise.all(languageCodes.map((lng) => addTranslation(lng)))
-  return translations
-}
-
-function prepareI18nextTranslations() {
+async function prepareI18nextTranslations() {
   const result: Record<string, { translation: Record<string, string> }> = {}
   for (const bcp47 of languageCodes) {
     result[bcp47] = {
-      translation: {
-        ...builtInTranslations[bcp47],
-        ...userTranslations[bcp47],
-      },
+      translation: await loadTranslations(bcp47),
     }
   }
   return result
