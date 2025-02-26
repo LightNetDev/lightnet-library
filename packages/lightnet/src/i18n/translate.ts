@@ -4,10 +4,7 @@ import config from "virtual:lightnet/config"
 
 import { resolveDefaultLocale } from "./resolve-default-locale"
 import { resolveLanguage } from "./resolve-language"
-import {
-  type LightNetTranslationKey,
-  loadTranslations,
-} from "./translations"
+import { type LightNetTranslationKey, loadTranslations } from "./translations"
 
 // We add (string & NonNullable<unknown>) to preserve typescript autocompletion for known keys
 export type TranslationKey =
