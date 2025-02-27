@@ -21,19 +21,20 @@ jobs:
           cache: "pnpm"
       - run: pnpm i
       - run: pnpm --silent translation-status > packages/lightnet/src/i18n/translations/TRANSLATION-STATUS.md
+        name: Generate translation status report
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - name: check_changes
+      - name: Check for changes
+        id: check_changes
         run: |
-          git status
           if [ -n "$(git status --porcelain)" ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
           else
             echo "changes=false" >> $GITHUB_OUTPUT
           fi
       - if: steps.check_changes.outputs.changes == 'true'
-        name: add_changes
+        name: Add changes
         run: |
           git add .
           git commit -m "Update translation status report"
