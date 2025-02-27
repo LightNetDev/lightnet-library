@@ -20,7 +20,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "pnpm"
       - run: pnpm i
-      - run: pnpm --silent translation-status > ./packages/lightnet/src/i18n/translations/TRANSLATION-STATUS.md
+      - run: pnpm --silent translation-status > packages/lightnet/src/i18n/translations/TRANSLATION-STATUS.md
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
