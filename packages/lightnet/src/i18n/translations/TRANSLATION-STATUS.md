@@ -3,4 +3,6 @@ This report provides an overview of all built-in languages and the current progr
 
 ## **DE** (de.yml)
 
-All keys have been translated. ✅
+Missing keys:
+
+- ln.foo
