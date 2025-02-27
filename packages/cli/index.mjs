@@ -11,9 +11,9 @@ import YAML from "yaml"
 const translationsDirectory = "./node_modules/lightnet/src/i18n/translations"
 const sourceFile = "en.yml"
 
-const translationFiles = (await fs.readdir(translationsDirectory))
-  .filter((fileName) => fileName.endsWith(".yml"))
-  .filter((fileName) => fileName !== sourceFile)
+const translationFiles = (await fs.readdir(translationsDirectory)).filter(
+  (fileName) => fileName.endsWith(".yml"),
+)
 
 const sourceTranslations = await loadTranslationKeys(sourceFile)
 
