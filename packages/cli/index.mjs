@@ -52,7 +52,7 @@ function generateReport(results) {
    * @type {string[]}
    */
   const report = []
-  report.push("# Translation status")
+  report.push("# Translation status\n")
   report.push(
     "This report provides an overview of all built-in languages and the current progress of their translations.",
   )
