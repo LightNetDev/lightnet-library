@@ -1,4 +1,4 @@
-name: i18n 🥸
+name: i18n 🌏
 
 on:
   pull_request:
@@ -19,10 +19,19 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "pnpm"
       - run: pnpm i
+      - run: pnpm i18n
       - run: |
-          pnpm i18n
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: check_changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+      - if: steps.check_changes.outputs.changes == 'true'
+        run: |
           git add .
           git commit -m "Update translation status report"
           git push
