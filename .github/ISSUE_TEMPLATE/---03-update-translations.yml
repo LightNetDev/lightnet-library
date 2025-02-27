@@ -1,0 +1,26 @@
+name: "🌏 Update translations"
+description: Share your updates to built-in translations.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have you noticed a missing or inaccurate translation? Have you translated LightNet into a new language? 
+        We appreciate you sharing your work with the community — use this form to submit your contribution.
+  - type: input
+    id: language
+    attributes:
+      label: What language are you referring to?
+      description: Tell us the [IETF BCP-47 tag](https://en.wikipedia.org/wiki/IETF_language_tag) of this language e.g. `en` for english.
+    validations:
+      required: true
+  - type: textarea
+    id: translations
+    attributes:
+      label: What translations do you want to add / change?
+      description: "For every translation add a new line with the format `key: value`. Only add LightNet's built-in keys (starting with `ln.`)."
+      placeholder: |
+        ln.a-example-key: A example key
+        ln.other-key: Other key
+    validations:
+      required: true
