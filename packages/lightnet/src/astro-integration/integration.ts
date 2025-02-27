@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../i18n/locals.d.ts" />
 import react from "@astrojs/react"
 import tailwind from "@astrojs/tailwind"

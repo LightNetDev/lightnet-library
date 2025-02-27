@@ -31,6 +31,11 @@ export default [
   pluginReact.configs.flat["jsx-runtime"],
   ...pluginAstro.configs.recommended,
   {
+    rules: {
+      "@typescript-eslint/triple-slash-reference": "off",
+    },
+  },
+  {
     plugins: {
       "unused-imports": pluginUnusedImports,
     },

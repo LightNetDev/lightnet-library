@@ -7,7 +7,7 @@ We are happy to help with guidance on PRs, technical writing, and turning any fe
 > **Tip for new contributors:**
 > Take a look at [GitHub's Docs](https://docs.github.com/en/get-started/quickstart/hello-world) for helpful information on working with GitHub.
 
-This document is an active work in progress — like LightNet itself! Contact us to join our LightNet Discord server.
+This document is an active work in progress — like LightNet itself!
 
 ## Types of contributions
 
@@ -25,7 +25,7 @@ We encourage you to:
 - [**Look at existing issues**](https://github.com/LightNetDev/LightNet/issues) (especially those labelled [“good first issue”](https://github.com/LightNetDev/LightNet//issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+)) to find ways to contribute.
 
 - **Make a pull request (PR)** to address an open issue or to fix obvious problems.
-  Read more about [making a PR in GitHub’s docs](https://docs.github.com/en/get-started/quickstart/contributing-to-projects#making-a-pull-request)
+  Read more about [making a PR in GitHub’s docs](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
 
 - [**Review existing PRs**](https://github.com/LightNetDev/LightNet/pulls) to help us merge contributions sooner.
 
@@ -141,7 +141,7 @@ Translations help make LightNet accessible to more people.
 LightNet’s UI comes with some built-in text elements. For example, the search page has a heading of “Search” and the language filter on this page shows “All languages” labels. LightNet aims to provide these in as many languages as possible.
 
 Help out by adding or updating translation files in [`packages/lightnet/src/i18n/translations`](./packages/lightnet/src/i18n/translations/).
-Use the english YAML file (`en.yml`) as the source for your translations.
+In this folder you find more information on how to contribute translations.
 
 ## Understanding LightNet
 

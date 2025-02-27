@@ -12,7 +12,8 @@
     "preview": "pnpm --filter=sk8* preview",
     "format": "prettier . --write --cache",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "version": "pnpm changeset version && pnpm i --no-frozen-lockfile"
+    "version": "pnpm changeset version && pnpm i --no-frozen-lockfile",
+    "translation-status": "pnpm --silent -F cli translation-status"
   },
   "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d",
   "repository": {
@@ -22,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/LightNetDev/lightnet/issues"
   },
-  "homepage": "https://lightnet-docs.pages.dev",
+  "homepage": "https://lightnet.community",
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@changesets/changelog-github": "^0.5.1",

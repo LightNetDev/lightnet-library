@@ -1,0 +1,41 @@
+name: i18n 🌏
+
+on:
+  pull_request:
+    paths:
+      - "packages/lightnet/src/i18n/translations/*.yml"
+    branches:
+      - "main"
+
+jobs:
+  update-translation-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+      - run: pnpm i
+      - run: pnpm --silent translation-status > packages/lightnet/src/i18n/translations/TRANSLATION-STATUS.md
+        name: Generate translation status report
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+      - if: steps.check_changes.outputs.changes == 'true'
+        name: Add changes
+        run: |
+          git add .
+          git commit -m "Update translation status report"
+          git push
