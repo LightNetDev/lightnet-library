@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/LightNetDev/lightnet/issues"
   },
-  "homepage": "https://lightnet-docs.pages.dev",
+  "homepage": "https://lightnet.community",
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@changesets/changelog-github": "^0.5.1",
