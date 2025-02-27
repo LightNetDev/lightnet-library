@@ -58,7 +58,9 @@ function generateReport(results) {
     "This report provides an overview of all built-in languages and the current progress of their translations.",
   )
   results.forEach((result) => {
-    report.push(`\n## **${result.bcp47.toUpperCase()}** (${result.fileName})`)
+    report.push(
+      `\n## **${result.bcp47.toUpperCase()}** ([${result.fileName}](./${result.fileName}))`,
+    )
     if (!result.hasDifferences) {
       report.push("\nAll keys have been translated. ✅")
     }
