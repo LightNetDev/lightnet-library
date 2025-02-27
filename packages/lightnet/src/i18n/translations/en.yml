@@ -5,6 +5,8 @@
 # Used on: https://sk8-ministries.pages.dev/en (not visible)
 ln.header.open-main-menu: Open main menu
 
+ln.foo: foo
+
 # Accessibility label for the language menu.
 # This is only "visible" to a screen-reader.
 #
