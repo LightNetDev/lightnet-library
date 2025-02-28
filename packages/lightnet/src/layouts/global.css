@@ -1,6 +1,11 @@
 @import "tailwindcss";
+
 @source "../";
+
 @plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4" {
+  prefixes: mdi;
+}
 
 @theme inline {
   --color-primary: var(--primary-color);

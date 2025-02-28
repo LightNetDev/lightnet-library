@@ -46,17 +46,19 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "@types/react": "^18.3.18",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify/tailwind4": "^1.0.6",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/react": "^18.3.18",
     "fuse.js": "^7.1.0",
+    "i18next": "^24.2.2",
     "marked": "^15.0.7",
     "yaml": "^2.7.0",
-    "zod-validation-error": "^3.4.0",
-    "i18next": "^24.2.2"
+    "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.13.4",
-    "vitest": "^3.0.5"
+    "@types/node": "^22.13.5",
+    "vitest": "^3.0.7"
   }
 }
