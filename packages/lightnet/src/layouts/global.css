@@ -1,3 +1,7 @@
 @import "tailwindcss";
 @source "../";
 @plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-primary: var(--ln-primary-color);
+}

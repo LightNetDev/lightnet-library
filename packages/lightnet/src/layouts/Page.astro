@@ -20,6 +20,7 @@ const configTitle = Astro.locals.i18n.t(config.title)
 
 const { currentLocale } = Astro.locals.i18n
 const language = resolveLanguage(currentLocale)
+const primaryColor = config.primaryColor
 ---
 
 <!doctype html>
@@ -50,5 +51,9 @@ const language = resolveLanguage(currentLocale)
       <slot />
     </main>
     <PreloadReact client:idle />
-  </body>
+  </body><style is:global define:vars={{ primaryColor }}>
+    :root {
+      --ln-primary-color: var(--primaryColor);
+    }
+  </style>
 </html>
