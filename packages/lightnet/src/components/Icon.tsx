@@ -20,7 +20,7 @@ export default function Icon({
     <span
       className={`iconify text-2xl ${className} ${flipIcon && "scale-x-[-1]"}`}
       aria-label={ariaLabel || undefined}
-      hidden={!ariaLabel}
+      aria-hidden={!ariaLabel}
       role={ariaLabel ? "img" : undefined}
     />
   )

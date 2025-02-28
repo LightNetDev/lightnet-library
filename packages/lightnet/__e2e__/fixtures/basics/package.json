@@ -4,15 +4,15 @@
   "version": "0.0.1",
   "private": "true",
   "dependencies": {
-    "@astrojs/react": "^4.2.0",
-    "@astrojs/tailwind": "^6.0.0",
+    "@astrojs/react": "^4.2.1",
     "@lightnet/decap-admin": "^2.4.0",
-    "astro": "^5.3.0",
-    "lightnet": "^2.16.0",
+    "@tailwindcss/vite": "^4.0.9",
+    "astro": "^5.4.0",
+    "lightnet": "^2.16.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.5",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.0.9",
     "typescript": "^5.7.3"
   }
 }

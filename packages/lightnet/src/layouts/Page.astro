@@ -8,6 +8,8 @@ import PageNavigation from "./components/PageNavigation.astro"
 import PageTitle from "./components/PageTitle.astro"
 import PreloadReact from "./components/PreloadReact"
 
+import "./global.css"
+
 interface Props {
   title?: string
   description?: string
@@ -18,6 +20,7 @@ const configTitle = Astro.locals.i18n.t(config.title)
 
 const { currentLocale } = Astro.locals.i18n
 const language = resolveLanguage(currentLocale)
+const primaryColor = config.primaryColor
 ---
 
 <!doctype html>
@@ -48,5 +51,9 @@ const language = resolveLanguage(currentLocale)
       <slot />
     </main>
     <PreloadReact client:idle />
-  </body>
+  </body><style is:global define:vars={{ primaryColor }}>
+    :root {
+      --primary-color: var(--primaryColor);
+    }
+  </style>
 </html>
