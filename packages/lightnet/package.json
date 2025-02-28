@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@types/react": "^18.3.18",
+    "@tailwindcss/typography": "^0.5.16",
     "fuse.js": "^7.1.0",
     "marked": "^15.0.7",
     "yaml": "^2.7.0",
