@@ -3,5 +3,5 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --color-primary: var(--ln-primary-color);
+  --color-primary: var(--primary-color);
 }
