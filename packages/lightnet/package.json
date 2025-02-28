@@ -37,20 +37,16 @@
   },
   "peerDependencies": {
     "@astrojs/react": "^4.1.0",
-    "@astrojs/tailwind": "^6.0.0",
+    "@tailwindcss/vite": "^4.0.9",
     "astro": "^5.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.4",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^4.0.9",
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "@iconify-json/mdi": "^1.2.3",
-    "@iconify/tailwind": "^1.2.0",
-    "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^18.3.18",
-    "daisyui": "^4.12.23",
     "fuse.js": "^7.1.0",
     "marked": "^15.0.7",
     "yaml": "^2.7.0",
