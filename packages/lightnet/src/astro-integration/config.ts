@@ -131,9 +131,9 @@ export const configSchema = z.object({
    * links, and hover states. Choose a color that aligns with your brand
    * and provides good contrast against a white background for accessibility.
    *
-   * Default: #1e2939 (dark gray)
+   * Default: #1E2939 (dark gray)
    */
-  primaryColor: z.string().default("#1e2939"),
+  primaryColor: z.string().default("#1E2939"),
   /**
    * All languages: content languages and ui languages.
    */
